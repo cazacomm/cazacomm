@@ -1,878 +1,1027 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- ====== Titres & descriptions ====== -->
- <title>Création de site internet en 1 jour seulement.</title>
-<meta name="description" content="Site Internet sur mesure à 50€/mois et 400€ HT le jour de la création." />
-<link rel="canonical" href="https://cazacomm.fr/" />
-
-  <!-- ====== Open Graph ====== -->
-<meta property="og:locale" content="fr_FR" />
-<meta property="og:site_name" content="CAZA COMM" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Création de site internet en 1 jour seulement." />
-<meta property="og:description" content="Site Internet sur mesure à 50€/mois et 400€ HT le jour de la création." />
-<meta property="og:url" content="https://cazacomm.fr/" />
-<meta property="og:image" content="https://cazacomm.fr/assets/og-cover.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-
-  <!-- ====== Twitter Card ====== -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Création de site internet en 1 jour seulement." />
-<meta name="twitter:description" content="Site Internet sur mesure à 50€/mois et 400€ HT le jour de la création." />
-<meta name="twitter:image" content="https://cazacomm.fr/assets/og-cover.jpg" />
-
-  <!-- ====== Couleur navigateur & icônes ====== -->
-  <meta name="theme-color" content="#16c172" />
-  <link rel="icon" type="image/png" sizes="32x32" href="https://cazacomm.fr/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="https://cazacomm.fr/favicon-16.png" />
-  <link rel="apple-touch-icon" href="https://cazacomm.fr/apple-touch-icon.png" />
-  <link rel="manifest" href="https://cazacomm.fr/site.webmanifest" />
-
-  <!-- ====== Sitemap ====== -->
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://cazacomm.fr/sitemap.xml" />
-
-  <!-- ====== Données structurées ====== -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-  {"@type":"Organization","@id":"https://cazacomm.fr/#org","name":"CAZA COMM","url":"https://cazacomm.fr/","logo":"https://cazacomm.fr/assets/logo-512.png","email":"mailto:caza.comm@gmail.com","telephone":"+33767197467","sameAs":["https://www.instagram.com/caza.comm/","https://www.youtube.com/@CazaComm"]},
-  {"@type":"WebSite","@id":"https://cazacomm.fr/#website","url":"https://cazacomm.fr/","name":"CAZA COMM","publisher":{"@id":"https://cazacomm.fr/#org"},"potentialAction":{"@type":"SearchAction","target":"https://cazacomm.fr/?s={search_term_string}","query-input":"required name=search_term_string"}},
-  {"@type":"ProfessionalService","@id":"https://cazacomm.fr/#service","name":"Création de site internet en 1 jour","url":"https://cazacomm.fr/","provider":{"@id":"https://cazacomm.fr/#org"},"serviceType":["Création de site internet","Création de site vitrine","Refonte de site","Optimisation de conversion"],"offers":{"@type":"Offer","url":"https://cazacomm.fr/#plans","priceCurrency":"EUR","price":"49.17","description":"Site Internet sur mesure à 49,17€/mois et 400€ HT le jour de la création."}}
-]}
-</script>
-
-  <!-- ====== Fonts (1-2 max) ====== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Caza Comm — Automatisations et IA sur mesure. Agents IA, automatisation de processus, intégration outils. Basé en France." />
+  <title>Caza Comm — Automatisations et IA sur mesure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;700&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ====== Base ====== */
-    :root{--bg:#ffffff;--bg2:#f6f7f9;--card:#ffffff;--text:#0b0f14;--muted:#5a6675;--ctaRed:#e53935;--border:rgba(16,24,40,.12);--shadow:0 14px 40px rgba(16,24,40,.08);--shadow2:0 8px 24px rgba(16,24,40,.08);--accent:#16c172;--accent2:#0ea35d;--ring:rgba(22,193,114,.35);--radius:18px;--radius2:26px;--max:1140px;--pad:22px;--ff:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;--ff2:Fraunces,ui-serif,Georgia,serif;--headerH:72px;--blur:14px}
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:var(--ff);color:var(--text);background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);line-height:1.55;letter-spacing:-.01em;scroll-behavior:smooth}
-    img{max-width:100%;display:block}
-    a{color:inherit;text-decoration:none}
-    button,input{font:inherit}
-    ::selection{background:rgba(22,193,114,.18)}
-    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
-    .section{padding:74px 0}
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:        #0a0a0a;
+      --black-deep:   #060606;
+      --white:        #f5f5f3;
+      --white-bg:     #f9f9f7;
+      --white-dim:    rgba(10,10,10,0.6);
+      --green:        #2a8a50;
+      --green-light:  #6fcf97;
+      --green-soft:   #a8e6c1;
+      --green-dark:   #1a5c38;
+      --green-tint:   #f0f7f3;
+      --green-glass:  rgba(42,138,80,0.1);
+      --green-border: rgba(111,207,151,0.3);
+      --radius:       16px;
+      --radius-sm:    10px;
+      --transition:   0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-    /* ====== Backgrounds par section (sans mode sombre) ====== */
-    body{background:var(--bg)}
-    .bg-light{background:linear-gradient(180deg,#ffffff 0%,#f6f7f9 100%)}
-    .bg-green{background:radial-gradient(1000px 420px at 20% 10%,rgba(22,193,114,.22),rgba(22,193,114,0) 60%),linear-gradient(180deg,#ffffff 0%,#f3fbf7 55%,#ffffff 100%)}
-    .bg-dark{background:radial-gradient(900px 420px at 20% 10%,rgba(22,193,114,.18),rgba(22,193,114,0) 60%),linear-gradient(180deg,#070a0f 0%,#0a1118 100%);color:#e9eef5}
-    .bg-dark p,.bg-dark .muted{color:rgba(233,238,245,.78)}
-    .bg-dark .kicker{color:rgba(233,238,245,.74)}
-    .bg-dark .pill{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
-    .bg-dark .btn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#e9eef5}
-    .bg-dark .btn-ghost:hover{background:rgba(255,255,255,.08)}
-    .bg-dark .heroCard,.bg-dark .heroVisual,.bg-dark .step,.bg-dark .plan,.bg-dark .proj,.bg-dark .qa,.bg-dark .compare,.bg-dark .reviewCard,.bg-dark .contactBox{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
-    .kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-    .kicker .dot{width:7px;height:7px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 6px rgba(22,193,114,.12)}
-    h1,h2,h3{margin:0 0 12px 0;letter-spacing:-.03em}
-    h1{font-family:var(--ff2);font-size:clamp(34px,4.4vw,54px);line-height:1.05}
-    h2{font-size:clamp(24px,3.2vw,34px);line-height:1.15}
-    h3{font-size:18px;line-height:1.25}
-    p{margin:0 0 14px 0;color:var(--muted)}
-    p:not(.center-btn){ text-align:justify; text-justify:inter-word; text-align-last:left; hyphens:auto; -webkit-hyphens:auto }
-    .center-btn{margin:0}
-    .muted{color:var(--muted)}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.75);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));box-shadow:0 10px 28px rgba(16,24,40,.06)}
-    .pill b{color:var(--text)}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow2);padding:18px}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 4px; }
 
-    /* ====== Header ====== */
-    header{position:sticky;top:0;z-index:50;height:var(--headerH)}
-    .navwrap{height:var(--headerH);display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(16,24,40,.06);background:rgba(255,255,255,.62);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur))}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
-    .logo{width:38px;height:38px;border-radius:10px;background:#fff url("images/logo.png") center/contain no-repeat;box-shadow:0 10px 28px rgba(16,24,40,.14);position:relative;overflow:hidden}
-    .logo:after{content:none}
-    .brand span{font-size:14px;color:var(--muted);font-weight:700}
-    nav{display:flex;align-items:center;gap:10px}
-    .navlinks{display:flex;align-items:center;gap:16px}
-    .navlinks a{font-weight:700;font-size:14px;color:rgba(11,15,20,.78);padding:10px 10px;border-radius:12px;outline:none}
-    .navlinks a:hover{background:rgba(16,24,40,.05)}
-    .navlinks a:focus-visible{box-shadow:0 0 0 4px var(--ring);background:rgba(22,193,114,.10)}
-    .navctas{display:flex;align-items:center;gap:10px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.8);color:var(--text);font-weight:800;font-size:14px;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,background .12s ease,border-color .12s ease}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(16,24,40,.12)}
-    .btn:active{transform:translateY(0);box-shadow:none}
-    .btn:focus-visible{outline:none;box-shadow:0 0 0 4px var(--ring),0 12px 28px rgba(16,24,40,.12)}
-    .btn-primary{background:linear-gradient(180deg,var(--accent),var(--accent2));border-color:rgba(0,0,0,.08);color:#062114}
-    .btn-primary:hover{filter:saturate(1.06)}
-    .btn-ghost{background:transparent}
-    .btn-ghost:hover{background:rgba(16,24,40,.05)}
-    .btn-small{padding:10px 12px;border-radius:12px;font-size:13px}
-    .burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.75);cursor:pointer}
-    .burger:focus-visible{outline:none;box-shadow:0 0 0 4px var(--ring)}
-    .mobilePanel{display:none;position:fixed;inset:0;background:rgba(11,15,20,.42);z-index:60}
-    .mobilePanel .sheet{position:absolute;top:12px;left:12px;right:12px;background:rgba(255,255,255,.92);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));border:1px solid rgba(255,255,255,.35);border-radius:22px;box-shadow:0 24px 70px rgba(16,24,40,.24);overflow:hidden}
-    .mobilePanel .sheet .top{display:flex;align-items:center;justify-content:space-between;padding:14px 14px;border-bottom:1px solid rgba(16,24,40,.07)}
-    .mobilePanel .sheet .links{display:grid;gap:6px;padding:12px}
-    .mobilePanel .sheet .links a{padding:12px;border-radius:14px;font-weight:800;color:rgba(11,15,20,.84);border:1px solid rgba(16,24,40,.06);background:rgba(255,255,255,.72)}
-    .mobilePanel .sheet .links a:hover{background:rgba(22,193,114,.08);border-color:rgba(22,193,114,.22)}
-    .mobilePanel .sheet .actions{display:flex;gap:10px;padding:12px;border-top:1px solid rgba(16,24,40,.07)}
-    .mobilePanel .sheet .actions .btn{flex:1}
+    /* ─── NAVBAR ─── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    #navbar.hidden { transform: translateY(-100%); opacity: 0; }
+    .nav-logo img { height: 38px; width: auto; object-fit: contain; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(245,245,243,0.65);
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--green-light);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      transform-origin: left;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .btn-nav {
+      padding: 10px 22px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-nav:hover {
+      background: var(--green-light);
+      color: var(--black);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(42,138,80,0.35);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(20px);
+      padding: 24px 5%;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(245,245,243,0.65);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-menu .btn-nav { margin-top: 12px; text-align: center; }
 
-    /* ====== Hero ====== */
-.hero{padding:72px 0 56px 0;position:relative}
-.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
-.heroCard{border-radius:var(--radius2);padding:26px;border:1px solid rgba(16,24,40,.10);background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.72));backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));box-shadow:var(--shadow);position:relative;overflow:hidden;text-align:center}
-.heroCard:before{content:"";position:absolute;inset:-140px -120px auto auto;width:380px;height:380px;border-radius:999px;background:radial-gradient(circle at 40% 40%,rgba(22,193,114,.22),rgba(22,193,114,0) 68%)}
-.heroCard:after{content:"";position:absolute;inset:auto auto -160px -140px;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle at 30% 30%,rgba(16,24,40,.10),rgba(16,24,40,0) 70%)}
-.heroTop{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px;position:relative;z-index:1}
-.five{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:999px;background:rgba(22,193,114,.10);border:1px solid rgba(22,193,114,.20);font-weight:900;color:#0b2016}
-.five svg{opacity:.9}
-.heroTitle{margin-top:10px;position:relative;z-index:1}
-.heroTitle .accent{color:var(--accent)}
-.heroTitle .heroRed{color:var(--ctaRed)}
-.heroSub{font-size:18px;font-weight:650;line-height:1.65;max-width:56ch;margin-top:26px;margin-left:auto;margin-right:auto;padding-top:14px;border-top:1px solid rgba(16,24,40,.10);color:rgba(11,15,20,.90);text-align:center;text-align-last:center;text-justify:auto;hyphens:none;-webkit-hyphens:none;position:relative;z-index:1}
-.heroCtas{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;position:relative;z-index:1}
-.heroVisual{border-radius:var(--radius2);border:1px solid rgba(16,24,40,.10);background:rgba(11,15,20,.08);box-shadow:var(--shadow);position:relative;overflow:hidden;min-height:440px}
-.heroVideo{width:100%;height:100%;display:block;object-fit:cover}
-.heroVisual video{border-radius:var(--radius2)}
-.divider{height:1px;background:rgba(16,24,40,.08);margin:34px 0}
+    /* ─── HERO (fond noir) ─── */
+    #hero {
+      min-height: 100vh;
+      padding: 120px 5% 80px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 65% 40%, rgba(26,92,56,0.16) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(42,138,80,0.07) 0%, transparent 60%);
+      animation: pulseGrad 9s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes pulseGrad {
+      0%   { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 1;   transform: scale(1.06); }
+    }
+    #particles-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 72px;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(111,207,151,0.1);
+      border: 1px solid var(--green-border);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--green-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--green-light); border-radius: 50%; animation: blink 1.8s ease-in-out infinite; }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    .hero-title .accent {
+      background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(245,245,243,0.65);
+      max-width: 500px;
+      margin-bottom: 44px;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn-primary {
+      padding: 15px 32px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--green-light);
+      color: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(42,138,80,0.4);
+    }
+    .btn-secondary {
+      padding: 15px 32px;
+      border: 1px solid var(--green-border);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all var(--transition);
+    }
+    .btn-secondary:hover {
+      border-color: var(--green-light);
+      background: var(--green-glass);
+      transform: translateY(-2px);
+    }
+    .hero-photo-wrap { position: relative; }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(42,138,80,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%,100% { opacity:0.5; transform: scale(0.96); }
+      50%      { opacity:1;   transform: scale(1.04); }
+    }
+    .hero-photo {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--green-border);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.45) 0%, transparent 55%);
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.35;
+      animation: scrollBounce 2s ease-in-out infinite;
+      z-index: 2;
+    }
+    .hero-scroll-hint span { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--white), transparent); }
+    @keyframes scrollBounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 
-/* Responsive */
-@media (max-width:900px){
-  .hero{padding:56px 0 44px 0}
-  .heroGrid{grid-template-columns:1fr}
-  .heroVisual{min-height:320px}
-  .heroSub{font-size:17px;margin-top:22px}}
+    /* ─── SECTIONS COMMUNES ─── */
+    section { padding: 100px 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-tag::before { content:''; display:block; width:20px; height:1px; }
+    /* dark section tags */
+    .dark .section-tag { color: var(--green-light); }
+    .dark .section-tag::before { background: var(--green-light); }
+    /* light section tags */
+    .light .section-tag { color: var(--green-dark); }
+    .light .section-tag::before { background: var(--green-dark); }
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .dark .section-sub { color: rgba(245,245,243,0.6); }
+    .light .section-sub { color: rgba(10,10,10,0.6); }
+    .section-header { margin-bottom: 60px; }
 
+    /* ─── SERVICES (fond blanc cassé) ─── */
+    #services {
+      background: var(--white-bg);
+      color: var(--black);
+    }
+    #services .section-title { color: var(--black); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: #fff;
+      border: 1px solid rgba(42,138,80,0.15);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(42,138,80,0.12);
+      border-color: rgba(111,207,151,0.5);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(42,138,80,0.08);
+      border: 1px solid rgba(42,138,80,0.15);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--green); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .service-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+    .service-desc { color: rgba(10,10,10,0.58); font-size: 0.9rem; font-weight: 400; line-height: 1.55; }
+    .services-note {
+      text-align: center;
+      margin-top: 44px;
+      color: rgba(10,10,10,0.4);
+      font-size: 0.85rem;
+    }
 
-    /* ====== Avis Google (carousel) ====== */
-    .reviews{padding:22px 0}
-    .reviewsTop{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
-    .reviewsActions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .reviewsTrack{display:flex;gap:12px;overflow:auto;scroll-snap-type:x mandatory;padding:14px 0 6px 0}
-    .reviewsTrack::-webkit-scrollbar{height:8px}
-    .reviewsTrack::-webkit-scrollbar-thumb{background:rgba(16,24,40,.14);border-radius:999px}
-    html.dark .reviewsTrack::-webkit-scrollbar-thumb{background:rgba(233,238,245,.16)}
-    .reviewCard{min-width:min(420px,86vw);scroll-snap-align:start;border-radius:22px;padding:16px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.82);box-shadow:0 14px 34px rgba(16,24,40,.06)}
-    html.dark .reviewCard{background:rgba(11,19,26,.72)}
-    .reviewHead{display:flex;align-items:flex-start;gap:12px}
-    .avatar{width:42px;height:42px;border-radius:16px;display:grid;place-items:center;font-weight:950;background:rgba(22,193,114,.14);border:1px solid rgba(22,193,114,.22);color:#0b2016}
-    .meta{flex:1}
-    .line1{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-    .stars{margin-top:6px;display:flex;gap:2px}
-    .star{font-size:14px;line-height:1;color:rgba(22,193,114,.95)}
-    .gBadge{height:34px;min-width:72px;padding:0 12px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-weight:950;background:rgba(16,24,40,.06);border:1px solid rgba(16,24,40,.10);color:rgba(11,15,20,.72)}
-    html.dark .gBadge{background:rgba(233,238,245,.06);color:rgba(233,238,245,.72)}
-    .reviewCard p{margin:12px 0 0 0}
-    .gBadge{height:34px;width:34px;min-width:34px;padding:0}
-    .gBadge img{width:100%;height:100%;display:block;object-fit:cover;border-radius:14px}
-    .nameVerified{height:1em;width:auto;display:inline-block;vertical-align:-.12em;opacity:.95}
+    /* ─── POURQUOI (fond noir) ─── */
+    #pourquoi { background: var(--black); }
+    .pourquoi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .differentiators { display: flex; flex-direction: column; gap: 32px; }
+    .diff-item { display: flex; gap: 18px; align-items: flex-start; }
+    .diff-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: var(--green-glass);
+      border: 1px solid var(--green-border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .diff-icon svg { width: 20px; height: 20px; stroke: var(--green-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .diff-content h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+    .diff-content p { color: rgba(245,245,243,0.55); font-size: 0.88rem; font-weight: 400; line-height: 1.6; }
+    .founder-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--green-border);
+    }
+    .founder-card img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .founder-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px;
+      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 65%, transparent 100%);
+    }
+    .founder-quote {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+    .founder-name { color: var(--green-light); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; }
 
-    /* ====== Process ====== */
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-    .step{border-radius:20px;padding:18px;border:1px solid rgba(16,24,40,.10);background:linear-gradient(180deg,rgba(255,255,255,.84),rgba(255,255,255,.72));box-shadow:0 14px 34px rgba(16,24,40,.06);position:relative;overflow:hidden}
-    .step:before{content:"";position:absolute;inset:auto -120px -120px auto;width:260px;height:260px;border-radius:999px;background:radial-gradient(circle at 30% 30%,rgba(22,193,114,.14),rgba(22,193,114,0) 70%)}
-    .step .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:12px;background:rgba(22,193,114,.14);border:1px solid rgba(22,193,114,.22);font-weight:900;color:#fff}
-    .step h3{margin-top:10px}
+    /* ─── METRICS (fond teinté vert très doux) ─── */
+    #metrics {
+      background: var(--green-tint);
+      color: var(--black);
+      padding: 80px 5%;
+    }
+    #metrics .section-title { color: var(--black); }
+    .metrics-header { text-align: center; margin-bottom: 56px; }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .metric-card {
+      padding: 44px 28px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgba(42,138,80,0.15);
+      border-radius: var(--radius);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .metric-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(42,138,80,0.1);
+    }
+    .metric-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .metric-label { color: rgba(10,10,10,0.55); font-size: 0.9rem; font-weight: 400; line-height: 1.45; }
 
-   /* ====== Pricing ====== */
-.pricingTop{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
-.pricingSingle{max-width:760px;margin:18px auto 0 auto;border-radius:22px;padding:22px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.86);box-shadow:0 18px 44px rgba(16,24,40,.08);position:relative;overflow:hidden}
-.pricingSingle:before{content:"";position:absolute;inset:-140px -120px auto auto;width:380px;height:380px;border-radius:999px;background:radial-gradient(circle at 40% 40%,rgba(22,193,114,.18),rgba(22,193,114,0) 68%)}
-.pricingSingleTop{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;z-index:1}
-.pricingSingleTop .tag{font-weight:950}
+    /* ─── CONTACT (fond noir) ─── */
+    #contact { background: var(--black); }
+    .contact-centered {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact-centered h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .contact-centered > p {
+      color: rgba(245,245,243,0.55);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 44px;
+    }
+    .contact-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+    .btn-cta-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 36px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+    }
+    .btn-cta-email:hover {
+      background: var(--green-light);
+      color: var(--black);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(42,138,80,0.4);
+    }
+    .btn-cta-email svg { flex-shrink: 0; }
+    .btn-cta-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 36px;
+      background: var(--white);
+      color: var(--green);
+      border-radius: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: all var(--transition);
+      border: 2px solid var(--green-border);
+    }
+    .btn-cta-whatsapp:hover {
+      border-color: var(--green-light);
+      background: #f0faf4;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(42,138,80,0.18);
+    }
+    .btn-cta-whatsapp svg { flex-shrink: 0; }
+    .contact-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    .contact-meta-item {
+      color: rgba(245,245,243,0.4);
+      font-size: 0.88rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-meta-item a { color: rgba(245,245,243,0.4); transition: color var(--transition); }
+    .contact-meta-item a:hover { color: var(--green-light); }
+    .contact-meta-dot {
+      width: 3px; height: 3px;
+      background: rgba(245,245,243,0.2);
+      border-radius: 50%;
+    }
+    @media (max-width: 520px) {
+      .btn-cta-email, .btn-cta-whatsapp { width: 100%; justify-content: center; }
+      .contact-ctas { flex-direction: column; align-items: stretch; }
+    }
 
-.pricingPrice{margin:14px 0 10px 0;position:relative;z-index:1}
-.pricingPrice .monthly{display:flex;align-items:baseline;gap:10px}
-.pricingPrice .monthly .val{font-size:44px;font-weight:950;letter-spacing:-.04em}
-.pricingPrice .monthly .per{color:var(--muted);font-weight:900}
+    /* ─── FOOTER (noir très profond) ─── */
+    footer {
+      background: var(--black-deep);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 60px 5% 36px;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-brand img { height: 34px; margin-bottom: 14px; }
+    .footer-brand p { color: rgba(245,245,243,0.4); font-size: 0.87rem; font-weight: 400; line-height: 1.6; max-width: 240px; }
+    .footer-col h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-col ul li a {
+      color: rgba(245,245,243,0.4);
+      font-size: 0.88rem;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--green-light); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba(245,245,243,0.2);
+      font-size: 0.8rem;
+    }
 
-.pricingPrice .setup{margin-top:10px;padding:12px;border-radius:16px;border:1px solid rgba(16,24,40,.10);background:rgba(16,24,40,.03);font-weight:800;color:rgba(11,15,20,.78)}
-html.dark .pricingPrice .setup{background:rgba(233,238,245,.06)}
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
 
-.pricingList{display:grid;gap:10px;margin:14px 0 0 0;padding:0;list-style:none;position:relative;z-index:1}
-.pricingList li{display:flex;gap:10px;align-items:flex-start;color:rgba(11,15,20,.82);font-weight:700}
-.dotOk{width:10px;height:10px;border-radius:999px;background:rgba(22,193,114,.95);margin-top:7px;flex:0 0 auto}
-
-.pricingCtas{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;position:relative;z-index:1}
-.pricingNote{margin-top:14px;color:rgba(11,15,20,.72);font-weight:700;position:relative;z-index:1}
-    .pricingCtas{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:18px;position:relative;z-index:1}.ctaStripe{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 16px;border-radius:16px;font-weight:950;letter-spacing:-.01em;text-decoration:none;color:#052013;background:linear-gradient(180deg,rgba(22,193,114,1),rgba(22,193,114,.86));border:1px solid rgba(16,24,40,.10);box-shadow:0 14px 34px rgba(22,193,114,.28),0 10px 24px rgba(16,24,40,.08);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}.ctaStripe:hover{transform:translateY(-1px);filter:brightness(1.03);box-shadow:0 18px 44px rgba(22,193,114,.36),0 12px 26px rgba(16,24,40,.10)}.ctaStripe:active{transform:translateY(0)}.ctaStripe:focus-visible{outline:3px solid rgba(22,193,114,.35);outline-offset:3px}.ctaSub{font-weight:800;color:rgba(11,15,20,.62)}html.dark .ctaSub{color:rgba(233,238,245,.70)}html.dark .ctaStripe{color:#061a12;border-color:rgba(233,238,245,.14);box-shadow:0 18px 52px rgba(22,193,114,.22),0 10px 24px rgba(0,0,0,.35)}
-
-
-
-    /* ====== Realisations ====== */
-    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-    .proj{border-radius:22px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.84);box-shadow:0 14px 34px rgba(16,24,40,.06);overflow:hidden;display:block;min-height:260px;transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease}
-    .proj:hover{transform:translateY(-2px);box-shadow:0 20px 50px rgba(16,24,40,.10);border-color:rgba(22,193,114,.22)}
-    .projMedia{height:260px;border-radius:22px;background-size:cover;background-position:center;background-image:linear-gradient(135deg,rgba(22,193,114,.22),rgba(16,24,40,.10));position:relative}
-    .projTag{position:absolute;inset:auto 12px 12px auto;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.76);border:1px solid rgba(16,24,40,.10);font-weight:900;font-size:12px;color:rgba(11,15,20,.72)}
-
- /* ====== Human (photo+texte à gauche / vidéo à droite) ====== */
-.humanGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-top:16px;align-items:stretch}
-/* Remplace les styles internes du bloc gauche */
-.founder{border-radius:22px;padding:18px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.84);box-shadow:0 14px 34px rgba(16,24,40,.06);display:flex;flex-direction:column;gap:14px;align-items:stretch}
-.founderPhoto{border-radius:20px;border:1px dashed rgba(16,24,40,.22);background:rgba(16,24,40,.03);aspect-ratio:4/5;overflow:hidden;display:block;margin:0 auto;max-width:380px;width:100%}
-.founderPhoto img{width:100%;height:100%;object-fit:cover;display:block}
-.founderBody{display:flex;flex-direction:column;gap:10px;max-width:380px;width:100%;margin:0 auto}
-.founderBody h3{margin:0;font-size:20px}
-.founderBody p{margin:0;font-size:16px;line-height:1.55}
-
-.humanVideo{border-radius:22px;padding:18px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.84);box-shadow:0 14px 34px rgba(16,24,40,.06);display:flex;flex-direction:column;gap:12px;justify-content:flex-start;align-items:center;text-align:center}
-.humanVideo h3{margin:0;font-size:18px}
-.videoCardLight{width:100%;max-width:380px;border-radius:22px;padding:14px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.70);box-shadow:0 18px 44px rgba(16,24,40,.08)}
-.videoFrame{border-radius:18px;overflow:hidden;border:1px solid rgba(16,24,40,.12);background:rgba(16,24,40,.03);aspect-ratio:9/16;width:100%}
-.videoFrame video{width:100%;height:100%;display:block;object-fit:cover}
-.videoNote{margin:0;font-weight:900;color:rgba(11,15,20,.60)}
-
-@media (max-width:980px){.humanGrid{grid-template-columns:1fr;gap:14px}.founder{grid-template-columns:1fr;gap:14px;align-items:stretch}.founderPhoto{max-width:100%;margin-bottom:12px}.founderBody h3{font-size:18px}.founderBody p{font-size:15px}}
-html.dark .founderPhoto{background:rgba(233,238,245,.06)}
-
-    /* ====== FAQ ====== */
-    .faq{display:grid;gap:10px;margin-top:16px}
-    .qa{border-radius:20px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.82);box-shadow:0 12px 28px rgba(16,24,40,.06);overflow:hidden}
-    .q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 16px;border:0;background:transparent;cursor:pointer;text-align:left;font-weight:900;color:rgba(11,15,20,.86)}
-    .q:focus-visible{outline:none;box-shadow:0 0 0 4px var(--ring)}
-    .q .chev{transition:transform .18s ease}
-    .qa[data-open="true"] .q .chev{transform:rotate(180deg)}
-    .a{max-height:0;overflow:hidden;transition:max-height .22s ease}
-    .a .inner{padding:0 16px 16px 16px}
-    .a p{margin:0;color:var(--muted)}
-    /* ====== FAQ (sombre) ====== */
-.faqDark{background:radial-gradient(900px 420px at 20% 10%,rgba(22,193,114,.14),rgba(22,193,114,0) 60%),linear-gradient(180deg,#070a0f 0%,#0a1118 100%);color:#e9eef5}
-.faqDark .kicker{color:rgba(233,238,245,.82)}
-.faqDark .qa{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);box-shadow:0 24px 70px rgba(0,0,0,.35)}
-.faqDark .q{color:rgba(233,238,245,.92)}
-.faqDark .a p{color:rgba(233,238,245,.78)}
-.faqDark .q:focus-visible{box-shadow:0 0 0 4px rgba(22,193,114,.25)}
-
-
-    /* ====== Final CTA ====== */
-    .final{padding:40px 0 70px 0}
-    .banner{border-radius:var(--radius2);padding:22px;border:1px solid rgba(16,24,40,.10);background:linear-gradient(135deg,rgba(22,193,114,.20),rgba(255,255,255,.78));box-shadow:0 24px 70px rgba(16,24,40,.10);position:relative;overflow:hidden}
-    .banner:before{content:"";position:absolute;inset:-160px auto auto -160px;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle at 40% 40%,rgba(16,24,40,.12),rgba(16,24,40,0) 70%)}
-    .banner .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:center;position:relative;z-index:1}
-    .contactBox{border-radius:22px;padding:16px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.78)}
-    .contactLine{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .contactLine a{display:inline-flex;align-items:center;gap:10px;padding:12px 12px;border-radius:16px;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.76);font-weight:900}
-    .contactLine a:hover{border-color:rgba(22,193,114,.24);background:rgba(22,193,114,.08)}
-    .contactLine a:focus-visible{outline:none;box-shadow:0 0 0 4px var(--ring)}
-    .mapWrap{margin-top:14px;border-radius:18px;overflow:hidden;border:1px solid rgba(16,24,40,.10);background:rgba(255,255,255,.76)}
-    .mapWrap iframe{width:100%;height:260px;border:0;display:block}
-    .mapCard{padding:0}
-    .mapPh{height:260px;display:grid;place-items:center;font-weight:900;color:rgba(11,15,20,.62);background:rgba(16,24,40,.03)}
-    html.dark .mapPh{background:rgba(233,238,245,.06)}
-    .mapActions{padding:12px;display:flex;justify-content:flex-end}
-    html.dark .mapWrap{background:rgba(11,19,26,.72)}
-    .btn-pulse{animation:pulseCaza 1.15s ease-in-out infinite}
-    @keyframes pulseCaza{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-    .btn-wa{background:#e11d48;border-color:rgba(225,29,72,.25);color:#fff}
-    .btn-wa:hover{background:#be123c;border-color:rgba(225,29,72,.45)}
-    .ico-emoji{font-size:18px;line-height:1}
-     @media (prefers-reduced-motion:reduce){.btn-pulse{animation:none}}
-    @media (min-width:900px){.mapWrap iframe,.mapPh{height:300px}}
-
-    /* ====== Footer ====== */
-    footer{padding:36px 0 70px 0;background:rgba(255,255,255,.70);border-top:1px solid rgba(16,24,40,.08)}
-    .footGrid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:14px}
-    .foot a{display:inline-flex;gap:10px;align-items:center;color:rgba(11,15,20,.78);font-weight:800;padding:10px 10px;border-radius:14px}
-    .foot a:hover{background:rgba(16,24,40,.05)}
-    .foot a:focus-visible{outline:none;box-shadow:0 0 0 4px var(--ring)}
-    .fine{margin-top:16px;color:rgba(11,15,20,.56);font-weight:800;font-size:12px}
-
-    /* ====== Scroll reveal ====== */
-    .reveal{opacity:0;transform:translateY(10px);transition:opacity .38s ease,transform .38s ease}
-    .reveal.is-in{opacity:1;transform:translateY(0)}
-    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}body{scroll-behavior:auto}.btn,.proj{transition:none}}
-
-  /* ====== Bouton fixe "Nous contacter" ====== */
-.toTop{position:fixed;right:calc(14px + env(safe-area-inset-right));bottom:calc(14px + env(safe-area-inset-bottom));z-index:70;opacity:1;pointer-events:auto;transform:none}
-.toTop .btn{border-radius:999px;padding:12px 14px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 18px 44px rgba(16,24,40,.18)}
-/* ====== Bouton fixe Contact (rouge + dynamique) ====== */
-.toTop{position:fixed;right:calc(14px + env(safe-area-inset-right));bottom:calc(14px + env(safe-area-inset-bottom));z-index:70}
-.toTop .btn{border-radius:999px;padding:12px 14px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 18px 44px rgba(16,24,40,.18)}
-.btn-call{background:#e11d48;border:1px solid rgba(225,29,72,.35);color:#fff}
-.btn-call:hover{background:#be123c;border-color:rgba(225,29,72,.55);transform:translateY(-1px)}
-.btn-call:focus-visible{outline:none;box-shadow:0 0 0 4px var(--ring)}
-
-    /* ====== Responsive ====== */
-    @media (max-width:980px){.heroGrid{grid-template-columns:1fr}.heroVisual{min-height:320px}.steps{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.projects{grid-template-columns:repeat(2,1fr)}.banner .wrap{grid-template-columns:1fr}.footGrid{grid-template-columns:1fr}.founders{grid-template-columns:1fr}}
-    @media (max-width:760px){.navlinks,.navctas .btn-ghost{display:none}.burger{display:inline-flex}.trustRow{grid-template-columns:1fr}.projects{grid-template-columns:1fr}.compare .row{grid-template-columns:1.15fr 1fr 1fr 1fr}.compare .cell{padding:10px 10px}.hero{padding:30px 0 26px 0}.counters{grid-template-columns:1fr}}
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo img { height: 340px; }
+      .pourquoi-grid { grid-template-columns: 1fr; gap: 48px; }
+      .founder-card { max-width: 480px; margin: 0 auto; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .btn-nav { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 72px 5%; }
+    }
+    @media (max-width: 480px) {
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .hero-ctas { flex-direction: column; }
+    }
+    @media (max-width: 360px) {
+      .metrics-grid { grid-template-columns: 1fr; }
+    }
   </style>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17875043170"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17875043170');
-</script>
-  
 </head>
-
 <body>
-  <!-- ====== Header ====== -->
-  <header aria-label="En-tête">
-    <div class="navwrap">
-      <div class="container" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <a class="brand" href="#accueil" aria-label="Aller à l'accueil">
-          <span class="logo" aria-hidden="true"></span>
-          <div style="display:flex;flex-direction:column;line-height:1.05;">
-            <strong>CAZA COMM</strong>
-          </div>
+
+<!-- ░░ NAVBAR ░░ -->
+<nav id="navbar" role="navigation" aria-label="Navigation principale">
+  <a href="#hero" class="nav-logo">
+    <img src="images/logo.png" alt="Caza Comm" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hero">Accueil</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pourquoi">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-nav">Parlons de votre projet</a>
+  <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" class="mobile-link">Accueil</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#pourquoi" class="mobile-link">À propos</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn-nav">Parlons de votre projet</a>
+</div>
+
+<!-- ░░ HERO ░░ -->
+<section id="hero" class="dark" aria-label="Section principale">
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span> Automatisations et IA sur mesure
+      </div>
+      <h1 class="hero-title">
+        Votre entreprise mérite<br/>
+        une <span class="accent">IA qui travaille</span><br/>
+        à votre place.
+      </h1>
+      <p class="hero-sub">
+        J'automatise vos processus et déploie des agents IA sur mesure, pour que vous gagniez du temps et performiez mieux dès le premier mois.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">
+          Parlons de votre projet
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-
-        <nav aria-label="Navigation principale">
-          <div class="navlinks" role="list">
-            <a href="index.html" data-link>Accueil</a>
-            <a href="tarification.html" data-link>Tarification</a>
-            <a href="réalisations.html" data-link>Réalisations</a>
-            <a href="humain.html" data-link>L’humain derrière</a>
-          </div>
-
-          <div class="navctas">
-            <a class="btn btn-ghost btn-small" href="réalisations.html" aria-label="Voir les réalisations">Voir les réalisations</a>
-           <a class="btn btn-primary" href="tel:+33767197467" aria-label="Appeler CAZA COMM">Nous contacter</a>
-            <!-- Burger -->
-            <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu mobile" aria-expanded="false" aria-controls="mobilePanel">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </button>
-          </div>
-        </nav>
+        <a href="#services" class="btn-secondary">Voir nos solutions</a>
       </div>
     </div>
-  </header>
-
-  <!-- ====== Mobile Menu Panel ====== -->
-  <div class="mobilePanel" id="mobilePanel" aria-hidden="true">
-    <div class="sheet" role="dialog" aria-modal="true" aria-label="Menu mobile">
-      <div class="top">
-        <div class="brand" style="gap:10px;">
-          <span class="logo" aria-hidden="true"></span>
-          <strong>CAZA COMM</strong>
-        </div>
-        <button class="btn btn-small" id="closeMobile" type="button" aria-label="Fermer le menu">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-      <div class="links">
-        <a href="index.html" data-link>Accueil</a>
-        <a href="tarification.html" data-link>Tarification</a>
-        <a href="réalisations.html" data-link>Réalisations</a>
-        <a href="humain.html" data-link>L’humain derrière</a>
-      </div>
-      <div class="actions">
-        <a class="btn btn-ghost" href="réalisations.html">Voir les réalisations</a>
-        <a class="btn btn-primary" href="tel:+33767197467">Nous contacter</a>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <img src="images/photoh.jpeg" alt="Fondateur Caza Comm" loading="lazy" />
       </div>
     </div>
   </div>
-
-  <main>
-    <!-- ====== Hero ====== -->
-    <section class="hero bg-light" id="accueil" aria-label="Accueil">
-      <div class="container">
-        <div class="heroGrid">
-          <div class="heroCard reveal">
-            <h1 class="heroTitle">Création de <span class="accent">site internet</span> en <span class="heroRed">1 jour</span> sur mesure.</h1>
-          </div>
-
-         <div class="heroVisual reveal" aria-label="Vidéo de présentation">
- <video class="heroVideo" controls preload="metadata" playsinline poster="images/video-cover.jpg">
-  <source src="video-hero.mp4" type="video/mp4">
-</video>
-</div>
-
-        </div>
-        <div class="divider" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <!-- ====== Avis Google (carousel) ====== -->
-    <section class="reviews bg-green" aria-label="Avis Google">
-      <div class="container">
-        <div class="reviewsTop reveal">
-  <div>
-    <span class="kicker"><span class="dot" aria-hidden="true"></span>Avis Google</span>
- <h2>Votre satisfaction, Ma plus belle carte de visite...</h2>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
   </div>
+</section>
 
-  <div class="reviewsActions" aria-label="Contrôles avis">
-    <button class="btn btn-small" type="button" id="revPrev" aria-label="Avis précédent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <button class="btn btn-small" type="button" id="revNext" aria-label="Avis suivant"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  </div>
-</div>
+<!-- ░░ SERVICES (fond blanc) ░░ -->
+<section id="services" class="light" aria-label="Nos solutions IA">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-tag">Nos solutions</div>
+      <h2 class="section-title">Ce que je construis<br/>pour vous</h2>
+      <p class="section-sub">Des outils IA concrets, pensés pour votre réalité terrain, pas pour une démo.</p>
+    </div>
+    <div class="services-grid">
 
-        <div class="reviewsTrack reveal" id="reviewsTrack" role="list" aria-label="Avis clients (déroulant)">
-          <article class="reviewCard" role="listitem" aria-label="Avis 1">
-            <div class="reviewHead">
-              <div class="avatar" aria-hidden="true">A</div>
-              <div class="meta">
-                <div class="line1"><b>Athletic Traning Performance</b><img class="nameVerified" src="images/verified.svg" alt="" aria-hidden="true"></div>
-                <div class="stars" aria-label="5 étoiles"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-              </div>
-              <div class="gBadge" aria-label="Google" title="Google"><img src="images/google.png" alt="Google"></div>
-            </div>
-            <p>“Nous souhaitions optimiser notre visibilité sur le plan local, notamment grâce au référencement et à l'optimisation de la page google. Nous voulions également un nouveau site internet. Nous sommes très satisfait de la prestation de Caza Comm...”</p>
-          </article>
-
-          <article class="reviewCard" role="listitem" aria-label="Avis 2">
-            <div class="reviewHead">
-              <div class="avatar" aria-hidden="true">J</div>
-              <div class="meta">
-                <div class="line1"><b>JB Decocq</b><img class="nameVerified" src="images/verified.svg" alt="" aria-hidden="true"></div>
-                <div class="stars" aria-label="5 étoiles"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-              </div>
-              <div class="gBadge" aria-label="Google" title="Google"><img src="images/google.png" alt="Google"></div>
-            </div>
-            <p>“J’ai fais appel à Jeremy pour qu’il m’accompagne, je suis agréablement satisfait par sont écoute car sont engagement en vers moi est à la hauteur de mes attentes...”</p>
-          </article>
-
-          <article class="reviewCard" role="listitem" aria-label="Avis 3">
-            <div class="reviewHead">
-              <div class="avatar" aria-hidden="true">S</div>
-              <div class="meta">
-                <div class="line1"><b>Sandrine Scano</b><img class="nameVerified" src="images/verified.svg" alt="" aria-hidden="true"></div>
-                <div class="stars" aria-label="5 étoiles"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-              </div>
-              <div class="gBadge" aria-label="Google" title="Google"><img src="images/google.png" alt="Google"></div>
-            </div>
-            <p>“Merci pour ton professionnalisme et ton savoir-faire”</p>
-          </article>
-
-          <article class="reviewCard" role="listitem" aria-label="Avis 4">
-            <div class="reviewHead">
-              <div class="avatar" aria-hidden="true">B</div>
-              <div class="meta">
-                <div class="line1"><b>Bird Hunter</b><img class="nameVerified" src="images/verified.svg" alt="" aria-hidden="true"></div>
-                <div class="stars" aria-label="5 étoiles"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-              </div>
-              <div class="gBadge" aria-label="Google" title="Google"><img src="images/google.png" alt="Google"></div>
-            </div>
-            <p>“Un grand merci à Jérémy de Caza Communication pour le superbe travail réalisé sur le site internet de mon parc de chasse.”</p>
-          </article>
-
-            <article class="reviewCard" role="listitem" aria-label="Avis 5">
-            <div class="reviewHead">
-              <div class="avatar" aria-hidden="true">L</div>
-              <div class="meta">
-                <div class="line1"><b>Le Belvédère</b><img class="nameVerified" src="images/verified.svg" alt="" aria-hidden="true"></div>
-                <div class="stars" aria-label="5 étoiles"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-              </div>
-              <div class="gBadge" aria-label="Google" title="Google"><img src="images/google.png" alt="Google"></div>
-            </div>
-            <p>“J’ai fait appel à Caza Communication pour la création de mon site internet ainsi que la gestion...”</p>
-          </article>
-
-           <article class="reviewCard" role="listitem" aria-label="Avis 6">
-            <div class="reviewHead">
-              <div class="avatar" aria-hidden="true">F</div>
-              <div class="meta">
-                <div class="line1"><b>fanny reigner</b><img class="nameVerified" src="images/verified.svg" alt="" aria-hidden="true"></div>
-                <div class="stars" aria-label="5 étoiles"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-              </div>
-              <div class="gBadge" aria-label="Google" title="Google"><img src="images/google.png" alt="Google"></div>
-            </div>
-            <p>“Un grand merci à Jeremy pour la réalisation de mon site internet. Il a tout de suite...”</p>
-          </article>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
+        <h3 class="service-title">Automatisation de processus</h3>
+        <p class="service-desc">Relances, reporting, traitement de données. Automatisé, sans erreur, sans effort.</p>
       </div>
-    </section>
 
-   <!-- ====== Process ====== -->
-<section class="section bg-dark" id="process" aria-label="Étapes">
-  <div class="container">
-    <div class="processTop reveal" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;">
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 class="service-title">Agents IA conversationnels</h3>
+        <p class="service-desc">Chatbots et assistants intelligents disponibles 24h/24, formés sur votre contexte.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3 class="service-title">Intégration dans vos outils</h3>
+        <p class="service-desc">Notion, Make, CRM, API sur mesure. L'IA s'intègre à ce que vous utilisez déjà.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="service-title">Analyse et génération de contenu</h3>
+        <p class="service-desc">Synthèses, rapports auto, contenus marketing. Vos données transformées en décisions.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-5">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3 class="service-title">Conseil et accompagnement</h3>
+        <p class="service-desc">De la stratégie au déploiement, je vous guide à chaque étape.</p>
+      </div>
+
+    </div>
+    <p class="services-note reveal">Devis personnalisé et gratuit sous 24h, selon votre besoin et niveau de complexité.</p>
+  </div>
+</section>
+
+<!-- ░░ POURQUOI (fond noir) ░░ -->
+<section id="pourquoi" class="dark" aria-label="Pourquoi choisir Caza Comm">
+  <div class="section-inner">
+    <div class="pourquoi-grid">
       <div>
-        <span class="kicker"><span class="dot" aria-hidden="true"></span>Étapes simples</span>
-        <h2>Un process simple, en 3 étapes.</h2>
-      </div>
-    </div>
-
-    <div class="stepsWrap" aria-label="Étapes">
-      <div class="steps" aria-label="Étapes du process">
-        <div class="step reveal">
-          <span class="num" aria-hidden="true">1</span>
-          <h3>Contact</h3>
-          <p>On entre en contact et on échange sur vos besoins, puis on définit le moment pour la création.</p>
+        <div class="reveal">
+          <div class="section-tag">Pourquoi nous choisir</div>
+          <h2 class="section-title">Pas un outil.<br/>Un partenaire.</h2>
+          <p class="section-sub" style="margin-bottom: 48px;">Je m'investis dans votre réussite comme si c'était ma propre entreprise.</p>
         </div>
-
-        <div class="step reveal">
-          <span class="num" aria-hidden="true">2</span>
-          <h3>Journée de création</h3>
-          <p>En une journée, votre site est créé (ou dans le délai souhaité) : vos détails sont nécessaires pour nous guider sur ce que vous voulez exactement.</p>
-        </div>
-
-        <div class="step reveal">
-          <span class="num" aria-hidden="true">3</span>
-          <h3>Mise en ligne</h3>
-          <p>La journée se termine et votre site est en ligne, avec le début de notre accompagnement pour toute modification et évolution sur mesure.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- ====== Pricing ====== -->
-<section class="section bg-light" id="plans" aria-label="Tarification">
-  <div class="container">
-    <div class="pricingTop">
-      <div class="reveal">
-        <span class="kicker"><span class="dot" aria-hidden="true"></span>Plan</span>
-        <h2>Un prix unique, comme votre site.</h2>
-      </div>
-      <div class="reveal" aria-label="Période">
-        <span class="pill"><b>Sans engagement</b></span>
-      </div>
-    </div>
-
-    <div class="pricingSingle reveal" aria-label="Offre unique">
-      <div class="pricingSingleTop">
-        <span class="tag">OFFRE UNIQUE</span>
-      </div>
-
-      <div class="pricingPrice">
-        <div class="monthly">
-          <div class="val">50</div><div class="per">€ /mois HT</div>
-        </div>
-
-        <div class="setup">
-          À la création (1 journée) : <b>400 € HT</b>
-        </div>
-      </div>
-
-      <ul class="pricingList" aria-label="Inclus">
-        <li><span class="dotOk" aria-hidden="true"></span>Design sur mesure</li>
-        <li><span class="dotOk" aria-hidden="true"></span>Hébergement + nom de domaine inclus</li>
-        <li><span class="dotOk" aria-hidden="true"></span>Pages légales</li>
-        <li><span class="dotOk" aria-hidden="true"></span>Modifications hebdomadaires</li>
-        <li><span class="dotOk" aria-hidden="true"></span>Pages supplémentaires si besoin</li>
-        <li><span class="dotOk" aria-hidden="true"></span>Livraison 1 journée</li>
-        <li><span class="dotOk" aria-hidden="true"></span>Accompagnement et évolutions personnalisées</li>
-      </ul>
-      <div class="pricingCtas"><a class="ctaStripe" href="https://buy.stripe.com/4gM6oI6BvgiH1hn9C69bO0c" target="_blank" rel="noopener">Je lance mon site maintenant</a></div>
-  </div>
-  </div>
-</section>
-
-
-    <!-- ====== Realisations ====== -->
-    <section class="section bg-dark" id="realisations" aria-label="Réalisations">
-      <div class="container">
-        <span class="kicker"><span class="dot" aria-hidden="true"></span>Réalisations</span>
-        <div class="projects" id="projects" aria-label="Grille de projets">
-          <!-- TODO: remplacez href + image (ou background) pour chaque réalisation -->
-          <a class="proj reveal" href="https://atptarbes.fr" target="_blank" rel="noopener" aria-label="Ouvrir réalisation 1"><div class="projMedia" style="background-image:url('images/projet1.jpeg');"></div></a>
-          <a class="proj reveal" href="https://belvedere65.com" target="_blank" rel="noopener" aria-label="Ouvrir réalisation 2"><div class="projMedia" style="background-image:url('images/projet2.jpeg');"><</div></a>
-          <a class="proj reveal" href="https://www.lasolinapizza.fr" target="_blank" rel="noopener" aria-label="Ouvrir réalisation 3"><div class="projMedia" style="background-image:url('images/projet3.jpeg');"></div></a>
-          <a class="proj reveal" href="https://birdhunter65.fr" target="_blank" rel="noopener" aria-label="Ouvrir réalisation 4"><div class="projMedia" style="background-image:url('images/projet4.jpeg');"></div></a>
-          <a class="proj reveal" href="https://lacasadelcookie.fr" target="_blank" rel="noopener" aria-label="Ouvrir réalisation 5"><div class="projMedia" style="background-image:url('images/projet5.jpeg');"></div></a>
-          <a class="proj reveal" href="https://adesign-france.fr" target="_blank" rel="noopener" aria-label="Ouvrir réalisation 5"><div class="projMedia" style="background-image:url('images/logo-adesign.png');"></div></a>
-        </div>
-      </div>
-    </section>
-
-   <!-- ====== Human ====== -->
-<section class="section bg-light" id="humain" aria-label="L’humain derrière">
-  <div class="container">
-        <span class="kicker"><span class="dot" aria-hidden="true"></span>L'humain derrière</span>
-    <div class="humanGrid" aria-label="Bloc humain + vidéo">
-
-      <!-- Gauche : photo + texte -->
-      <article class="founder reveal" aria-label="Fondateur">
-        <div class="founderPhoto">
-          <img src="images/founder.jpeg" alt="Photo de Jeremy POGUT" loading="lazy" decoding="async">
-        </div>
-        <div class="founderBody">
-          <h3>Jeremy POGUT</h3>
-          <p>Le fondateur de Caza Comm est un entrepreneur originaire du Sud-Ouest de la France, autodidacte et déterminé, qui fabrique et propose des sites internet pour les artisans, commerçants, freelances et auto-entrepreneurs, avec une obsession : viser une satisfaction client à 10 000%.</p>
-        </div>
-      </article>
-
-      <!-- Droite : vidéo (format humain.html) -->
-      <aside class="humanVideo reveal" aria-label="Mini vidéo">
-  <div class="videoCardLight" aria-label="Mini vidéo">
-    <div class="videoFrame" aria-label="Vidéo en boucle (sans son)">
-      <video autoplay muted loop playsinline preload="metadata">
-        <source src="./video.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</aside>
-    </div>
-  </div>
-</section>
-
-    <!-- ====== FAQ ====== -->
-    <section class="section faqDark" id="faq" aria-label="FAQ">
-      <div class="container">
-        <span class="kicker"><span class="dot" aria-hidden="true"></span>Foire Aux Questions</span>
-
-        <div class="faq" id="faqList" aria-label="Liste FAQ">
-          <div class="qa reveal" data-open="false"><button class="q" type="button" aria-expanded="false">Est-ce que je dois déjà avoir tous les textes et photos ?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="a" role="region" aria-hidden="true"><div class="inner"><p>Non. Les textes on s'en charge et idéalement oui pour les photos, mais on peut commencer avec l’essentiel. On met des images propres, puis on remplace dès que vous nous envoyez vos éléments.</p></div></div></div>
-          <div class="qa reveal" data-open="false"><button class="q" type="button" aria-expanded="false">Vous pouvez refaire mon site actuel ?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="a" role="region" aria-hidden="true"><div class="inner"><p>Ça dépend de plusieurs éléments, la méthode où il a été fait, etc. Si oui alors on garde ce qui marche, on simplifie ce qui bloque, et on améliore. Objectif : plus clair, plus rapide, plus “pro”.</p></div></div></div>
-          <div class="qa reveal" data-open="false"><button class="q" type="button" aria-expanded="false">Vous faites aussi le nom de domaine et la mise en ligne ?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="a" role="region" aria-hidden="true"><div class="inner"><p>Oui. C'est même inclus dans l'offre.</p></div></div></div>
-          <div class="qa reveal" data-open="false"><button class="q" type="button" aria-expanded="false">Et si je veux des modifications après ?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="a" role="region" aria-hidden="true"><div class="inner"><p>On est là pour ça. Petites modifs : rapides. Gros changements : on vous dit le délai et on avance. Le but : que votre site colle à la réalité du terrain.</p></div></div></div>
-          <div class="qa reveal" data-open="false"><button class="q" type="button" aria-expanded="false">Vous garantissez un délai ?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="a" role="region" aria-hidden="true"><div class="inner"><p>Notre promesse : votre site est prêt en 1 jour, à condition que vous nous envoyiez dès le départ toutes les informations dont on a besoin. Si vous avez besoin de temps (validations, documents à récupérer, ajustements), on s’adapte au délai que vous souhaitez : 1 semaine, 1 mois, ou plus. Une règle simple : plus vous nous envoyez vos contenus vite, plus votre site sort vite. Et quoi qu’il arrive, on vous tient au courant à chaque étape, toujours.</p></div></div></div>
-          <div class="qa reveal" data-open="false"><button class="q" type="button" aria-expanded="false">Combien ça coûte de faire un site avec Caza Comm ?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="a" role="region" aria-hidden="true"><div class="inner"><p>Nous vous avons fait une grille tarifaire, vous pouvez la retrouver en cliquant sur le bouton "Tarification".</p></div></div></div>
-          <div class="qa reveal" data-open="false"><button class="q" type="button" aria-expanded="false">Vous pouvez intégrer WhatsApp / prise de RDV ?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="a" role="region" aria-hidden="true"><div class="inner"><p>Oui. WhatsApp, appel direct, email, calendrier… On choisit le plus simple pour vos clients. (À définir selon votre activité.)</p></div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== Final CTA / Contact ====== -->
-    <section class="final bg-green" id="contact" aria-label="Contact">
-      <div class="container">
-        <div class="banner reveal">
-          <div class="wrap">
-            <div>
-              <span class="kicker"><span class="dot" aria-hidden="true"></span>Contact</span>
-              <h2>On vous répond rapidement.</h2>
-              <p class="center-btn" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-              <a class="btn btn-primary btn-pulse" href="https://cazacomm.youcanbook.me" target="_blank" rel="noopener" aria-label="Réserver un appel">Réserver un appel</a>
-               <a class="btn btn-wa" href="https://wa.me/33767197467?text=Bonjour%20CAZA%20COMM%2C%20je%20souhaite%20en%20discuter%20pour%20un%20site%20web." target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">Nous contacter sur WhatsApp</a>
-              <a class="btn btn-ghost" href="tarification.html" data-link aria-label="Voir les plans">Voir les plans</a></p>
-              <p class="contact-email" style="margin-top:12px">Email : <span class="email-text">caza.comm@gmail.com</span></p>
+        <div class="differentiators">
+          <div class="diff-item reveal reveal-delay-1">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
-
-            <div class="contactBox" aria-label="Coordonnées">
-              <h3 style="margin-bottom:8px;">Contact direct</h3>
-     <div class="contactLine" aria-label="Liens de contact">
-                <a href="tel:+33767197467" aria-label="Appeler CAZA COMM"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.5 2.1L9 10.4a16 16 0 0 0 4.6 4.6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.4.6A2 2 0 0 1 22 16.9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Appeler</a>
-               <a href="https://cazacomm.youcanbook.me" target="_blank" rel="noopener" aria-label="Être appelé par CAZA COMM"><span aria-hidden="true" class="ico-emoji">☎️</span>Être appelé</a>
-                <a href="mailto:caza.comm@gmail.com" aria-label="Envoyer un email à CAZA COMM"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/><path d="m22 6-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Email</a>
-                <a href="https://wa.me/33767197467?text=Bonjour%20CAZA%20COMM%2C%20j%27ai%20une%20question%20pour%20un%20site%20web." aria-label="Contacter CAZA COMM sur WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.3A8 8 0 1 1 20 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>WhatsApp</a>
-              </div>
-              <div class="mapWrap" aria-label="Carte Google">
-                <div class="mapCard">
-               <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2717.707922998515!2d0.07396327591924232!3d43.2312280711253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a82d523646511b%3A0x7c6480aa41b4cda!2sCaza%20Comm!5e1!3m2!1sfr!2sfr!4v1768816860535!5m2!1sfr!2sfr"
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-  allowfullscreen
-  aria-label="Localisation CAZA COMM sur Google Maps">
-</iframe>
-                  <div class="mapActions">
-                   <a class="btn btn-ghost btn-small"
-   href="https://www.google.com/maps/place/Caza+Comm/@43.2312281,0.0739633,624m/data=!3m2!1e3!4b1!4m6!3m5!1s0x12a82d523646511b:0x7c6480aa41b4cda!8m2!3d43.2312281!4d0.0765382!16s%2Fg%2F11x97nzmxx?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D"
-   target="_blank" rel="noopener"
-   aria-label="Ouvrir sur Google Maps">Ouvrir sur Google Maps</a>
-     </div>
-                </div>
-              </div>
+            <div class="diff-content">
+              <h3>Humain avant tout</h3>
+              <p>Vous parlez directement avec moi, pas une équipe anonyme.</p>
+            </div>
+          </div>
+          <div class="diff-item reveal reveal-delay-2">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="diff-content">
+              <h3>Zéro template</h3>
+              <p>Chaque solution est construite pour votre cas, vos outils, votre contexte.</p>
+            </div>
+          </div>
+          <div class="diff-item reveal reveal-delay-3">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div class="diff-content">
+              <h3>Résultats dès le premier mois</h3>
+              <p>Gains rapides et mesurables, pas des projets à 6 mois.</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-
-  <!-- ====== Footer ====== -->
-<footer aria-label="Pied de page">
-  <div class="container">
-    <div class="footGrid">
-      <div class="foot"><div class="brand" style="margin-bottom:8px;"><span class="logo" aria-hidden="true"></span><strong>CAZA COMM</strong></div></div>
-      <div class="foot"><h3>Liens</h3><a href="index.html" data-link>Accueil</a><a href="tarification.html" data-link>Tarification</a><a href="réalisations.html" data-link>Réalisations</a><a href="humain.html" data-link>L’humain derrière</a><a href="#faq" data-link>FAQ</a><a href="https://cazacomm.youcanbook.me" data-link>Contact</a><a href="conditions.html" data-link>Conditions générales</a><a href="confidentialite.html" data-link>Confidentialité</a><a href="mentions.html" data-link>Mentions légales</a></div>
-      <div class="foot"><h3>Contact</h3><a href="tel:+33767197467" aria-label="Téléphone CAZA COMM"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.5 2.1L9 10.4a16 16 0 0 0 4.6 4.6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.4.6A2 2 0 0 1 22 16.9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>+33 7 67 19 74 67</a><a href="mailto:caza.comm@gmail.com" aria-label="Email CAZA COMM"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/><path d="m22 6-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>caza.comm@gmail.com</a></div>
+      <div class="founder-card reveal">
+        <img src="images/founder.jpeg" alt="Fondateur de Caza Comm" loading="lazy" />
+        <div class="founder-overlay">
+          <p class="founder-quote">"L'IA ne remplace pas l'humain, elle l'amplifie. Mon rôle, c'est de vous donner cette puissance sans la complexité."</p>
+          <p class="founder-name">Fondateur, Caza Comm</p>
+        </div>
+      </div>
     </div>
-    <div class="fine">© <span id="year"></span> CAZA COMM</div>
+  </div>
+</section>
+
+<!-- ░░ METRICS (fond vert teinté doux) ░░ -->
+<section id="metrics" class="light" aria-label="Nos engagements">
+  <div class="section-inner">
+    <div class="metrics-header reveal">
+      <div class="section-tag">En quelques mots</div>
+      <h2 class="section-title">Ce qui nous définit</h2>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-card reveal reveal-delay-1">
+        <div class="metric-value">100%</div>
+        <div class="metric-label">Sur mesure, sans exception</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-2">
+        <div class="metric-value">&lt;24h</div>
+        <div class="metric-label">Réponse personnelle garantie</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-3">
+        <div class="metric-value">FR</div>
+        <div class="metric-label">Basé en France, RGPD conforme</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-4">
+        <div class="metric-value">Vous</div>
+        <div class="metric-label">Indépendants, dirigeants, équipes, peu importe la taille</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CONTACT (fond noir) ░░ -->
+<section id="contact" class="dark" aria-label="Contact">
+  <div class="section-inner">
+    <div class="contact-centered reveal">
+      <div class="section-tag" style="justify-content:center;">Contact</div>
+      <h2>Parlons de<br/>votre projet.</h2>
+      <p>Vous avez une idée ou un besoin. Contactez-moi directement, je vous réponds personnellement.</p>
+      <div class="contact-ctas">
+        <a href="mailto:caza.comm@gmail.com" class="btn-cta-email">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Envoyer un email
+        </a>
+        <a href="https://wa.me/33767197467" class="btn-cta-whatsapp" target="_blank" rel="noopener noreferrer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.514 5.836L.055 23.45c-.081.29.198.556.484.463l5.738-1.499A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.015-1.371l-.36-.214-3.726.974.997-3.617-.235-.374A9.818 9.818 0 1 1 12 21.818z"/></svg>
+          Écrire sur WhatsApp
+        </a>
+      </div>
+      <div class="contact-meta">
+        <div class="contact-meta-item">
+          <a href="mailto:caza.comm@gmail.com">caza.comm@gmail.com</a>
+          <span class="contact-meta-dot"></span>
+          <a href="tel:+33767197467">07 67 19 74 67</a>
+          <span class="contact-meta-dot"></span>
+          <span>France</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Caza Comm" loading="lazy" />
+        <p>Automatisations et IA sur mesure pour tous ceux qui veulent aller plus loin.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#hero">Accueil</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pourquoi">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact direct</h4>
+        <ul>
+          <li><a href="mailto:caza.comm@gmail.com">caza.comm@gmail.com</a></li>
+          <li><a href="tel:+33767197467">07 67 19 74 67</a></li>
+          <li><a href="https://wa.me/33767197467" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Caza Comm. Tous droits réservés.</span>
+      <span>Fait avec passion en France</span>
+    </div>
   </div>
 </footer>
 
+<script>
+  // ── NAVBAR HIDE/SHOW ──
+  (function() {
+    let lastScroll = 0;
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      const cur = window.scrollY;
+      nav.classList.toggle('hidden', cur > lastScroll && cur > 100);
+      lastScroll = cur < 0 ? 0 : cur;
+    }, { passive: true });
+  })();
 
- <!-- ====== Bouton fixe Contact (appel) ====== -->
-<div class="toTop" id="toTop" aria-label="Nous contacter">
-  <a class="btn btn-call btn-pulse" href="tel:+33767197467" aria-label="Appeler CAZA COMM">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.5 2.1L9 10.4a16 16 0 0 0 4.6 4.6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.4.6A2 2 0 0 1 22 16.9Z" fill="currentColor"/>
-    </svg>
-    Nous contacter
-  </a>
-</div>
-
-  <script>
-    // ====== Helpers ======
-    const $ = (sel, root=document) => root.querySelector(sel);
-    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-
-    // ====== Year ======
-    const yearEl = $("#year");
-    if(yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // ====== Smooth scroll + close mobile on click ======
-    function smoothToHash(hash){
-      const el = document.querySelector(hash);
-      if(!el) return;
-      const headerOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--headerH") || "72", 10);
-      const y = el.getBoundingClientRect().top + window.pageYOffset - headerOffset + 2;
-      window.scrollTo({ top:y, behavior:"smooth" });
-    }
-
-    // ====== Mobile menu ======
-    const burger = $("#burger");
-    const mobilePanel = $("#mobilePanel");
-    const closeMobileBtn = $("#closeMobile");
-    function openMobile(){
-      if(!mobilePanel || !burger) return;
-      mobilePanel.style.display = 'block';
-      mobilePanel.setAttribute('aria-hidden','false');
-      burger.setAttribute('aria-expanded','true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMobile(){
-      if(!mobilePanel || !burger) return;
-      if(mobilePanel.style.display !== 'block') return;
-      mobilePanel.setAttribute('aria-hidden','true');
-      burger.setAttribute('aria-expanded','false');
-      document.body.style.overflow = '';
-      mobilePanel.style.display = 'none';
-    }
-    if(burger) burger.addEventListener('click', ()=>{ (mobilePanel && mobilePanel.style.display==='block') ? closeMobile() : openMobile(); });
-    if(closeMobileBtn) closeMobileBtn.addEventListener('click', closeMobile);
-    if(mobilePanel) mobilePanel.addEventListener('click', (e)=>{ if(e.target === mobilePanel) closeMobile(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMobile(); });
-
-    $$('[data-link]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        const href = a.getAttribute('href') || '';
-        if(href.startsWith('#')){
-          e.preventDefault();
-          closeMobile();
-          smoothToHash(href);
-          history.replaceState(null,'',href);
-        }
+  // ── HAMBURGER ──
+  (function() {
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+    });
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
       });
     });
+    btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') btn.click(); });
+  })();
 
-    // ====== FAQ accordion ======
-    $$('#faqList .qa').forEach(box=>{
-      const btn = $('.q', box);
-      const panel = $('.a', box);
-      if(!btn || !panel) return;
-      btn.addEventListener('click', ()=>{
-        const open = box.getAttribute('data-open') === 'true';
-        $$('#faqList .qa').forEach(b=>{
-          if(b !== box){
-            b.setAttribute('data-open','false');
-            const bBtn = $('.q', b);
-            const bPanel = $('.a', b);
-            if(bBtn) bBtn.setAttribute('aria-expanded','false');
-            if(bPanel){
-              bPanel.setAttribute('aria-hidden','true');
-              bPanel.style.maxHeight = '0px';
-            }
-          }
-        });
-        box.setAttribute('data-open', String(!open));
-        btn.setAttribute('aria-expanded', String(!open));
-        panel.setAttribute('aria-hidden', String(open));
-        panel.style.maxHeight = !open ? (panel.scrollHeight + 80) + 'px' : '0px';
-      });
-    });
-
-    // ====== Scroll reveal ======
-    const revealEls = $$('.reveal');
-    if('IntersectionObserver' in window){
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(ent=>{
-          if(ent.isIntersecting){
-            ent.target.classList.add('is-in');
-            io.unobserve(ent.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      revealEls.forEach(el=> io.observe(el));
-
-      // ====== Counters ======
-      function animateCount(el){
-        const target = Number(el.getAttribute('data-count') || 0);
-        const suffix = el.getAttribute('data-suffix') || '';
-        const start = 0;
-        const duration = 850;
-        const t0 = performance.now();
-        function frame(t){
-          const p = Math.min(1, (t - t0) / duration);
-          const eased = 1 - Math.pow(1 - p, 3);
-          const val = Math.round(start + (target - start) * eased);
-          el.textContent = String(val) + suffix;
-          if(p < 1) requestAnimationFrame(frame);
+  // ── SCROLL REVEAL ──
+  (function() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
         }
-        requestAnimationFrame(frame);
-      }
-      const nums = $$('.num[data-count]');
-      const countersIO = new IntersectionObserver((entries)=>{
-        entries.forEach(ent=>{
-          if(ent.isIntersecting){
-            const el = ent.target;
-            if(!el.dataset.done){
-              el.dataset.done = '1';
-              animateCount(el);
-            }
-            countersIO.unobserve(el);
-          }
-        });
-      }, { threshold: 0.6 });
-      nums.forEach(n=> countersIO.observe(n));
-    }else{
-      // Fallback: no IntersectionObserver
-      revealEls.forEach(el=> el.classList.add('is-in'));
-      $$('.num[data-count]').forEach(el=>{ el.textContent = String(el.getAttribute('data-count')||'0') + (el.getAttribute('data-suffix')||''); });
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  })();
+
+  // ── PARTICLES ──
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [], raf, W, H;
+
+    function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function mkp() {
+      return { x: rnd(0,W), y: rnd(0,H), r: rnd(0.8,2.2), vx: rnd(-0.12,0.12), vy: rnd(-0.16,-0.05), alpha: rnd(0.1,0.5), life: 0, maxLife: rnd(200,500) };
     }
-
-   // ====== Back to top ======
-const toTop = $("#toTop");
-const toTopBtn = $("#toTopBtn");
-function onScroll(){
-  if(!toTop) return;
-  if(window.scrollY > 700) toTop.classList.add('show');
-  else toTop.classList.remove('show');
-}
-window.addEventListener('scroll', onScroll, { passive:true });
-if(toTopBtn) toTopBtn.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));
-onScroll();
-
-    // ====== Avis carousel controls ======
-    const reviewsTrack = $("#reviewsTrack");
-    const revPrev = $("#revPrev");
-    const revNext = $("#revNext");
-    function scrollReviews(dir){
-      if(!reviewsTrack) return;
-      const card = reviewsTrack.querySelector('.reviewCard');
-      const step = card ? (card.getBoundingClientRect().width + 12) : 380;
-      reviewsTrack.scrollBy({ left: dir * step, behavior: 'smooth' });
+    function init() { resize(); particles = Array.from({length:70}, mkp); }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach((p, i) => {
+        p.life++; p.x += p.vx; p.y += p.vy;
+        const t = p.life / p.maxLife;
+        const fade = t < 0.2 ? t/0.2 : t > 0.8 ? (1-t)/0.2 : 1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(111,207,151,${p.alpha * fade})`;
+        ctx.fill();
+        if (p.life >= p.maxLife || p.y < -10 || p.x < -10 || p.x > W+10) particles[i] = mkp();
+      });
+      raf = requestAnimationFrame(draw);
     }
-    if(revPrev) revPrev.addEventListener('click', ()=> scrollReviews(-1));
-    if(revNext) revNext.addEventListener('click', ()=> scrollReviews(1));
+    init(); draw();
+    window.addEventListener('resize', resize, { passive: true });
 
-    // ====== Process toggle (Solution 1 / 2) ======
-    const segBtns = $$('.segBtn');
-    const wraps = $$('[data-solution-wrap]');
-    function setSolution(id){
-      segBtns.forEach(b=>{ const on = b.getAttribute('data-solution') === String(id); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', String(on)); });
-      wraps.forEach(w=>{ w.hidden = w.getAttribute('data-solution-wrap') !== String(id); });
-    }
-    segBtns.forEach(b=> b.addEventListener('click', ()=> setSolution(b.getAttribute('data-solution'))));
-    setSolution('1');
+    const perfObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { if (!raf) raf = requestAnimationFrame(draw); }
+      else { cancelAnimationFrame(raf); raf = null; }
+    }, { threshold: 0 });
+    perfObs.observe(document.getElementById('hero'));
+  })();
 
-    // ====== Tests (smoke) ======
-    (function(){
-      console.assert(document.getElementById('accueil'), 'Missing #accueil');
-      console.assert(document.getElementById('plans'), 'Missing #plans');
-      console.assert(document.getElementById('realisations'), 'Missing #realisations');
-      console.assert(document.getElementById('faqList'), 'Missing #faqList');
-      console.assert(document.getElementById('contact'), 'Missing #contact');
-      // Liens "Voir les réalisations" => page dédiée
-      const btns = Array.from(document.querySelectorAll('a[aria-label="Voir les réalisations"]'));
-      console.assert(btns.length >= 2, 'Expected at least 2 "Voir les réalisations" buttons');
-      console.assert(btns.every(a => (a.getAttribute('href')||'') === 'réalisations.html'), 'Expected all "Voir les réalisations" buttons to link to réalisations.html');
-      // Toggle sombre supprimé
-      console.assert(!document.getElementById('themeToggle'), 'themeToggle should be removed');
-    })();
-  </script>
+  // ── ACTIVE NAV LINK ──
+  (function() {
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.nav-links a');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + id ? 'var(--white)' : ''; });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => obs.observe(s));
+  })();
+</script>
 </body>
 </html>
