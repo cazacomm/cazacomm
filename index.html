@@ -45,10 +45,65 @@
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 4px; }
 
+    /* ─── PAGE TOGGLE BAR ─── */
+    .page-toggle-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(10,10,10,0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 1100;
+    }
+    .page-toggle {
+      position: relative;
+      display: inline-flex;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 999px;
+      padding: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .page-toggle-opt {
+      position: relative;
+      z-index: 2;
+      padding: 6px 16px;
+      border-radius: 999px;
+      color: rgba(245,245,243,0.65);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+    .page-toggle-opt:hover { color: rgba(245,245,243,0.9); }
+    .page-toggle[data-active="ia"] .page-toggle-opt--ia,
+    .page-toggle[data-active="web"] .page-toggle-opt--web {
+      color: #fff;
+    }
+    .page-toggle-slider {
+      position: absolute;
+      top: 3px; left: 3px;
+      width: calc(50% - 3px);
+      height: calc(100% - 6px);
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(42,138,80,0.35);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      z-index: 1;
+    }
+    .page-toggle[data-active="web"] .page-toggle-slider { transform: translateX(100%); }
+    @media (max-width: 480px) {
+      .page-toggle-opt { padding: 6px 12px; font-size: 12px; }
+    }
+
     /* ─── NAVBAR ─── */
     #navbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 44px; left: 0; right: 0;
       z-index: 1000;
       padding: 0 5%;
       height: 72px;
@@ -125,7 +180,7 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 72px; left: 0; right: 0;
+      top: 116px; left: 0; right: 0;
       background: rgba(10,10,10,0.97);
       backdrop-filter: blur(20px);
       padding: 24px 5%;
@@ -669,6 +724,15 @@
   </style>
 </head>
 <body>
+
+<!-- ░░ TOGGLE PAGE (Outils IA / Sites Internet) ░░ -->
+<div class="page-toggle-bar" role="navigation" aria-label="Sélecteur de page">
+  <div class="page-toggle" data-active="ia">
+    <a href="index.html" class="page-toggle-opt page-toggle-opt--ia" aria-current="page">Outils IA</a>
+    <a href="sites-vitrine.html" class="page-toggle-opt page-toggle-opt--web">Sites Internet</a>
+    <span class="page-toggle-slider" aria-hidden="true"></span>
+  </div>
+</div>
 
 <!-- ░░ NAVBAR ░░ -->
 <nav id="navbar" role="navigation" aria-label="Navigation principale">
