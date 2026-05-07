@@ -87,15 +87,14 @@
     .page-toggle-slider {
       position: absolute;
       top: 3px; left: 3px;
-      width: calc(50% - 3px);
       height: calc(100% - 6px);
+      width: 0;
       background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
       border-radius: 999px;
       box-shadow: 0 4px 14px rgba(42,138,80,0.35);
-      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), width 0.4s cubic-bezier(0.4,0,0.2,1);
       z-index: 1;
     }
-    .page-toggle[data-active="web"] .page-toggle-slider { transform: translateX(100%); }
     @media (max-width: 480px) {
       .page-toggle-opt { padding: 6px 12px; font-size: 12px; }
     }
@@ -1086,6 +1085,26 @@
     }, { threshold: 0.4 });
     sections.forEach(s => obs.observe(s));
   })();
+
+  // ░░ Toggle slider auto-fit (largeur de l'option active) ░░
+  function fitToggleSlider(){
+    const tg = document.querySelector('.page-toggle');
+    if(!tg) return;
+    const slider = tg.querySelector('.page-toggle-slider');
+    const active = tg.dataset.active === 'web'
+      ? tg.querySelector('.page-toggle-opt--web')
+      : tg.querySelector('.page-toggle-opt--ia');
+    if(!slider || !active) return;
+    const tgRect = tg.getBoundingClientRect();
+    const aRect = active.getBoundingClientRect();
+    const left = aRect.left - tgRect.left;
+    slider.style.width = aRect.width + 'px';
+    slider.style.transform = 'translateX(' + (left - 3) + 'px)';
+  }
+  fitToggleSlider();
+  window.addEventListener('resize', fitToggleSlider);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fitToggleSlider); }
+  setTimeout(fitToggleSlider, 200);
 </script>
 </body>
 </html>
