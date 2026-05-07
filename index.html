@@ -232,11 +232,11 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1fr 400px;
+      grid-template-columns: 1fr 480px;
       gap: 72px;
       align-items: center;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
     }
     .hero-badge {
@@ -312,54 +312,288 @@
       background: var(--green-glass);
       transform: translateY(-2px);
     }
-    .hero-photo-wrap { position: relative; }
-    .hero-photo-wrap::before {
-      content: '';
-      position: absolute;
-      inset: -24px;
-      background: radial-gradient(ellipse at 50% 50%, rgba(42,138,80,0.18) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: glowPulse 3s ease-in-out infinite;
-    }
-    @keyframes glowPulse {
-      0%,100% { opacity:0.5; transform: scale(0.96); }
-      50%      { opacity:1;   transform: scale(1.04); }
-    }
-    .hero-photo {
+    /* ─── HERO DASHBOARD IA ─── */
+    .ai-dashboard {
       position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--green-border);
-      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
-    }
-    .hero-photo img {
+      perspective: 1700px;
+      perspective-origin: 55% 35%;
       width: 100%;
-      height: 500px;
-      object-fit: cover;
-      object-position: top center;
+      max-width: 460px;
+      justify-self: end;
     }
-    .hero-photo::after {
+    .ai-dash-glow {
+      position: absolute; inset: -40px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(42,138,80,0.32) 0%, rgba(42,138,80,0.0) 65%);
+      filter: blur(28px);
+      z-index: 0;
+      animation: aiGlow 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes aiGlow {
+      0%,100% { opacity: 0.6; transform: scale(0.96); }
+      50%     { opacity: 1;   transform: scale(1.04); }
+    }
+    .ai-dash-frame {
+      position: relative;
+      transform: rotateY(-7deg) rotateX(4deg);
+      transform-style: preserve-3d;
+      transform-origin: center;
+      animation: aiDashFloat 7s ease-in-out infinite;
+      background:
+        radial-gradient(120% 80% at 0% 0%, rgba(42,138,80,0.10), rgba(42,138,80,0) 55%),
+        linear-gradient(180deg, #0d1418 0%, #0a1014 100%);
+      border: 1px solid rgba(111,207,151,0.18);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow:
+        0 36px 90px -20px rgba(0,0,0,0.7),
+        0 22px 50px -12px rgba(42,138,80,0.22),
+        0 0 0 1px rgba(255,255,255,0.02) inset;
+      color: rgba(245,245,243,0.92);
+      font-family: 'Inter', sans-serif;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    @keyframes aiDashFloat {
+      0%,100% { transform: rotateY(-7deg) rotateX(4deg) translateY(0); }
+      50%     { transform: rotateY(-7deg) rotateX(4deg) translateY(-10px); }
+    }
+    .ai-dash-frame::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,10,10,0.45) 0%, transparent 55%);
+      position: absolute; inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background:
+        radial-gradient(ellipse 80% 30% at 50% 0%, rgba(168,230,193,0.06), transparent 70%);
     }
-    .hero-scroll-hint {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0.35;
-      animation: scrollBounce 2s ease-in-out infinite;
-      z-index: 2;
+
+    /* Header */
+    .ai-dash-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 4px 8px 12px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 12px;
+      gap: 10px;
     }
-    .hero-scroll-hint span { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
-    .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--white), transparent); }
-    @keyframes scrollBounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+    .ai-dash-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.01em;
+      color: rgba(245,245,243,0.92);
+    }
+    .ai-dash-pulse {
+      width: 7px; height: 7px; border-radius: 999px;
+      background: #6fcf97;
+      box-shadow: 0 0 0 0 rgba(111,207,151,0.7);
+      animation: aiPulse 2s ease-in-out infinite;
+    }
+    @keyframes aiPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(111,207,151,0.7); }
+      70%  { box-shadow: 0 0 0 9px rgba(111,207,151,0); }
+      100% { box-shadow: 0 0 0 0 rgba(111,207,151,0); }
+    }
+    .ai-dash-time {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10.5px; font-weight: 600;
+      color: rgba(245,245,243,0.5);
+    }
+    .ai-dash-time-icon { display: inline-flex; color: rgba(245,245,243,0.55); }
+
+    /* Grid : chart + KPIs */
+    .ai-dash-grid {
+      display: grid; grid-template-columns: 1.18fr .82fr; gap: 10px;
+      margin-bottom: 12px;
+    }
+    .ai-dash-chart {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 10px 10px 4px 10px;
+      min-height: 130px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ai-chart-head {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 6px;
+      margin-bottom: 4px;
+    }
+    .ai-chart-label {
+      font-size: 9.5px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: rgba(245,245,243,0.5);
+    }
+    .ai-chart-value {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.02em;
+      color: #a8e6c1; line-height: 1.1; margin-top: 2px;
+    }
+    .ai-chart-value span { font-size: 11px; color: rgba(168,230,193,0.7); margin-left: 1px; }
+    .ai-chart-trend {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 9.5px; font-weight: 700;
+      color: rgba(111,207,151,0.85);
+      background: rgba(111,207,151,0.10);
+      border: 1px solid rgba(111,207,151,0.20);
+      padding: 3px 7px; border-radius: 999px;
+    }
+    .ai-chart-svg { width: 100%; height: 80px; display: block; }
+    .ai-chart-line {
+      stroke-dasharray: 700;
+      stroke-dashoffset: 700;
+      animation: aiDrawLine 5s ease-in-out infinite;
+      filter: drop-shadow(0 0 6px rgba(111,207,151,0.45));
+    }
+    .ai-chart-area {
+      opacity: 0;
+      animation: aiFadeArea 5s ease-in-out infinite;
+    }
+    .ai-chart-dot, .ai-chart-dot-glow {
+      opacity: 0;
+      animation: aiDot 5s ease-in-out infinite;
+    }
+    .ai-chart-dot-glow { animation-name: aiDotGlow; }
+    @keyframes aiDrawLine {
+      0%   { stroke-dashoffset: 700; }
+      55%  { stroke-dashoffset: 0; }
+      90%  { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 700; }
+    }
+    @keyframes aiFadeArea {
+      0%,30% { opacity: 0; }
+      55%    { opacity: 1; }
+      90%    { opacity: 1; }
+      100%   { opacity: 0; }
+    }
+    @keyframes aiDot {
+      0%,50% { opacity: 0; }
+      60%    { opacity: 1; }
+      90%    { opacity: 1; transform: scale(1); }
+      95%    { transform: scale(1.4); }
+      100%   { opacity: 0; }
+    }
+    @keyframes aiDotGlow {
+      0%,50% { opacity: 0; }
+      60%    { opacity: 1; }
+      80%    { opacity: 0.6; }
+      100%   { opacity: 0; transform: scale(1.6); }
+    }
+    .ai-chart-dot-glow { transform-origin: 320px 14px; }
+
+    /* KPIs */
+    .ai-dash-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .kpi-card {
+      display: flex; gap: 8px; align-items: center;
+      padding: 8px 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      min-height: 56px;
+    }
+    .kpi-icon {
+      width: 26px; height: 26px; flex: 0 0 auto;
+      border-radius: 7px;
+      background: linear-gradient(135deg, rgba(111,207,151,0.22), rgba(42,138,80,0.10));
+      border: 1px solid rgba(111,207,151,0.20);
+      display: grid; place-items: center;
+      color: #a8e6c1;
+    }
+    .kpi-icon svg { width: 13px; height: 13px; }
+    .kpi-content { flex: 1; min-width: 0; }
+    .kpi-label {
+      font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      color: rgba(245,245,243,0.5);
+    }
+    .kpi-value {
+      font-size: 14px; font-weight: 800; letter-spacing: -0.01em;
+      color: rgba(245,245,243,0.95);
+      margin-top: 2px;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .kpi-value.kpi-flash { color: #a8e6c1; transform: scale(1.06); }
+    .kpi-unit { font-size: 10px; font-weight: 700; color: rgba(245,245,243,0.55); }
+
+    /* Agents */
+    .ai-dash-agents { display: grid; gap: 6px; margin-bottom: 12px; }
+    .agent-row {
+      display: grid; grid-template-columns: 22px 1fr; gap: 9px; align-items: center;
+      padding: 7px 9px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 9px;
+    }
+    .agent-row.is-done {
+      background: rgba(111,207,151,0.08);
+      border-color: rgba(111,207,151,0.22);
+    }
+    .agent-avatar {
+      width: 22px; height: 22px; border-radius: 7px;
+      background: linear-gradient(135deg, #2a8a50, #6fcf97);
+      display: grid; place-items: center;
+      color: #062114;
+      box-shadow: 0 4px 10px rgba(42,138,80,0.32);
+    }
+    .agent-avatar svg { width: 12px; height: 12px; }
+    .agent-body { min-width: 0; }
+    .agent-line {
+      display: flex; align-items: baseline; gap: 6px;
+      font-size: 10.5px; line-height: 1;
+      margin-bottom: 5px;
+    }
+    .agent-name { font-weight: 800; color: rgba(245,245,243,0.92); }
+    .agent-task { color: rgba(245,245,243,0.55); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .agent-pct { font-weight: 800; color: #a8e6c1; font-variant-numeric: tabular-nums; }
+    .agent-row.is-done .agent-pct { color: #a8e6c1; }
+    .agent-row.is-done .agent-pct::before { content: '✓ '; }
+    .agent-bar {
+      height: 4px; border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden; position: relative;
+    }
+    .agent-bar-fill {
+      position: absolute; left: 0; top: 0;
+      height: 100%; width: 100%;
+      background: linear-gradient(90deg, #2a8a50, #6fcf97);
+      border-radius: 999px;
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 0 8px rgba(111,207,151,0.45);
+    }
+    .agent-row.is-done .agent-bar-fill { background: linear-gradient(90deg, #6fcf97, #a8e6c1); }
+
+    /* Logs feed */
+    .ai-dash-logs {
+      background: rgba(0,0,0,0.32);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 9px;
+      padding: 8px 10px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 10.5px;
+      min-height: 64px;
+      max-height: 64px;
+      overflow: hidden;
+      position: relative;
+    }
+    .ai-log-line {
+      display: flex; gap: 7px; align-items: center;
+      color: rgba(245,245,243,0.78);
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: aiLogIn 0.4s ease forwards;
+    }
+    @keyframes aiLogIn {
+      0%   { opacity: 0; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .ai-log-check { color: #6fcf97; font-weight: 800; }
+    .ai-log-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ai-log-time { color: rgba(245,245,243,0.4); margin-left: auto; font-size: 9.5px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ai-dash-frame, .ai-dash-glow { animation: none !important; }
+      .ai-dash-pulse { animation: none !important; }
+      .ai-chart-line, .ai-chart-area, .ai-chart-dot, .ai-chart-dot-glow { animation: none !important; }
+      .ai-chart-line { stroke-dashoffset: 0; }
+      .ai-chart-area, .ai-chart-dot, .ai-chart-dot-glow { opacity: 1; }
+    }
 
     /* ─── SECTIONS COMMUNES ─── */
     section { padding: 100px 5%; }
@@ -697,14 +931,18 @@
     .reveal-delay-5 { transition-delay: 0.40s; }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-photo-wrap { order: -1; }
-      .hero-photo img { height: 340px; }
+    @media (max-width: 980px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 56px; }
+      .ai-dashboard { perspective: none; max-width: 480px; margin: 0 auto; justify-self: center; width: 100%; }
+      .ai-dash-frame { transform: none; animation: none; }
       .pourquoi-grid { grid-template-columns: 1fr; gap: 48px; }
       .founder-card { max-width: 480px; margin: 0 auto; }
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
       .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .ai-dash-grid { grid-template-columns: 1fr; }
+      .ai-dash-kpis { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links, .btn-nav { display: none; }
@@ -768,13 +1006,8 @@
         <span class="hero-badge-dot"></span> Automatisations et IA sur mesure
       </div>
       <h1 class="hero-title">
-        Votre entreprise mérite<br/>
-        une <span class="accent">IA qui travaille</span><br/>
-        à votre place.
+        Une <span class="accent">IA sur mesure</span> = la productivité de plusieurs employés, sans les charges.
       </h1>
-      <p class="hero-sub">
-        J'automatise vos processus et déploie des agents IA sur mesure, pour que vous gagniez du temps et performiez mieux dès le premier mois.
-      </p>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">
           Parlons de votre projet
@@ -783,15 +1016,151 @@
         <a href="#services" class="btn-secondary">Voir nos solutions</a>
       </div>
     </div>
-    <div class="hero-photo-wrap">
-      <div class="hero-photo">
-        <img src="images/hero1.jpeg" alt="Fondateur Caza Comm" loading="lazy" />
+    <div class="ai-dashboard reveal" aria-label="Dashboard d'agents IA en activité">
+      <div class="ai-dash-glow" aria-hidden="true"></div>
+      <div class="ai-dash-frame">
+        <!-- Header -->
+        <div class="ai-dash-header">
+          <div class="ai-dash-status">
+            <span class="ai-dash-pulse" aria-hidden="true"></span>
+            <span class="ai-dash-status-text">Agents IA · En ligne</span>
+          </div>
+          <div class="ai-dash-time">
+            <span class="ai-dash-time-icon" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            Sync · <span id="aiSyncTime">2s</span>
+          </div>
+        </div>
+
+        <!-- Chart + KPIs -->
+        <div class="ai-dash-grid">
+          <div class="ai-dash-chart">
+            <div class="ai-chart-head">
+              <div>
+                <div class="ai-chart-label">Tâches automatisées</div>
+                <div class="ai-chart-value">+247<span>%</span></div>
+              </div>
+              <div class="ai-chart-trend">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 17 17 7"/><polyline points="9 7 17 7 17 15"/></svg>
+                cette semaine
+              </div>
+            </div>
+            <svg class="ai-chart-svg" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="aiGradLine" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stop-color="#6fcf97"/>
+                  <stop offset="1" stop-color="#a8e6c1"/>
+                </linearGradient>
+                <linearGradient id="aiGradFill" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#2a8a50" stop-opacity="0.42"/>
+                  <stop offset="1" stop-color="#2a8a50" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <g class="ai-chart-grid" stroke="rgba(255,255,255,0.05)" stroke-width="1">
+                <line x1="0" x2="320" y1="22" y2="22"/>
+                <line x1="0" x2="320" y1="55" y2="55"/>
+                <line x1="0" x2="320" y1="88" y2="88"/>
+              </g>
+              <path class="ai-chart-area" d="M0,90 L24,84 L48,80 L72,72 L96,68 L120,58 L148,50 L176,46 L204,38 L232,32 L260,26 L288,20 L320,14 L320,110 L0,110 Z" fill="url(#aiGradFill)"/>
+              <path class="ai-chart-line" d="M0,90 L24,84 L48,80 L72,72 L96,68 L120,58 L148,50 L176,46 L204,38 L232,32 L260,26 L288,20 L320,14" fill="none" stroke="url(#aiGradLine)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle class="ai-chart-dot" cx="320" cy="14" r="3.5" fill="#a8e6c1"/>
+              <circle class="ai-chart-dot-glow" cx="320" cy="14" r="9" fill="rgba(168,230,193,0.22)"/>
+            </svg>
+          </div>
+
+          <div class="ai-dash-kpis">
+            <div class="kpi-card">
+              <div class="kpi-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m21 7-9 6L3 7"/></svg>
+              </div>
+              <div class="kpi-content">
+                <div class="kpi-label">Mails traités</div>
+                <div class="kpi-value" id="kpiMails">1 247</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </div>
+              <div class="kpi-content">
+                <div class="kpi-label">Temps gagné</div>
+                <div class="kpi-value">14h<span class="kpi-unit"> / sem</span></div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="kpi-content">
+                <div class="kpi-label">Réponses générées</div>
+                <div class="kpi-value" id="kpiReplies">89</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="kpi-content">
+                <div class="kpi-label">Taux de réussite</div>
+                <div class="kpi-value">98.4<span class="kpi-unit">%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agents qui travaillent -->
+        <div class="ai-dash-agents" id="aiAgents">
+          <div class="agent-row" data-agent="email">
+            <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m21 7-9 6L3 7"/></svg></div>
+            <div class="agent-body">
+              <div class="agent-line">
+                <span class="agent-name">Agent Email</span>
+                <span class="agent-task">Tri inbox</span>
+                <span class="agent-pct">0%</span>
+              </div>
+              <div class="agent-bar"><div class="agent-bar-fill"></div></div>
+            </div>
+          </div>
+          <div class="agent-row" data-agent="social">
+            <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></div>
+            <div class="agent-body">
+              <div class="agent-line">
+                <span class="agent-name">Agent Social</span>
+                <span class="agent-task">Post LinkedIn</span>
+                <span class="agent-pct">0%</span>
+              </div>
+              <div class="agent-bar"><div class="agent-bar-fill"></div></div>
+            </div>
+          </div>
+          <div class="agent-row" data-agent="phone">
+            <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.5 2.1L9 10.4a16 16 0 0 0 4.6 4.6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.4.6A2 2 0 0 1 22 16.9Z"/></svg></div>
+            <div class="agent-body">
+              <div class="agent-line">
+                <span class="agent-name">Agent Tél</span>
+                <span class="agent-task">Appel client</span>
+                <span class="agent-pct">0%</span>
+              </div>
+              <div class="agent-bar"><div class="agent-bar-fill"></div></div>
+            </div>
+          </div>
+          <div class="agent-row" data-agent="quote">
+            <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h2"/></svg></div>
+            <div class="agent-body">
+              <div class="agent-line">
+                <span class="agent-name">Agent Devis</span>
+                <span class="agent-task">Génération</span>
+                <span class="agent-pct">0%</span>
+              </div>
+              <div class="agent-bar"><div class="agent-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logs feed -->
+        <div class="ai-dash-logs" id="aiLogs" aria-live="polite" aria-label="Activité récente"></div>
       </div>
     </div>
-  </div>
-  <div class="hero-scroll-hint" aria-hidden="true">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
   </div>
 </section>
 
@@ -800,8 +1169,7 @@
   <div class="section-inner">
     <div class="section-header reveal">
       <div class="section-tag">Nos solutions</div>
-      <h2 class="section-title">Ce que je construis<br/>pour vous</h2>
-      <p class="section-sub">Des outils IA concrets, pensés pour votre réalité terrain, pas pour une démo.</p>
+      <h2 class="section-title">Ce que CAZA COMM<br/>construit pour vous</h2>
     </div>
     <div class="services-grid">
 
@@ -845,8 +1213,23 @@
         <p class="service-desc">De la stratégie au déploiement, je vous guide à chaque étape.</p>
       </div>
 
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        </div>
+        <h3 class="service-title">Agents IA qui agissent</h3>
+        <p class="service-desc">Des agents qui exécutent à votre place : répondre aux emails, poster sur les réseaux sociaux, écrire vos contenus, suivre vos prospects.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3 class="service-title">Réception d'appels par IA</h3>
+        <p class="service-desc">Une IA qui répond au téléphone à votre place, qualifie les demandes, prend les RDV, transmet les infos importantes.</p>
+      </div>
+
     </div>
-    <p class="services-note reveal">Devis personnalisé et gratuit sous 24h, selon votre besoin et niveau de complexité.</p>
   </div>
 </section>
 
@@ -857,8 +1240,7 @@
       <div>
         <div class="reveal">
           <div class="section-tag">Pourquoi nous choisir</div>
-          <h2 class="section-title">Pas un outil.<br/>Un partenaire.</h2>
-          <p class="section-sub" style="margin-bottom: 48px;">Je m'investis dans votre réussite comme si c'était ma propre entreprise.</p>
+          <h2 class="section-title" style="margin-bottom: 48px;">Pas un outil.<br/>Un partenaire.</h2>
         </div>
         <div class="differentiators">
           <div class="diff-item reveal reveal-delay-1">
@@ -884,7 +1266,7 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
             </div>
             <div class="diff-content">
-              <h3>Résultats dès le premier mois</h3>
+              <h3>Résultat dès la première semaine</h3>
               <p>Gains rapides et mesurables, pas des projets à 6 mois.</p>
             </div>
           </div>
@@ -935,7 +1317,6 @@
     <div class="contact-centered reveal">
       <div class="section-tag" style="justify-content:center;">Contact</div>
       <h2>Parlons de<br/>votre projet.</h2>
-      <p>Vous avez une idée ou un besoin. Contactez-moi directement, je vous réponds personnellement.</p>
       <div class="contact-ctas">
         <a href="mailto:caza.comm@gmail.com" class="btn-cta-email">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -1105,6 +1486,130 @@
   window.addEventListener('resize', fitToggleSlider);
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fitToggleSlider); }
   setTimeout(fitToggleSlider, 200);
+
+  // ░░ AI DASHBOARD — animations vivantes ░░
+  (function(){
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dashboard = document.querySelector('.ai-dashboard');
+    if(!dashboard) return;
+
+    // 1) Compteurs KPI (Mails traités + Réponses générées)
+    const formatFR = n => n.toLocaleString('fr-FR').replace(/ /g,' ');
+    const flash = el => {
+      el.classList.add('kpi-flash');
+      setTimeout(()=> el.classList.remove('kpi-flash'), 280);
+    };
+    const mailsEl = document.getElementById('kpiMails');
+    const repliesEl = document.getElementById('kpiReplies');
+    let mails = 1247, replies = 89;
+    function tickKpis(){
+      mails += Math.random() < 0.5 ? 1 : 2;
+      if(Math.random() < 0.5) replies += 1;
+      if(mails > 1899){ mails = 1247; replies = 89; }
+      if(mailsEl){ mailsEl.textContent = formatFR(mails); flash(mailsEl); }
+      if(repliesEl){ repliesEl.textContent = formatFR(replies); flash(repliesEl); }
+    }
+    if(!reduced) setInterval(tickKpis, 2400);
+
+    // 2) Timestamp "synchronisé il y a Xs"
+    const timeEl = document.getElementById('aiSyncTime');
+    let secs = 2;
+    function tickTime(){
+      secs = (secs % 9) + 1;
+      if(timeEl) timeEl.textContent = secs + 's';
+    }
+    if(!reduced) setInterval(tickTime, 1000);
+
+    // 3) Agents : barres de progression cyclées
+    const agents = [
+      { sel: '[data-agent="email"]',  task: 'Tri inbox',       speed: 1.2,  done: 'Inbox triée' },
+      { sel: '[data-agent="social"]', task: 'Post LinkedIn',   speed: 1.6,  done: 'Post publié' },
+      { sel: '[data-agent="phone"]',  task: 'Appel client',    speed: 0.9,  done: 'Appel terminé' },
+      { sel: '[data-agent="quote"]',  task: 'Génération',      speed: 1.4,  done: 'Devis #234 prêt' },
+    ];
+    const agentState = agents.map((a, i) => {
+      const row = document.querySelector(a.sel);
+      if(!row) return null;
+      return {
+        cfg: a,
+        row,
+        fill: row.querySelector('.agent-bar-fill'),
+        pct: row.querySelector('.agent-pct'),
+        task: row.querySelector('.agent-task'),
+        progress: i * 22,
+      };
+    }).filter(Boolean);
+
+    function tickAgents(){
+      agentState.forEach(s => {
+        s.progress += s.cfg.speed * (0.7 + Math.random() * 0.7);
+        if(s.progress >= 100){
+          s.progress = 100;
+          s.row.classList.add('is-done');
+          s.fill.style.transform = 'scaleX(1)';
+          s.pct.textContent = 'Terminé';
+          s.task.textContent = s.cfg.done;
+          // recycle après 1.6s
+          setTimeout(()=>{
+            s.progress = 0;
+            s.row.classList.remove('is-done');
+            s.fill.style.transform = 'scaleX(0)';
+            s.pct.textContent = '0%';
+            s.task.textContent = s.cfg.task;
+          }, 1600 + Math.random()*1200);
+        } else {
+          s.fill.style.transform = `scaleX(${s.progress/100})`;
+          s.pct.textContent = Math.round(s.progress) + '%';
+        }
+      });
+    }
+    if(!reduced){
+      // Init progressions au tick suivant pour déclencher la transition
+      requestAnimationFrame(()=> setInterval(tickAgents, 480));
+    } else {
+      // Statique propre : barres remplies à 80/100/55/70
+      const stat = [0.80, 1.0, 0.55, 0.70];
+      agentState.forEach((s, i) => {
+        s.fill.style.transform = `scaleX(${stat[i]})`;
+        s.pct.textContent = stat[i] === 1 ? 'Terminé' : Math.round(stat[i]*100) + '%';
+        if(stat[i] === 1) s.row.classList.add('is-done');
+      });
+    }
+
+    // 4) Logs feed
+    const logsEl = document.getElementById('aiLogs');
+    const logsPool = [
+      'Email envoyé à client@artisan.fr',
+      'RDV ajouté au calendrier · jeudi 14h',
+      'Devis #234 généré en 1.2s',
+      'Post LinkedIn publié',
+      'Appel qualifié · transmis au commercial',
+      'Suivi prospect · relance programmée',
+      'Facture envoyée à fournisseur@xxx',
+      'Message WhatsApp traité',
+      'Note Notion synchronisée',
+      'Lead enrichi · score 87/100',
+    ];
+    let logIdx = 0;
+    function pushLog(){
+      if(!logsEl) return;
+      const txt = logsPool[logIdx % logsPool.length];
+      logIdx++;
+      const t = new Date();
+      const time = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0') + ':' + String(t.getSeconds()).padStart(2,'0');
+      const line = document.createElement('div');
+      line.className = 'ai-log-line';
+      line.innerHTML = '<span class="ai-log-check">✓</span><span class="ai-log-text"></span><span class="ai-log-time"></span>';
+      line.querySelector('.ai-log-text').textContent = txt;
+      line.querySelector('.ai-log-time').textContent = time;
+      logsEl.insertBefore(line, logsEl.firstChild);
+      // Keep max 3 lines visible
+      while(logsEl.children.length > 4) logsEl.removeChild(logsEl.lastChild);
+    }
+    // Seed
+    pushLog(); pushLog();
+    if(!reduced) setInterval(pushLog, 2800);
+  })();
 </script>
 </body>
 </html>
