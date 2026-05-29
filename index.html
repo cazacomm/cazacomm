@@ -684,6 +684,50 @@
       font-size: 0.85rem;
     }
 
+    /* ─── OVERLAY VALEUR ROI (opacité pilotée par le scroll sur #services) ─── */
+    .value-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 900;                 /* au-dessus des cartes, sous la navbar (1000) */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      pointer-events: none;         /* le scroll et le touch passent à travers */
+      opacity: 0;                   /* valeur pilotée par le scroll en JS */
+      will-change: opacity;
+    }
+    .value-overlay-inner {
+      pointer-events: none;
+      max-width: 760px;
+      text-align: center;
+      padding: clamp(28px, 5vw, 52px) clamp(24px, 5vw, 56px);
+      border-radius: var(--radius);
+      background: rgba(249,249,247,0.86);
+      border: 1px solid var(--green-border);
+      box-shadow: 0 24px 70px rgba(42,138,80,0.18);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .value-overlay-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.7rem, 5.5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: clamp(14px, 2.5vw, 22px);
+    }
+    .value-overlay-sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(0.98rem, 2.4vw, 1.25rem);
+      line-height: 1.6;
+      color: rgba(10,10,10,0.66);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
     /* ─── POURQUOI (fond noir) ─── */
     #pourquoi { background: var(--black); }
     .pourquoi-grid {
@@ -1231,6 +1275,14 @@
 
     </div>
   </div>
+
+  <!-- Overlay valeur — opacité pilotée par le scroll, pointer-events:none -->
+  <div class="value-overlay" id="valueOverlay">
+    <div class="value-overlay-inner">
+      <p class="value-overlay-title">Nous ne vendons pas d'intelligence artificielle.</p>
+      <p class="value-overlay-sub">Nous vendons du temps gagné et de l'argent gagné — un retour sur investissement concret pour votre entreprise.</p>
+    </div>
+  </div>
 </section>
 
 <!-- ░░ POURQUOI (fond noir) ░░ -->
@@ -1413,6 +1465,38 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  })();
+
+  // ── OVERLAY VALEUR ROI (opacité liée au scroll sur #services) ──
+  (function() {
+    const overlay = document.getElementById('valueOverlay');
+    const section = document.getElementById('services');
+    if (!overlay || !section) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ticking = false;
+
+    function compute() {
+      ticking = false;
+      const vh = window.innerHeight;
+      const top = section.getBoundingClientRect().top;
+      const fadeInStart = vh;          // la section entre par le bas du viewport
+      const fullStart   = vh * 0.45;   // pic d'opacité (avant de lire les cartes)
+      const fullEnd     = vh * 0.10;
+      const fadeOutEnd  = -vh * 0.35;  // la section ressort par le haut
+      let op;
+      if (top >= fadeInStart || top <= fadeOutEnd) op = 0;
+      else if (top > fullStart) op = (fadeInStart - top) / (fadeInStart - fullStart);
+      else if (top >= fullEnd) op = 1;
+      else op = (top - fadeOutEnd) / (fullEnd - fadeOutEnd);
+      if (reduced) op = op > 0.5 ? 1 : 0; // pas de fondu progressif
+      overlay.style.opacity = op.toFixed(3);
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(compute); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    compute();
   })();
 
   // ── PARTICLES ──
