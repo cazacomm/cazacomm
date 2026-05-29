@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Caza Comm — Automatisations et IA sur mesure. Agents IA, automatisation de processus, intégration outils. Basé en France." />
-  <title>Caza Comm — Automatisations et IA sur mesure</title>
+  <meta name="description" content="Caza Comm : automatisations et IA sur mesure. Agents IA, automatisation de processus, intégration outils. Basé en France." />
+  <title>Caza Comm : automatisations et IA sur mesure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -157,6 +157,33 @@
       color: var(--black);
       transform: translateY(-1px);
       box-shadow: 0 6px 24px rgba(42,138,80,0.35);
+    }
+    /* ─── Cluster d'actions à droite + toggle FR/EN ─── */
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 999px;
+      padding: 3px;
+    }
+    .lang-opt {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: rgba(245,245,243,0.65);
+      padding: 5px 11px;
+      border-radius: 999px;
+      transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .lang-opt:hover { color: rgba(245,245,243,0.9); }
+    .lang-opt.is-active {
+      color: #fff;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      box-shadow: 0 4px 14px rgba(42,138,80,0.35);
     }
     .hamburger {
       display: none;
@@ -684,17 +711,31 @@
       font-size: 0.85rem;
     }
 
-    /* ─── OVERLAY VALEUR ROI (opacité pilotée par le scroll sur #services) ─── */
+    /* ─── OVERLAY VALEUR ROI (pin au scroll + flou du fond) ─── */
+    .services-track { position: relative; }
+    .services-pin {                /* #services se fige pendant la phase d'animation */
+      position: sticky;
+      top: 0;
+    }
+    .services-pin-spacer {         /* hauteur = distance de scroll consommée par l'anim */
+      height: 110vh;
+      pointer-events: none;
+    }
+    .services-blur {               /* titre + cartes : floutés progressivement */
+      filter: blur(var(--svc-blur, 0px));
+      will-change: filter;
+    }
     .value-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 900;                 /* au-dessus des cartes, sous la navbar (1000) */
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100vh;               /* s'aligne sur le viewport pendant le pin */
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
-      pointer-events: none;         /* le scroll et le touch passent à travers */
-      opacity: 0;                   /* valeur pilotée par le scroll en JS */
+      pointer-events: none;        /* le scroll et le touch passent à travers */
+      opacity: 0;                  /* valeur pilotée par le scroll en JS */
+      z-index: 5;                  /* au-dessus des cartes floutées */
       will-change: opacity;
     }
     .value-overlay-inner {
@@ -703,11 +744,11 @@
       text-align: center;
       padding: clamp(28px, 5vw, 52px) clamp(24px, 5vw, 56px);
       border-radius: var(--radius);
-      background: rgba(249,249,247,0.86);
+      background: rgba(249,249,247,0.72);
       border: 1px solid var(--green-border);
       box-shadow: 0 24px 70px rgba(42,138,80,0.18);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
     .value-overlay-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -726,6 +767,13 @@
       color: rgba(10,10,10,0.66);
       max-width: 540px;
       margin: 0 auto;
+    }
+    /* Accessibilité : pas de pin/flou/animation si mouvement réduit */
+    @media (prefers-reduced-motion: reduce) {
+      .services-pin { position: static; }
+      .services-pin-spacer { display: none; }
+      .services-blur { filter: none !important; }
+      .value-overlay { display: none; }
     }
 
     /* ─── POURQUOI (fond noir) ─── */
@@ -1021,24 +1069,30 @@
     <img src="images/logo.png" alt="Caza Comm" />
   </a>
   <ul class="nav-links">
-    <li><a href="#hero">Accueil</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#pourquoi">À propos</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#hero" data-en="Home">Accueil</a></li>
+    <li><a href="#services" data-en="Services">Services</a></li>
+    <li><a href="#pourquoi" data-en="About">À propos</a></li>
+    <li><a href="#contact" data-en="Contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="btn-nav">Parlons de votre projet</a>
-  <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
-    <span></span><span></span><span></span>
+  <div class="nav-actions">
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
+      <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
+      <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a href="#contact" class="btn-nav" data-en="Let's talk about your project">Parlons de votre projet</a>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#hero" class="mobile-link">Accueil</a>
-  <a href="#services" class="mobile-link">Services</a>
-  <a href="#pourquoi" class="mobile-link">À propos</a>
-  <a href="#contact" class="mobile-link">Contact</a>
-  <a href="#contact" class="btn-nav">Parlons de votre projet</a>
+  <a href="#hero" class="mobile-link" data-en="Home">Accueil</a>
+  <a href="#services" class="mobile-link" data-en="Services">Services</a>
+  <a href="#pourquoi" class="mobile-link" data-en="About">À propos</a>
+  <a href="#contact" class="mobile-link" data-en="Contact">Contact</a>
+  <a href="#contact" class="btn-nav" data-en="Let's talk about your project">Parlons de votre projet</a>
 </div>
 
 <!-- ░░ HERO ░░ -->
@@ -1047,17 +1101,17 @@
   <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-badge">
-        <span class="hero-badge-dot"></span> Automatisations et IA sur mesure
+        <span class="hero-badge-dot"></span> <span data-en="Custom automation &amp; AI">Automatisations et IA sur mesure</span>
       </div>
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-en="A &lt;span class=&quot;accent&quot;&gt;custom AI&lt;/span&gt; = the productivity of several employees, without the overhead.">
         Une <span class="accent">IA sur mesure</span> = la productivité de plusieurs employés, sans les charges.
       </h1>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">
-          Parlons de votre projet
+          <span data-en="Let's talk about your project">Parlons de votre projet</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#services" class="btn-secondary">Voir nos solutions</a>
+        <a href="#services" class="btn-secondary" data-en="See our solutions">Voir nos solutions</a>
       </div>
     </div>
     <div class="ai-dashboard reveal" aria-label="Dashboard d'agents IA en activité">
@@ -1067,7 +1121,7 @@
         <div class="ai-dash-header">
           <div class="ai-dash-status">
             <span class="ai-dash-pulse" aria-hidden="true"></span>
-            <span class="ai-dash-status-text">Agents IA · En ligne</span>
+            <span class="ai-dash-status-text" data-en="AI Agents · Online">Agents IA · En ligne</span>
           </div>
           <div class="ai-dash-time">
             <span class="ai-dash-time-icon" aria-hidden="true">
@@ -1082,12 +1136,12 @@
           <div class="ai-dash-chart">
             <div class="ai-chart-head">
               <div>
-                <div class="ai-chart-label">Tâches automatisées</div>
+                <div class="ai-chart-label" data-en="Automated tasks">Tâches automatisées</div>
                 <div class="ai-chart-value">+247<span>%</span></div>
               </div>
               <div class="ai-chart-trend">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 17 17 7"/><polyline points="9 7 17 7 17 15"/></svg>
-                cette semaine
+                <span data-en="this week">cette semaine</span>
               </div>
             </div>
             <svg class="ai-chart-svg" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
@@ -1119,7 +1173,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m21 7-9 6L3 7"/></svg>
               </div>
               <div class="kpi-content">
-                <div class="kpi-label">Mails traités</div>
+                <div class="kpi-label" data-en="Emails processed">Mails traités</div>
                 <div class="kpi-value" id="kpiMails">1 247</div>
               </div>
             </div>
@@ -1128,8 +1182,8 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
               </div>
               <div class="kpi-content">
-                <div class="kpi-label">Temps gagné</div>
-                <div class="kpi-value">14h<span class="kpi-unit"> / sem</span></div>
+                <div class="kpi-label" data-en="Time saved">Temps gagné</div>
+                <div class="kpi-value">14h<span class="kpi-unit" data-en=" / wk"> / sem</span></div>
               </div>
             </div>
             <div class="kpi-card">
@@ -1137,7 +1191,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </div>
               <div class="kpi-content">
-                <div class="kpi-label">Réponses générées</div>
+                <div class="kpi-label" data-en="Replies generated">Réponses générées</div>
                 <div class="kpi-value" id="kpiReplies">89</div>
               </div>
             </div>
@@ -1146,7 +1200,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               <div class="kpi-content">
-                <div class="kpi-label">Taux de réussite</div>
+                <div class="kpi-label" data-en="Success rate">Taux de réussite</div>
                 <div class="kpi-value">98.4<span class="kpi-unit">%</span></div>
               </div>
             </div>
@@ -1159,7 +1213,7 @@
             <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m21 7-9 6L3 7"/></svg></div>
             <div class="agent-body">
               <div class="agent-line">
-                <span class="agent-name">Agent Email</span>
+                <span class="agent-name" data-en="Email Agent">Agent Email</span>
                 <span class="agent-task">Tri inbox</span>
                 <span class="agent-pct">0%</span>
               </div>
@@ -1170,7 +1224,7 @@
             <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></div>
             <div class="agent-body">
               <div class="agent-line">
-                <span class="agent-name">Agent Social</span>
+                <span class="agent-name" data-en="Social Agent">Agent Social</span>
                 <span class="agent-task">Post LinkedIn</span>
                 <span class="agent-pct">0%</span>
               </div>
@@ -1181,7 +1235,7 @@
             <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.5 2.1L9 10.4a16 16 0 0 0 4.6 4.6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.4.6A2 2 0 0 1 22 16.9Z"/></svg></div>
             <div class="agent-body">
               <div class="agent-line">
-                <span class="agent-name">Agent Tél</span>
+                <span class="agent-name" data-en="Phone Agent">Agent Tél</span>
                 <span class="agent-task">Appel client</span>
                 <span class="agent-pct">0%</span>
               </div>
@@ -1192,7 +1246,7 @@
             <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h2"/></svg></div>
             <div class="agent-body">
               <div class="agent-line">
-                <span class="agent-name">Agent Devis</span>
+                <span class="agent-name" data-en="Quote Agent">Agent Devis</span>
                 <span class="agent-task">Génération</span>
                 <span class="agent-pct">0%</span>
               </div>
@@ -1208,12 +1262,14 @@
   </div>
 </section>
 
-<!-- ░░ SERVICES (fond blanc) ░░ -->
-<section id="services" class="light" aria-label="Nos solutions IA">
+<!-- ░░ SERVICES (fond blanc) + overlay valeur en scroll fixé ░░ -->
+<div class="services-track" id="servicesTrack">
+<section id="services" class="light services-pin" aria-label="Nos solutions IA">
+  <div class="services-blur" id="servicesBlur">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="section-tag">Nos solutions</div>
-      <h2 class="section-title">Ce que CAZA COMM<br/>construit pour vous</h2>
+      <div class="section-tag" data-en="Our solutions">Nos solutions</div>
+      <h2 class="section-title" data-en="What CAZA COMM&lt;br/&gt;builds for you">Ce que CAZA COMM<br/>construit pour vous</h2>
     </div>
     <div class="services-grid">
 
@@ -1221,69 +1277,72 @@
         <div class="service-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
-        <h3 class="service-title">Automatisation de processus</h3>
-        <p class="service-desc">Relances, reporting, traitement de données. Automatisé, sans erreur, sans effort.</p>
+        <h3 class="service-title" data-en="Process automation">Automatisation de processus</h3>
+        <p class="service-desc" data-en="Follow-ups, reporting, data processing. Automated, error-free, effortless.">Relances, reporting, traitement de données. Automatisé, sans erreur, sans effort.</p>
       </div>
 
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <h3 class="service-title">Agents IA conversationnels</h3>
-        <p class="service-desc">Chatbots et assistants intelligents disponibles 24h/24, formés sur votre contexte.</p>
+        <h3 class="service-title" data-en="Conversational AI agents">Agents IA conversationnels</h3>
+        <p class="service-desc" data-en="Smart chatbots and assistants available 24/7, trained on your context.">Chatbots et assistants intelligents disponibles 24h/24, formés sur votre contexte.</p>
       </div>
 
       <div class="service-card reveal reveal-delay-3">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <h3 class="service-title">Intégration dans vos outils</h3>
-        <p class="service-desc">Notion, Make, CRM, API sur mesure. L'IA s'intègre à ce que vous utilisez déjà.</p>
+        <h3 class="service-title" data-en="Integration with your tools">Intégration dans vos outils</h3>
+        <p class="service-desc" data-en="Notion, Make, CRM, custom APIs. AI fits into what you already use.">Notion, Make, CRM, API sur mesure. L'IA s'intègre à ce que vous utilisez déjà.</p>
       </div>
 
       <div class="service-card reveal reveal-delay-4">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <h3 class="service-title">Analyse et génération de contenu</h3>
-        <p class="service-desc">Synthèses, rapports auto, contenus marketing. Vos données transformées en décisions.</p>
+        <h3 class="service-title" data-en="Content analysis &amp; generation">Analyse et génération de contenu</h3>
+        <p class="service-desc" data-en="Summaries, automated reports, marketing content. Your data turned into decisions.">Synthèses, rapports auto, contenus marketing. Vos données transformées en décisions.</p>
       </div>
 
       <div class="service-card reveal reveal-delay-5">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         </div>
-        <h3 class="service-title">Conseil et accompagnement</h3>
-        <p class="service-desc">De la stratégie au déploiement, je vous guide à chaque étape.</p>
+        <h3 class="service-title" data-en="Consulting &amp; support">Conseil et accompagnement</h3>
+        <p class="service-desc" data-en="From strategy to deployment, I guide you at every step.">De la stratégie au déploiement, je vous guide à chaque étape.</p>
       </div>
 
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
         </div>
-        <h3 class="service-title">Agents IA qui agissent</h3>
-        <p class="service-desc">Des agents qui exécutent à votre place : répondre aux emails, poster sur les réseaux sociaux, écrire vos contenus, suivre vos prospects.</p>
+        <h3 class="service-title" data-en="AI agents that take action">Agents IA qui agissent</h3>
+        <p class="service-desc" data-en="Agents that act for you: replying to emails, posting on social media, writing your content, following up with prospects.">Des agents qui exécutent à votre place : répondre aux emails, poster sur les réseaux sociaux, écrire vos contenus, suivre vos prospects.</p>
       </div>
 
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </div>
-        <h3 class="service-title">Réception d'appels par IA</h3>
-        <p class="service-desc">Une IA qui répond au téléphone à votre place, qualifie les demandes, prend les RDV, transmet les infos importantes.</p>
+        <h3 class="service-title" data-en="AI call answering">Réception d'appels par IA</h3>
+        <p class="service-desc" data-en="An AI that answers the phone for you, qualifies requests, books appointments, and passes on the important info.">Une IA qui répond au téléphone à votre place, qualifie les demandes, prend les RDV, transmet les infos importantes.</p>
       </div>
 
     </div>
   </div>
+  </div><!-- /.services-blur -->
 
-  <!-- Overlay valeur — opacité pilotée par le scroll, pointer-events:none -->
-  <div class="value-overlay" id="valueOverlay">
+  <!-- Overlay valeur : net, par-dessus le fond flouté (pointer-events:none) -->
+  <div class="value-overlay" id="valueOverlay" aria-hidden="true">
     <div class="value-overlay-inner">
-      <p class="value-overlay-title">Nous ne vendons pas d'intelligence artificielle.</p>
-      <p class="value-overlay-sub">Nous vendons du temps gagné et de l'argent gagné — un retour sur investissement concret pour votre entreprise.</p>
+      <p class="value-overlay-title" data-en="We don't sell artificial intelligence.">Nous ne vendons pas d'intelligence artificielle.</p>
+      <p class="value-overlay-sub" data-en="We sell time saved and money earned — a concrete return on investment for your business.">Nous vendons du temps gagné et de l'argent gagné, un retour sur investissement concret pour votre entreprise.</p>
     </div>
   </div>
 </section>
+<div class="services-pin-spacer" aria-hidden="true"></div>
+</div><!-- /.services-track -->
 
 <!-- ░░ POURQUOI (fond noir) ░░ -->
 <section id="pourquoi" class="dark" aria-label="Pourquoi choisir Caza Comm">
@@ -1291,8 +1350,8 @@
     <div class="pourquoi-grid">
       <div>
         <div class="reveal">
-          <div class="section-tag">Pourquoi nous choisir</div>
-          <h2 class="section-title" style="margin-bottom: 48px;">Pas un outil.<br/>Un partenaire.</h2>
+          <div class="section-tag" data-en="Why choose us">Pourquoi nous choisir</div>
+          <h2 class="section-title" style="margin-bottom: 48px;" data-en="Not a tool.&lt;br/&gt;A partner.">Pas un outil.<br/>Un partenaire.</h2>
         </div>
         <div class="differentiators">
           <div class="diff-item reveal reveal-delay-1">
@@ -1300,8 +1359,8 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
             <div class="diff-content">
-              <h3>Humain avant tout</h3>
-              <p>Vous parlez directement avec moi, pas une équipe anonyme.</p>
+              <h3 data-en="Human first">Humain avant tout</h3>
+              <p data-en="You talk directly with me, not an anonymous team.">Vous parlez directement avec moi, pas une équipe anonyme.</p>
             </div>
           </div>
           <div class="diff-item reveal reveal-delay-2">
@@ -1309,8 +1368,8 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
             <div class="diff-content">
-              <h3>Zéro template</h3>
-              <p>Chaque solution est construite pour votre cas, vos outils, votre contexte.</p>
+              <h3 data-en="Zero templates">Zéro template</h3>
+              <p data-en="Every solution is built for your case, your tools, your context.">Chaque solution est construite pour votre cas, vos outils, votre contexte.</p>
             </div>
           </div>
           <div class="diff-item reveal reveal-delay-3">
@@ -1318,8 +1377,8 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
             </div>
             <div class="diff-content">
-              <h3>Résultat dès la première semaine</h3>
-              <p>Gains rapides et mesurables, pas des projets à 6 mois.</p>
+              <h3 data-en="Results from the first week">Résultat dès la première semaine</h3>
+              <p data-en="Fast, measurable gains, not 6-month projects.">Gains rapides et mesurables, pas des projets à 6 mois.</p>
             </div>
           </div>
         </div>
@@ -1327,8 +1386,8 @@
       <div class="founder-card reveal">
         <img src="images/founder.jpeg" alt="Fondateur de Caza Comm" loading="lazy" />
         <div class="founder-overlay">
-          <p class="founder-quote">"L'IA ne remplace pas l'humain, elle l'amplifie. Mon rôle, c'est de vous donner cette puissance sans la complexité."</p>
-          <p class="founder-name">Fondateur, Caza Comm</p>
+          <p class="founder-quote" data-en="&quot;AI doesn't replace people, it amplifies them. My job is to give you that power without the complexity.&quot;">"L'IA ne remplace pas l'humain, elle l'amplifie. Mon rôle, c'est de vous donner cette puissance sans la complexité."</p>
+          <p class="founder-name" data-en="Founder, Caza Comm">Fondateur, Caza Comm</p>
         </div>
       </div>
     </div>
@@ -1339,25 +1398,25 @@
 <section id="metrics" class="light" aria-label="Nos engagements">
   <div class="section-inner">
     <div class="metrics-header reveal">
-      <div class="section-tag">En quelques mots</div>
-      <h2 class="section-title">Ce qui nous définit</h2>
+      <div class="section-tag" data-en="In a few words">En quelques mots</div>
+      <h2 class="section-title" data-en="What defines us">Ce qui nous définit</h2>
     </div>
     <div class="metrics-grid">
       <div class="metric-card reveal reveal-delay-1">
         <div class="metric-value">100%</div>
-        <div class="metric-label">Sur mesure, sans exception</div>
+        <div class="metric-label" data-en="Custom, no exceptions">Sur mesure, sans exception</div>
       </div>
       <div class="metric-card reveal reveal-delay-2">
         <div class="metric-value">&lt;24h</div>
-        <div class="metric-label">Réponse personnelle garantie</div>
+        <div class="metric-label" data-en="Personal reply guaranteed">Réponse personnelle garantie</div>
       </div>
       <div class="metric-card reveal reveal-delay-3">
         <div class="metric-value">FR</div>
-        <div class="metric-label">Basé en France, RGPD conforme</div>
+        <div class="metric-label" data-en="Based in France, GDPR compliant">Basé en France, RGPD conforme</div>
       </div>
       <div class="metric-card reveal reveal-delay-4">
-        <div class="metric-value">Vous</div>
-        <div class="metric-label">Indépendants, dirigeants, équipes, peu importe la taille</div>
+        <div class="metric-value" data-en="You">Vous</div>
+        <div class="metric-label" data-en="Freelancers, founders, teams, whatever the size">Indépendants, dirigeants, équipes, peu importe la taille</div>
       </div>
     </div>
   </div>
@@ -1368,15 +1427,15 @@
   <div class="section-inner">
     <div class="contact-centered reveal">
       <div class="section-tag" style="justify-content:center;">Contact</div>
-      <h2>Parlons de<br/>votre projet.</h2>
+      <h2 data-en="Let's talk about&lt;br/&gt;your project.">Parlons de<br/>votre projet.</h2>
       <div class="contact-ctas">
         <a href="mailto:caza.comm@gmail.com" class="btn-cta-email">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          Envoyer un email
+          <span data-en="Send an email">Envoyer un email</span>
         </a>
         <a href="https://wa.me/33767197467" class="btn-cta-whatsapp" target="_blank" rel="noopener noreferrer">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.514 5.836L.055 23.45c-.081.29.198.556.484.463l5.738-1.499A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.015-1.371l-.36-.214-3.726.974.997-3.617-.235-.374A9.818 9.818 0 1 1 12 21.818z"/></svg>
-          Écrire sur WhatsApp
+          <span data-en="Message on WhatsApp">Écrire sur WhatsApp</span>
         </a>
       </div>
       <div class="contact-meta">
@@ -1398,19 +1457,19 @@
     <div class="footer-top">
       <div class="footer-brand">
         <img src="images/logo.png" alt="Caza Comm" loading="lazy" />
-        <p>Automatisations et IA sur mesure pour tous ceux qui veulent aller plus loin.</p>
+        <p data-en="Custom automation and AI for everyone who wants to go further.">Automatisations et IA sur mesure pour tous ceux qui veulent aller plus loin.</p>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <h4 data-en="Navigation">Navigation</h4>
         <ul>
-          <li><a href="#hero">Accueil</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pourquoi">À propos</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#hero" data-en="Home">Accueil</a></li>
+          <li><a href="#services" data-en="Services">Services</a></li>
+          <li><a href="#pourquoi" data-en="About">À propos</a></li>
+          <li><a href="#contact" data-en="Contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact direct</h4>
+        <h4 data-en="Direct contact">Contact direct</h4>
         <ul>
           <li><a href="mailto:caza.comm@gmail.com">caza.comm@gmail.com</a></li>
           <li><a href="tel:+33767197467">07 67 19 74 67</a></li>
@@ -1419,13 +1478,57 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Caza Comm. Tous droits réservés.</span>
-      <span>Fait avec passion en France</span>
+      <span data-en="© 2026 Caza Comm. All rights reserved.">© 2026 Caza Comm. Tous droits réservés.</span>
+      <span data-en="Made with passion in France">Fait avec passion en France</span>
     </div>
   </div>
 </footer>
 
 <script>
+  // ── LANGUE COURANTE (partagée) ──
+  function cazaGetLang() {
+    return localStorage.getItem('cazaLang') === 'en' ? 'en' : 'fr';
+  }
+
+  // ── i18n FR / EN (échange le contenu sur place, sans recharger) ──
+  (function() {
+    const toggle = document.getElementById('langToggle');
+    const nodes = document.querySelectorAll('[data-en]');
+    // Capture la version FR d'origine
+    nodes.forEach(el => { el.dataset.fr = el.innerHTML; });
+
+    function apply(lang) {
+      nodes.forEach(el => {
+        const v = lang === 'en' ? el.dataset.en : el.dataset.fr;
+        if (v != null) el.innerHTML = v;
+      });
+      document.documentElement.lang = lang;
+      if (toggle) {
+        toggle.querySelectorAll('.lang-opt').forEach(b => {
+          const on = b.dataset.lang === lang;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+      document.dispatchEvent(new CustomEvent('cazalangchange', { detail: { lang } }));
+    }
+
+    let cur = cazaGetLang();
+    apply(cur);
+
+    if (toggle) {
+      toggle.addEventListener('click', e => {
+        const btn = e.target.closest('.lang-opt');
+        if (!btn) return;
+        const lang = btn.dataset.lang;
+        if (lang === cur) return;
+        cur = lang;
+        localStorage.setItem('cazaLang', lang);
+        apply(lang);
+      });
+    }
+  })();
+
   // ── NAVBAR HIDE/SHOW ──
   (function() {
     let lastScroll = 0;
@@ -1467,29 +1570,32 @@
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   })();
 
-  // ── OVERLAY VALEUR ROI (opacité liée au scroll sur #services) ──
+  // ── OVERLAY VALEUR : pin au scroll + flou du fond ──
   (function() {
+    const track   = document.getElementById('servicesTrack');
+    const spacer  = track && track.querySelector('.services-pin-spacer');
+    const blurEl  = document.getElementById('servicesBlur');
     const overlay = document.getElementById('valueOverlay');
-    const section = document.getElementById('services');
-    if (!overlay || !section) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!track || !spacer || !blurEl || !overlay) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // CSS désactive le pin
+
+    const MAX_BLUR = 12;             // px de flou au pic
     let ticking = false;
 
     function compute() {
       ticking = false;
-      const vh = window.innerHeight;
-      const top = section.getBoundingClientRect().top;
-      const fadeInStart = vh;          // la section entre par le bas du viewport
-      const fullStart   = vh * 0.45;   // pic d'opacité (avant de lire les cartes)
-      const fullEnd     = vh * 0.10;
-      const fadeOutEnd  = -vh * 0.35;  // la section ressort par le haut
-      let op;
-      if (top >= fadeInStart || top <= fadeOutEnd) op = 0;
-      else if (top > fullStart) op = (fadeInStart - top) / (fadeInStart - fullStart);
-      else if (top >= fullEnd) op = 1;
-      else op = (top - fadeOutEnd) / (fullEnd - fadeOutEnd);
-      if (reduced) op = op > 0.5 ? 1 : 0; // pas de fondu progressif
-      overlay.style.opacity = op.toFixed(3);
+      const pin = spacer.offsetHeight || 1;          // distance de scroll du pin
+      const trackTop = track.getBoundingClientRect().top;
+      // p : 0 quand la section atteint le haut, 1 à la fin du pin
+      let p = trackTop >= 0 ? 0 : Math.min(1, -trackTop / pin);
+      // Trapèze : 0 → 1 (montée), petit plateau au pic, 1 → 0 (descente)
+      let t;
+      if (p < 0.42) t = p / 0.42;
+      else if (p > 0.58) t = (1 - p) / 0.42;
+      else t = 1;
+      if (t < 0) t = 0; if (t > 1) t = 1;
+      blurEl.style.setProperty('--svc-blur', (t * MAX_BLUR).toFixed(2) + 'px');
+      overlay.style.opacity = t.toFixed(3);
     }
     function onScroll() {
       if (!ticking) { ticking = true; requestAnimationFrame(compute); }
@@ -1605,11 +1711,58 @@
     if(!reduced) setInterval(tickTime, 1000);
 
     // 3) Agents : barres de progression cyclées
+    // Textes dynamiques traduisibles (les ticks lisent la langue courante)
+    let lang = cazaGetLang();
+    const DASH = {
+      fr: {
+        done: 'Terminé',
+        agents: {
+          email:  { task: 'Tri inbox',     done: 'Inbox triée' },
+          social: { task: 'Post LinkedIn', done: 'Post publié' },
+          phone:  { task: 'Appel client',  done: 'Appel terminé' },
+          quote:  { task: 'Génération',    done: 'Devis #234 prêt' },
+        },
+        logs: [
+          'Email envoyé à client@artisan.fr',
+          'RDV ajouté au calendrier · jeudi 14h',
+          'Devis #234 généré en 1.2s',
+          'Post LinkedIn publié',
+          'Appel qualifié · transmis au commercial',
+          'Suivi prospect · relance programmée',
+          'Facture envoyée à fournisseur@xxx',
+          'Message WhatsApp traité',
+          'Note Notion synchronisée',
+          'Lead enrichi · score 87/100',
+        ],
+      },
+      en: {
+        done: 'Done',
+        agents: {
+          email:  { task: 'Sorting inbox', done: 'Inbox sorted' },
+          social: { task: 'LinkedIn post', done: 'Post published' },
+          phone:  { task: 'Client call',   done: 'Call completed' },
+          quote:  { task: 'Generating',    done: 'Quote #234 ready' },
+        },
+        logs: [
+          'Email sent to client@artisan.fr',
+          'Meeting added to calendar · Thursday 2pm',
+          'Quote #234 generated in 1.2s',
+          'LinkedIn post published',
+          'Call qualified · routed to sales',
+          'Prospect follow-up · reminder scheduled',
+          'Invoice sent to supplier@xxx',
+          'WhatsApp message handled',
+          'Notion note synced',
+          'Lead enriched · score 87/100',
+        ],
+      },
+    };
+
     const agents = [
-      { sel: '[data-agent="email"]',  task: 'Tri inbox',       speed: 1.2,  done: 'Inbox triée' },
-      { sel: '[data-agent="social"]', task: 'Post LinkedIn',   speed: 1.6,  done: 'Post publié' },
-      { sel: '[data-agent="phone"]',  task: 'Appel client',    speed: 0.9,  done: 'Appel terminé' },
-      { sel: '[data-agent="quote"]',  task: 'Génération',      speed: 1.4,  done: 'Devis #234 prêt' },
+      { sel: '[data-agent="email"]',  key: 'email',  speed: 1.2 },
+      { sel: '[data-agent="social"]', key: 'social', speed: 1.6 },
+      { sel: '[data-agent="phone"]',  key: 'phone',  speed: 0.9 },
+      { sel: '[data-agent="quote"]',  key: 'quote',  speed: 1.4 },
     ];
     const agentState = agents.map((a, i) => {
       const row = document.querySelector(a.sel);
@@ -1623,23 +1776,26 @@
         progress: i * 22,
       };
     }).filter(Boolean);
+    // Libellés initiaux dans la bonne langue
+    agentState.forEach(s => { s.task.textContent = DASH[lang].agents[s.cfg.key].task; });
 
     function tickAgents(){
       agentState.forEach(s => {
+        const a = DASH[lang].agents[s.cfg.key];
         s.progress += s.cfg.speed * (0.7 + Math.random() * 0.7);
         if(s.progress >= 100){
           s.progress = 100;
           s.row.classList.add('is-done');
           s.fill.style.transform = 'scaleX(1)';
-          s.pct.textContent = 'Terminé';
-          s.task.textContent = s.cfg.done;
+          s.pct.textContent = DASH[lang].done;
+          s.task.textContent = a.done;
           // recycle après 1.6s
           setTimeout(()=>{
             s.progress = 0;
             s.row.classList.remove('is-done');
             s.fill.style.transform = 'scaleX(0)';
             s.pct.textContent = '0%';
-            s.task.textContent = s.cfg.task;
+            s.task.textContent = DASH[lang].agents[s.cfg.key].task;
           }, 1600 + Math.random()*1200);
         } else {
           s.fill.style.transform = `scaleX(${s.progress/100})`;
@@ -1655,29 +1811,18 @@
       const stat = [0.80, 1.0, 0.55, 0.70];
       agentState.forEach((s, i) => {
         s.fill.style.transform = `scaleX(${stat[i]})`;
-        s.pct.textContent = stat[i] === 1 ? 'Terminé' : Math.round(stat[i]*100) + '%';
+        s.pct.textContent = stat[i] === 1 ? DASH[lang].done : Math.round(stat[i]*100) + '%';
         if(stat[i] === 1) s.row.classList.add('is-done');
       });
     }
 
     // 4) Logs feed
     const logsEl = document.getElementById('aiLogs');
-    const logsPool = [
-      'Email envoyé à client@artisan.fr',
-      'RDV ajouté au calendrier · jeudi 14h',
-      'Devis #234 généré en 1.2s',
-      'Post LinkedIn publié',
-      'Appel qualifié · transmis au commercial',
-      'Suivi prospect · relance programmée',
-      'Facture envoyée à fournisseur@xxx',
-      'Message WhatsApp traité',
-      'Note Notion synchronisée',
-      'Lead enrichi · score 87/100',
-    ];
     let logIdx = 0;
     function pushLog(){
       if(!logsEl) return;
-      const txt = logsPool[logIdx % logsPool.length];
+      const pool = DASH[lang].logs;
+      const txt = pool[logIdx % pool.length];
       logIdx++;
       const t = new Date();
       const time = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0') + ':' + String(t.getSeconds()).padStart(2,'0');
@@ -1693,6 +1838,17 @@
     // Seed
     pushLog(); pushLog();
     if(!reduced) setInterval(pushLog, 2800);
+
+    // Bascule de langue : met à jour les libellés dynamiques affichés
+    document.addEventListener('cazalangchange', e => {
+      lang = e.detail.lang;
+      agentState.forEach(s => {
+        const a = DASH[lang].agents[s.cfg.key];
+        s.task.textContent = s.row.classList.contains('is-done') ? a.done : a.task;
+        if(s.pct.textContent === 'Terminé' || s.pct.textContent === 'Done') s.pct.textContent = DASH[lang].done;
+      });
+      if(logsEl){ logsEl.innerHTML = ''; logIdx = 0; pushLog(); pushLog(); }
+    });
   })();
 </script>
 </body>
