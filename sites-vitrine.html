@@ -334,6 +334,20 @@
     @media (max-width:520px){.banner{padding:18px}.contactLine a{flex:1 1 100%}.mapWrap iframe{height:200px}}
     @media (min-width:900px){.mapWrap iframe{height:280px}}
 
+    /* ====== Formulaire contact (Web3Forms) ====== */
+    .cform{display:grid;gap:12px;margin-top:6px}
+    .cform .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .cform label{display:block;font-weight:800;font-size:12.5px;letter-spacing:.02em;color:rgba(11,15,20,.7);margin-bottom:6px}
+    .cform input,.cform textarea{width:100%;box-sizing:border-box;padding:11px 13px;border-radius:12px;border:1px solid rgba(16,24,40,.14);background:#fff;color:var(--text);font-weight:600}
+    .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(22,193,114,.16)}
+    .cform textarea{min-height:120px;resize:vertical}
+    .cform .full{grid-column:1/-1}
+    .cform .btn-primary{width:100%;justify-content:center;padding:14px 16px}
+    .formStatus{margin:8px 0 0 0;font-weight:800;font-size:13.5px;min-height:1em;color:var(--muted)}
+    .formStatus.ok{color:#0b6b40}
+    .formStatus.err{color:#b91c1c}
+    @media (max-width:560px){.cform .row{grid-template-columns:1fr}}
+
     /* ====== Footer ====== */
     footer{padding:36px 0 70px 0;background:rgba(255,255,255,.70);border-top:1px solid rgba(16,24,40,.08)}
     .footGrid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:14px}
@@ -501,44 +515,8 @@
       </div>
     </section>
 
-    <!-- ====== Réalisations ====== -->
-    <section class="section bg-dark" id="realisations" aria-label="Réalisations">
-      <div class="container">
-        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;">
-          <div class="reveal">
-            <span class="kicker"><span class="dot" aria-hidden="true"></span>Réalisations</span>
-            <h2 style="color:#e9eef5">Nos sites, en conditions réelles.</h2>
-          </div>
-          <div class="reveal">
-            <span class="pill" style="background:rgba(22,193,114,.14);border-color:rgba(22,193,114,.32);color:#e9eef5;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none"><b style="color:#e9eef5">Voici 6 de nos projets</b></span>
-          </div>
-        </div>
-
-        <div class="projects" id="projects" aria-label="Grille de projets">
-          <a class="proj reveal" href="https://atptarbes.fr" target="_blank" rel="noopener" aria-label="Ouvrir ATP Tarbes">
-            <div class="projMedia" style="background-image:url('images/projet1.jpeg');"></div>
-          </a>
-          <a class="proj reveal" href="https://belvedere65.com" target="_blank" rel="noopener" aria-label="Ouvrir Le Belvédère">
-            <div class="projMedia" style="background-image:url('images/projet2.jpeg');"></div>
-          </a>
-          <a class="proj reveal" href="https://www.lasolinapizza.fr" target="_blank" rel="noopener" aria-label="Ouvrir La Solina Pizza">
-            <div class="projMedia" style="background-image:url('images/projet3.jpeg');"></div>
-          </a>
-          <a class="proj reveal" href="https://birdhunter65.fr" target="_blank" rel="noopener" aria-label="Ouvrir Bird Hunter 65">
-            <div class="projMedia" style="background-image:url('images/projet4.jpeg');"></div>
-          </a>
-          <a class="proj reveal" href="https://lacasadelcookie.fr" target="_blank" rel="noopener" aria-label="Ouvrir La Casa Del Cookie">
-            <div class="projMedia" style="background-image:url('images/projet5.jpeg');"></div>
-          </a>
-          <a class="proj reveal" href="https://adesign-france.fr" target="_blank" rel="noopener" aria-label="Ouvrir A Design France">
-            <div class="projMedia" style="background-image:url('images/logo-adesign.png');background-color:#fff;background-size:contain;background-repeat:no-repeat"></div>
-          </a>
-        </div>
-      </div>
-    </section>
-
     <!-- ====== Tarification ====== -->
-    <section class="section bg-light" id="tarification" aria-label="Tarification">
+    <section class="section bg-dark" id="tarification" aria-label="Tarification">
       <div class="container">
         <div class="pricingTop reveal">
           <div>
@@ -705,8 +683,8 @@
           <div class="wrap">
             <div>
               <span class="kicker"><span class="dot" aria-hidden="true"></span>Contact</span>
-              <h2>On vous répond rapidement.</h2>
-              <p>Discutons de votre projet : on vous propose une approche claire, un devis ferme et une livraison rapide.</p>
+              <h2>Parlons de votre projet.</h2>
+              <p>Un premier échange gratuit et sans engagement : on vous propose une approche claire, un devis ferme et une livraison rapide.</p>
 
               <p class="center-btn" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
                 <a class="btn btn-primary btn-pulse" href="https://cazacomm.youcanbook.me" target="_blank" rel="noopener" aria-label="Réserver un appel">Réserver un appel</a>
@@ -739,19 +717,38 @@
                 </a>
               </div>
 
-              <div class="mapWrap" aria-label="Carte Google">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2717.707922998515!2d0.07396327591924232!3d43.2312280711253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a82d523646511b%3A0x7c6480aa41b4cda!2sCaza%20Comm!5e1!3m2!1sfr!2sfr!4v1768816860535!5m2!1sfr!2sfr"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  allowfullscreen
-                  aria-label="Localisation CAZA COMM sur Google Maps"></iframe>
-                <div class="mapActions">
-                  <a class="btn btn-ghost btn-small"
-                     href="https://www.google.com/maps/place/Caza+Comm/@43.2312281,0.0739633,624m/data=!3m2!1e3!4b1!4m6!3m5!1s0x12a82d523646511b:0x7c6480aa41b4cda!8m2!3d43.2312281!4d0.0765382!16s%2Fg%2F11x97nzmxx?entry=ttu"
-                     target="_blank" rel="noopener" aria-label="Ouvrir sur Google Maps">Ouvrir sur Google Maps</a>
+              <form class="cform" id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="margin-top:16px">
+                <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
+                <input type="hidden" name="subject" value="Nouveau message site internet — cazacomm.fr" />
+                <input type="hidden" name="from_name" value="Site Caza Comm — Sites Internet" />
+                <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+                <div class="row">
+                  <div>
+                    <label for="cf-name">Nom</label>
+                    <input type="text" id="cf-name" name="name" autocomplete="name" required />
+                  </div>
+                  <div>
+                    <label for="cf-company">Entreprise</label>
+                    <input type="text" id="cf-company" name="company" autocomplete="organization" />
+                  </div>
                 </div>
-              </div>
+                <div class="row">
+                  <div>
+                    <label for="cf-email">Email</label>
+                    <input type="email" id="cf-email" name="email" autocomplete="email" required />
+                  </div>
+                  <div>
+                    <label for="cf-phone">Téléphone</label>
+                    <input type="tel" id="cf-phone" name="phone" autocomplete="tel" />
+                  </div>
+                </div>
+                <div class="full">
+                  <label for="cf-message">Votre projet</label>
+                  <textarea id="cf-message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <p class="formStatus" id="formStatus" role="status" aria-live="polite"></p>
+              </form>
             </div>
           </div>
         </div>
@@ -769,7 +766,6 @@
         </div>
         <div class="foot">
           <h3>Sections</h3>
-          <a href="#realisations">Réalisations</a>
           <a href="#tarification">Tarification</a>
           <a href="#humain">L’humain derrière</a>
           <a href="#contact">Contact</a>
@@ -871,6 +867,40 @@
     }
     if(revPrev) revPrev.addEventListener('click', ()=> scrollReviews(-1));
     if(revNext) revNext.addEventListener('click', ()=> scrollReviews(1));
+
+    // Formulaire contact (Web3Forms, sans rechargement)
+    const cForm = $('#contactForm');
+    const cStatus = $('#formStatus');
+    if(cForm && cStatus){
+      cForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const btn = cForm.querySelector('button[type="submit"]');
+        cStatus.className = 'formStatus';
+        cStatus.textContent = 'Envoi en cours…';
+        if(btn) btn.disabled = true;
+        try{
+          const res = await fetch(cForm.action, {
+            method: 'POST',
+            body: new FormData(cForm),
+            headers: { 'Accept': 'application/json' }
+          });
+          const data = await res.json().catch(()=> ({}));
+          if(res.ok && data.success){
+            cForm.reset();
+            cStatus.classList.add('ok');
+            cStatus.textContent = 'Merci ! Votre message a bien été envoyé, on vous répond vite.';
+          } else {
+            cStatus.classList.add('err');
+            cStatus.textContent = "Une erreur est survenue. Réessayez ou écrivez-nous à caza.comm@gmail.com.";
+          }
+        } catch(err){
+          cStatus.classList.add('err');
+          cStatus.textContent = "Une erreur est survenue. Réessayez ou écrivez-nous à caza.comm@gmail.com.";
+        } finally {
+          if(btn) btn.disabled = false;
+        }
+      });
+    }
   </script>
 </body>
 </html>
