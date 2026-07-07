@@ -45,10 +45,55 @@
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 4px; }
 
+    /* ─── BARRE TOGGLE IA / SITES INTERNET ─── */
+    .page-toggle-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(6,6,6,0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 1100;
+    }
+    .page-toggle {
+      position: relative;
+      display: inline-flex;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 999px;
+      padding: 3px;
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em;
+    }
+    .page-toggle-opt {
+      position: relative; z-index: 2;
+      padding: 6px 16px; border-radius: 999px;
+      color: rgba(245,245,243,0.6);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+    .page-toggle-opt:hover { color: var(--white); }
+    .page-toggle[data-active="ia"] .page-toggle-opt--ia,
+    .page-toggle[data-active="web"] .page-toggle-opt--web { color: #fff; }
+    .page-toggle-slider {
+      position: absolute; top: 3px; left: 3px;
+      height: calc(100% - 6px); width: 0;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(42,138,80,0.35);
+      transition: transform 0.4s cubic-bezier(.4,0,.2,1), width 0.4s cubic-bezier(.4,0,.2,1);
+      z-index: 1;
+    }
+    @media (max-width: 480px) {
+      .page-toggle-opt { padding: 6px 12px; font-size: 12px; }
+    }
+
     /* ─── NAVBAR ─── */
     #navbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 44px; left: 0; right: 0;
       z-index: 1000;
       padding: 0 5%;
       height: 72px;
@@ -1167,6 +1212,15 @@
 </head>
 <body>
 
+<!-- ░░ BARRE TOGGLE IA / SITES INTERNET ░░ -->
+<div class="page-toggle-bar" role="navigation" aria-label="Sélecteur de page">
+  <div class="page-toggle" data-active="ia">
+    <a href="index.html" class="page-toggle-opt page-toggle-opt--ia" aria-current="page">Outils IA</a>
+    <a href="sites-vitrine.html" class="page-toggle-opt page-toggle-opt--web">Sites Internet</a>
+    <span class="page-toggle-slider" aria-hidden="true"></span>
+  </div>
+</div>
+
 <!-- ░░ NAVBAR ░░ -->
 <nav id="navbar" role="navigation" aria-label="Navigation principale">
   <a href="#hero" class="nav-logo">
@@ -2123,6 +2177,27 @@
         if(btn) btn.disabled = false;
       }
     });
+  })();
+
+  // Slider du toggle IA / Sites Internet (s'adapte à la largeur de l'option active)
+  (function(){
+    function fitToggleSlider(){
+      const tg = document.querySelector('.page-toggle');
+      if(!tg) return;
+      const slider = tg.querySelector('.page-toggle-slider');
+      const active = tg.dataset.active === 'web'
+        ? tg.querySelector('.page-toggle-opt--web')
+        : tg.querySelector('.page-toggle-opt--ia');
+      if(!slider || !active) return;
+      const tgRect = tg.getBoundingClientRect();
+      const aRect = active.getBoundingClientRect();
+      slider.style.width = aRect.width + 'px';
+      slider.style.transform = 'translateX(' + (aRect.left - tgRect.left - 3) + 'px)';
+    }
+    fitToggleSlider();
+    window.addEventListener('resize', fitToggleSlider);
+    if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fitToggleSlider); }
+    setTimeout(fitToggleSlider, 200);
   })();
 </script>
 </body>
