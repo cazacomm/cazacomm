@@ -110,8 +110,7 @@
     .page-toggle{position:relative;display:inline-flex;background:rgba(16,24,40,.06);border-radius:999px;padding:3px;font-family:var(--ff);font-size:12.5px;font-weight:600;letter-spacing:.01em}
     .page-toggle-opt{position:relative;z-index:2;padding:6px 16px;border-radius:999px;color:var(--muted);text-decoration:none;transition:color .3s ease;white-space:nowrap}
     .page-toggle-opt:hover{color:var(--text)}
-    .page-toggle[data-active="ia"] .page-toggle-opt--ia,
-    .page-toggle[data-active="web"] .page-toggle-opt--web{color:#fff}
+    .page-toggle-opt.is-active{color:#fff}
     .page-toggle-slider{position:absolute;top:3px;left:3px;height:calc(100% - 6px);background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);border-radius:999px;box-shadow:0 4px 14px rgba(22,193,114,.35);transition:transform .4s cubic-bezier(.4,0,.2,1),width .4s cubic-bezier(.4,0,.2,1);z-index:1;width:0}
     @media (max-width:480px){.page-toggle-opt{padding:6px 12px;font-size:12px}}
 
@@ -407,8 +406,9 @@
   <!-- ====== Toggle page (Outils IA / Sites Internet) ====== -->
   <div class="page-toggle-bar" role="navigation" aria-label="Sélecteur de page">
     <div class="page-toggle" data-active="web">
-      <a href="index.html" class="page-toggle-opt page-toggle-opt--ia">Outils IA</a>
-      <a href="sites-vitrine.html" class="page-toggle-opt page-toggle-opt--web" aria-current="page">Sites Internet</a>
+      <a href="index.html" class="page-toggle-opt page-toggle-opt--ia">Agents IA</a>
+      <a href="pub.html" class="page-toggle-opt page-toggle-opt--pub">Publicité</a>
+      <a href="sites-vitrine.html" class="page-toggle-opt page-toggle-opt--web is-active" aria-current="page">Sites Internet</a>
       <span class="page-toggle-slider" aria-hidden="true"></span>
     </div>
   </div>
@@ -557,7 +557,6 @@
 
           <div class="pricingCtas">
             <a class="btn btn-primary" href="#contact" aria-label="Démarrer mon projet">Démarrer mon projet</a>
-            <a class="btn btn-ghost" href="https://cazacomm.youcanbook.me" target="_blank" rel="noopener" aria-label="Réserver un appel">Réserver un appel</a>
           </div>
         </div>
       </div>
@@ -682,17 +681,7 @@
         <div class="banner reveal">
           <div class="wrap">
             <div>
-              <span class="kicker"><span class="dot" aria-hidden="true"></span>Contact</span>
               <h2>Parlons de votre projet.</h2>
-              <p>Un premier échange gratuit et sans engagement : on vous propose une approche claire, un devis ferme et une livraison rapide.</p>
-
-              <p class="center-btn" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-                <a class="btn btn-primary btn-pulse" href="https://cazacomm.youcanbook.me" target="_blank" rel="noopener" aria-label="Réserver un appel">Réserver un appel</a>
-                <a class="btn btn-wa" href="https://wa.me/33767197467?text=Bonjour%20CAZA%20COMM%2C%20je%20souhaite%20en%20discuter%20pour%20un%20site%20web." target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">WhatsApp</a>
-                <a class="btn btn-ghost" href="#tarification" aria-label="Voir les plans">Voir les plans</a>
-              </p>
-
-              <p style="margin-top:12px">Email : <b style="color:var(--text)">caza.comm@gmail.com</b></p>
             </div>
 
             <div class="contactBox" aria-label="Coordonnées">
@@ -703,17 +692,9 @@
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.5 2.1L9 10.4a16 16 0 0 0 4.6 4.6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.4.6A2 2 0 0 1 22 16.9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   Appeler
                 </a>
-                <a href="https://cazacomm.youcanbook.me" target="_blank" rel="noopener" aria-label="Être appelé">
-                  <span class="ico-emoji" aria-hidden="true">☎️</span>
-                  Être appelé
-                </a>
                 <a href="mailto:caza.comm@gmail.com" aria-label="Envoyer un email">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/><path d="m22 6-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   Email
-                </a>
-                <a href="https://wa.me/33767197467?text=Bonjour%20CAZA%20COMM%2C%20j%27ai%20une%20question%20pour%20un%20site%20web." aria-label="WhatsApp CAZA COMM">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.3A8 8 0 1 1 20 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  WhatsApp
                 </a>
               </div>
 
@@ -769,7 +750,8 @@
           <a href="#tarification">Tarification</a>
           <a href="#humain">L’humain derrière</a>
           <a href="#contact">Contact</a>
-          <a href="index.html">Outils IA</a>
+          <a href="index.html">Agents IA</a>
+          <a href="pub.html">Publicité</a>
         </div>
         <div class="foot">
           <h3>Contact</h3>
@@ -807,9 +789,7 @@
       const tg = document.querySelector('.page-toggle');
       if(!tg) return;
       const slider = tg.querySelector('.page-toggle-slider');
-      const active = tg.dataset.active === 'web'
-        ? tg.querySelector('.page-toggle-opt--web')
-        : tg.querySelector('.page-toggle-opt--ia');
+      const active = tg.querySelector('.page-toggle-opt.is-active');
       if(!slider || !active) return;
       const tgRect = tg.getBoundingClientRect();
       const aRect = active.getBoundingClientRect();
