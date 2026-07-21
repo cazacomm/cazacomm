@@ -1338,7 +1338,14 @@
       box-shadow: 0 0 10px rgba(111,207,151,0.75);
       transform: scale(1.4);
     }
-    @media (max-width: 480px) { .fp-dots { left: 8px; gap: 11px; } }
+    @media (max-width: 768px) { .fp-dots { left: 3px; gap: 10px; padding: 14px 1px; } }
+    @media (max-width: 560px) { .fp-slide { padding-left: 22px !important; } .fp-slide--contact { padding-left: 0 !important; } }
+    @media (max-width: 980px) {
+      #hero .hero-inner { display: flex; flex-direction: column; align-items: stretch; }
+      .hero-inner > * { min-width: 0; max-width: 100%; }
+      .hero-content { overflow-wrap: break-word; }
+      .site-preview, .ads-manager, .ai-dashboard { width: 100%; max-width: 340px; }
+    }
 
     /* ── Indice de swipe animé (doigt) qui invite à balayer, disparaît après le 1er swipe ── */
     .fp-swipe-hint {
@@ -2103,8 +2110,6 @@
           <a href="mailto:caza.comm@gmail.com">caza.comm@gmail.com</a>
           <span class="contact-meta-dot"></span>
           <a href="tel:+33767197467">+33 7 67 19 74 67</a>
-          <span class="contact-meta-dot"></span>
-          <span>France</span>
         </div>
       </div>
     </div>
