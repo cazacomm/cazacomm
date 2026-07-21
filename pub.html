@@ -1258,59 +1258,415 @@
     @media (max-width: 360px) {
       .metrics-grid { grid-template-columns: 1fr; }
     }
+
+    /* ═══════════════════════════════════════════════════════
+       NAVIGATION SWIPE GUIDÉE (fullpage) — mobile & desktop
+       ═══════════════════════════════════════════════════════ */
+    :root { --bar-h: 48px; }
+
+    html { height: 100%; }
+    body {
+      height: 100vh;
+      height: 100dvh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: none;
+    }
+    #navbar, .mobile-menu, .hamburger { display: none !important; }
+
+    .fp-slide {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      min-height: 100vh !important;
+      min-height: 100dvh !important;
+      padding: calc(var(--bar-h) + 18px) 5% 26px !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    .fp-slide > .section-inner,
+    .fp-slide > .valeur-inner { width: 100%; }
+
+    .page-toggle-bar {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: var(--bar-h);
+      padding: 0 14px;
+      gap: 8px;
+    }
+    .topbar-logo { justify-self: start; display: inline-flex; align-items: center; }
+    .topbar-logo img { height: 24px; width: auto; display: block; }
+    .page-toggle-bar .page-toggle { justify-self: center; }
+    .page-toggle-bar .lang-toggle { justify-self: end; }
+    @media (max-width: 560px) { .topbar-logo img { height: 20px; } }
+    @media (max-width: 430px) { .topbar-logo { display: none; } }
+
+    .fp-dots {
+      position: fixed;
+      left: 14px; top: 50%;
+      transform: translateY(-50%);
+      z-index: 1200;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 13px;
+      padding: 16px 8px;
+      pointer-events: none;
+    }
+    .fp-dots::before {
+      content: '';
+      position: absolute;
+      top: 8px; bottom: 8px; left: 50%;
+      width: 1.5px; transform: translateX(-50%);
+      background: linear-gradient(to bottom, transparent, rgba(111,207,151,0.28) 14%, rgba(111,207,151,0.28) 86%, transparent);
+      z-index: -1;
+    }
+    .fp-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(245,245,243,0.22);
+      transition: all .35s cubic-bezier(.4,0,.2,1);
+    }
+    .fp-dot.is-active {
+      background: var(--green-light);
+      box-shadow: 0 0 10px rgba(111,207,151,0.75);
+      transform: scale(1.4);
+    }
+    @media (max-width: 480px) { .fp-dots { left: 8px; gap: 11px; } }
+
+    .fp-swipe-hint {
+      position: fixed;
+      left: 50%; bottom: 20px;
+      transform: translateX(-50%);
+      z-index: 1200;
+      display: flex; flex-direction: column; align-items: center; gap: 5px;
+      color: var(--green-light);
+      transition: opacity .5s ease;
+      pointer-events: none;
+    }
+    .fp-swipe-hint.is-hidden { opacity: 0; }
+    .fp-swipe-finger {
+      animation: fpFinger 1.8s cubic-bezier(.4,0,.2,1) infinite;
+      filter: drop-shadow(0 0 6px rgba(111,207,151,0.5));
+    }
+    @keyframes fpFinger {
+      0%, 100% { transform: translateY(7px);  opacity: .45; }
+      50%      { transform: translateY(-7px); opacity: 1; }
+    }
+    .fp-swipe-label {
+      font-size: 9.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(111,207,151,0.8);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fp-swipe-finger { animation: none; }
+      body { scroll-snap-type: none; scroll-behavior: auto; }
+    }
+
+    #valeur { background: var(--black); text-align: center; overflow: hidden; }
+    #valeur::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 45%, rgba(42,138,80,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .valeur-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 2; }
+    .valeur-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.9rem, 6vw, 3.4rem);
+      line-height: 1.12; letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: clamp(16px, 3vw, 24px);
+    }
+    .valeur-title .accent {
+      background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 70%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .valeur-sub {
+      font-size: clamp(1rem, 2.6vw, 1.3rem);
+      color: rgba(245,245,243,0.65);
+      line-height: 1.6; max-width: 580px; margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .section-header { margin-bottom: 20px !important; }
+      .section-title { font-size: 1.55rem; }
+      .section-tag { margin-bottom: 10px; }
+      #hero .hero-inner { gap: 20px; }
+      .hero-badge { margin-bottom: 12px; padding: 5px 12px; font-size: 0.72rem; }
+      .hero-title { font-size: clamp(1.65rem, 7vw, 2.2rem); margin-bottom: 12px; }
+      .hero-sub { font-size: 0.9rem; margin-bottom: 16px; }
+      .ai-dashboard { max-width: 330px; }
+      .ai-dash-frame { padding: 10px; }
+      .ai-dash-logs { min-height: 48px; max-height: 48px; }
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .service-card { padding: 14px 13px; border-radius: 12px; }
+      .service-icon { width: 34px; height: 34px; margin-bottom: 9px; }
+      .service-icon svg { width: 18px; height: 18px; }
+      .service-title { font-size: 0.85rem; margin-bottom: 4px; line-height: 1.2; }
+      .service-desc { font-size: 0.72rem; line-height: 1.35; }
+      .services-grid .service-card:nth-child(5) { grid-column: 1 / -1; }
+      .method-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .method-step { padding: 15px 14px; }
+      .method-step::after { display: none; }
+      .method-num { width: 30px; height: 30px; font-size: 0.95rem; margin-bottom: 10px; border-radius: 10px; }
+      .method-step h3 { font-size: 0.9rem; margin-bottom: 5px; }
+      .method-step p { font-size: 0.74rem; line-height: 1.35; }
+      .pourquoi-grid { gap: 24px; }
+      .differentiators { gap: 16px; }
+      .diff-item { gap: 12px; }
+      .diff-icon { width: 36px; height: 36px; }
+      .diff-content h3 { font-size: 0.92rem; }
+      .diff-content p { font-size: 0.8rem; }
+      .founder-card img { height: 190px; }
+      .founder-overlay { padding: 18px; }
+      .founder-quote { font-size: 0.9rem; }
+      .metrics-header { margin-bottom: 22px; }
+      .metric-card { padding: 22px 14px; }
+      .faq-header { margin-bottom: 20px; }
+      .faq-q { padding: 14px 16px; font-size: 0.88rem; }
+      #contact .contact-centered > p { margin-bottom: 22px; }
+      .contact-ctas { margin-bottom: 22px; }
+      .contact-form { margin-bottom: 22px; }
+    }
+    @media (max-width: 560px) and (max-height: 720px) {
+      .ai-dash-logs { display: none; }
+      .ai-dash-agents .agent-row:nth-child(4) { display: none; }
+    }
+
+    /* ── Diapo AVIS : carrousel horizontal glissable ── */
+    #avis { background: var(--black); overflow: hidden; }
+    #avis .section-inner { max-width: 1240px; width: 100%; }
+    .reviews-head { text-align: center; margin-bottom: 26px; }
+    .reviews-rating {
+      display: inline-flex; align-items: center; gap: 9px; flex-wrap: wrap; justify-content: center;
+      margin-top: 12px; font-size: 0.92rem; color: rgba(245,245,243,0.7);
+    }
+    .reviews-rating .rr-stars { color: #ffc542; letter-spacing: 2px; font-size: 1.05rem; }
+    .reviews-rating b { color: var(--white); font-weight: 800; }
+    .reviews-track {
+      display: flex; gap: 16px;
+      overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      padding: 6px 4px 18px;
+      cursor: grab;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+    }
+    .reviews-track.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+    .reviews-track::-webkit-scrollbar { height: 6px; }
+    .reviews-track::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 999px; }
+    .reviews-track::-webkit-scrollbar-thumb { background: var(--green); border-radius: 999px; }
+    .review-card {
+      flex: 0 0 auto;
+      width: min(360px, 82vw);
+      scroll-snap-align: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 22px 22px 24px;
+      display: flex; flex-direction: column;
+      user-select: none;
+    }
+    .review-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .review-avatar {
+      width: 44px; height: 44px; flex: 0 0 auto; border-radius: 50%;
+      display: grid; place-items: center;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.15rem;
+      color: #fff;
+    }
+    .review-card:nth-child(6n+1) .review-avatar { background: linear-gradient(135deg,#2a8a50,#6fcf97); }
+    .review-card:nth-child(6n+2) .review-avatar { background: linear-gradient(135deg,#4285F4,#6fa8ff); }
+    .review-card:nth-child(6n+3) .review-avatar { background: linear-gradient(135deg,#a855f7,#c98bff); }
+    .review-card:nth-child(6n+4) .review-avatar { background: linear-gradient(135deg,#f59e0b,#fbbf5c); }
+    .review-card:nth-child(6n+5) .review-avatar { background: linear-gradient(135deg,#ef4444,#ff7a7a); }
+    .review-card:nth-child(6n+6) .review-avatar { background: linear-gradient(135deg,#14b8a6,#5fe0d0); }
+    .review-meta { flex: 1; min-width: 0; }
+    .review-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); }
+    .review-stars { color: #ffc542; font-size: 0.82rem; letter-spacing: 1px; margin-top: 2px; }
+    .review-g { width: 22px; height: 22px; flex: 0 0 auto; }
+    .review-quote { color: rgba(245,245,243,0.72); font-size: 0.92rem; line-height: 1.6; font-style: italic; }
+    .reviews-hint {
+      text-align: center; margin-top: 6px;
+      font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(111,207,151,0.75);
+    }
+    @media (max-width: 768px) {
+      .reviews-head { margin-bottom: 18px; }
+      .review-card { width: min(300px, 82vw); padding: 18px; border-radius: 14px; }
+      .review-quote { font-size: 0.85rem; }
+      .reviews-rating { font-size: 0.85rem; }
+    }
+
+    /* ── Diapo contact + footer réunis ── */
+    .fp-slide--contact { padding: 0 !important; justify-content: space-between; }
+    .fp-slide--contact #contact {
+      flex: 1 1 auto; min-height: 0;
+      padding: calc(var(--bar-h) + 26px) 5% 22px;
+      display: flex; align-items: center;
+    }
+    .fp-slide--contact footer { padding: 22px 5% 18px; }
+    @media (max-width: 768px) {
+      .fp-slide--contact #contact { padding-top: calc(var(--bar-h) + 18px); }
+      .fp-slide--contact footer { padding: 16px 5% 14px; }
+      .footer-top { margin-bottom: 20px; padding-bottom: 20px; gap: 20px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       THÈME COULEUR PUBLICITÉ — fonds bleu Meta + accents Google
+       (le vert et le noir restent pour le texte / les CTA)
+       ═══════════════════════════════════════════════════════ */
+    /* HERO : dégradé bleu Meta, texte blanc */
+    #hero {
+      background:
+        radial-gradient(ellipse 70% 55% at 72% 28%, rgba(24,119,242,0.50), transparent 70%),
+        radial-gradient(ellipse 55% 55% at 12% 88%, rgba(66,133,244,0.28), transparent 65%),
+        linear-gradient(160deg, #0b2f7a 0%, #08205a 55%, #04112f 100%);
+    }
+    #hero::before { background: none; }
+    /* bande "plateformes" sous le titre : logos Google + Meta */
+    .hero-platforms {
+      display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 26px;
+      padding: 9px 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    }
+    .hero-platforms .hp-sep { width: 1px; height: 16px; background: rgba(255,255,255,0.2); }
+    .hero-platforms .hp-item { display: inline-flex; align-items: center; gap: 7px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: #fff; }
+    .hero-platforms svg { display: block; }
+    .meta-word {
+      background: linear-gradient(90deg, #0866ff, #7a3ff2);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    /* VALEUR : bleu Meta vif */
+    #valeur {
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 38%, rgba(120,170,255,0.35), transparent 70%),
+        linear-gradient(160deg, #1877F2 0%, #0b3aa0 100%);
+    }
+    #valeur::before { background: none; }
+    /* AVIS + POURQUOI + CONTACT : bleus profonds (plus de noir pur) */
+    #avis { background: linear-gradient(160deg, #0a1f4a 0%, #060f28 100%); }
+    #pourquoi { background: linear-gradient(160deg, #08205a 0%, #0a1330 100%); }
+    .fp-slide--contact #contact { background: linear-gradient(160deg, #0b2f7a 0%, #05132f 100%); }
+    .fp-slide--contact footer { background: #040d22; }
+    /* SECTIONS CLAIRES : blanc légèrement bleuté */
+    #services { background: #f4f8ff; }
+    #methode  { background: #eaf1ff; }
+    #metrics  { background: #eaf1ff; }
+    #faq      { background: #f4f8ff; }
+    /* liseré Google multicolore en haut des sections claires */
+    #services, #methode, #metrics, #faq { position: relative; }
+    #services::after, #methode::after, #metrics::after, #faq::after {
+      content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+      background: linear-gradient(90deg, #4285F4 0 25%, #EA4335 25% 50%, #FBBC05 50% 75%, #34A853 75% 100%);
+      opacity: 0.9;
+    }
+
+    /* ═══ HERO PUBLICITÉ : gestionnaire de pub (carte blanche animée) ═══ */
+    .ads-manager { position: relative; width: 100%; max-width: 462px; justify-self: end; }
+    .ads-manager::before {
+      content: ''; position: absolute; inset: -30px;
+      background: radial-gradient(ellipse at 50% 40%, rgba(66,133,244,0.40), transparent 65%);
+      filter: blur(26px); z-index: 0; pointer-events: none;
+    }
+    .adm-frame {
+      position: relative; z-index: 1;
+      background: #ffffff;
+      border: 1px solid rgba(16,24,40,0.08);
+      border-radius: 18px; padding: 15px;
+      box-shadow: 0 34px 80px -22px rgba(3,12,38,0.6), 0 12px 30px rgba(3,12,38,0.28);
+      color: #101828; font-family: 'Inter', sans-serif;
+      animation: admFloat 12s ease-in-out infinite;
+    }
+    @keyframes admFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    .adm-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid rgba(16,24,40,0.07); }
+    .adm-title { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 12.5px; font-family: 'Plus Jakarta Sans', sans-serif; color: #101828; }
+    .adm-live { width: 8px; height: 8px; border-radius: 50%; background: #34A853; box-shadow: 0 0 0 0 rgba(52,168,83,.6); animation: admPulse 2s ease-in-out infinite; flex: 0 0 auto; }
+    @keyframes admPulse { 0% { box-shadow: 0 0 0 0 rgba(52,168,83,.6); } 70% { box-shadow: 0 0 0 8px rgba(52,168,83,0); } 100% { box-shadow: 0 0 0 0 rgba(52,168,83,0); } }
+    .adm-platforms { display: inline-flex; gap: 6px; }
+    .adm-chip { width: 25px; height: 25px; border-radius: 7px; display: grid; place-items: center; border: 1px solid rgba(16,24,40,0.1); background: #f6f8fc; }
+    .adm-chip svg { width: 14px; height: 14px; }
+    .adm-chip--m { background: #1877F2; color: #fff; font-weight: 800; font-size: 12px; font-family: 'Plus Jakarta Sans', sans-serif; border-color: #1877F2; }
+    .adm-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .adm-kpi { position: relative; padding: 9px 12px 9px 14px; border-radius: 11px; background: #f7f9fc; border: 1px solid rgba(16,24,40,0.06); overflow: hidden; }
+    .adm-kpi::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--adm-accent, #4285F4); }
+    .adm-kpi-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #667085; }
+    .adm-kpi-row { display: flex; align-items: baseline; gap: 6px; margin-top: 2px; }
+    .adm-kpi-val { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 17px; color: #101828; letter-spacing: -.02em; transition: color .25s ease; }
+    .adm-kpi-val.flash { color: #1877F2; }
+    .adm-kpi-trend { font-size: 9px; font-weight: 800; color: #0f9d58; }
+    .adm-chart { background: #f7f9fc; border: 1px solid rgba(16,24,40,0.06); border-radius: 11px; padding: 10px 12px; margin-bottom: 12px; }
+    .adm-chart-head { display: flex; align-items: center; justify-content: space-between; font-size: 9.5px; font-weight: 700; color: #667085; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+    .adm-chart-head b { color: #0f9d58; }
+    .adm-bars { display: flex; align-items: flex-end; gap: 6px; height: 46px; }
+    .adm-bar { flex: 1; height: 100%; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, #4285F4, #34A853); transform-origin: bottom; transform: scaleY(var(--h,.5)); animation: admBar 3.4s ease-in-out infinite; }
+    @keyframes admBar { 0%,100% { transform: scaleY(var(--h,.5)); } 50% { transform: scaleY(calc(var(--h,.5) * 1.28)); } }
+    .adm-table { display: flex; flex-direction: column; gap: 6px; }
+    .adm-trow { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 9px; background: #f7f9fc; border: 1px solid rgba(16,24,40,0.06); }
+    .adm-camp { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+    .adm-gic { width: 15px; height: 15px; flex: 0 0 auto; }
+    .adm-mic { width: 15px; height: 15px; flex: 0 0 auto; border-radius: 4px; background: #1877F2; color: #fff; display: grid; place-items: center; font-size: 9px; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .adm-camp b { font-size: 10.5px; font-weight: 700; color: #101828; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .adm-budget { font-size: 10.5px; font-weight: 700; color: #475467; font-variant-numeric: tabular-nums; }
+    .adm-state { display: inline-flex; align-items: center; gap: 5px; font-size: 9px; font-weight: 800; color: #0f9d58; text-transform: uppercase; letter-spacing: .04em; }
+    .adm-state .adm-dot { width: 6px; height: 6px; border-radius: 50%; background: #34A853; animation: admPulse 2s ease-in-out infinite; }
+    @media (max-width: 980px) { .ads-manager { justify-self: center; margin: 0 auto; } }
+    @media (max-width: 768px) { .ads-manager { max-width: 340px; } .adm-frame { padding: 13px; } .adm-bars { height: 40px; } }
+    @media (prefers-reduced-motion: reduce) { .adm-frame, .adm-bar, .adm-live, .adm-state .adm-dot { animation: none !important; } }
   </style>
 </head>
 <body>
 
-<!-- ░░ BARRE TOGGLE IA / SITES INTERNET ░░ -->
+<!-- ░░ BARRE DU HAUT : logo · sélecteur 3 pages (centré) · FR/EN ░░ -->
 <div class="page-toggle-bar" role="navigation" aria-label="Sélecteur de page">
+  <a href="#hero" class="topbar-logo" aria-label="Caza Comm — accueil">
+    <img src="images/logo.png" alt="Caza Comm" />
+  </a>
   <div class="page-toggle" data-active="pub">
     <a href="index.html" class="page-toggle-opt page-toggle-opt--ia">Agents IA</a>
     <a href="pub.html" class="page-toggle-opt page-toggle-opt--pub is-active" aria-current="page">Publicité</a>
     <a href="sites-vitrine.html" class="page-toggle-opt page-toggle-opt--web">Sites Internet</a>
     <span class="page-toggle-slider" aria-hidden="true"></span>
   </div>
+  <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
+    <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
+    <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+  </div>
 </div>
 
-<!-- ░░ NAVBAR ░░ -->
-<nav id="navbar" role="navigation" aria-label="Navigation principale">
-  <a href="#hero" class="nav-logo">
-    <img src="images/logo.png" alt="Caza Comm" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="#hero" data-en="Home">Accueil</a></li>
-    <li><a href="#services" data-en="Services">Services</a></li>
-    <li><a href="#pourquoi" data-en="About">À propos</a></li>
-    <li><a href="#contact" data-en="Contact">Contact</a></li>
-  </ul>
-  <div class="nav-actions">
-    <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
-      <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
-      <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
-    </div>
-    <a href="#contact" class="btn-nav" data-en="Let's talk about your project">Parlons de votre projet</a>
-    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-</nav>
+<!-- ░░ Indicateur de navigation : points sur le trait à gauche (généré en JS) ░░ -->
+<div class="fp-dots" id="fpDots" aria-hidden="true"></div>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#hero" class="mobile-link" data-en="Home">Accueil</a>
-  <a href="#services" class="mobile-link" data-en="Services">Services</a>
-  <a href="#pourquoi" class="mobile-link" data-en="About">À propos</a>
-  <a href="#contact" class="mobile-link" data-en="Contact">Contact</a>
-  <a href="#contact" class="btn-nav" data-en="Let's talk about your project">Parlons de votre projet</a>
+<!-- ░░ Indice de swipe (doigt animé, disparaît au premier swipe) ░░ -->
+<div class="fp-swipe-hint" id="fpSwipeHint" aria-hidden="true">
+  <svg class="fp-swipe-finger" width="30" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 13.5V5.5a1.5 1.5 0 0 1 3 0V12"/>
+    <path d="M11 12V4a1.5 1.5 0 0 1 3 0v8"/>
+    <path d="M14 12.5v-2a1.5 1.5 0 0 1 3 0V13"/>
+    <path d="M17 12.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-5.2-3l-2.1-3.6a1.5 1.5 0 0 1 2.6-1.5L9 15"/>
+  </svg>
+  <span class="fp-swipe-label" data-en="Swipe">Swipez</span>
 </div>
 
 <!-- ░░ HERO ░░ -->
-<section id="hero" class="dark" aria-label="Section principale">
+<section id="hero" class="dark fp-slide" aria-label="Section principale">
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span> <span data-en="Google Ads &amp; Meta Ads">Google Ads &amp; Meta Ads</span>
+      <div class="hero-platforms" aria-label="Plateformes : Google Ads et Meta Ads">
+        <span class="hp-item">
+          <svg viewBox="0 0 48 48" width="18" height="18" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+          Google&nbsp;Ads
+        </span>
+        <span class="hp-sep" aria-hidden="true"></span>
+        <span class="hp-item"><span class="meta-word">Meta</span>&nbsp;Ads</span>
       </div>
       <h1 class="hero-title" data-en="Your ads that &lt;span class=&quot;accent&quot;&gt;bring in customers&lt;/span&gt;, not just clicks.">
         Vos publicités qui <span class="accent">ramènent des clients</span>, pas juste des clics.
@@ -1324,7 +1680,66 @@
         <a href="#services" class="btn-secondary" data-en="See what we do">Voir nos prestations</a>
       </div>
     </div>
-    <div class="ai-dashboard reveal" aria-label="Tableau de bord des campagnes publicitaires">
+    <div class="ads-manager reveal" aria-label="Gestionnaire de publicités Google &amp; Meta">
+      <div class="adm-frame">
+        <div class="adm-top">
+          <div class="adm-title"><span class="adm-live" aria-hidden="true"></span> Gestionnaire de pub</div>
+          <div class="adm-platforms" aria-hidden="true">
+            <span class="adm-chip"><svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg></span>
+            <span class="adm-chip adm-chip--m">M</span>
+          </div>
+        </div>
+        <div class="adm-kpis">
+          <div class="adm-kpi" style="--adm-accent:#4285F4">
+            <div class="adm-kpi-label">Impressions</div>
+            <div class="adm-kpi-row"><span class="adm-kpi-val" data-k="impr">48 210</span><span class="adm-kpi-trend">+12%</span></div>
+          </div>
+          <div class="adm-kpi" style="--adm-accent:#34A853">
+            <div class="adm-kpi-label">Clics</div>
+            <div class="adm-kpi-row"><span class="adm-kpi-val" data-k="clic">1 247</span><span class="adm-kpi-trend">+8%</span></div>
+          </div>
+          <div class="adm-kpi" style="--adm-accent:#FBBC05">
+            <div class="adm-kpi-label">CTR</div>
+            <div class="adm-kpi-row"><span class="adm-kpi-val">2,6 %</span><span class="adm-kpi-trend">+0,4 pt</span></div>
+          </div>
+          <div class="adm-kpi" style="--adm-accent:#1877F2">
+            <div class="adm-kpi-label">ROAS</div>
+            <div class="adm-kpi-row"><span class="adm-kpi-val">×4,2</span><span class="adm-kpi-trend">+0,6</span></div>
+          </div>
+        </div>
+        <div class="adm-chart">
+          <div class="adm-chart-head"><span>Conversions · 7 jours</span> <b>+38%</b></div>
+          <div class="adm-bars" aria-hidden="true">
+            <span class="adm-bar" style="--h:.42"></span>
+            <span class="adm-bar" style="--h:.55"></span>
+            <span class="adm-bar" style="--h:.48"></span>
+            <span class="adm-bar" style="--h:.68"></span>
+            <span class="adm-bar" style="--h:.6"></span>
+            <span class="adm-bar" style="--h:.82"></span>
+            <span class="adm-bar" style="--h:.95"></span>
+          </div>
+        </div>
+        <div class="adm-table">
+          <div class="adm-trow">
+            <span class="adm-camp"><svg class="adm-gic" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg><b>Google Search</b></span>
+            <span class="adm-budget">25 €/j</span>
+            <span class="adm-state"><span class="adm-dot"></span>Actif</span>
+          </div>
+          <div class="adm-trow">
+            <span class="adm-camp"><span class="adm-mic">M</span><b>Meta · Feed &amp; Reels</b></span>
+            <span class="adm-budget">18 €/j</span>
+            <span class="adm-state"><span class="adm-dot"></span>Actif</span>
+          </div>
+          <div class="adm-trow">
+            <span class="adm-camp"><svg class="adm-gic" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg><b>Google Shopping</b></span>
+            <span class="adm-budget">20 €/j</span>
+            <span class="adm-state"><span class="adm-dot"></span>Actif</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-dashboard-old" hidden aria-hidden="true" style="display:none">
       <div class="ai-dash-glow" aria-hidden="true"></div>
       <div class="ai-dash-frame">
         <!-- Header -->
@@ -1472,10 +1887,99 @@
   </div>
 </section>
 
-<!-- ░░ SERVICES (fond blanc) + overlay valeur en scroll fixé ░░ -->
-<div class="services-track" id="servicesTrack">
-<section id="services" class="light services-pin" aria-label="Nos prestations publicité">
-  <div class="services-blur" id="servicesBlur">
+<!-- ░░ SLIDE AVIS : carrousel Google glissable (tactile + drag souris) ░░ -->
+<section id="avis" class="dark fp-slide" aria-label="Avis clients">
+  <div class="section-inner">
+    <div class="reviews-head reveal">
+      <div class="section-tag" style="justify-content:center;" data-en="Google reviews">Avis Google</div>
+      <h2 class="section-title" data-en="They trusted us">Ils nous ont fait confiance</h2>
+      <div class="reviews-rating">
+        <span class="rr-stars" aria-hidden="true">★★★★★</span>
+        <span><b>5,0/5</b> <span data-en="· 18 verified reviews on Google">· 18 avis vérifiés sur Google</span></span>
+      </div>
+    </div>
+    <div class="reviews-track reveal" id="reviewsTrack" role="list" aria-label="Avis clients — glissez pour faire défiler">
+      <article class="review-card" role="listitem">
+        <div class="review-head">
+          <div class="review-avatar" aria-hidden="true">A</div>
+          <div class="review-meta">
+            <div class="review-name">Athletic Traning Performance</div>
+            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+        </div>
+        <p class="review-quote">« Nous souhaitions optimiser notre visibilité sur le plan local, notamment grâce au référencement et à l'optimisation de la page Google. Nous voulions également un nouveau site internet. Nous sommes très satisfaits de la prestation de Caza Comm… »</p>
+      </article>
+      <article class="review-card" role="listitem">
+        <div class="review-head">
+          <div class="review-avatar" aria-hidden="true">J</div>
+          <div class="review-meta">
+            <div class="review-name">JB Decocq</div>
+            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+        </div>
+        <p class="review-quote">« J'ai fait appel à Jeremy pour qu'il m'accompagne, je suis agréablement satisfait par son écoute car son engagement envers moi est à la hauteur de mes attentes… »</p>
+      </article>
+      <article class="review-card" role="listitem">
+        <div class="review-head">
+          <div class="review-avatar" aria-hidden="true">S</div>
+          <div class="review-meta">
+            <div class="review-name">Sandrine Scano</div>
+            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+        </div>
+        <p class="review-quote">« Merci pour ton professionnalisme et ton savoir-faire. »</p>
+      </article>
+      <article class="review-card" role="listitem">
+        <div class="review-head">
+          <div class="review-avatar" aria-hidden="true">B</div>
+          <div class="review-meta">
+            <div class="review-name">Bird Hunter</div>
+            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+        </div>
+        <p class="review-quote">« Un grand merci à Jérémy de Caza Communication pour le superbe travail réalisé sur le site internet de mon parc de chasse. »</p>
+      </article>
+      <article class="review-card" role="listitem">
+        <div class="review-head">
+          <div class="review-avatar" aria-hidden="true">L</div>
+          <div class="review-meta">
+            <div class="review-name">Le Belvédère</div>
+            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+        </div>
+        <p class="review-quote">« J'ai fait appel à Caza Communication pour la création de mon site internet ainsi que la gestion… »</p>
+      </article>
+      <article class="review-card" role="listitem">
+        <div class="review-head">
+          <div class="review-avatar" aria-hidden="true">F</div>
+          <div class="review-meta">
+            <div class="review-name">fanny reignier</div>
+            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+        </div>
+        <p class="review-quote">« Un grand merci à Jeremy pour la réalisation de mon site internet. Il a tout de suite… »</p>
+      </article>
+    </div>
+    <p class="reviews-hint" data-en="Drag to browse all reviews">Glissez pour voir tous les avis →</p>
+  </div>
+</section>
+
+<!-- ░░ SLIDE VALEUR : "Nous ne vendons pas des clics" ░░ -->
+<section id="valeur" class="dark fp-slide" aria-label="Notre promesse">
+  <div class="valeur-inner reveal">
+    <p class="valeur-title" data-en="We don&#39;t sell &lt;span class=&quot;accent&quot;&gt;clicks&lt;/span&gt;.">Nous ne vendons pas des <span class="accent">clics</span>.</p>
+    <p class="valeur-sub" data-en="We sell customers and revenue — a concrete return on every euro invested in your ads.">Nous vendons des clients et du chiffre d'affaires, un retour concret sur chaque euro investi dans vos publicités.</p>
+  </div>
+</section>
+
+<!-- ░░ SERVICES (fond blanc) : nos prestations publicité ░░ -->
+<section id="services" class="light fp-slide" aria-label="Nos prestations publicité">
   <div class="section-inner">
     <div class="section-header reveal">
       <div class="section-tag" data-en="What we do">Nos prestations</div>
@@ -1525,31 +2029,10 @@
 
     </div>
   </div>
-  </div><!-- /.services-blur -->
-
-  <!-- Overlay valeur : net, par-dessus le fond flouté (pointer-events:none) -->
-  <div class="value-overlay" id="valueOverlay" aria-hidden="true">
-    <div class="value-overlay-inner">
-      <p class="value-overlay-title" data-en="We don't sell clicks.">Nous ne vendons pas des clics.</p>
-      <p class="value-overlay-sub" data-en="We sell customers and revenue — a concrete return on every euro invested in your ads.">Nous vendons des clients et du chiffre d'affaires, un retour concret sur chaque euro investi dans vos publicités.</p>
-      <div class="value-scroll-hint" aria-hidden="true">
-        <span class="value-scroll-label" data-en="Keep scrolling">Continuez à défiler</span>
-        <span class="value-scroll-mouse">
-          <span class="value-scroll-wheel"></span>
-        </span>
-        <svg class="value-scroll-chevrons" width="24" height="30" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <path class="vsc vsc-1" d="M5 8l7 7 7-7"/>
-          <path class="vsc vsc-2" d="M5 15l7 7 7-7"/>
-        </svg>
-      </div>
-    </div>
-  </div>
 </section>
-<div class="services-pin-spacer" aria-hidden="true"></div>
-</div><!-- /.services-track -->
 
 <!-- ░░ NOTRE MÉTHODE (fond vert teinté doux) ░░ -->
-<section id="methode" class="light" aria-label="Notre méthode">
+<section id="methode" class="light fp-slide" aria-label="Notre méthode">
   <div class="section-inner">
     <div class="section-header reveal">
       <div class="section-tag" data-en="How we work">Comment nous travaillons</div>
@@ -1581,7 +2064,7 @@
 </section>
 
 <!-- ░░ POURQUOI (fond noir) ░░ -->
-<section id="pourquoi" class="dark" aria-label="Pourquoi choisir Caza Comm">
+<section id="pourquoi" class="dark fp-slide" aria-label="Pourquoi choisir Caza Comm">
   <div class="section-inner">
     <div class="pourquoi-grid">
       <div>
@@ -1631,7 +2114,7 @@
 </section>
 
 <!-- ░░ METRICS (fond vert teinté doux) ░░ -->
-<section id="metrics" class="light" aria-label="Nos engagements">
+<section id="metrics" class="light fp-slide" aria-label="Nos engagements">
   <div class="section-inner">
     <div class="metrics-header reveal">
       <div class="section-tag" data-en="In a few words">En quelques mots</div>
@@ -1659,7 +2142,7 @@
 </section>
 
 <!-- ░░ FAQ (fond blanc cassé) ░░ -->
-<section id="faq" class="light" aria-label="Questions fréquentes">
+<section id="faq" class="light fp-slide" aria-label="Questions fréquentes">
   <div class="section-inner">
     <div class="faq-header reveal">
       <div class="section-tag" style="justify-content:center;" data-en="FAQ">Questions fréquentes</div>
@@ -1719,13 +2202,14 @@
   </div>
 </section>
 
-<!-- ░░ CONTACT (fond noir) ░░ -->
+<!-- ░░ CONTACT + FOOTER (une seule diapo) ░░ -->
+<div class="fp-slide fp-slide--contact" id="slideContact">
 <section id="contact" class="dark" aria-label="Contact">
   <div class="section-inner">
     <div class="contact-centered reveal">
       <h2 data-en="Let's talk about&lt;br/&gt;your project.">Parlons de<br/>votre projet.</h2>
       <div class="contact-ctas">
-        <a href="mailto:jeremy@cazacomm.fr" class="btn-cta-email">
+        <a href="mailto:caza.comm@gmail.com" class="btn-cta-email">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <span data-en="Send an email">Envoyer un email</span>
         </a>
@@ -1767,7 +2251,7 @@
 
       <div class="contact-meta">
         <div class="contact-meta-item">
-          <a href="mailto:jeremy@cazacomm.fr">jeremy@cazacomm.fr</a>
+          <a href="mailto:caza.comm@gmail.com">caza.comm@gmail.com</a>
           <span class="contact-meta-dot"></span>
           <a href="tel:+33767197467">+33 7 67 19 74 67</a>
           <span class="contact-meta-dot"></span>
@@ -1798,7 +2282,7 @@
       <div class="footer-col">
         <h4 data-en="Direct contact">Contact direct</h4>
         <ul>
-          <li><a href="mailto:jeremy@cazacomm.fr">jeremy@cazacomm.fr</a></li>
+          <li><a href="mailto:caza.comm@gmail.com">caza.comm@gmail.com</a></li>
           <li><a href="tel:+33767197467">+33 7 67 19 74 67</a></li>
         </ul>
       </div>
@@ -1809,6 +2293,7 @@
     </div>
   </div>
 </footer>
+</div><!-- /.fp-slide--contact -->
 
 <script>
   // ── LANGUE COURANTE (partagée) ──
@@ -1855,32 +2340,80 @@
     }
   })();
 
-  // ── NAVBAR HIDE/SHOW ──
+  // ── NAVIGATION SWIPE : points latéraux + indice de swipe ──
   (function() {
-    let lastScroll = 0;
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      const cur = window.scrollY;
-      nav.classList.toggle('hidden', cur > lastScroll && cur > 100);
-      lastScroll = cur < 0 ? 0 : cur;
-    }, { passive: true });
+    const slides = Array.from(document.querySelectorAll('.fp-slide'));
+    const dotsWrap = document.getElementById('fpDots');
+    const hint = document.getElementById('fpSwipeHint');
+    if (!slides.length || !dotsWrap) return;
+
+    slides.forEach((s, i) => {
+      const d = document.createElement('span');
+      d.className = 'fp-dot' + (i === 0 ? ' is-active' : '');
+      dotsWrap.appendChild(d);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    let hintDismissed = false;
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = slides.indexOf(e.target);
+          dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+          if (idx > 0 && hint && !hintDismissed) {
+            hintDismissed = true;
+            hint.classList.add('is-hidden');
+          }
+        }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+    slides.forEach(s => obs.observe(s));
   })();
 
-  // ── HAMBURGER ──
-  (function() {
-    const btn = document.getElementById('hamburger');
-    const menu = document.getElementById('mobileMenu');
-    btn.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      btn.classList.toggle('open', open);
+  // ── CARROUSEL AVIS : glisser à la souris (le tactile marche nativement) ──
+  (function(){
+    const track = document.getElementById('reviewsTrack');
+    if(!track) return;
+    let down = false, startX = 0, startScroll = 0, moved = false;
+    track.addEventListener('pointerdown', e => {
+      if(e.pointerType === 'mouse'){
+        down = true; moved = false;
+        startX = e.clientX; startScroll = track.scrollLeft;
+        track.classList.add('is-dragging');
+      }
     });
-    menu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        menu.classList.remove('open');
-        btn.classList.remove('open');
+    window.addEventListener('pointermove', e => {
+      if(!down) return;
+      const dx = e.clientX - startX;
+      if(Math.abs(dx) > 4) moved = true;
+      track.scrollLeft = startScroll - dx;
+    });
+    window.addEventListener('pointerup', () => {
+      if(!down) return;
+      down = false; track.classList.remove('is-dragging');
+    });
+    track.addEventListener('click', e => { if(moved){ e.preventDefault(); e.stopPropagation(); } }, true);
+  })();
+
+  // ── HERO PUB : compteurs animés du gestionnaire de pub ──
+  (function(){
+    const mgr = document.querySelector('.ads-manager');
+    if(!mgr) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const fmt = n => Math.round(n).toLocaleString('fr-FR').replace(/ /g,' ');
+    const counters = [
+      { el: mgr.querySelector('[data-k="impr"]'), v: 48210, inc: [30,140] },
+      { el: mgr.querySelector('[data-k="clic"]'), v: 1247,  inc: [1,4] },
+    ];
+    setInterval(()=>{
+      counters.forEach(c=>{
+        if(!c.el) return;
+        c.v += c.inc[0] + Math.random()*(c.inc[1]-c.inc[0]);
+        c.el.textContent = fmt(c.v);
+        c.el.classList.add('flash');
+        setTimeout(()=> c.el.classList.remove('flash'), 280);
       });
-    });
-    btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') btn.click(); });
+    }, 2200);
   })();
 
   // ── SCROLL REVEAL ──
@@ -1894,41 +2427,6 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  })();
-
-  // ── OVERLAY VALEUR : pin au scroll + flou du fond ──
-  (function() {
-    const track   = document.getElementById('servicesTrack');
-    const spacer  = track && track.querySelector('.services-pin-spacer');
-    const blurEl  = document.getElementById('servicesBlur');
-    const overlay = document.getElementById('valueOverlay');
-    if (!track || !spacer || !blurEl || !overlay) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // CSS désactive le pin
-
-    const MAX_BLUR = 12;             // px de flou au pic
-    let ticking = false;
-
-    function compute() {
-      ticking = false;
-      const pin = spacer.offsetHeight || 1;          // distance de scroll du pin
-      const trackTop = track.getBoundingClientRect().top;
-      // p : 0 quand la section atteint le haut, 1 à la fin du pin
-      let p = trackTop >= 0 ? 0 : Math.min(1, -trackTop / pin);
-      // Trapèze : 0 → 1 (montée), petit plateau au pic, 1 → 0 (descente)
-      let t;
-      if (p < 0.42) t = p / 0.42;
-      else if (p > 0.58) t = (1 - p) / 0.42;
-      else t = 1;
-      if (t < 0) t = 0; if (t > 1) t = 1;
-      blurEl.style.setProperty('--svc-blur', (t * MAX_BLUR).toFixed(2) + 'px');
-      overlay.style.opacity = t.toFixed(3);
-    }
-    function onScroll() {
-      if (!ticking) { ticking = true; requestAnimationFrame(compute); }
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    compute();
   })();
 
   // ── PARTICLES ──
@@ -1966,21 +2464,6 @@
       else { cancelAnimationFrame(raf); raf = null; }
     }, { threshold: 0 });
     perfObs.observe(document.getElementById('hero'));
-  })();
-
-  // ── ACTIVE NAV LINK ──
-  (function() {
-    const sections = document.querySelectorAll('section[id]');
-    const links = document.querySelectorAll('.nav-links a');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const id = e.target.id;
-          links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + id ? 'var(--white)' : ''; });
-        }
-      });
-    }, { threshold: 0.4 });
-    sections.forEach(s => obs.observe(s));
   })();
 
   // ░░ AI DASHBOARD — animations vivantes ░░
@@ -2200,12 +2683,12 @@
       fr: {
         sending: 'Envoi en cours…',
         ok: 'Merci ! Votre message a bien été envoyé, nous vous répondons sous 24h.',
-        err: 'Oups, l\'envoi a échoué. Réessayez ou écrivez-nous à jeremy@cazacomm.fr.'
+        err: 'Oups, l\'envoi a échoué. Réessayez ou écrivez-nous à caza.comm@gmail.com.'
       },
       en: {
         sending: 'Sending…',
         ok: 'Thank you! Your message has been sent, we\'ll reply within 24h.',
-        err: 'Oops, sending failed. Please try again or email us at jeremy@cazacomm.fr.'
+        err: 'Oops, sending failed. Please try again or email us at caza.comm@gmail.com.'
       }
     };
     form.addEventListener('submit', async (e) => {
