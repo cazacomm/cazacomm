@@ -2,2582 +2,317 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
   <meta name="description" content="Caza Comm : intégration et IA souveraine sur mesure pour les entreprises françaises. Agents IA, automatisation de tâches, intégration à vos outils. Conforme RGPD, basé en France." />
   <title>Caza Comm : intégration & IA souveraine pour les entreprises françaises</title>
+
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Caza Comm — Agents IA sur mesure pour votre entreprise" />
+  <meta property="og:description" content="Une IA sur mesure = la productivité de plusieurs employés, sans les charges." />
+  <meta property="og:image" content="images/logo.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    /* ─── RESET & BASE ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --black:        #0a0a0a;
-      --black-deep:   #060606;
-      --white:        #f5f5f3;
-      --white-bg:     #f9f9f7;
-      --white-dim:    rgba(10,10,10,0.6);
-      --green:        #2a8a50;
-      --green-light:  #6fcf97;
-      --green-soft:   #a8e6c1;
-      --green-dark:   #1a5c38;
-      --green-tint:   #f0f7f3;
-      --green-glass:  rgba(42,138,80,0.1);
-      --green-border: rgba(111,207,151,0.3);
-      --radius:       16px;
-      --radius-sm:    10px;
-      --transition:   0.35s cubic-bezier(0.4,0,0.2,1);
-    }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--black);
-      color: var(--white);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
-    button { cursor: pointer; border: none; background: none; font-family: inherit; }
-
-    /* ─── SCROLLBAR ─── */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
-    ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 4px; }
-
-    /* ─── BARRE TOGGLE IA / SITES INTERNET ─── */
-    .page-toggle-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(6,6,6,0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      z-index: 1100;
-    }
-    .page-toggle {
-      position: relative;
-      display: inline-flex;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 999px;
-      padding: 3px;
-      font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em;
-    }
-    .page-toggle-opt {
-      position: relative; z-index: 2;
-      padding: 6px 16px; border-radius: 999px;
-      color: rgba(245,245,243,0.6);
-      text-decoration: none;
-      transition: color 0.3s ease;
-      white-space: nowrap;
-    }
-    .page-toggle-opt:hover { color: var(--white); }
-    .page-toggle-opt.is-active { color: #fff; }
-    .page-toggle-slider {
-      position: absolute; top: 3px; left: 3px;
-      height: calc(100% - 6px); width: 0;
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
-      border-radius: 999px;
-      box-shadow: 0 4px 14px rgba(42,138,80,0.35);
-      transition: transform 0.4s cubic-bezier(.4,0,.2,1), width 0.4s cubic-bezier(.4,0,.2,1);
-      z-index: 1;
-    }
-    @media (max-width: 480px) {
-      .page-toggle-opt { padding: 6px 12px; font-size: 12px; }
-    }
-
-    /* ─── NAVBAR ─── */
-    #navbar {
-      position: fixed;
-      top: 44px; left: 0; right: 0;
-      z-index: 1000;
-      padding: 0 5%;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(10,10,10,0.8);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: transform 0.4s ease, opacity 0.4s ease;
-    }
-    #navbar.hidden { transform: translateY(-100%); opacity: 0; }
-    .nav-logo img { height: 38px; width: auto; object-fit: contain; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: rgba(245,245,243,0.65);
-      letter-spacing: 0.02em;
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0; right: 0;
-      height: 1px;
-      background: var(--green-light);
-      transform: scaleX(0);
-      transition: transform var(--transition);
-      transform-origin: left;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .btn-nav {
-      padding: 10px 22px;
-      background: var(--green);
-      color: var(--white);
-      border-radius: 50px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-    }
-    .btn-nav:hover {
-      background: var(--green-light);
-      color: var(--black);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(42,138,80,0.35);
-    }
-    /* ─── Cluster d'actions à droite + toggle FR/EN ─── */
-    .nav-actions { display: flex; align-items: center; gap: 14px; }
-    .lang-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 2px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 999px;
-      padding: 3px;
-    }
-    .lang-opt {
-      font-family: 'Inter', sans-serif;
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: rgba(245,245,243,0.65);
-      padding: 5px 11px;
-      border-radius: 999px;
-      transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    }
-    .lang-opt:hover { color: rgba(245,245,243,0.9); }
-    .lang-opt.is-active {
-      color: #fff;
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
-      box-shadow: 0 4px 14px rgba(42,138,80,0.35);
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 6px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 72px; left: 0; right: 0;
-      background: rgba(10,10,10,0.97);
-      backdrop-filter: blur(20px);
-      padding: 24px 5%;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      z-index: 999;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 1rem;
-      font-weight: 500;
-      color: rgba(245,245,243,0.65);
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .mobile-menu .btn-nav { margin-top: 12px; text-align: center; }
-
-    /* ─── HERO (fond noir) ─── */
-    #hero {
-      min-height: 100vh;
-      padding: 120px 5% 80px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      background: var(--black);
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 65% 40%, rgba(26,92,56,0.16) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(42,138,80,0.07) 0%, transparent 60%);
-      animation: pulseGrad 9s ease-in-out infinite alternate;
-      pointer-events: none;
-    }
-    @keyframes pulseGrad {
-      0%   { opacity: 0.55; transform: scale(1); }
-      100% { opacity: 0.8;  transform: scale(1.03); }
-    }
-    #particles-canvas {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.22;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 480px;
-      gap: 72px;
-      align-items: center;
-      width: 100%;
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(111,207,151,0.1);
-      border: 1px solid var(--green-border);
-      border-radius: 50px;
-      padding: 6px 16px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--green-light);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-    .hero-badge-dot { width: 6px; height: 6px; background: var(--green-light); border-radius: 50%; animation: blink 1.8s ease-in-out infinite; }
-    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
-    .hero-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(2.6rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-      color: var(--white);
-    }
-    .hero-title .accent {
-      background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 70%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: rgba(245,245,243,0.65);
-      max-width: 500px;
-      margin-bottom: 44px;
-      line-height: 1.7;
-    }
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
-    .btn-primary {
-      padding: 15px 32px;
-      background: var(--green);
-      color: var(--white);
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-primary:hover {
-      background: var(--green-light);
-      color: var(--black);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(42,138,80,0.4);
-    }
-    .btn-secondary {
-      padding: 15px 32px;
-      border: 1px solid var(--green-border);
-      color: var(--white);
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: all var(--transition);
-    }
-    .btn-secondary:hover {
-      border-color: var(--green-light);
-      background: var(--green-glass);
-      transform: translateY(-2px);
-    }
-    /* ─── HERO DASHBOARD IA ─── */
-    .ai-dashboard {
-      position: relative;
-      perspective: 1700px;
-      perspective-origin: 55% 35%;
-      width: 100%;
-      max-width: 460px;
-      justify-self: end;
-    }
-    .ai-dash-glow {
-      position: absolute; inset: -40px;
-      background: radial-gradient(ellipse at 50% 50%, rgba(42,138,80,0.22) 0%, rgba(42,138,80,0.0) 65%);
-      filter: blur(28px);
-      z-index: 0;
-      animation: aiGlow 10s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes aiGlow {
-      0%,100% { opacity: 0.5; transform: scale(0.98); }
-      50%     { opacity: 0.8; transform: scale(1.02); }
-    }
-    .ai-dash-frame {
-      position: relative;
-      transform: rotateY(-7deg) rotateX(4deg);
-      transform-style: preserve-3d;
-      transform-origin: center;
-      animation: aiDashFloat 11s ease-in-out infinite;
-      background:
-        radial-gradient(120% 80% at 0% 0%, rgba(42,138,80,0.10), rgba(42,138,80,0) 55%),
-        linear-gradient(180deg, #0d1418 0%, #0a1014 100%);
-      border: 1px solid rgba(111,207,151,0.18);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow:
-        0 36px 90px -20px rgba(0,0,0,0.7),
-        0 22px 50px -12px rgba(42,138,80,0.22),
-        0 0 0 1px rgba(255,255,255,0.02) inset;
-      color: rgba(245,245,243,0.92);
-      font-family: 'Inter', sans-serif;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-    @keyframes aiDashFloat {
-      0%,100% { transform: rotateY(-7deg) rotateX(4deg) translateY(0); }
-      50%     { transform: rotateY(-7deg) rotateX(4deg) translateY(-6px); }
-    }
-    .ai-dash-frame::before {
-      content: '';
-      position: absolute; inset: 0;
-      pointer-events: none;
-      border-radius: inherit;
-      background:
-        radial-gradient(ellipse 80% 30% at 50% 0%, rgba(168,230,193,0.06), transparent 70%);
-    }
-
-    /* Header */
-    .ai-dash-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 4px 8px 12px 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      margin-bottom: 12px;
-      gap: 10px;
-    }
-    .ai-dash-status {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.01em;
-      color: rgba(245,245,243,0.92);
-    }
-    .ai-dash-pulse {
-      width: 7px; height: 7px; border-radius: 999px;
-      background: #6fcf97;
-      box-shadow: 0 0 0 0 rgba(111,207,151,0.7);
-      animation: aiPulse 2s ease-in-out infinite;
-    }
-    @keyframes aiPulse {
-      0%   { box-shadow: 0 0 0 0 rgba(111,207,151,0.7); }
-      70%  { box-shadow: 0 0 0 9px rgba(111,207,151,0); }
-      100% { box-shadow: 0 0 0 0 rgba(111,207,151,0); }
-    }
-    .ai-dash-time {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 10.5px; font-weight: 600;
-      color: rgba(245,245,243,0.5);
-    }
-    .ai-dash-time-icon { display: inline-flex; color: rgba(245,245,243,0.55); }
-
-    /* Grid : chart + KPIs */
-    .ai-dash-grid {
-      display: grid; grid-template-columns: 1.18fr .82fr; gap: 10px;
-      margin-bottom: 12px;
-    }
-    .ai-dash-chart {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
-      padding: 10px 10px 4px 10px;
-      min-height: 130px;
-      position: relative;
-      overflow: hidden;
-    }
-    .ai-chart-head {
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 6px;
-      margin-bottom: 4px;
-    }
-    .ai-chart-label {
-      font-size: 9.5px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; color: rgba(245,245,243,0.5);
-    }
-    .ai-chart-value {
-      font-size: 18px; font-weight: 800; letter-spacing: -0.02em;
-      color: #a8e6c1; line-height: 1.1; margin-top: 2px;
-    }
-    .ai-chart-value span { font-size: 11px; color: rgba(168,230,193,0.7); margin-left: 1px; }
-    .ai-chart-trend {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 9.5px; font-weight: 700;
-      color: rgba(111,207,151,0.85);
-      background: rgba(111,207,151,0.10);
-      border: 1px solid rgba(111,207,151,0.20);
-      padding: 3px 7px; border-radius: 999px;
-    }
-    .ai-chart-svg { width: 100%; height: 80px; display: block; }
-    .ai-chart-line {
-      stroke-dasharray: 700;
-      stroke-dashoffset: 700;
-      animation: aiDrawLine 8s ease-in-out infinite;
-      filter: drop-shadow(0 0 6px rgba(111,207,151,0.45));
-    }
-    .ai-chart-area {
-      opacity: 0;
-      animation: aiFadeArea 8s ease-in-out infinite;
-    }
-    .ai-chart-dot, .ai-chart-dot-glow {
-      opacity: 0;
-      animation: aiDot 8s ease-in-out infinite;
-    }
-    .ai-chart-dot-glow { animation-name: aiDotGlow; }
-    @keyframes aiDrawLine {
-      0%   { stroke-dashoffset: 700; }
-      55%  { stroke-dashoffset: 0; }
-      90%  { stroke-dashoffset: 0; }
-      100% { stroke-dashoffset: 700; }
-    }
-    @keyframes aiFadeArea {
-      0%,30% { opacity: 0; }
-      55%    { opacity: 1; }
-      90%    { opacity: 1; }
-      100%   { opacity: 0; }
-    }
-    @keyframes aiDot {
-      0%,50% { opacity: 0; }
-      60%    { opacity: 1; }
-      90%    { opacity: 1; transform: scale(1); }
-      95%    { transform: scale(1.4); }
-      100%   { opacity: 0; }
-    }
-    @keyframes aiDotGlow {
-      0%,50% { opacity: 0; }
-      60%    { opacity: 1; }
-      80%    { opacity: 0.6; }
-      100%   { opacity: 0; transform: scale(1.6); }
-    }
-    .ai-chart-dot-glow { transform-origin: 320px 14px; }
-
-    /* KPIs */
-    .ai-dash-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-    .kpi-card {
-      display: flex; gap: 8px; align-items: center;
-      padding: 8px 10px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 10px;
-      min-height: 56px;
-    }
-    .kpi-icon {
-      width: 26px; height: 26px; flex: 0 0 auto;
-      border-radius: 7px;
-      background: linear-gradient(135deg, rgba(111,207,151,0.22), rgba(42,138,80,0.10));
-      border: 1px solid rgba(111,207,151,0.20);
-      display: grid; place-items: center;
-      color: #a8e6c1;
-    }
-    .kpi-icon svg { width: 13px; height: 13px; }
-    .kpi-content { flex: 1; min-width: 0; }
-    .kpi-label {
-      font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-      color: rgba(245,245,243,0.5);
-    }
-    .kpi-value {
-      font-size: 14px; font-weight: 800; letter-spacing: -0.01em;
-      color: rgba(245,245,243,0.95);
-      margin-top: 2px;
-      transition: transform 0.25s ease, color 0.25s ease;
-    }
-    .kpi-value.kpi-flash { color: #a8e6c1; transform: scale(1.06); }
-    .kpi-unit { font-size: 10px; font-weight: 700; color: rgba(245,245,243,0.55); }
-
-    /* Agents */
-    .ai-dash-agents { display: grid; gap: 6px; margin-bottom: 12px; }
-    .agent-row {
-      display: grid; grid-template-columns: 22px 1fr; gap: 9px; align-items: center;
-      padding: 7px 9px;
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 9px;
-    }
-    .agent-row.is-done {
-      background: rgba(111,207,151,0.08);
-      border-color: rgba(111,207,151,0.22);
-    }
-    .agent-avatar {
-      width: 22px; height: 22px; border-radius: 7px;
-      background: linear-gradient(135deg, #2a8a50, #6fcf97);
-      display: grid; place-items: center;
-      color: #062114;
-      box-shadow: 0 4px 10px rgba(42,138,80,0.32);
-    }
-    .agent-avatar svg { width: 12px; height: 12px; }
-    .agent-body { min-width: 0; }
-    .agent-line {
-      display: flex; align-items: baseline; gap: 6px;
-      font-size: 10.5px; line-height: 1;
-      margin-bottom: 5px;
-    }
-    .agent-name { font-weight: 800; color: rgba(245,245,243,0.92); }
-    .agent-task { color: rgba(245,245,243,0.55); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .agent-pct { font-weight: 800; color: #a8e6c1; font-variant-numeric: tabular-nums; }
-    .agent-row.is-done .agent-pct { color: #a8e6c1; }
-    .agent-row.is-done .agent-pct::before { content: '✓ '; }
-    .agent-bar {
-      height: 4px; border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      overflow: hidden; position: relative;
-    }
-    .agent-bar-fill {
-      position: absolute; left: 0; top: 0;
-      height: 100%; width: 100%;
-      background: linear-gradient(90deg, #2a8a50, #6fcf97);
-      border-radius: 999px;
-      transform-origin: left center;
-      transform: scaleX(0);
-      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-      box-shadow: 0 0 8px rgba(111,207,151,0.45);
-    }
-    .agent-row.is-done .agent-bar-fill { background: linear-gradient(90deg, #6fcf97, #a8e6c1); }
-
-    /* Logs feed */
-    .ai-dash-logs {
-      background: rgba(0,0,0,0.32);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 9px;
-      padding: 8px 10px;
-      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 10.5px;
-      min-height: 64px;
-      max-height: 64px;
-      overflow: hidden;
-      position: relative;
-    }
-    .ai-log-line {
-      display: flex; gap: 7px; align-items: center;
-      color: rgba(245,245,243,0.78);
-      line-height: 1.5;
-      opacity: 0;
-      transform: translateY(8px);
-      animation: aiLogIn 0.4s ease forwards;
-    }
-    @keyframes aiLogIn {
-      0%   { opacity: 0; transform: translateY(8px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .ai-log-check { color: #6fcf97; font-weight: 800; }
-    .ai-log-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .ai-log-time { color: rgba(245,245,243,0.4); margin-left: auto; font-size: 9.5px; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .ai-dash-frame, .ai-dash-glow { animation: none !important; }
-      .ai-dash-pulse { animation: none !important; }
-      .ai-chart-line, .ai-chart-area, .ai-chart-dot, .ai-chart-dot-glow { animation: none !important; }
-      .ai-chart-line { stroke-dashoffset: 0; }
-      .ai-chart-area, .ai-chart-dot, .ai-chart-dot-glow { opacity: 1; }
-    }
-
-    /* ─── SECTIONS COMMUNES ─── */
-    section { padding: 100px 5%; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .section-tag::before { content:''; display:block; width:20px; height:1px; }
-    /* dark section tags */
-    .dark .section-tag { color: var(--green-light); }
-    .dark .section-tag::before { background: var(--green-light); }
-    /* light section tags */
-    .light .section-tag { color: var(--green-dark); }
-    .light .section-tag::before { background: var(--green-dark); }
-    .section-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 1rem;
-      font-weight: 400;
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 0;
-    }
-    .dark .section-sub { color: rgba(245,245,243,0.6); }
-    .light .section-sub { color: rgba(10,10,10,0.6); }
-    .section-header { margin-bottom: 60px; }
-
-    /* ─── SERVICES (fond blanc cassé) ─── */
-    #services {
-      background: var(--white-bg);
-      color: var(--black);
-    }
-    #services .section-title { color: var(--black); }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .service-card {
-      background: #fff;
-      border: 1px solid rgba(42,138,80,0.15);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(42,138,80,0.12);
-      border-color: rgba(111,207,151,0.5);
-    }
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(42,138,80,0.08);
-      border: 1px solid rgba(42,138,80,0.15);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .service-icon svg { width: 24px; height: 24px; stroke: var(--green); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .service-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--black);
-    }
-    .service-desc { color: rgba(10,10,10,0.58); font-size: 0.9rem; font-weight: 400; line-height: 1.55; }
-    .services-note {
-      text-align: center;
-      margin-top: 44px;
-      color: rgba(10,10,10,0.4);
-      font-size: 0.85rem;
-    }
-
-    /* ─── OVERLAY VALEUR ROI (pin au scroll + flou du fond) ─── */
-    .services-track { position: relative; }
-    .services-pin {                /* #services se fige pendant la phase d'animation */
-      position: sticky;
-      top: 0;
-    }
-    .services-pin-spacer {         /* hauteur = distance de scroll consommée par l'anim */
-      height: 110vh;
-      pointer-events: none;
-    }
-    .services-blur {               /* titre + cartes : floutés progressivement */
-      filter: blur(var(--svc-blur, 0px));
-      will-change: filter;
-    }
-    .value-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 100vh;               /* s'aligne sur le viewport pendant le pin */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      pointer-events: none;        /* le scroll et le touch passent à travers */
-      opacity: 0;                  /* valeur pilotée par le scroll en JS */
-      z-index: 5;                  /* au-dessus des cartes floutées */
-      will-change: opacity;
-    }
-    .value-overlay-inner {
-      pointer-events: none;
-      max-width: 760px;
-      text-align: center;
-      padding: clamp(28px, 5vw, 52px) clamp(24px, 5vw, 56px);
-      border-radius: var(--radius);
-      background: rgba(249,249,247,0.72);
-      border: 1px solid var(--green-border);
-      box-shadow: 0 24px 70px rgba(42,138,80,0.18);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    .value-overlay-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: clamp(1.7rem, 5.5vw, 3rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--black);
-      margin-bottom: clamp(14px, 2.5vw, 22px);
-    }
-    .value-overlay-sub {
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      font-size: clamp(0.98rem, 2.4vw, 1.25rem);
-      line-height: 1.6;
-      color: rgba(10,10,10,0.66);
-      max-width: 540px;
-      margin: 0 auto;
-    }
-    /* Indicateur "continuez à défiler" dans l'overlay valeur */
-    .value-scroll-hint {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      margin-top: clamp(22px, 4vw, 36px);
-      color: var(--green);
-    }
-    .value-scroll-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(42,138,80,0.85);
-    }
-    .value-scroll-mouse {
-      width: 24px; height: 38px;
-      border: 2px solid rgba(42,138,80,0.55);
-      border-radius: 14px;
-      display: flex;
-      justify-content: center;
-      padding-top: 6px;
-    }
-    .value-scroll-wheel {
-      width: 3px; height: 7px;
-      border-radius: 3px;
-      background: var(--green);
-      animation: valueWheel 1.6s ease-in-out infinite;
-    }
-    .value-scroll-chevrons { margin-top: -2px; }
-    .value-scroll-chevrons .vsc {
-      opacity: 0;
-      animation: valueChevron 1.6s ease-in-out infinite;
-    }
-    .value-scroll-chevrons .vsc-2 { animation-delay: 0.2s; }
-    @keyframes valueWheel {
-      0%   { transform: translateY(0);   opacity: 0; }
-      30%  { opacity: 1; }
-      60%  { transform: translateY(9px); opacity: 0; }
-      100% { transform: translateY(9px); opacity: 0; }
-    }
-    @keyframes valueChevron {
-      0%, 100% { opacity: 0; transform: translateY(-3px); }
-      50%      { opacity: 1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .value-scroll-wheel, .value-scroll-chevrons .vsc { animation: none; }
-      .value-scroll-chevrons .vsc { opacity: 0.7; }
-    }
-    /* Accessibilité : pas de pin/flou/animation si mouvement réduit */
-    @media (prefers-reduced-motion: reduce) {
-      .services-pin { position: static; }
-      .services-pin-spacer { display: none; }
-      .services-blur { filter: none !important; }
-      .value-overlay { display: none; }
-    }
-
-    /* ─── POURQUOI (fond noir) ─── */
-    #pourquoi { background: var(--black); }
-    .pourquoi-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .differentiators { display: flex; flex-direction: column; gap: 32px; }
-    .diff-item { display: flex; gap: 18px; align-items: flex-start; }
-    .diff-icon {
-      flex-shrink: 0;
-      width: 44px;
-      height: 44px;
-      background: var(--green-glass);
-      border: 1px solid var(--green-border);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .diff-icon svg { width: 20px; height: 20px; stroke: var(--green-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .diff-content h3 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--white);
-    }
-    .diff-content p { color: rgba(245,245,243,0.55); font-size: 0.88rem; font-weight: 400; line-height: 1.6; }
-    .founder-card {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--green-border);
-    }
-    .founder-card img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      object-position: top center;
-    }
-    .founder-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 32px;
-      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 65%, transparent 100%);
-    }
-    .founder-quote {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      line-height: 1.45;
-      margin-bottom: 10px;
-      color: var(--white);
-    }
-    .founder-name { color: var(--green-light); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; }
-
-    /* ─── METRICS (fond teinté vert très doux) ─── */
-    #metrics {
-      background: var(--green-tint);
-      color: var(--black);
-      padding: 80px 5%;
-    }
-    #metrics .section-title { color: var(--black); }
-    .metrics-header { text-align: center; margin-bottom: 56px; }
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .metric-card {
-      padding: 44px 28px;
-      text-align: center;
-      background: #fff;
-      border: 1px solid rgba(42,138,80,0.15);
-      border-radius: var(--radius);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .metric-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(42,138,80,0.1);
-    }
-    .metric-value {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 800;
-      color: var(--green);
-      line-height: 1;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-    .metric-label { color: rgba(10,10,10,0.55); font-size: 0.9rem; font-weight: 400; line-height: 1.45; }
-
-    /* ─── MÉTHODE (fond vert teinté doux) ─── */
-    #methode { background: var(--green-tint); color: var(--black); }
-    #methode .section-title { color: var(--black); }
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .method-step {
-      position: relative;
-      background: #fff;
-      border: 1px solid rgba(42,138,80,0.15);
-      border-radius: var(--radius);
-      padding: 32px 26px;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .method-step:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(42,138,80,0.12);
-    }
-    .method-num {
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
-      color: #fff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 16px rgba(42,138,80,0.28);
-    }
-    .method-step h3 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.02rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--black);
-    }
-    .method-step p { color: rgba(10,10,10,0.58); font-size: 0.9rem; line-height: 1.55; }
-    .method-step::after {
-      content: '';
-      position: absolute;
-      top: 52px; right: -13px;
-      width: 26px; height: 2px;
-      background: var(--green-border);
-    }
-    .method-step:last-child::after { display: none; }
-
-    /* ─── FAQ (fond blanc cassé) ─── */
-    #faq { background: var(--white-bg); color: var(--black); }
-    #faq .section-title { color: var(--black); }
-    .faq-header { text-align: center; margin-bottom: 48px; }
-    .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-    .faq-item {
-      background: #fff;
-      border: 1px solid rgba(42,138,80,0.15);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-    .faq-item.open { border-color: rgba(111,207,151,0.5); box-shadow: 0 12px 36px rgba(42,138,80,0.10); }
-    .faq-q {
-      width: 100%;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      padding: 20px 24px;
-      text-align: left;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--black);
-    }
-    .faq-q-icon {
-      flex-shrink: 0;
-      width: 22px; height: 22px;
-      position: relative;
-    }
-    .faq-q-icon::before, .faq-q-icon::after {
-      content: '';
-      position: absolute; top: 50%; left: 50%;
-      width: 13px; height: 2px;
-      background: var(--green);
-      border-radius: 2px;
-      transform: translate(-50%, -50%);
-      transition: opacity var(--transition);
-    }
-    .faq-q-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
-    .faq-item.open .faq-q-icon::after { opacity: 0; }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height var(--transition);
-    }
-    .faq-a-inner {
-      padding: 0 24px 22px;
-      color: rgba(10,10,10,0.6);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
-    /* ─── CONTACT (fond noir) ─── */
-    #contact { background: var(--black); }
-    .contact-centered {
-      max-width: 640px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .contact-centered h2 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.2;
-      color: var(--white);
-    }
-    .contact-centered > p {
-      color: rgba(245,245,243,0.55);
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.7;
-      margin-bottom: 44px;
-    }
-    .contact-ctas {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 52px;
-    }
-    .btn-cta-email {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 18px 36px;
-      background: var(--green);
-      color: var(--white);
-      border-radius: 14px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      transition: all var(--transition);
-      border: 2px solid transparent;
-    }
-    .btn-cta-email:hover {
-      background: var(--green-light);
-      color: var(--black);
-      transform: translateY(-3px);
-      box-shadow: 0 14px 40px rgba(42,138,80,0.4);
-    }
-    .btn-cta-email svg { flex-shrink: 0; }
-    .contact-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
-    .contact-meta-item {
-      color: rgba(245,245,243,0.4);
-      font-size: 0.88rem;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .contact-meta-item a { color: rgba(245,245,243,0.4); transition: color var(--transition); }
-    .contact-meta-item a:hover { color: var(--green-light); }
-    .contact-meta-dot {
-      width: 3px; height: 3px;
-      background: rgba(245,245,243,0.2);
-      border-radius: 50%;
-    }
-    /* Bouton "Nous appeler" */
-    .btn-cta-call {
-      display: inline-flex; align-items: center; gap: 12px;
-      padding: 18px 36px;
-      background: var(--white);
-      color: var(--green);
-      border-radius: 14px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      transition: all var(--transition);
-      border: 2px solid var(--green-border);
-    }
-    .btn-cta-call:hover {
-      border-color: var(--green-light);
-      background: #f0faf4;
-      transform: translateY(-3px);
-      box-shadow: 0 14px 40px rgba(42,138,80,0.18);
-    }
-    .btn-cta-call svg { flex-shrink: 0; }
-    /* Formulaire de contact */
-    .contact-form {
-      max-width: 560px;
-      margin: 0 auto 44px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      text-align: left;
-    }
-    .contact-form .field-full { grid-column: 1 / -1; }
-    .contact-form label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: rgba(245,245,243,0.6);
-      margin-bottom: 7px;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 13px 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: var(--radius-sm);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      transition: border-color var(--transition), background var(--transition);
-    }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder { color: rgba(245,245,243,0.3); }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--green-light);
-      background: rgba(255,255,255,0.06);
-    }
-    .contact-form textarea { resize: vertical; min-height: 120px; }
-    .btn-form-submit {
-      grid-column: 1 / -1;
-      padding: 16px 32px;
-      background: var(--green);
-      color: var(--white);
-      border-radius: 14px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      transition: all var(--transition);
-    }
-    .btn-form-submit:hover {
-      background: var(--green-light);
-      color: var(--black);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(42,138,80,0.4);
-    }
-    .btn-form-submit:disabled { opacity: 0.6; cursor: default; transform: none; box-shadow: none; }
-    .form-status {
-      grid-column: 1 / -1;
-      text-align: center;
-      font-size: 0.92rem;
-      font-weight: 500;
-      min-height: 1.2em;
-    }
-    .form-status.success { color: var(--green-light); }
-    .form-status.error { color: #ff8a8a; }
-    @media (max-width: 520px) {
-      .btn-cta-email, .btn-cta-call { width: 100%; justify-content: center; }
-      .contact-ctas { flex-direction: column; align-items: stretch; }
-      .contact-form { grid-template-columns: 1fr; }
-    }
-
-    /* ─── FOOTER (noir très profond) ─── */
-    footer {
-      background: var(--black-deep);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 60px 5% 36px;
-    }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 48px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .footer-brand img { height: 34px; margin-bottom: 14px; }
-    .footer-brand p { color: rgba(245,245,243,0.4); font-size: 0.87rem; font-weight: 400; line-height: 1.6; max-width: 240px; }
-    .footer-col h4 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--green-light);
-      margin-bottom: 18px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-    .footer-col ul li a {
-      color: rgba(245,245,243,0.4);
-      font-size: 0.88rem;
-      font-weight: 400;
-      transition: color var(--transition);
-    }
-    .footer-col ul li a:hover { color: var(--green-light); }
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: rgba(245,245,243,0.2);
-      font-size: 0.8rem;
-    }
-
-    /* ─── REVEAL ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.08s; }
-    .reveal-delay-2 { transition-delay: 0.16s; }
-    .reveal-delay-3 { transition-delay: 0.24s; }
-    .reveal-delay-4 { transition-delay: 0.32s; }
-    .reveal-delay-5 { transition-delay: 0.40s; }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 980px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 56px; }
-      .ai-dashboard { perspective: none; max-width: 480px; margin: 0 auto; justify-self: center; width: 100%; }
-      .ai-dash-frame { transform: none; animation: none; }
-      .pourquoi-grid { grid-template-columns: 1fr; gap: 48px; }
-      .founder-card { max-width: 480px; margin: 0 auto; }
-      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .method-grid { grid-template-columns: 1fr 1fr; }
-      .method-step::after { display: none; }
-    }
-    @media (max-width: 560px) {
-      .ai-dash-grid { grid-template-columns: 1fr; }
-      .ai-dash-kpis { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav-links, .btn-nav { display: none; }
-      .hamburger { display: flex; }
-      section { padding: 72px 5%; }
-    }
-    @media (max-width: 480px) {
-      .metrics-grid { grid-template-columns: 1fr 1fr; }
-      .footer-top { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-      .hero-ctas { flex-direction: column; }
-      .method-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 360px) {
-      .metrics-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ═══════════════════════════════════════════════════════
-       NAVIGATION SWIPE GUIDÉE (fullpage) — mobile & desktop
-       ═══════════════════════════════════════════════════════ */
-    :root { --bar-h: 48px; }
-
-    html { height: 100%; }
-    body {
-      height: 100vh;
-      height: 100dvh;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior-y: none;
-    }
-    /* on masque l'ancienne navbar + menu mobile : la barre du haut devient le seul header */
-    #navbar, .mobile-menu, .hamburger { display: none !important; }
-
-    /* Chaque section = une "diapo" plein écran qui s'aligne au swipe */
-    .fp-slide {
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      min-height: 100vh !important;
-      min-height: 100dvh !important;
-      padding: calc(var(--bar-h) + 18px) 5% 26px !important;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-    }
-    .fp-slide > .section-inner,
-    .fp-slide > .valeur-inner { width: 100%; }
-
-    /* ── Barre du haut : logo (gauche) · pill 3 pages (centre) · FR/EN (droite) ── */
-    .page-toggle-bar {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      height: var(--bar-h);
-      padding: 0 14px;
-      gap: 8px;
-    }
-    .topbar-logo { justify-self: start; display: inline-flex; align-items: center; }
-    .topbar-logo img { height: 24px; width: auto; display: block; }
-    .page-toggle-bar .page-toggle { justify-self: center; }
-    .page-toggle-bar .lang-toggle { justify-self: end; }
-    @media (max-width: 560px) { .topbar-logo img { height: 20px; } }
-    @media (max-width: 430px) { .topbar-logo { display: none; } }
-
-    /* ── Indicateur latéral gauche : le trait + les points ── */
-    .fp-dots {
-      position: fixed;
-      left: 14px; top: 50%;
-      transform: translateY(-50%);
-      z-index: 1200;
-      display: flex; flex-direction: column; align-items: center;
-      gap: 13px;
-      padding: 16px 8px;
-      pointer-events: none;
-    }
-    .fp-dots::before {
-      content: '';
-      position: absolute;
-      top: 8px; bottom: 8px; left: 50%;
-      width: 1.5px; transform: translateX(-50%);
-      background: linear-gradient(to bottom, transparent, rgba(111,207,151,0.28) 14%, rgba(111,207,151,0.28) 86%, transparent);
-      z-index: -1;
-    }
-    .fp-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(245,245,243,0.22);
-      transition: all .35s cubic-bezier(.4,0,.2,1);
-    }
-    .fp-dot.is-active {
-      background: var(--green-light);
-      box-shadow: 0 0 10px rgba(111,207,151,0.75);
-      transform: scale(1.4);
-    }
-    @media (max-width: 768px) { .fp-dots { left: 3px; gap: 10px; padding: 14px 1px; } }
-    @media (max-width: 560px) { .fp-slide { padding-left: 22px !important; } .fp-slide--contact { padding-left: 0 !important; } }
-    @media (max-width: 980px) {
-      #hero .hero-inner { display: flex; flex-direction: column; align-items: stretch; }
-      .hero-inner > * { min-width: 0; max-width: 100%; }
-      .hero-content { overflow-wrap: break-word; }
-      .site-preview, .ads-manager, .ai-dashboard { width: 100%; max-width: 340px; }
-    }
-
-    /* ── Indice de swipe animé (doigt) qui invite à balayer, disparaît après le 1er swipe ── */
-    .fp-swipe-hint {
-      position: fixed;
-      left: 50%; bottom: 20px;
-      transform: translateX(-50%);
-      z-index: 1200;
-      display: flex; flex-direction: column; align-items: center; gap: 5px;
-      color: var(--green-light);
-      transition: opacity .5s ease;
-      pointer-events: none;
-    }
-    .fp-swipe-hint.is-hidden { opacity: 0; }
-    .fp-swipe-finger {
-      animation: fpFinger 1.8s cubic-bezier(.4,0,.2,1) infinite;
-      filter: drop-shadow(0 0 6px rgba(111,207,151,0.5));
-    }
-    @keyframes fpFinger {
-      0%, 100% { transform: translateY(7px);  opacity: .45; }
-      50%      { transform: translateY(-7px); opacity: 1; }
-    }
-    .fp-swipe-label {
-      font-size: 9.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(111,207,151,0.8);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .fp-swipe-finger { animation: none; }
-      body { scroll-snap-type: none; scroll-behavior: auto; }
-    }
-
-    /* ── Slide "valeur" (ex pop-up : nous ne vendons pas d'IA) ── */
-    #valeur { background: var(--black); text-align: center; overflow: hidden; }
-    #valeur::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 45%, rgba(42,138,80,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .valeur-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 2; }
-    .valeur-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: clamp(1.9rem, 6vw, 3.4rem);
-      line-height: 1.12; letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: clamp(16px, 3vw, 24px);
-    }
-    .valeur-title .accent {
-      background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 70%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .valeur-sub {
-      font-size: clamp(1rem, 2.6vw, 1.3rem);
-      color: rgba(245,245,243,0.65);
-      line-height: 1.6; max-width: 580px; margin: 0 auto;
-    }
-
-    /* ═══ COMPACTION MOBILE : chaque section tient sur un seul écran ═══ */
-    @media (max-width: 768px) {
-      .section-header { margin-bottom: 20px !important; }
-      .section-title { font-size: 1.55rem; }
-      .section-tag { margin-bottom: 10px; }
-
-      /* HERO plus ramassé + dashboard réduit */
-      #hero .hero-inner { gap: 20px; }
-      .hero-badge { margin-bottom: 12px; padding: 5px 12px; font-size: 0.72rem; }
-      .hero-title { font-size: clamp(1.65rem, 7vw, 2.2rem); margin-bottom: 12px; }
-      .hero-sub { font-size: 0.9rem; margin-bottom: 16px; }
-      .ai-dashboard { max-width: 330px; }
-      .ai-dash-frame { padding: 10px; }
-      .ai-dash-logs { min-height: 48px; max-height: 48px; }
-
-      /* SERVICES : 5 widgets compacts, 2 colonnes, le dernier centré */
-      .services-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .service-card { padding: 14px 13px; border-radius: 12px; }
-      .service-icon { width: 34px; height: 34px; margin-bottom: 9px; }
-      .service-icon svg { width: 18px; height: 18px; }
-      .service-title { font-size: 0.85rem; margin-bottom: 4px; line-height: 1.2; }
-      .service-desc { font-size: 0.72rem; line-height: 1.35; }
-      .services-grid .service-card:nth-child(5) { grid-column: 1 / -1; }
-
-      /* MÉTHODE : 2×2 compact */
-      .method-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .method-step { padding: 15px 14px; }
-      .method-step::after { display: none; }
-      .method-num { width: 30px; height: 30px; font-size: 0.95rem; margin-bottom: 10px; border-radius: 10px; }
-      .method-step h3 { font-size: 0.9rem; margin-bottom: 5px; }
-      .method-step p { font-size: 0.74rem; line-height: 1.35; }
-
-      /* POURQUOI : photo réduite + items resserrés */
-      .pourquoi-grid { gap: 24px; }
-      .differentiators { gap: 16px; }
-      .diff-item { gap: 12px; }
-      .diff-icon { width: 36px; height: 36px; }
-      .diff-content h3 { font-size: 0.92rem; }
-      .diff-content p { font-size: 0.8rem; }
-      .founder-card img { height: 190px; }
-      .founder-overlay { padding: 18px; }
-      .founder-quote { font-size: 0.9rem; }
-
-      /* METRICS */
-      .metrics-header { margin-bottom: 22px; }
-      .metric-card { padding: 22px 14px; }
-
-      /* FAQ */
-      .faq-header { margin-bottom: 20px; }
-      .faq-q { padding: 14px 16px; font-size: 0.88rem; }
-
-      /* CONTACT */
-      #contact .contact-centered > p { margin-bottom: 22px; }
-      .contact-ctas { margin-bottom: 22px; }
-      .contact-form { margin-bottom: 22px; }
-    }
-    /* petits écrans : on gagne encore de la place dans le hero */
-    @media (max-width: 560px) and (max-height: 720px) {
-      .ai-dash-logs { display: none; }
-      .ai-dash-agents .agent-row:nth-child(4) { display: none; }
-    }
-
-    /* ── Diapo AVIS : carrousel horizontal glissable ── */
-    #avis { background: var(--black); overflow: hidden; }
-    #avis .section-inner { max-width: 1240px; width: 100%; }
-    .reviews-head { text-align: center; margin-bottom: 26px; }
-    .reviews-rating {
-      display: inline-flex; align-items: center; gap: 9px; flex-wrap: wrap; justify-content: center;
-      margin-top: 12px; font-size: 0.92rem; color: rgba(245,245,243,0.7);
-    }
-    .reviews-rating .rr-stars { color: #ffc542; letter-spacing: 2px; font-size: 1.05rem; }
-    .reviews-rating b { color: var(--white); font-weight: 800; }
-    .reviews-track {
-      display: flex; gap: 16px;
-      overflow-x: auto; overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      padding: 6px 4px 18px;
-      cursor: grab;
-      scrollbar-width: thin;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior-x: contain;
-    }
-    .reviews-track.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
-    .reviews-track::-webkit-scrollbar { height: 6px; }
-    .reviews-track::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 999px; }
-    .reviews-track::-webkit-scrollbar-thumb { background: var(--green); border-radius: 999px; }
-    .review-card {
-      flex: 0 0 auto;
-      width: min(360px, 82vw);
-      scroll-snap-align: center;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 16px;
-      padding: 22px 22px 24px;
-      display: flex; flex-direction: column;
-      user-select: none;
-    }
-    .review-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-    .review-avatar {
-      width: 44px; height: 44px; flex: 0 0 auto; border-radius: 50%;
-      display: grid; place-items: center;
-      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.15rem;
-      color: #fff;
-    }
-    .review-card:nth-child(6n+1) .review-avatar { background: linear-gradient(135deg,#2a8a50,#6fcf97); }
-    .review-card:nth-child(6n+2) .review-avatar { background: linear-gradient(135deg,#4285F4,#6fa8ff); }
-    .review-card:nth-child(6n+3) .review-avatar { background: linear-gradient(135deg,#a855f7,#c98bff); }
-    .review-card:nth-child(6n+4) .review-avatar { background: linear-gradient(135deg,#f59e0b,#fbbf5c); }
-    .review-card:nth-child(6n+5) .review-avatar { background: linear-gradient(135deg,#ef4444,#ff7a7a); }
-    .review-card:nth-child(6n+6) .review-avatar { background: linear-gradient(135deg,#14b8a6,#5fe0d0); }
-    .review-meta { flex: 1; min-width: 0; }
-    .review-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); }
-    .review-stars { color: #ffc542; font-size: 0.82rem; letter-spacing: 1px; margin-top: 2px; }
-    .review-g { width: 22px; height: 22px; flex: 0 0 auto; }
-    .review-quote { color: rgba(245,245,243,0.72); font-size: 0.92rem; line-height: 1.6; font-style: italic; }
-    .reviews-hint {
-      text-align: center; margin-top: 6px;
-      font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(111,207,151,0.75);
-    }
-    @media (max-width: 768px) {
-      .reviews-head { margin-bottom: 18px; }
-      .review-card { width: min(300px, 82vw); padding: 18px; border-radius: 14px; }
-      .review-quote { font-size: 0.85rem; }
-      .reviews-rating { font-size: 0.85rem; }
-    }
-
-    /* ── Diapo contact + footer réunis ── */
-    .fp-slide--contact { padding: 0 !important; justify-content: space-between; }
-    .fp-slide--contact #contact {
-      flex: 1 1 auto; min-height: 0;
-      padding: calc(var(--bar-h) + 26px) 5% 22px;
-      display: flex; align-items: center;
-    }
-    .fp-slide--contact footer { padding: 22px 5% 18px; }
-    @media (max-width: 768px) {
-      .fp-slide--contact #contact { padding-top: calc(var(--bar-h) + 18px); }
-      .fp-slide--contact footer { padding: 16px 5% 14px; }
-      .footer-top { margin-bottom: 20px; padding-bottom: 20px; gap: 20px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/caza-v2.css" />
+  <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
 
-<!-- ░░ BARRE DU HAUT : logo · sélecteur 3 pages (centré) · FR/EN ░░ -->
+<div id="preloader" aria-hidden="true">
+  <div class="pre-word"><span>Caza</span><span>Comm</span></div>
+  <div class="pre-count">000 %</div>
+  <div class="pre-bar"></div>
+</div>
+
 <div class="page-toggle-bar" role="navigation" aria-label="Sélecteur de page">
   <a href="#hero" class="topbar-logo" aria-label="Caza Comm — accueil">
     <img src="images/logo.png" alt="Caza Comm" />
   </a>
-  <div class="page-toggle" data-active="ia">
-    <a href="index.html" class="page-toggle-opt page-toggle-opt--ia is-active" aria-current="page">Agents IA</a>
-    <a href="pub.html" class="page-toggle-opt page-toggle-opt--pub">Publicité</a>
-    <a href="sites-vitrine.html" class="page-toggle-opt page-toggle-opt--web">Sites Internet</a>
+  <div class="page-toggle">
+    <a href="index.html" class="page-toggle-opt is-active" aria-current="page">Agents IA</a>
+    <a href="pub.html" class="page-toggle-opt">Publicité</a>
+    <a href="sites-vitrine.html" class="page-toggle-opt">Sites Internet</a>
     <span class="page-toggle-slider" aria-hidden="true"></span>
   </div>
-  <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
-    <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
-    <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+  <div class="topbar-right">
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
+      <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="true" aria-label="Activer ou couper les sons" title="Sons">
+      <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+      <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+    </button>
   </div>
 </div>
 
-<!-- ░░ Indicateur de navigation : points sur le trait à gauche (généré en JS) ░░ -->
-<div class="fp-dots" id="fpDots" aria-hidden="true"></div>
-
-<!-- ░░ Indice de swipe (doigt animé, disparaît au premier swipe) ░░ -->
-<div class="fp-swipe-hint" id="fpSwipeHint" aria-hidden="true">
-  <svg class="fp-swipe-finger" width="30" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M8 13.5V5.5a1.5 1.5 0 0 1 3 0V12"/>
-    <path d="M11 12V4a1.5 1.5 0 0 1 3 0v8"/>
-    <path d="M14 12.5v-2a1.5 1.5 0 0 1 3 0V13"/>
-    <path d="M17 12.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-5.2-3l-2.1-3.6a1.5 1.5 0 0 1 2.6-1.5L9 15"/>
-  </svg>
-  <span class="fp-swipe-label" data-en="Swipe">Swipez</span>
-</div>
+<div class="scroll-bar" aria-hidden="true"><span></span></div>
 
 <!-- ░░ HERO ░░ -->
-<section id="hero" class="dark fp-slide" aria-label="Section principale">
-  <canvas id="particles-canvas" aria-hidden="true"></canvas>
-  <div class="hero-inner">
-    <div class="hero-content">
-      <h1 class="hero-title" data-en="A &lt;span class=&quot;accent&quot;&gt;custom AI&lt;/span&gt; = the productivity of several employees, without the overhead.">
-        Une <span class="accent">IA sur mesure</span> = la productivité de plusieurs employés, sans les charges.
-      </h1>
-      <p class="hero-sub" data-en="We bring AI into your company, at your own pace — from discovery to agents that handle your tasks for you.">Nous intégrons l'IA dans votre entreprise, à votre rythme, de la découverte aux agents qui gèrent vos tâches à votre place.</p>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn-primary">
-          <span data-en="Let's talk about your project">Parlons de votre projet</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#services" class="btn-secondary" data-en="See our solutions">Voir nos solutions</a>
-      </div>
+<section class="scene" id="hero" aria-label="Section principale">
+  <h1 class="giant hero-title">
+    <span class="rise"><span data-en="A custom AI">Une IA sur mesure</span></span>
+    <span class="rise d1"><span class="accent" data-en="= the productivity">= la productivité</span></span>
+    <span class="rise d2"><span data-en="of several employees,">de plusieurs employés,</span></span>
+    <span class="rise d3"><span data-en="without the overhead.">sans les charges.</span></span>
+  </h1>
+  <div class="hero-actions fade d3">
+    <a href="#contact" class="link-action link-action--solid">
+      <span data-en="Let's talk">Parlons-en</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#solutions" class="link-action" data-en="Our solutions">Nos solutions</a>
+  </div>
+</section>
+
+<!-- ░░ PROMESSE ░░ -->
+<section class="scene" id="valeur" aria-label="Notre promesse">
+  <h2 class="giant">
+    <span class="rise"><span data-en="We don't sell">Nous ne vendons pas</span></span>
+    <span class="rise d1"><span class="strike-word" data-en="artificial intelligence.">d'intelligence artificielle.</span></span>
+    <span class="rise d2"><span class="accent" data-en="We sell time and money.">Nous vendons du temps et de l'argent.</span></span>
+  </h2>
+</section>
+
+<!-- ░░ SOLUTIONS ░░ -->
+<section class="scene" id="solutions" aria-label="Nos solutions IA">
+  <h2 class="scene-title fade" data-en="What CAZA COMM builds for you">Ce que CAZA COMM construit pour vous</h2>
+  <div class="swap-deck" role="list" aria-label="Nos solutions — glissez">
+    <article class="swap-item" role="listitem">
+      <p class="swap-old"><span class="x" aria-hidden="true">×</span><span class="strike" data-en="Starting from scratch">Partir de zéro</span></p>
+      <h3 class="swap-new" data-en="Discovery &amp; onboarding">Découverte &amp; sensibilisation</h3>
+    </article>
+    <article class="swap-item" role="listitem">
+      <p class="swap-old"><span class="x" aria-hidden="true">×</span><span class="strike" data-en="Repetitive tasks">Tâches répétitives</span></p>
+      <h3 class="swap-new" data-en="Automated">Automatisées</h3>
+    </article>
+    <article class="swap-item" role="listitem">
+      <p class="swap-old"><span class="x" aria-hidden="true">×</span><span class="strike" data-en="Missed calls and emails">Appels et mails manqués</span></p>
+      <h3 class="swap-new" data-en="An agent that answers for you">Un agent qui répond pour vous</h3>
+    </article>
+    <article class="swap-item" role="listitem">
+      <p class="swap-old"><span class="x" aria-hidden="true">×</span><span class="strike" data-en="Changing all your tools">Changer tous vos outils</span></p>
+      <h3 class="swap-new" data-en="AI plugged into your tools">L'IA branchée à vos outils</h3>
+    </article>
+    <article class="swap-item" role="listitem">
+      <p class="swap-old"><span class="x" aria-hidden="true">×</span><span class="strike" data-en="Blank-page syndrome">La page blanche</span></p>
+      <h3 class="swap-new" data-en="Your content, generated">Vos contenus générés</h3>
+    </article>
+  </div>
+</section>
+
+<!-- ░░ MÉTHODE ░░ -->
+<section class="scene" id="methode" aria-label="Notre méthode">
+  <h2 class="scene-title fade" data-en="Our method">Notre méthode</h2>
+  <div class="steps-deck" role="list" aria-label="Les 4 étapes — glissez">
+    <div class="step" role="listitem">
+      <div class="step-num" aria-hidden="true">01</div>
+      <h3 data-en="We meet">On se rencontre</h3>
     </div>
-    <div class="ai-dashboard reveal" aria-label="Dashboard d'agents IA en activité">
-      <div class="ai-dash-glow" aria-hidden="true"></div>
-      <div class="ai-dash-frame">
-        <!-- Header -->
-        <div class="ai-dash-header">
-          <div class="ai-dash-status">
-            <span class="ai-dash-pulse" aria-hidden="true"></span>
-            <span class="ai-dash-status-text" data-en="AI Agents · Online">Agents IA · En ligne</span>
-          </div>
-          <div class="ai-dash-time">
-            <span class="ai-dash-time-icon" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            </span>
-            Sync · <span id="aiSyncTime">2s</span>
-          </div>
-        </div>
-
-        <!-- Chart + KPIs -->
-        <div class="ai-dash-grid">
-          <div class="ai-dash-chart">
-            <div class="ai-chart-head">
-              <div>
-                <div class="ai-chart-label" data-en="Automated tasks">Tâches automatisées</div>
-                <div class="ai-chart-value">+247<span>%</span></div>
-              </div>
-              <div class="ai-chart-trend">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 17 17 7"/><polyline points="9 7 17 7 17 15"/></svg>
-                <span data-en="this week">cette semaine</span>
-              </div>
-            </div>
-            <svg class="ai-chart-svg" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="aiGradLine" x1="0" x2="1" y1="0" y2="0">
-                  <stop offset="0" stop-color="#6fcf97"/>
-                  <stop offset="1" stop-color="#a8e6c1"/>
-                </linearGradient>
-                <linearGradient id="aiGradFill" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="#2a8a50" stop-opacity="0.42"/>
-                  <stop offset="1" stop-color="#2a8a50" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <g class="ai-chart-grid" stroke="rgba(255,255,255,0.05)" stroke-width="1">
-                <line x1="0" x2="320" y1="22" y2="22"/>
-                <line x1="0" x2="320" y1="55" y2="55"/>
-                <line x1="0" x2="320" y1="88" y2="88"/>
-              </g>
-              <path class="ai-chart-area" d="M0,90 L24,84 L48,80 L72,72 L96,68 L120,58 L148,50 L176,46 L204,38 L232,32 L260,26 L288,20 L320,14 L320,110 L0,110 Z" fill="url(#aiGradFill)"/>
-              <path class="ai-chart-line" d="M0,90 L24,84 L48,80 L72,72 L96,68 L120,58 L148,50 L176,46 L204,38 L232,32 L260,26 L288,20 L320,14" fill="none" stroke="url(#aiGradLine)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle class="ai-chart-dot" cx="320" cy="14" r="3.5" fill="#a8e6c1"/>
-              <circle class="ai-chart-dot-glow" cx="320" cy="14" r="9" fill="rgba(168,230,193,0.22)"/>
-            </svg>
-          </div>
-
-          <div class="ai-dash-kpis">
-            <div class="kpi-card">
-              <div class="kpi-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m21 7-9 6L3 7"/></svg>
-              </div>
-              <div class="kpi-content">
-                <div class="kpi-label" data-en="Emails processed">Mails traités</div>
-                <div class="kpi-value" id="kpiMails">1 247</div>
-              </div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-              </div>
-              <div class="kpi-content">
-                <div class="kpi-label" data-en="Time saved">Temps gagné</div>
-                <div class="kpi-value">14h<span class="kpi-unit" data-en=" / wk"> / sem</span></div>
-              </div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              </div>
-              <div class="kpi-content">
-                <div class="kpi-label" data-en="Replies generated">Réponses générées</div>
-                <div class="kpi-value" id="kpiReplies">89</div>
-              </div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="kpi-content">
-                <div class="kpi-label" data-en="Success rate">Taux de réussite</div>
-                <div class="kpi-value">98.4<span class="kpi-unit">%</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Agents qui travaillent -->
-        <div class="ai-dash-agents" id="aiAgents">
-          <div class="agent-row" data-agent="email">
-            <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m21 7-9 6L3 7"/></svg></div>
-            <div class="agent-body">
-              <div class="agent-line">
-                <span class="agent-name" data-en="Email Agent">Agent Email</span>
-                <span class="agent-task">Tri inbox</span>
-                <span class="agent-pct">0%</span>
-              </div>
-              <div class="agent-bar"><div class="agent-bar-fill"></div></div>
-            </div>
-          </div>
-          <div class="agent-row" data-agent="social">
-            <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></div>
-            <div class="agent-body">
-              <div class="agent-line">
-                <span class="agent-name" data-en="Social Agent">Agent Social</span>
-                <span class="agent-task">Post LinkedIn</span>
-                <span class="agent-pct">0%</span>
-              </div>
-              <div class="agent-bar"><div class="agent-bar-fill"></div></div>
-            </div>
-          </div>
-          <div class="agent-row" data-agent="phone">
-            <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.5 2.1L9 10.4a16 16 0 0 0 4.6 4.6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.4.6A2 2 0 0 1 22 16.9Z"/></svg></div>
-            <div class="agent-body">
-              <div class="agent-line">
-                <span class="agent-name" data-en="Phone Agent">Agent Tél</span>
-                <span class="agent-task">Appel client</span>
-                <span class="agent-pct">0%</span>
-              </div>
-              <div class="agent-bar"><div class="agent-bar-fill"></div></div>
-            </div>
-          </div>
-          <div class="agent-row" data-agent="quote">
-            <div class="agent-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h2"/></svg></div>
-            <div class="agent-body">
-              <div class="agent-line">
-                <span class="agent-name" data-en="Quote Agent">Agent Devis</span>
-                <span class="agent-task">Génération</span>
-                <span class="agent-pct">0%</span>
-              </div>
-              <div class="agent-bar"><div class="agent-bar-fill"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Logs feed -->
-        <div class="ai-dash-logs" id="aiLogs" aria-live="polite" aria-label="Activité récente"></div>
-      </div>
+    <div class="step" role="listitem">
+      <div class="step-num" aria-hidden="true">02</div>
+      <h3 data-en="We build">On construit</h3>
+    </div>
+    <div class="step" role="listitem">
+      <div class="step-num" aria-hidden="true">03</div>
+      <h3 data-en="We deploy">On déploie</h3>
+    </div>
+    <div class="step" role="listitem">
+      <div class="step-num" aria-hidden="true">04</div>
+      <h3 data-en="Your business thrives">Votre entreprise prospère</h3>
     </div>
   </div>
 </section>
 
-<!-- ░░ SLIDE AVIS : carrousel Google glissable (tactile + drag souris) ░░ -->
-<section id="avis" class="dark fp-slide" aria-label="Avis clients">
-  <div class="section-inner">
-    <div class="reviews-head reveal">
-      <div class="section-tag" style="justify-content:center;" data-en="Google reviews">Avis Google</div>
-      <h2 class="section-title" data-en="They trusted us">Ils nous ont fait confiance</h2>
-      <div class="reviews-rating">
-        <span class="rr-stars" aria-hidden="true">★★★★★</span>
-        <span><b>5,0/5</b> <span data-en="· 18 verified reviews on Google">· 18 avis vérifiés sur Google</span></span>
-      </div>
-    </div>
-    <div class="reviews-track reveal" id="reviewsTrack" role="list" aria-label="Avis clients — glissez pour faire défiler">
-      <article class="review-card" role="listitem">
-        <div class="review-head">
-          <div class="review-avatar" aria-hidden="true">A</div>
-          <div class="review-meta">
-            <div class="review-name">Athletic Traning Performance</div>
-            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
-          </div>
-          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
-        </div>
-        <p class="review-quote">« Nous souhaitions optimiser notre visibilité sur le plan local, notamment grâce au référencement et à l'optimisation de la page Google. Nous voulions également un nouveau site internet. Nous sommes très satisfaits de la prestation de Caza Comm… »</p>
-      </article>
-      <article class="review-card" role="listitem">
-        <div class="review-head">
-          <div class="review-avatar" aria-hidden="true">J</div>
-          <div class="review-meta">
-            <div class="review-name">JB Decocq</div>
-            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
-          </div>
-          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
-        </div>
-        <p class="review-quote">« J'ai fait appel à Jeremy pour qu'il m'accompagne, je suis agréablement satisfait par son écoute car son engagement envers moi est à la hauteur de mes attentes… »</p>
-      </article>
-      <article class="review-card" role="listitem">
-        <div class="review-head">
-          <div class="review-avatar" aria-hidden="true">S</div>
-          <div class="review-meta">
-            <div class="review-name">Sandrine Scano</div>
-            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
-          </div>
-          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
-        </div>
-        <p class="review-quote">« Merci pour ton professionnalisme et ton savoir-faire. »</p>
-      </article>
-      <article class="review-card" role="listitem">
-        <div class="review-head">
-          <div class="review-avatar" aria-hidden="true">B</div>
-          <div class="review-meta">
-            <div class="review-name">Bird Hunter</div>
-            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
-          </div>
-          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
-        </div>
-        <p class="review-quote">« Un grand merci à Jérémy de Caza Communication pour le superbe travail réalisé sur le site internet de mon parc de chasse. »</p>
-      </article>
-      <article class="review-card" role="listitem">
-        <div class="review-head">
-          <div class="review-avatar" aria-hidden="true">L</div>
-          <div class="review-meta">
-            <div class="review-name">Le Belvédère</div>
-            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
-          </div>
-          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
-        </div>
-        <p class="review-quote">« J'ai fait appel à Caza Communication pour la création de mon site internet ainsi que la gestion… »</p>
-      </article>
-      <article class="review-card" role="listitem">
-        <div class="review-head">
-          <div class="review-avatar" aria-hidden="true">F</div>
-          <div class="review-meta">
-            <div class="review-name">fanny reignier</div>
-            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
-          </div>
-          <svg class="review-g" viewBox="0 0 48 48" role="img" aria-label="Avis Google"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.2C29.2 35.2 26.7 36 24 36c-5.3 0-9.7-3.1-11.3-7.4l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.1 5.6l6.2 5.2C39.9 36.2 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
-        </div>
-        <p class="review-quote">« Un grand merci à Jeremy pour la réalisation de mon site internet. Il a tout de suite… »</p>
-      </article>
-    </div>
-    <p class="reviews-hint" data-en="Drag to browse all reviews">Glissez pour voir tous les avis →</p>
+<!-- ░░ POURQUOI ░░ -->
+<section class="scene" id="pourquoi" aria-label="Pourquoi choisir Caza Comm">
+  <div class="why-media" aria-hidden="true">
+    <img src="images/founder.jpeg" alt="" loading="lazy" />
   </div>
-</section>
-
-<!-- ░░ SLIDE VALEUR : "Nous ne vendons pas d'IA" (ex pop-up, désormais une diapo) ░░ -->
-<section id="valeur" class="dark fp-slide" aria-label="Notre promesse">
-  <div class="valeur-inner reveal">
-    <p class="valeur-title" data-en="We don&#39;t sell &lt;span class=&quot;accent&quot;&gt;artificial intelligence&lt;/span&gt;.">Nous ne vendons pas d'<span class="accent">intelligence artificielle</span>.</p>
-    <p class="valeur-sub" data-en="We sell time saved and money earned — a concrete return on investment for your business.">Nous vendons du temps gagné et de l'argent gagné, un retour sur investissement concret pour votre entreprise.</p>
-  </div>
-</section>
-
-<!-- ░░ SERVICES (fond blanc) : ce que Caza Comm construit ░░ -->
-<section id="services" class="light fp-slide" aria-label="Nos solutions IA">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="section-tag" data-en="Our solutions">Nos solutions</div>
-      <h2 class="section-title" data-en="What CAZA COMM&lt;br/&gt;builds for you">Ce que CAZA COMM<br/>construit pour vous</h2>
-    </div>
-    <div class="services-grid">
-
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
-        </div>
-        <h3 class="service-title" data-en="Discovery &amp; onboarding">Découverte &amp; sensibilisation</h3>
-        <p class="service-desc" data-en="Starting from scratch? We introduce you to AI and put the right tools in your hands.">Vous partez de zéro ? Nous vous faisons découvrir l'IA et mettons les bons outils entre vos mains.</p>
-      </div>
-
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3 class="service-title" data-en="Automating your repetitive tasks">Automatisation de vos tâches répétitives</h3>
-        <p class="service-desc" data-en="Follow-ups, quotes, reporting, data entry: automated, error-free, effortless.">Relances, devis, reporting, saisie : automatisés, sans erreur, sans effort.</p>
-      </div>
-
-      <div class="service-card reveal reveal-delay-3">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h3 class="service-title" data-en="An agent that answers for you">Un agent qui répond pour vous</h3>
-        <p class="service-desc" data-en="Email, phone, customer messages: it qualifies, replies and books appointments, 24/7.">Email, téléphone, messages clients : il qualifie, répond, prend les RDV, 24/7.</p>
-      </div>
-
-      <div class="service-card reveal reveal-delay-4">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        </div>
-        <h3 class="service-title" data-en="AI plugged into your tools">L'IA branchée à vos outils</h3>
-        <p class="service-desc" data-en="Notion, CRM, email… we connect AI to what you already use, without changing everything.">Notion, CRM, email… nous connectons l'IA à ce que vous utilisez déjà, sans tout changer.</p>
-      </div>
-
-      <div class="service-card reveal reveal-delay-5">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3 class="service-title" data-en="Your content &amp; reports, generated">Vos contenus &amp; rapports générés</h3>
-        <p class="service-desc" data-en="Summaries, posts, meeting notes, ready to use from your own data.">Synthèses, posts, comptes-rendus, prêts à l'emploi à partir de vos données.</p>
-      </div>
-
+  <div class="why-inner">
+    <h2 class="giant">
+      <span class="rise"><span data-en="Not a tool.">Pas un outil.</span></span>
+      <span class="rise d1"><span class="accent" data-en="A partner.">Un partenaire.</span></span>
+    </h2>
+    <p class="why-quote fade d2" data-en="&quot;AI doesn't replace people, it amplifies them.&quot;">« L'IA ne remplace pas l'humain, elle l'amplifie. »</p>
+    <div class="why-list">
+      <div class="why-item fade d2"><h3 data-en="Human first">Humain avant tout</h3></div>
+      <div class="why-item fade d3"><h3 data-en="Zero templates">Zéro template</h3></div>
+      <div class="why-item fade d4"><h3 data-en="Results from week one">Résultat dès la 1re semaine</h3></div>
     </div>
   </div>
 </section>
 
-<!-- ░░ NOTRE MÉTHODE (fond vert teinté doux) ░░ -->
-<section id="methode" class="light fp-slide" aria-label="Notre méthode">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="section-tag" data-en="How we work">Comment nous travaillons</div>
-      <h2 class="section-title" data-en="Our method">Notre méthode</h2>
+<!-- ░░ AVIS ░░ -->
+<section class="scene" id="avis" aria-label="Avis clients">
+  <h2 class="scene-title fade">
+    <span data-en="5.0 / 5">5,0 / 5</span>
+    <span class="accent" data-en="· 18 verified Google reviews">· 18 avis vérifiés sur Google</span>
+  </h2>
+  <div class="marquee marquee--giant" style="margin-top:clamp(18px,3vh,38px);" aria-label="Avis clients">
+    <div class="marquee__track">
+      <span class="quote-item">« Très satisfaits de la prestation de Caza Comm » <span>Athletic Traning Performance</span></span>
+      <span class="quote-item">« Son engagement est à la hauteur de mes attentes » <span>JB Decocq</span></span>
+      <span class="quote-item">« Merci pour ton professionnalisme et ton savoir-faire » <span>Sandrine Scano</span></span>
     </div>
-    <div class="method-grid">
-      <div class="method-step reveal reveal-delay-1">
-        <div class="method-num">1</div>
-        <h3 data-en="We meet">On se rencontre</h3>
-        <p data-en="In person or by video call, to understand your needs and where you stand.">RDV physique ou visio pour comprendre vos besoins et où vous en êtes.</p>
-      </div>
-      <div class="method-step reveal reveal-delay-2">
-        <div class="method-num">2</div>
-        <h3 data-en="We build">On construit</h3>
-        <p data-en="Once the quote is approved, we develop your tailor-made solution.">Devis validé, nous développons votre solution sur mesure.</p>
-      </div>
-      <div class="method-step reveal reveal-delay-3">
-        <div class="method-num">3</div>
-        <h3 data-en="We deploy &amp; support">On déploie &amp; on accompagne</h3>
-        <p data-en="Go-live, training and hands-on onboarding.">Mise en production, formation, prise en main.</p>
-      </div>
-      <div class="method-step reveal reveal-delay-4">
-        <div class="method-num">4</div>
-        <h3 data-en="Your business thrives">Votre entreprise prospère</h3>
-        <p data-en="Concrete gains, and we keep improving the solution over time.">Gains concrets, et nous faisons évoluer la solution dans la durée.</p>
-      </div>
+  </div>
+  <div class="marquee marquee--giant marquee--outline marquee--reverse" style="margin-top:clamp(8px,1.6vh,18px);" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="quote-item">« Un superbe travail sur le site de mon parc de chasse » <span>Bird Hunter</span></span>
+      <span class="quote-item">« La création de mon site ainsi que la gestion » <span>Le Belvédère</span></span>
+      <span class="quote-item">« Un grand merci à Jeremy pour mon site internet » <span>fanny reignier</span></span>
     </div>
   </div>
 </section>
 
-<!-- ░░ POURQUOI (fond noir) ░░ -->
-<section id="pourquoi" class="dark fp-slide" aria-label="Pourquoi choisir Caza Comm">
-  <div class="section-inner">
-    <div class="pourquoi-grid">
+<!-- ░░ CHIFFRES ░░ -->
+<section class="scene" id="metrics" aria-label="Ce qui nous définit">
+  <h2 class="scene-title fade" data-en="What defines us">Ce qui nous définit</h2>
+  <div class="stats-list">
+    <div class="stat-row fade">
+      <span class="stat-value">100%</span>
+      <span class="stat-label" data-en="Custom, no exceptions">Sur mesure, sans exception</span>
+    </div>
+    <div class="stat-row fade d1">
+      <span class="stat-value">&lt;24h</span>
+      <span class="stat-label" data-en="Personal reply guaranteed">Réponse personnelle garantie</span>
+    </div>
+    <div class="stat-row fade d2">
+      <span class="stat-value">FR</span>
+      <span class="stat-label" data-en="Based in France, GDPR">Basé en France, RGPD conforme</span>
+    </div>
+    <div class="stat-row fade d3">
+      <span class="stat-value" data-en="You">Vous</span>
+      <span class="stat-label" data-en="Freelancers, founders, teams">Indépendants, dirigeants, équipes</span>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FAQ ░░ -->
+<section class="scene" id="faq" aria-label="Questions fréquentes">
+  <h2 class="scene-title fade" data-en="Your questions, answered">Vos questions, nos réponses</h2>
+  <div class="faq-list" style="margin-top:clamp(14px,2.6vh,28px);">
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="What does AI actually mean for my business?">C'est quoi concrètement, l'IA pour mon entreprise ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="A system that takes on specific tasks (replying, following up, sorting, generating a document) to save you time.">Un système qui prend en charge des tâches précises (répondre, relancer, trier, générer un document) pour vous faire gagner du temps.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="Do I need to be tech-savvy?">Faut-il s'y connaître en informatique ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We handle all the technical side; you use the tool like a teammate.">Non. Nous gérons toute la partie technique ; vous utilisez l'outil comme un collaborateur.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="Will it turn my way of working upside down?">Est-ce que ça va bouleverser ma façon de travailler ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We move step by step; AI adds to your tools, it doesn't replace your habits.">Non. Nous avançons par étapes ; l'IA s'ajoute à vos outils, elle ne remplace pas vos habitudes.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="Is my data protected?">Mes données sont-elles protégées ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes. Solutions based in France, GDPR-compliant; hosted on your side if needed.">Oui. Solutions basées en France, conformes RGPD ; selon le besoin, hébergées chez vous.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="How long until I see results?">Combien de temps avant des résultats ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="First gains in a few days to a few weeks, not six months.">Des premiers gains en quelques jours à quelques semaines, pas en six mois.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="How much does it cost?">Combien ça coûte ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="It all starts with a free first chat and a clear quote, tailored to your needs.">Tout part d'un premier échange gratuit et d'un devis clair, adapté à votre besoin.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="I don't know where to start, is that a problem?">Je ne sais pas par où commencer, c'est grave ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Quite the opposite: that's exactly where we step in, starting by understanding and guiding you.">Au contraire : c'est exactement là que nous intervenons, en commençant par comprendre et vous orienter.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CONTACT ░░ -->
+<section class="scene scene--contact" id="contact" aria-label="Contact">
+  <div class="contact-body">
+    <div class="contact-grid" style="width:100%;">
       <div>
-        <div class="reveal">
-          <div class="section-tag" data-en="Why choose us">Pourquoi nous choisir</div>
-          <h2 class="section-title" style="margin-bottom: 48px;" data-en="Not a tool.&lt;br/&gt;A partner.">Pas un outil.<br/>Un partenaire.</h2>
-        </div>
-        <div class="differentiators">
-          <div class="diff-item reveal reveal-delay-1">
-            <div class="diff-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <div class="diff-content">
-              <h3 data-en="Human first">Humain avant tout</h3>
-              <p data-en="You talk directly with us, not an anonymous team.">Vous échangez directement avec nous, pas une équipe anonyme.</p>
-            </div>
-          </div>
-          <div class="diff-item reveal reveal-delay-2">
-            <div class="diff-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <div class="diff-content">
-              <h3 data-en="Zero templates">Zéro template</h3>
-              <p data-en="Every solution is built for your case, your tools, your context.">Chaque solution est construite pour votre cas, vos outils, votre contexte.</p>
-            </div>
-          </div>
-          <div class="diff-item reveal reveal-delay-3">
-            <div class="diff-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            </div>
-            <div class="diff-content">
-              <h3 data-en="Results from the first week">Résultat dès la première semaine</h3>
-              <p data-en="Fast, measurable gains, not 6-month projects.">Gains rapides et mesurables, pas des projets à 6 mois.</p>
-            </div>
-          </div>
+        <h2 class="giant">
+          <span class="rise"><span data-en="Let's talk">Parlons de</span></span>
+          <span class="rise d1"><span class="accent" data-en="your project.">votre projet.</span></span>
+        </h2>
+        <div class="contact-lines">
+          <a href="mailto:jeremy@cazacomm.fr" class="contact-line fade d2">jeremy@cazacomm.fr</a>
+          <a href="tel:+33767197467" class="contact-line fade d3">+33 7 67 19 74 67</a>
         </div>
       </div>
-      <div class="founder-card reveal">
-        <img src="images/founder.jpeg" alt="Fondateur de Caza Comm" loading="lazy" />
-        <div class="founder-overlay">
-          <p class="founder-quote" data-en="&quot;AI doesn't replace people, it amplifies them. My job is to give you that power without the complexity.&quot;">"L'IA ne remplace pas l'humain, elle l'amplifie. Mon rôle, c'est de vous donner cette puissance sans la complexité."</p>
-          <p class="founder-name" data-en="Founder, Caza Comm">Fondateur, Caza Comm</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ░░ METRICS (fond vert teinté doux) ░░ -->
-<section id="metrics" class="light fp-slide" aria-label="Nos engagements">
-  <div class="section-inner">
-    <div class="metrics-header reveal">
-      <div class="section-tag" data-en="In a few words">En quelques mots</div>
-      <h2 class="section-title" data-en="What defines us">Ce qui nous définit</h2>
-    </div>
-    <div class="metrics-grid">
-      <div class="metric-card reveal reveal-delay-1">
-        <div class="metric-value">100%</div>
-        <div class="metric-label" data-en="Custom, no exceptions">Sur mesure, sans exception</div>
-      </div>
-      <div class="metric-card reveal reveal-delay-2">
-        <div class="metric-value">&lt;24h</div>
-        <div class="metric-label" data-en="Personal reply guaranteed">Réponse personnelle garantie</div>
-      </div>
-      <div class="metric-card reveal reveal-delay-3">
-        <div class="metric-value">FR</div>
-        <div class="metric-label" data-en="Based in France, GDPR compliant">Basé en France, RGPD conforme</div>
-      </div>
-      <div class="metric-card reveal reveal-delay-4">
-        <div class="metric-value" data-en="You">Vous</div>
-        <div class="metric-label" data-en="Freelancers, founders, teams, whatever the size">Indépendants, dirigeants, équipes, peu importe la taille</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ░░ FAQ (fond blanc cassé) ░░ -->
-<section id="faq" class="light fp-slide" aria-label="Questions fréquentes">
-  <div class="section-inner">
-    <div class="faq-header reveal">
-      <div class="section-tag" style="justify-content:center;" data-en="FAQ">Questions fréquentes</div>
-      <h2 class="section-title" data-en="Your questions, answered">Vos questions, nos réponses</h2>
-    </div>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false">
-          <span data-en="What does AI actually mean for my business?">C'est quoi concrètement, l'IA pour mon entreprise ?</span>
-          <span class="faq-q-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner"><p data-en="A system that takes on specific tasks (replying, following up, sorting, generating a document) to save you time.">Un système qui prend en charge des tâches précises (répondre, relancer, trier, générer un document) pour vous faire gagner du temps.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false">
-          <span data-en="Do I need to be tech-savvy?">Faut-il s'y connaître en informatique ?</span>
-          <span class="faq-q-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We handle all the technical side; you use the tool like a teammate.">Non. Nous gérons toute la partie technique ; vous utilisez l'outil comme un collaborateur.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false">
-          <span data-en="Will it turn my way of working upside down?">Est-ce que ça va bouleverser ma façon de travailler ?</span>
-          <span class="faq-q-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We move step by step; AI adds to your tools, it doesn't replace your habits.">Non. Nous avançons par étapes ; l'IA s'ajoute à vos outils, elle ne remplace pas vos habitudes.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false">
-          <span data-en="Is my data protected?">Mes données sont-elles protégées ?</span>
-          <span class="faq-q-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes. Solutions based in France, GDPR-compliant; hosted on your side if needed.">Oui. Solutions basées en France, conformes RGPD ; selon le besoin, hébergées chez vous.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false">
-          <span data-en="How long until I see results?">Combien de temps avant des résultats ?</span>
-          <span class="faq-q-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner"><p data-en="First gains in a few days to a few weeks, not six months.">Des premiers gains en quelques jours à quelques semaines, pas en six mois.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false">
-          <span data-en="How much does it cost?">Combien ça coûte ?</span>
-          <span class="faq-q-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner"><p data-en="It all starts with a free first chat and a clear quote, tailored to your needs.">Tout part d'un premier échange gratuit et d'un devis clair, adapté à votre besoin.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false">
-          <span data-en="I don't know where to start, is that a problem?">Je ne sais pas par où commencer, c'est grave ?</span>
-          <span class="faq-q-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner"><p data-en="Quite the opposite: that's exactly where we step in, starting by understanding and guiding you.">Au contraire : c'est exactement là que nous intervenons, en commençant par comprendre et vous orienter.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ░░ CONTACT + FOOTER (une seule diapo) ░░ -->
-<div class="fp-slide fp-slide--contact" id="slideContact">
-<section id="contact" class="dark" aria-label="Contact">
-  <div class="section-inner">
-    <div class="contact-centered reveal">
-      <h2 data-en="Let's talk about&lt;br/&gt;your project.">Parlons de<br/>votre projet.</h2>
-      <div class="contact-ctas">
-        <a href="mailto:caza.comm@gmail.com" class="btn-cta-email">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          <span data-en="Send an email">Envoyer un email</span>
-        </a>
-        <a href="tel:+33767197467" class="btn-cta-call">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span data-en="Call us">Nous appeler</span>
-        </a>
-      </div>
-
-      <!-- Formulaire (Web3Forms) -->
-      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <form class="contact-form fade d2" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
         <input type="hidden" name="subject" value="Nouveau message depuis cazacomm.fr" />
         <input type="hidden" name="from_name" value="Site Caza Comm" />
-        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
-        <div>
-          <label for="cf-name" data-en="Name">Nom</label>
-          <input type="text" id="cf-name" name="name" autocomplete="name" required />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="field-row">
+          <div class="field">
+            <label for="cf-name" data-en="Name">Nom</label>
+            <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Nom" data-en-placeholder="Name" />
+          </div>
+          <div class="field">
+            <label for="cf-company" data-en="Company">Entreprise</label>
+            <input type="text" id="cf-company" name="company" autocomplete="organization" placeholder="Entreprise" data-en-placeholder="Company" />
+          </div>
         </div>
-        <div>
-          <label for="cf-company" data-en="Company">Entreprise</label>
-          <input type="text" id="cf-company" name="company" autocomplete="organization" />
+        <div class="field-row">
+          <div class="field">
+            <label for="cf-email" data-en="Email">Email</label>
+            <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
+          </div>
+          <div class="field">
+            <label for="cf-phone" data-en="Phone">Téléphone</label>
+            <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
+          </div>
         </div>
-        <div>
-          <label for="cf-email" data-en="Email">Email</label>
-          <input type="email" id="cf-email" name="email" autocomplete="email" required />
-        </div>
-        <div>
-          <label for="cf-phone" data-en="Phone">Téléphone</label>
-          <input type="tel" id="cf-phone" name="phone" autocomplete="tel" />
-        </div>
-        <div class="field-full">
+        <div class="field">
           <label for="cf-message" data-en="Message">Message</label>
-          <textarea id="cf-message" name="message" required></textarea>
+          <textarea id="cf-message" name="message" required placeholder="Message" data-en-placeholder="Message"></textarea>
         </div>
-        <button type="submit" class="btn-form-submit" data-en="Send">Envoyer</button>
+        <button type="submit" class="btn-submit" data-en="Send">Envoyer</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
-
-      <div class="contact-meta">
-        <div class="contact-meta-item">
-          <a href="mailto:caza.comm@gmail.com">caza.comm@gmail.com</a>
-          <span class="contact-meta-dot"></span>
-          <a href="tel:+33767197467">+33 7 67 19 74 67</a>
-        </div>
-      </div>
     </div>
   </div>
+
+  <footer class="site-footer">
+    <span>© 2026 Caza Comm</span>
+    <nav>
+      <a href="mentions.html" data-en="Legal">Mentions légales</a>
+      <a href="confidentialite.html" data-en="Privacy">Confidentialité</a>
+      <a href="conditions.html" data-en="Terms">CGV</a>
+    </nav>
+  </footer>
 </section>
 
-<!-- ░░ FOOTER ░░ -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="images/logo.png" alt="Caza Comm" loading="lazy" />
-        <p data-en="Custom integration and sovereign AI for French businesses.">Intégration et IA souveraine sur mesure pour les entreprises françaises.</p>
-      </div>
-      <div class="footer-col">
-        <h4 data-en="Navigation">Navigation</h4>
-        <ul>
-          <li><a href="#hero" data-en="Home">Accueil</a></li>
-          <li><a href="#services" data-en="Services">Services</a></li>
-          <li><a href="#pourquoi" data-en="About">À propos</a></li>
-          <li><a href="#contact" data-en="Contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-en="Direct contact">Contact direct</h4>
-        <ul>
-          <li><a href="mailto:caza.comm@gmail.com">caza.comm@gmail.com</a></li>
-          <li><a href="tel:+33767197467">+33 7 67 19 74 67</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span data-en="© 2026 Caza Comm. All rights reserved.">© 2026 Caza Comm. Tous droits réservés.</span>
-      <span data-en="Made with passion in France">Fait avec passion en France</span>
-    </div>
-  </div>
-</footer>
-</div><!-- /.fp-slide--contact -->
-
-<script>
-  // ── LANGUE COURANTE (partagée) ──
-  function cazaGetLang() {
-    return localStorage.getItem('cazaLang') === 'en' ? 'en' : 'fr';
-  }
-
-  // ── i18n FR / EN (échange le contenu sur place, sans recharger) ──
-  (function() {
-    const toggle = document.getElementById('langToggle');
-    const nodes = document.querySelectorAll('[data-en]');
-    // Capture la version FR d'origine
-    nodes.forEach(el => { el.dataset.fr = el.innerHTML; });
-
-    function apply(lang) {
-      nodes.forEach(el => {
-        const v = lang === 'en' ? el.dataset.en : el.dataset.fr;
-        if (v != null) el.innerHTML = v;
-      });
-      document.documentElement.lang = lang;
-      if (toggle) {
-        toggle.querySelectorAll('.lang-opt').forEach(b => {
-          const on = b.dataset.lang === lang;
-          b.classList.toggle('is-active', on);
-          b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-      }
-      document.dispatchEvent(new CustomEvent('cazalangchange', { detail: { lang } }));
-    }
-
-    let cur = cazaGetLang();
-    apply(cur);
-
-    if (toggle) {
-      toggle.addEventListener('click', e => {
-        const btn = e.target.closest('.lang-opt');
-        if (!btn) return;
-        const lang = btn.dataset.lang;
-        if (lang === cur) return;
-        cur = lang;
-        localStorage.setItem('cazaLang', lang);
-        apply(lang);
-      });
-    }
-  })();
-
-  // ── NAVIGATION SWIPE : points latéraux + indice de swipe ──
-  (function() {
-    const slides = Array.from(document.querySelectorAll('.fp-slide'));
-    const dotsWrap = document.getElementById('fpDots');
-    const hint = document.getElementById('fpSwipeHint');
-    if (!slides.length || !dotsWrap) return;
-
-    // Génère un point par diapo
-    slides.forEach((s, i) => {
-      const d = document.createElement('span');
-      d.className = 'fp-dot' + (i === 0 ? ' is-active' : '');
-      dotsWrap.appendChild(d);
-    });
-    const dots = Array.from(dotsWrap.children);
-
-    // Le point actif = la diapo qui occupe le centre de l'écran
-    // (rootMargin réduit la zone d'observation à une ligne au milieu du viewport :
-    //  robuste même pour une diapo plus haute que l'écran)
-    let hintDismissed = false;
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const idx = slides.indexOf(e.target);
-          dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
-          // Masque l'indice de swipe dès qu'on quitte la 1re diapo
-          if (idx > 0 && hint && !hintDismissed) {
-            hintDismissed = true;
-            hint.classList.add('is-hidden');
-          }
-        }
-      });
-    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-    slides.forEach(s => obs.observe(s));
-  })();
-
-  // ── CARROUSEL AVIS : glisser à la souris (le tactile marche nativement) ──
-  (function(){
-    const track = document.getElementById('reviewsTrack');
-    if(!track) return;
-    let down = false, startX = 0, startScroll = 0, moved = false;
-    track.addEventListener('pointerdown', e => {
-      if(e.pointerType === 'mouse'){
-        down = true; moved = false;
-        startX = e.clientX; startScroll = track.scrollLeft;
-        track.classList.add('is-dragging');
-      }
-    });
-    window.addEventListener('pointermove', e => {
-      if(!down) return;
-      const dx = e.clientX - startX;
-      if(Math.abs(dx) > 4) moved = true;
-      track.scrollLeft = startScroll - dx;
-    });
-    window.addEventListener('pointerup', () => {
-      if(!down) return;
-      down = false; track.classList.remove('is-dragging');
-    });
-    // Empêche le clic fantôme juste après un glissement
-    track.addEventListener('click', e => { if(moved){ e.preventDefault(); e.stopPropagation(); } }, true);
-  })();
-
-  // ── SCROLL REVEAL ──
-  (function() {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  })();
-
-  // ── PARTICLES ──
-  (function() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const canvas = document.getElementById('particles-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [], raf, W, H;
-
-    function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-    function rnd(a, b) { return a + Math.random() * (b - a); }
-    function mkp() {
-      return { x: rnd(0,W), y: rnd(0,H), r: rnd(0.8,2.2), vx: rnd(-0.12,0.12), vy: rnd(-0.16,-0.05), alpha: rnd(0.1,0.5), life: 0, maxLife: rnd(200,500) };
-    }
-    function init() { resize(); particles = Array.from({length:40}, mkp); }
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      particles.forEach((p, i) => {
-        p.life++; p.x += p.vx; p.y += p.vy;
-        const t = p.life / p.maxLife;
-        const fade = t < 0.2 ? t/0.2 : t > 0.8 ? (1-t)/0.2 : 1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(111,207,151,${p.alpha * fade})`;
-        ctx.fill();
-        if (p.life >= p.maxLife || p.y < -10 || p.x < -10 || p.x > W+10) particles[i] = mkp();
-      });
-      raf = requestAnimationFrame(draw);
-    }
-    init(); draw();
-    window.addEventListener('resize', resize, { passive: true });
-
-    const perfObs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { if (!raf) raf = requestAnimationFrame(draw); }
-      else { cancelAnimationFrame(raf); raf = null; }
-    }, { threshold: 0 });
-    perfObs.observe(document.getElementById('hero'));
-  })();
-
-  // ░░ AI DASHBOARD — animations vivantes ░░
-  (function(){
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const dashboard = document.querySelector('.ai-dashboard');
-    if(!dashboard) return;
-
-    // 1) Compteurs KPI (Mails traités + Réponses générées)
-    const formatFR = n => n.toLocaleString('fr-FR').replace(/ /g,' ');
-    const flash = el => {
-      el.classList.add('kpi-flash');
-      setTimeout(()=> el.classList.remove('kpi-flash'), 280);
-    };
-    const mailsEl = document.getElementById('kpiMails');
-    const repliesEl = document.getElementById('kpiReplies');
-    let mails = 1247, replies = 89;
-    function tickKpis(){
-      mails += Math.random() < 0.5 ? 1 : 2;
-      if(Math.random() < 0.5) replies += 1;
-      if(mails > 1899){ mails = 1247; replies = 89; }
-      if(mailsEl){ mailsEl.textContent = formatFR(mails); flash(mailsEl); }
-      if(repliesEl){ repliesEl.textContent = formatFR(replies); flash(repliesEl); }
-    }
-    if(!reduced) setInterval(tickKpis, 2400);
-
-    // 2) Timestamp "synchronisé il y a Xs"
-    const timeEl = document.getElementById('aiSyncTime');
-    let secs = 2;
-    function tickTime(){
-      secs = (secs % 9) + 1;
-      if(timeEl) timeEl.textContent = secs + 's';
-    }
-    if(!reduced) setInterval(tickTime, 1000);
-
-    // 3) Agents : barres de progression cyclées
-    // Textes dynamiques traduisibles (les ticks lisent la langue courante)
-    let lang = cazaGetLang();
-    const DASH = {
-      fr: {
-        done: 'Terminé',
-        agents: {
-          email:  { task: 'Tri inbox',     done: 'Inbox triée' },
-          social: { task: 'Post LinkedIn', done: 'Post publié' },
-          phone:  { task: 'Appel client',  done: 'Appel terminé' },
-          quote:  { task: 'Génération',    done: 'Devis #234 prêt' },
-        },
-        logs: [
-          'Email envoyé à client@artisan.fr',
-          'RDV ajouté au calendrier · jeudi 14h',
-          'Devis #234 généré en 1.2s',
-          'Post LinkedIn publié',
-          'Appel qualifié · transmis au commercial',
-          'Suivi prospect · relance programmée',
-          'Facture envoyée à fournisseur@xxx',
-          'Message WhatsApp traité',
-          'Note Notion synchronisée',
-          'Lead enrichi · score 87/100',
-        ],
-      },
-      en: {
-        done: 'Done',
-        agents: {
-          email:  { task: 'Sorting inbox', done: 'Inbox sorted' },
-          social: { task: 'LinkedIn post', done: 'Post published' },
-          phone:  { task: 'Client call',   done: 'Call completed' },
-          quote:  { task: 'Generating',    done: 'Quote #234 ready' },
-        },
-        logs: [
-          'Email sent to client@artisan.fr',
-          'Meeting added to calendar · Thursday 2pm',
-          'Quote #234 generated in 1.2s',
-          'LinkedIn post published',
-          'Call qualified · routed to sales',
-          'Prospect follow-up · reminder scheduled',
-          'Invoice sent to supplier@xxx',
-          'WhatsApp message handled',
-          'Notion note synced',
-          'Lead enriched · score 87/100',
-        ],
-      },
-    };
-
-    const agents = [
-      { sel: '[data-agent="email"]',  key: 'email',  speed: 1.2 },
-      { sel: '[data-agent="social"]', key: 'social', speed: 1.6 },
-      { sel: '[data-agent="phone"]',  key: 'phone',  speed: 0.9 },
-      { sel: '[data-agent="quote"]',  key: 'quote',  speed: 1.4 },
-    ];
-    const agentState = agents.map((a, i) => {
-      const row = document.querySelector(a.sel);
-      if(!row) return null;
-      return {
-        cfg: a,
-        row,
-        fill: row.querySelector('.agent-bar-fill'),
-        pct: row.querySelector('.agent-pct'),
-        task: row.querySelector('.agent-task'),
-        progress: i * 22,
-      };
-    }).filter(Boolean);
-    // Libellés initiaux dans la bonne langue
-    agentState.forEach(s => { s.task.textContent = DASH[lang].agents[s.cfg.key].task; });
-
-    function tickAgents(){
-      agentState.forEach(s => {
-        const a = DASH[lang].agents[s.cfg.key];
-        s.progress += s.cfg.speed * (0.7 + Math.random() * 0.7);
-        if(s.progress >= 100){
-          s.progress = 100;
-          s.row.classList.add('is-done');
-          s.fill.style.transform = 'scaleX(1)';
-          s.pct.textContent = DASH[lang].done;
-          s.task.textContent = a.done;
-          // recycle après 1.6s
-          setTimeout(()=>{
-            s.progress = 0;
-            s.row.classList.remove('is-done');
-            s.fill.style.transform = 'scaleX(0)';
-            s.pct.textContent = '0%';
-            s.task.textContent = DASH[lang].agents[s.cfg.key].task;
-          }, 1600 + Math.random()*1200);
-        } else {
-          s.fill.style.transform = `scaleX(${s.progress/100})`;
-          s.pct.textContent = Math.round(s.progress) + '%';
-        }
-      });
-    }
-    if(!reduced){
-      // Init progressions au tick suivant pour déclencher la transition
-      requestAnimationFrame(()=> setInterval(tickAgents, 480));
-    } else {
-      // Statique propre : barres remplies à 80/100/55/70
-      const stat = [0.80, 1.0, 0.55, 0.70];
-      agentState.forEach((s, i) => {
-        s.fill.style.transform = `scaleX(${stat[i]})`;
-        s.pct.textContent = stat[i] === 1 ? DASH[lang].done : Math.round(stat[i]*100) + '%';
-        if(stat[i] === 1) s.row.classList.add('is-done');
-      });
-    }
-
-    // 4) Logs feed
-    const logsEl = document.getElementById('aiLogs');
-    let logIdx = 0;
-    function pushLog(){
-      if(!logsEl) return;
-      const pool = DASH[lang].logs;
-      const txt = pool[logIdx % pool.length];
-      logIdx++;
-      const t = new Date();
-      const time = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0') + ':' + String(t.getSeconds()).padStart(2,'0');
-      const line = document.createElement('div');
-      line.className = 'ai-log-line';
-      line.innerHTML = '<span class="ai-log-check">✓</span><span class="ai-log-text"></span><span class="ai-log-time"></span>';
-      line.querySelector('.ai-log-text').textContent = txt;
-      line.querySelector('.ai-log-time').textContent = time;
-      logsEl.insertBefore(line, logsEl.firstChild);
-      // Keep max 3 lines visible
-      while(logsEl.children.length > 4) logsEl.removeChild(logsEl.lastChild);
-    }
-    // Seed
-    pushLog(); pushLog();
-    if(!reduced) setInterval(pushLog, 2800);
-
-    // Bascule de langue : met à jour les libellés dynamiques affichés
-    document.addEventListener('cazalangchange', e => {
-      lang = e.detail.lang;
-      agentState.forEach(s => {
-        const a = DASH[lang].agents[s.cfg.key];
-        s.task.textContent = s.row.classList.contains('is-done') ? a.done : a.task;
-        if(s.pct.textContent === 'Terminé' || s.pct.textContent === 'Done') s.pct.textContent = DASH[lang].done;
-      });
-      if(logsEl){ logsEl.innerHTML = ''; logIdx = 0; pushLog(); pushLog(); }
-    });
-  })();
-
-  // ── FAQ ACCORDION ──
-  (function(){
-    const items = Array.from(document.querySelectorAll('.faq-item'));
-    if(!items.length) return;
-    function setOpenHeights(){
-      document.querySelectorAll('.faq-item.open .faq-a').forEach(p => {
-        p.style.maxHeight = p.scrollHeight + 'px';
-      });
-    }
-    items.forEach(item => {
-      const btn = item.querySelector('.faq-q');
-      const panel = item.querySelector('.faq-a');
-      if(!btn || !panel) return;
-      btn.addEventListener('click', () => {
-        const willOpen = !item.classList.contains('open');
-        items.forEach(o => {
-          if(o !== item){
-            o.classList.remove('open');
-            const b = o.querySelector('.faq-q');
-            const p = o.querySelector('.faq-a');
-            if(b) b.setAttribute('aria-expanded','false');
-            if(p) p.style.maxHeight = null;
-          }
-        });
-        item.classList.toggle('open', willOpen);
-        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-        panel.style.maxHeight = willOpen ? panel.scrollHeight + 'px' : null;
-      });
-    });
-    // Recalcule la hauteur ouverte (langue EN plus/moins longue, ou resize)
-    document.addEventListener('cazalangchange', setOpenHeights);
-    window.addEventListener('resize', setOpenHeights, { passive: true });
-  })();
-
-  // ── FORMULAIRE CONTACT (Web3Forms, sans rechargement) ──
-  (function(){
-    const form = document.getElementById('contactForm');
-    const statusEl = document.getElementById('formStatus');
-    if(!form || !statusEl) return;
-    const MSG = {
-      fr: {
-        sending: 'Envoi en cours…',
-        ok: 'Merci ! Votre message a bien été envoyé, nous vous répondons sous 24h.',
-        err: 'Oups, l\'envoi a échoué. Réessayez ou écrivez-nous à caza.comm@gmail.com.'
-      },
-      en: {
-        sending: 'Sending…',
-        ok: 'Thank you! Your message has been sent, we\'ll reply within 24h.',
-        err: 'Oops, sending failed. Please try again or email us at caza.comm@gmail.com.'
-      }
-    };
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const lang = cazaGetLang();
-      const btn = form.querySelector('.btn-form-submit');
-      statusEl.className = 'form-status';
-      statusEl.textContent = MSG[lang].sending;
-      if(btn) btn.disabled = true;
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        const json = await res.json().catch(() => ({}));
-        if(res.ok && json.success){
-          statusEl.classList.add('success');
-          statusEl.textContent = MSG[lang].ok;
-          form.reset();
-        } else {
-          throw new Error(json.message || 'failed');
-        }
-      } catch(err){
-        statusEl.classList.add('error');
-        statusEl.textContent = MSG[lang].err;
-      } finally {
-        if(btn) btn.disabled = false;
-      }
-    });
-  })();
-
-  // Slider du toggle IA / Sites Internet (s'adapte à la largeur de l'option active)
-  (function(){
-    function fitToggleSlider(){
-      const tg = document.querySelector('.page-toggle');
-      if(!tg) return;
-      const slider = tg.querySelector('.page-toggle-slider');
-      const active = tg.querySelector('.page-toggle-opt.is-active');
-      if(!slider || !active) return;
-      const tgRect = tg.getBoundingClientRect();
-      const aRect = active.getBoundingClientRect();
-      slider.style.width = aRect.width + 'px';
-      slider.style.transform = 'translateX(' + (aRect.left - tgRect.left - 3) + 'px)';
-    }
-    fitToggleSlider();
-    window.addEventListener('resize', fitToggleSlider);
-    if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fitToggleSlider); }
-    setTimeout(fitToggleSlider, 200);
-  })();
-</script>
+<script src="assets/caza.js" defer></script>
+<script src="assets/caza-v2.js" defer></script>
 </body>
 </html>
