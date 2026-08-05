@@ -234,7 +234,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
    plus de plein écran imposé, donc plus de vides énormes. */
 .scene {
   position: relative;
-  padding: clamp(58px, 9.5vh, 112px) var(--pad);
+  padding: clamp(84px, 13.5vh, 160px) var(--pad);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -620,7 +620,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 }
 .why-inner {
   position: relative; z-index: 1;
-  padding: clamp(80px, 15vh, 150px) var(--pad) clamp(48px, 8vh, 88px);
+  padding: clamp(110px, 20vh, 200px) var(--pad) clamp(70px, 11vh, 125px);
   display: flex; flex-direction: column; justify-content: flex-end;
   min-height: min(62vh, 560px);
 }
