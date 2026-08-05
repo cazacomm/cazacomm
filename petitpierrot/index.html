@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Petit Pierrot — Bar à viande · Tarbes</title>
+<meta name="description" content="Bar à viande à Tarbes. Manger vrai, boire bon, vivre fort. Cuisine du terroir, viandes, cocktails et terrasse.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/logo-noir.png">
+
+<!-- Aperçu lors du partage (réseaux sociaux, WhatsApp, SMS) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Le Petit Pierrot — Bar à viande · Tarbes">
+<meta property="og:description" content="Manger vrai, boire bon, vivre fort. Cuisine du terroir, avenue des Forges.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__logo"><img src="assets/logo-noir.png" alt="Le Petit Pierrot"></a>
+  <nav class="nav__mid">
+    <a href="#lieu">Le lieu</a>
+    <a href="#assiette">L'assiette</a>
+    <a href="#carte">La carte</a>
+    <a href="#table">Réserver</a>
+  </nav>
+  <a href="#table" class="pill pill--red nav__cta">Réserver</a>
+  <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="#lieu">Le lieu</a>
+  <a href="#assiette">L'assiette</a>
+  <a href="#carte">La carte</a>
+  <a href="#table">Réserver</a>
+  <a href="tel:+33562375211" class="drawer__tel">05 62 37 52 11</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <div class="hero__frame">
+    <video src="assets/film.mp4" poster="assets/film-poster.jpg" autoplay muted loop playsinline></video>
+    <div class="hero__veil"></div>
+
+    <div class="hero__inner">
+      <span class="badge up">Bar à viande · Tarbes</span>
+
+      <div class="stars up d1">
+        <b>4,3</b>
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5 6.1 20.6l1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5 6.1 20.6l1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5 6.1 20.6l1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5 6.1 20.6l1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" class="half"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5 6.1 20.6l1.2-6.5L2.5 9.5l6.6-.9z"/></svg>
+        </span>
+        <i>171 avis</i>
+      </div>
+
+      <h1>
+        <span class="up d2">Manger vrai,</span>
+        <span class="up d3">boire bon,</span>
+        <span class="up d4"><em>vivre fort.</em></span>
+      </h1>
+
+      <p class="hero__sub up d5">Cuisine du terroir, viandes au feu et verres bien remplis.</p>
+
+      <div class="hero__acts up d6">
+        <a href="#table" class="pill pill--red pill--lg">Réserver une table</a>
+        <a href="#carte" class="pill pill--glass pill--lg">Voir la carte</a>
+      </div>
+    </div>
+
+    <span class="hero__claim">Ici on boit, on mâche, on rit</span>
+  </div>
+
+  <div class="hero__facts up">
+    <div><b>4,3</b><span>de moyenne sur 171 avis</span></div>
+    <div><b>7</b><span>avenue des Forges, Tarbes</span></div>
+    <div><b>Terrasse</b><span>et service du soir</span></div>
+    <div><b>Midi &amp; soir</b><span>du mardi au dimanche</span></div>
+  </div>
+</section>
+
+<!-- ═══ BANDEAU ═══ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip__row">
+    <span>Viandes au feu</span><i></i><span>Cuisine du terroir</span><i></i><span>Cocktails maison</span><i></i><span>Tartares</span><i></i><span>Cave à vin</span><i></i><span>Terrasse</span><i></i>
+    <span>Viandes au feu</span><i></i><span>Cuisine du terroir</span><i></i><span>Cocktails maison</span><i></i><span>Tartares</span><i></i><span>Cave à vin</span><i></i><span>Terrasse</span><i></i>
+  </div>
+</div>
+
+<!-- ═══ LE LIEU ═══ -->
+<section class="lieu" id="lieu">
+  <div class="lieu__text">
+    <span class="kicker">Le lieu</span>
+    <h2 class="up">Une grande table<br>au milieu de Tarbes.</h2>
+    <p class="up">Des suspensions en osier, des plantes jusqu'au plafond et une salle qui
+      ne baisse jamais vraiment d'un ton. On y vient pour une côte à partager,
+      on y reste pour le dernier verre.</p>
+    <a href="#table" class="arrow up">Prendre une table
+      <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></a>
+  </div>
+
+  <div class="lieu__deck">
+    <figure class="card3d" data-tilt><img src="assets/salle-plafond.jpg" alt="La salle et ses suspensions en osier"></figure>
+    <figure class="card3d" data-tilt><img src="assets/amis-trinquer.jpg" alt="Amis qui trinquent à table"></figure>
+    <figure class="card3d" data-tilt><img src="assets/salle-etage.jpg" alt="La salle vue de l'étage"></figure>
+  </div>
+</section>
+
+<!-- ═══ CARROUSEL VIDÉO ═══ -->
+<section class="reel">
+  <div class="reel__head">
+    <span class="kicker">En salle</span>
+    <h2 class="up">Un service, un samedi soir.</h2>
+    <p class="hint-hover">Passez la souris pour arrêter le défilement</p>
+  </div>
+
+  <div class="reel__track" id="reelTrack">
+    <div class="reel__row" id="reelRow">
+      <div class="vcard"><video src="assets/clip-1-devanture.mp4" muted loop playsinline preload="metadata"></video><span>La devanture</span></div>
+      <div class="vcard"><video src="assets/clip-2-planche.mp4" muted loop playsinline preload="metadata"></video><span>Ça part en salle</span></div>
+      <div class="vcard"><video src="assets/clip-3-burger.mp4" muted loop playsinline preload="metadata"></video><span>Le burger maison</span></div>
+      <div class="vcard"><video src="assets/clip-4-vin.mp4" muted loop playsinline preload="metadata"></video><span>Au comptoir</span></div>
+      <div class="vcard"><video src="assets/clip-5-clientes.mp4" muted loop playsinline preload="metadata"></video><span>La terrasse</span></div>
+      <div class="vcard"><video src="assets/clip-6-tapas.mp4" muted loop playsinline preload="metadata"></video><span>La planche</span></div>
+      <div class="vcard"><video src="assets/clip-7-service.mp4" muted loop playsinline preload="metadata"></video><span>Un verre de rouge</span></div>
+      <div class="vcard"><video src="assets/clip-8-bengale.mp4" muted loop playsinline preload="metadata"></video><span>Les anniversaires</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ L'ASSIETTE ═══ -->
+<section class="plats" id="assiette">
+  <div class="plats__head">
+    <span class="kicker">L'assiette</span>
+    <h2 class="up">Ce qu'on sert,<br>sans chichi.</h2>
+  </div>
+
+  <div class="plats__grid">
+    <figure class="dish dish--tall" data-tilt>
+      <img src="assets/plat-cote-boeuf.jpg" alt="Côte de bœuf tranchée">
+      <figcaption><b>La pièce du boucher</b><span>À partager, sur planche</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/plat-tartare.jpg" alt="Tartare de bœuf">
+      <figcaption><b>Le tartare</b><span>Coupé au couteau</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/plat-magret.jpg" alt="Magret de canard tranché">
+      <figcaption><b>Magret de canard</b><span>Du Sud-Ouest</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/plat-burger.jpg" alt="Burger et frites maison">
+      <figcaption><b>Les burgers</b><span>Frites maison</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/plat-bruschetta.jpg" alt="Bruschetta">
+      <figcaption><b>La bruschetta</b><span>Pour commencer</span></figcaption>
+    </figure>
+    <figure class="dish dish--tall" data-tilt>
+      <img src="assets/dessert-fondant.jpg" alt="Fondant au chocolat">
+      <figcaption><b>Le fondant</b><span>Coulant, forcément</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/plat-escalope.jpg" alt="Escalope sauce champignons">
+      <figcaption><b>L'escalope</b><span>Sauce aux champignons</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/bar-bouteilles.jpg" alt="Le bar et ses bouteilles">
+      <figcaption><b>Le bar</b><span>Cocktails &amp; cave à vin</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/plat-salade.jpg" alt="Salade de gésiers">
+      <figcaption><b>Les salades</b><span>Généreuses</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/plat-boeuf-pdt.jpg" alt="Mijoté de bœuf">
+      <figcaption><b>Le mijoté du jour</b><span>Ardoise en salle</span></figcaption>
+    </figure>
+    <figure class="dish" data-tilt>
+      <img src="assets/dessert-profiteroles.jpg" alt="Profiteroles au chocolat">
+      <figcaption><b>Les profiteroles</b><span>Chocolat chaud</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ LA CARTE ═══ -->
+<section class="menu" id="carte">
+  <div class="menu__text">
+    <span class="kicker">La carte</span>
+    <h2 class="up">Tout est là.</h2>
+    <p class="up">Entrées, burgers, mijotés du jour, desserts, cocktails et cave à vin.
+      L'ardoise change au fil des arrivages.</p>
+    <button class="pill pill--dark pill--lg up" id="openMenu">Agrandir la carte</button>
+  </div>
+
+  <div class="menu__card" id="menuCard">
+    <img src="assets/carte.jpg" alt="La carte du Petit Pierrot" id="menuImg">
+    <span class="menu__hint">Cliquer pour agrandir</span>
+  </div>
+</section>
+
+<!-- ═══ RÉSERVATION ═══ -->
+<section class="book" id="table">
+  <div class="book__head">
+    <span class="kicker">Réserver</span>
+    <h2 class="up">Choisissez votre moment.</h2>
+    <p class="up">Une date, un service, une heure. C'est tout.</p>
+  </div>
+
+  <div class="book__grid">
+    <div class="panel cal">
+      <div class="cal__top">
+        <button id="prevM" class="round" aria-label="Mois précédent"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <h3 id="calLabel">—</h3>
+        <button id="nextM" class="round" aria-label="Mois suivant"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="cal__dows"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+      <div class="cal__grid" id="calGrid"></div>
+      <div class="cal__legend">
+        <span><i class="dot dot--ok"></i>Disponible</span>
+        <span><i class="dot dot--few"></i>Dernières tables</span>
+        <span><i class="dot dot--no"></i>Complet ou fermé</span>
+      </div>
+    </div>
+
+    <div class="panel form">
+      <div class="fld">
+        <label>Service</label>
+        <div class="seg" id="segService">
+          <button data-service="midi" class="on">Midi<span>12h — 14h</span></button>
+          <button data-service="soir">Soir<span>19h — 22h30</span></button>
+        </div>
+      </div>
+
+      <div class="fld">
+        <label>Couverts</label>
+        <div class="count">
+          <button id="minus" aria-label="Moins">−</button>
+          <div><b id="guests">2</b><span id="guestsLbl">personnes</span></div>
+          <button id="plus" aria-label="Plus">+</button>
+        </div>
+        <p class="note" id="bigGroup">Au-delà de 8, appelez-nous, on pousse les tables.</p>
+      </div>
+
+      <div class="fld">
+        <label>Heure</label>
+        <div class="slots" id="slots"></div>
+      </div>
+
+      <div class="recap" id="recap">
+        <span>Votre table</span>
+        <p id="recapText">Choisissez une date.</p>
+      </div>
+
+      <button class="pill pill--red pill--block" id="submit" disabled>Réserver</button>
+      <p class="legal">Confirmation immédiate · Annulation libre jusqu'à 2 h avant</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INFOS ═══ -->
+<section class="info">
+  <div class="info__grid">
+    <div class="info__block">
+      <span class="kicker">Nous trouver</span>
+      <h2 class="up">7 avenue des Forges,<br>65000 Tarbes.</h2>
+      <div class="info__cols up">
+        <div>
+          <b>Horaires</b>
+          <p>Mardi — Samedi<br>12h – 14h &nbsp;·&nbsp; 19h – 22h30<br>
+             Dimanche · 12h – 14h30<br><span class="off">Lundi · fermé</span></p>
+        </div>
+        <div>
+          <b>Contact</b>
+          <p><a href="tel:+33562375211">05 62 37 52 11</a><br>
+             <a href="mailto:petitpierrot65@gmail.com">petitpierrot65@gmail.com</a><br>
+             <a href="https://www.facebook.com/profile.php?id=100088992522170" target="_blank" rel="noopener">Facebook</a></p>
+        </div>
+        <div>
+          <b>Sur place</b>
+          <p>Terrasse · Accès PMR<br>Climatisation · Animaux acceptés<br>Privatisation possible</p>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?q=7+avenue+des+Forges+65000+Tarbes" target="_blank" rel="noopener" class="pill pill--dark pill--lg up">Ouvrir dans Maps</a>
+    </div>
+
+    <figure class="info__img" data-tilt>
+      <img src="assets/equipe-tartares.jpg" alt="En cuisine, les assiettes prêtes à partir">
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="foot">
+  <img src="assets/logo-noir.png" alt="" class="foot__logo">
+  <p class="foot__claim">Manger vrai, boire bon, vivre fort.</p>
+  <div class="foot__row">
+    <span>Le Petit Pierrot · 7 avenue des Forges, Tarbes · 05 62 37 52 11</span>
+    <span>Conception <b>Caza Comm</b> — 2026</span>
+  </div>
+  <p class="foot__demo">
+    Maquette de démonstration réalisée par Caza Comm. Site non officiel :
+    la réservation en ligne n'est pas active. Pour réserver, appelez le restaurant.
+  </p>
+</footer>
+
+<!-- ═══ LIGHTBOX CARTE ═══ -->
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lb__close" id="lbClose" aria-label="Fermer">✕</button>
+  <img src="assets/carte.jpg" alt="La carte du Petit Pierrot">
+</div>
+
+<!-- ═══ CONFIRMATION ═══ -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__box">
+    <div class="modal__tick"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L20 7"/></svg></div>
+    <h3>C'est réservé.</h3>
+    <div class="modal__lines" id="ticket"></div>
+    <p class="modal__note">Démonstration — aucune donnée n'est envoyée.</p>
+    <button class="pill pill--dark pill--block" id="closeModal">Fermer</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
