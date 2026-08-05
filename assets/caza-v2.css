@@ -24,7 +24,7 @@
   --stroke-soft: rgba(255,255,255,0.35);
 
   --bar-h: 52px;
-  --pad:   clamp(18px, 4.5vw, 64px);
+  --pad:   clamp(20px, 4.5vw, 64px);
 
   --ease:  cubic-bezier(.22,1,.36,1);
 
@@ -171,6 +171,15 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   border-bottom: 1px solid var(--line);
   mix-blend-mode: normal;
 }
+/* Le flou d'arrière-plan est recalculé à chaque image pendant le défilement :
+   sur mobile c'est la principale source de saccades. Fond opaque à la place. */
+@media (hover: none), (max-width: 900px) {
+  .page-toggle-bar {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--bg-solid);
+  }
+}
 .topbar-logo { justify-self: start; display: inline-flex; align-items: center; }
 .topbar-logo img { height: 22px; width: auto; }
 
@@ -225,7 +234,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
    plus de plein écran imposé, donc plus de vides énormes. */
 .scene {
   position: relative;
-  padding: clamp(34px, 6vh, 68px) var(--pad);
+  padding: clamp(20px, 3.2vh, 38px) var(--pad);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -595,7 +604,13 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 
 #pourquoi { padding: 0; justify-content: flex-end; overflow: hidden; }
 .why-media { position: absolute; inset: 0; z-index: 0; }
-.why-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.35) contrast(1.08) brightness(.62); }
+/* translateZ(0) : l'image filtrée est rastérisée une fois puis simplement
+   composée, au lieu d'être refiltrée à chaque image du défilement. */
+.why-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(.35) contrast(1.08) brightness(.62);
+  transform: translateZ(0);
+}
 .why-media::after {
   content: '';
   position: absolute; inset: 0;
@@ -889,12 +904,20 @@ body.theme-blue {
   --stroke:      rgba(150,190,255,0.30);
   --stroke-soft: rgba(150,190,255,0.38);
   --txt:         #eaf2ff;
+  background: var(--bg);
+}
+/* Calque fixe plutôt que background-attachment: fixed, qui force le
+   navigateur à repeindre le fond à chaque image pendant le défilement
+   (saccades très nettes sur mobile). */
+body.theme-blue::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -1;
+  pointer-events: none;
   background:
     radial-gradient(120% 85% at 12% -10%, rgba(29,111,216,0.42), transparent 60%),
     radial-gradient(95% 70% at 100% 8%, rgba(126,224,255,0.16), transparent 62%),
     radial-gradient(110% 80% at 50% 115%, rgba(15,44,102,0.75), transparent 68%),
     linear-gradient(175deg, #071130 0%, #050b1c 55%, #03060f 100%);
-  background-attachment: fixed;
 }
 body.theme-blue .why-media img { filter: grayscale(.2) contrast(1.06) brightness(.6) saturate(.85); }
 body.theme-blue .why-media::after {
@@ -919,10 +942,15 @@ body.theme-light {
   --line:        rgba(8,9,10,0.16);
   --stroke:      rgba(8,9,10,0.26);
   --stroke-soft: rgba(8,9,10,0.34);
+  background: var(--bg);
+}
+body.theme-light::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -1;
+  pointer-events: none;
   background:
     radial-gradient(120% 80% at 85% -10%, rgba(20,143,82,0.10), transparent 60%),
     linear-gradient(180deg, #f7f7f5 0%, #eceae5 100%);
-  background-attachment: fixed;
 }
 /* Les aplats de la page blanche passent en noir : plus tranché que le vert */
 body.theme-light .link-action--solid { background: #08090a; color: #fff; }
