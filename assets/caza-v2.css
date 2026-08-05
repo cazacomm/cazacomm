@@ -35,17 +35,17 @@
 
 html { height: 100%; font-size: 16px; -webkit-text-size-adjust: 100%; }
 
+/* Défilement libre : pas de scroll-snap. Le snap obligatoire renvoyait
+   la page vers la section suivante dès qu'on remontait un peu au doigt. */
 body {
   font-family: var(--body);
   background: var(--bg);
   color: var(--txt);
   line-height: 1.5;
-  height: 100vh; height: 100dvh;
+  min-height: 100vh; min-height: 100dvh;
   overflow-y: scroll; overflow-x: hidden;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: none;
   -webkit-font-smoothing: antialiased;
 }
 body::-webkit-scrollbar { width: 0; height: 0; }
@@ -71,15 +71,15 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .giant { font-size: clamp(2rem, 6.4vw, 5.4rem); }
 #hero .hero-title { font-size: clamp(1.85rem, 5.3vw, 4.6rem); }
 #valeur .giant    { font-size: clamp(1.55rem, 4.4vw, 3.7rem); }
-#pourquoi .giant  { font-size: clamp(2.4rem, 8vw, 6.6rem); }
-#contact .giant   { font-size: clamp(2.1rem, 6.6vw, 5.4rem); }
+#pourquoi .giant  { font-size: clamp(2.4rem, 7vw, 5.2rem); }
+#contact .giant   { font-size: clamp(2.1rem, 5.2vw, 4rem); }
 .scene-title {
   font-size: clamp(1.7rem, 4.9vw, 3.5rem);
 }
 /* Respiration entre le titre de scène et son contenu */
 .scene-title + .swap-deck,
-.scene-title + .steps-deck { margin-top: clamp(22px, 4.5vh, 56px); }
-.scene-title + .stats-list { margin-top: clamp(14px, 3vh, 34px); }
+.scene-title + .steps-deck { margin-top: clamp(14px, 2.4vh, 26px); }
+.scene-title + .stats-list { margin-top: clamp(10px, 1.8vh, 20px); }
 .accent { color: var(--green-light); }
 
 /* Mot barré à l'apparition (procédé « on raye l'ancien »)
@@ -221,18 +221,24 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 
 /* ════════════ SCÈNES ════════════ */
 
+/* Les sections font désormais la hauteur de leur contenu :
+   plus de plein écran imposé, donc plus de vides énormes. */
 .scene {
   position: relative;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  min-height: 100vh; min-height: 100dvh;
-  padding: calc(var(--bar-h) + clamp(20px, 4vh, 46px)) var(--pad) clamp(52px, 8vh, 80px);
+  padding: clamp(34px, 6vh, 68px) var(--pad);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
 }
 .scene--tight { justify-content: flex-end; }
+
+/* Le hero garde de l'ampleur, sans occuper tout l'écran :
+   le formulaire doit se deviner juste en dessous. */
+#hero {
+  min-height: min(74vh, 640px);
+  padding-top: calc(var(--bar-h) + clamp(20px, 4vh, 44px));
+  padding-bottom: clamp(26px, 4vh, 46px);
+}
 
 /* Compteur de scène, en bas à gauche */
 .scene-index {
@@ -410,24 +416,16 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 
 /* ════════════ SCÈNE « × BARRÉ → SOLUTION » ════════════ */
 
+/* Grille : tout est visible en scrollant, plus besoin de glisser
+   latéralement (personne ne devinait qu'il fallait swiper). */
 .swap-deck {
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  margin: 0 calc(var(--pad) * -1);
-  padding: 0 var(--pad);
-  cursor: grab;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: clamp(12px, 2vw, 26px);
 }
-.swap-deck::-webkit-scrollbar { display: none; }
-.swap-deck.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
 .swap-item {
-  flex: 0 0 min(86vw, 640px);
-  scroll-snap-align: center;
-  padding-right: clamp(24px, 5vw, 70px);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(9px, 1.4vh, 14px);
 }
 /* Bloc (et non inline-flex) : le texte barré reste une inline
    pouvant se scinder sur plusieurs lignes sans casser le trait */
@@ -435,15 +433,15 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   display: block;
   font-family: var(--display);
   font-weight: 500; text-transform: uppercase;
-  font-size: clamp(1rem, 2.4vw, 1.7rem);
+  font-size: clamp(.76rem, 1.05vw, .92rem);
   line-height: 1.2;
   color: var(--faint);
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 .swap-old .x {
   color: var(--green-light);
   font-size: 1.15em;
-  margin-right: 10px;
+  margin-right: 6px;
 }
 .swap-old .strike {
   background-image: linear-gradient(var(--green-light), var(--green-light));
@@ -458,10 +456,10 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 .swap-new {
   font-family: var(--display);
   font-weight: 600; text-transform: uppercase;
-  font-size: clamp(1.75rem, 5.2vw, 3.8rem);
-  line-height: .92;
-  letter-spacing: -.025em;
-  margin-bottom: 16px;
+  font-size: clamp(1.05rem, 1.7vw, 1.5rem);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-bottom: 0;
 }
 .swap-desc { color: var(--dim); font-size: clamp(.9rem, 1.4vw, 1.02rem); max-width: 40ch; }
 .swap-num {
@@ -475,45 +473,32 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 /* ════════════ ÉTAPES (chiffres géants) ════════════ */
 
 .steps-deck {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  margin: 0 calc(var(--pad) * -1);
-  padding: 0 var(--pad);
-  cursor: grab;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(10px, 1.8vw, 24px);
 }
-.steps-deck::-webkit-scrollbar { display: none; }
-.steps-deck.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
 .step {
-  flex: 0 0 min(80vw, 420px);
-  scroll-snap-align: center;
-  padding: 0 clamp(20px, 3vw, 40px) 0 0;
-  position: relative;
   display: flex; flex-direction: column; justify-content: flex-end;
   border-left: 1px solid var(--line);
-  padding-left: clamp(16px, 2.5vw, 34px);
+  padding-left: clamp(12px, 1.6vw, 20px);
 }
 .step-num {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(4.5rem, 16vw, 13rem);
-  line-height: .78;
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  line-height: .82;
   letter-spacing: -.05em;
   color: transparent;
   -webkit-text-stroke: 1px var(--stroke);
-  margin-bottom: 14px;
+  margin-bottom: 6px;
 }
 .step.visible .step-num { -webkit-text-stroke-color: rgba(111,207,151,0.55); transition: -webkit-text-stroke-color .8s var(--ease); }
 .step h3 {
   font-family: var(--display);
   font-weight: 600; text-transform: uppercase;
-  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
-  line-height: 1;
-  margin-bottom: 10px;
+  font-size: clamp(.88rem, 1.4vw, 1.15rem);
+  line-height: 1.05;
+  margin-bottom: 0;
 }
 .step p { color: var(--dim); font-size: clamp(.86rem, 1.3vw, .96rem); }
 
@@ -531,8 +516,8 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 .stat-value {
   font-family: var(--display);
   font-weight: 600; text-transform: uppercase;
-  font-size: clamp(2.2rem, 7.5vw, 6rem);
-  line-height: .85;
+  font-size: clamp(1.8rem, 4.6vw, 3.4rem);
+  line-height: .9;
   letter-spacing: -.03em;
   flex-shrink: 0;
   min-width: 3.6ch;
@@ -608,7 +593,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 
 /* ════════════ POURQUOI (photo plein cadre) ════════════ */
 
-#pourquoi { padding: 0; justify-content: flex-end; }
+#pourquoi { padding: 0; justify-content: flex-end; overflow: hidden; }
 .why-media { position: absolute; inset: 0; z-index: 0; }
 .why-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.35) contrast(1.08) brightness(.62); }
 .why-media::after {
@@ -620,11 +605,11 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 }
 .why-inner {
   position: relative; z-index: 1;
-  padding: calc(var(--bar-h) + 24px) var(--pad) clamp(56px, 9vh, 90px);
+  padding: clamp(56px, 12vh, 120px) var(--pad) clamp(30px, 5vh, 54px);
   display: flex; flex-direction: column; justify-content: flex-end;
-  min-height: 100vh; min-height: 100dvh;
+  min-height: min(62vh, 560px);
 }
-.why-list { display: flex; flex-wrap: wrap; gap: clamp(16px, 3vw, 46px); margin-top: clamp(18px, 3vh, 34px); }
+.why-list { display: flex; flex-wrap: wrap; gap: clamp(12px, 2.4vw, 34px); margin-top: clamp(12px, 2vh, 22px); }
 .why-item { flex: 1 1 220px; max-width: 320px; border-top: 1px solid var(--green-light); padding-top: 12px; }
 .why-item h3 {
   font-family: var(--display); font-weight: 600; text-transform: uppercase;
@@ -667,37 +652,59 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 .faq-a-inner { padding: 0 0 18px; }
 .faq-a-inner p { color: var(--dim); font-size: clamp(.95rem, 1.5vw, 1.15rem); max-width: 56ch; line-height: 1.5; }
 
-/* ════════════ DEMANDE (formulaire en haut de page) ════════════ */
+/* ════════════ DEMANDE ════════════
+   Bande serrée collée au hero : le formulaire tient sur une ligne,
+   il ne prend surtout pas une section entière. */
 
-#demande { justify-content: center; }
-.demande-grid {
-  display: grid;
-  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-  gap: clamp(22px, 5vw, 80px);
-  align-items: center;
-  width: 100%;
+#demande {
+  padding: clamp(14px, 2vh, 22px) var(--pad) clamp(18px, 2.6vh, 28px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
-#demande .giant { font-size: clamp(2.4rem, 8vw, 6rem); }
-.demande-intro .lede { margin-top: clamp(10px, 2vh, 22px); }
-/* Formulaire court : on ne demande que l'essentiel */
-.form--quick .field-row--auto {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: clamp(12px, 2vw, 24px);
+.demande-head {
+  display: flex; align-items: baseline; flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-bottom: clamp(6px, 1.2vh, 12px);
 }
-.form--quick .field textarea { min-height: 68px; }
+.demande-title {
+  font-family: var(--display);
+  font-weight: 600; text-transform: uppercase;
+  font-size: clamp(1.05rem, 2vw, 1.5rem);
+  line-height: 1; letter-spacing: -.01em;
+  color: var(--green-light);
+}
+.demande-note { font-size: clamp(.78rem, 1.1vw, .9rem); color: var(--dim); }
 
-@media (max-width: 900px) {
-  .demande-grid { grid-template-columns: 1fr; gap: 18px; align-items: start; }
+.form--quick {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.5fr auto;
+  gap: 4px clamp(14px, 1.8vw, 26px);
+  align-items: end;
 }
-@media (max-width: 620px) {
-  #demande .giant { font-size: clamp(2rem, 9.2vw, 3.2rem); }
-  .form--quick .field-row--auto { grid-template-columns: 1fr; }
+.form--quick .field input,
+.form--quick .field textarea {
+  font-size: clamp(.92rem, 1.1vw, 1.02rem);
+  padding: 5px 0 7px;
 }
-/* Écrans courts : la scène doit tenir sans déborder du snap */
-@media (max-height: 760px) {
-  .demande-intro .lede { display: none; }
-  .form--quick .field textarea { min-height: 46px; }
+.form--quick .field textarea { min-height: 0; height: 33px; }
+.form--quick .btn-submit {
+  margin-top: 0; align-self: end;
+  padding: 9px 18px;
+  font-size: clamp(.85rem, 1.1vw, 1rem);
+}
+.form--quick .form-status { grid-column: 1 / -1; font-size: .85rem; min-height: 0; }
+.form--quick .form-status:empty { display: none; }
+
+@media (max-width: 1080px) {
+  .form--quick { grid-template-columns: 1fr 1fr; }
+  .form--quick .field--wide { grid-column: 1 / -1; }
+  .form--quick .btn-submit { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 560px) {
+  .form--quick { grid-template-columns: 1fr; gap: 2px; }
+  /* 16 px minimum : en dessous, iOS zoome au focus du champ */
+  .form--quick .field input, .form--quick .field textarea { font-size: 16px; }
+  .demande-note { display: none; }
 }
 
 /* ════════════ CONTACT ════════════ */
@@ -784,7 +791,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 .site-footer a:hover { color: var(--green-light); }
 
 .scene--contact { padding-bottom: 0; justify-content: space-between; }
-.scene--contact .contact-body { flex: 1; display: flex; align-items: center; width: 100%; }
+.scene--contact .contact-body { display: flex; align-items: center; width: 100%; padding-bottom: clamp(26px, 4vh, 48px); }
 
 /* ════════════ CURSEUR PERSONNALISÉ (souris uniquement) ════════════ */
 
@@ -817,13 +824,17 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 @media (max-width: 620px) {
   :root { --bar-h: 48px; }
   /* Sur mobile aussi, la typo doit rester le visuel principal */
+  /* Le titre remplit déjà l'écran : pas de hauteur minimale imposée,
+     sinon on récupère du vide au-dessus et en dessous. */
+  #hero { min-height: 0; padding-bottom: clamp(22px, 3.4vh, 34px); }
   #hero .hero-title { font-size: clamp(2.05rem, 8.8vw, 3rem); }
   .scene-title      { font-size: clamp(1.6rem, 7.4vw, 2.4rem); }
   #valeur .giant    { font-size: clamp(1.45rem, 6.4vw, 2.2rem); }
   #pourquoi .giant  { font-size: clamp(2rem, 9.2vw, 3.2rem); }
   #contact .giant   { font-size: clamp(1.9rem, 8.6vw, 3rem); }
-  .swap-new         { font-size: clamp(1.6rem, 7vw, 2.4rem); }
-  .step-num         { font-size: clamp(4rem, 22vw, 7rem); }
+  .swap-deck        { grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+  .steps-deck       { grid-template-columns: 1fr 1fr; }
+  .step-num         { font-size: clamp(1.9rem, 9vw, 2.6rem); }
   /* La barre doit tenir sur 360 px de large sans rogner l'icône son */
   .page-toggle-bar { padding: 0 12px; gap: 4px; }
   .page-toggle { gap: 0; }
@@ -849,23 +860,9 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   .lang-toggle { font-size: 9px; }
 }
 
-/* Petits téléphones : la scène contact doit tenir sans défiler */
-@media (max-width: 620px) and (max-height: 720px) {
-  #contact .giant { font-size: clamp(1.55rem, 6.8vw, 2.2rem); }
-  #contact .kicker { display: none; }
-  .contact-lines { gap: 0; margin-top: 10px; }
-  .contact-lines .contact-line { font-size: .95rem; }
-  .contact-form { gap: 7px; }
-  .field textarea { min-height: 38px; }
-  .field label { margin-bottom: 2px; }
-  .btn-submit { padding: 11px 18px; }
-  .site-footer nav { display: none; }
-  .site-footer { padding-top: 10px; padding-bottom: 12px; }
-}
-
-/* Écrans courts */
+/* Écrans courts : seul le hero est calé sur la hauteur d'écran */
 @media (max-height: 700px) {
-  .scene { padding-top: calc(var(--bar-h) + 16px); padding-bottom: 46px; }
+  #hero { min-height: min(84vh, 480px); padding-top: calc(var(--bar-h) + 16px); }
   .faq-q { padding: 8px 0; }
   .why-item p { display: none; }
 }
@@ -959,7 +956,7 @@ body.theme-light .topbar-logo img { filter: brightness(0); }
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
   }
-  body { scroll-snap-type: none; scroll-behavior: auto; }
+  body { scroll-behavior: auto; }
   .js .rise > *, .js .fade { opacity: 1; transform: none; }
   .marquee__track { animation: none; }
   .cursor-dot { display: none; }

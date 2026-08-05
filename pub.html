@@ -73,42 +73,35 @@
 </section>
 
 <!-- ░░ DEMANDE ░░ -->
-<section class="scene" id="demande" aria-label="Formulaire de demande">
-  <div class="demande-grid">
-    <div class="demande-intro">
-      <h2 class="giant">
-        <span class="rise"><span class="accent" data-en="Request">Demande</span></span>
-      </h2>
-      <p class="lede fade d1" data-en="Tell us what you need. A personal reply within 24h.">Dites-nous ce dont vous avez besoin. Réponse personnelle sous 24 h.</p>
-    </div>
-
-    <form class="contact-form form--quick fade d1" id="demandeForm" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
-      <input type="hidden" name="subject" value="Nouvelle demande depuis cazacomm.fr — Publicité" />
-      <input type="hidden" name="from_name" value="Site Caza Comm" />
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-      <div class="field-row--auto">
-        <div class="field">
-          <label for="dm-name" data-en="Name">Nom</label>
-          <input type="text" id="dm-name" name="name" autocomplete="name" required placeholder="Nom" data-en-placeholder="Name" />
-        </div>
-        <div class="field">
-          <label for="dm-email" data-en="Email">Email</label>
-          <input type="email" id="dm-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
-        </div>
-        <div class="field">
-          <label for="dm-phone" data-en="Phone">Téléphone</label>
-          <input type="tel" id="dm-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
-        </div>
-      </div>
-      <div class="field">
-        <label for="dm-message" data-en="Your request">Votre demande</label>
-        <textarea id="dm-message" name="message" required placeholder="Votre demande en quelques mots…" data-en-placeholder="Your request in a few words…"></textarea>
-      </div>
-      <button type="submit" class="btn-submit" data-en="Send my request">Envoyer ma demande</button>
-      <p class="form-status" id="demandeStatus" role="status" aria-live="polite"></p>
-    </form>
+<section class="band" id="demande" aria-label="Formulaire de demande">
+  <div class="demande-head">
+    <h2 class="demande-title" data-en="Request">Demande</h2>
+    <p class="demande-note" data-en="Tell us what you need — a personal reply within 24h.">Dites-nous ce dont vous avez besoin — réponse personnelle sous 24 h.</p>
   </div>
+  <form class="contact-form form--quick" id="demandeForm" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
+    <input type="hidden" name="subject" value="Nouvelle demande depuis cazacomm.fr — Publicité" />
+    <input type="hidden" name="from_name" value="Site Caza Comm" />
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+    <div class="field">
+      <label for="dm-name" data-en="Name">Nom</label>
+      <input type="text" id="dm-name" name="name" autocomplete="name" required placeholder="Nom" data-en-placeholder="Name" />
+    </div>
+    <div class="field">
+      <label for="dm-email" data-en="Email">Email</label>
+      <input type="email" id="dm-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
+    </div>
+    <div class="field">
+      <label for="dm-phone" data-en="Phone">Téléphone</label>
+      <input type="tel" id="dm-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
+    </div>
+    <div class="field field--wide">
+      <label for="dm-message" data-en="Your request">Votre demande</label>
+      <textarea id="dm-message" name="message" required placeholder="Votre demande en quelques mots…" data-en-placeholder="Your request in a few words…"></textarea>
+    </div>
+    <button type="submit" class="btn-submit" data-en="Send">Envoyer</button>
+    <p class="form-status" id="demandeStatus" role="status" aria-live="polite"></p>
+  </form>
 </section>
 
 <!-- ░░ PROMESSE ░░ -->

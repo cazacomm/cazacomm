@@ -129,9 +129,11 @@
     }
   }
 
-  /* ── 5. DECKS HORIZONTAUX : glisser à la souris + son au changement ── */
+  /* ── 5. DECKS HORIZONTAUX : glisser à la souris + son au changement
+     (les solutions et la méthode sont passées en grille : il ne reste
+     que les carrousels réellement horizontaux) ── */
   function initDecks() {
-    var decks = document.querySelectorAll('.swap-deck, .steps-deck, .reviews-track');
+    var decks = document.querySelectorAll('.reviews-track');
     Array.prototype.forEach.call(decks, function (deck) {
       var down = false, startX = 0, startScroll = 0, moved = false;
 
@@ -188,7 +190,7 @@
       if (!raf) loop();
     }, { passive: true });
 
-    var HOT = 'a[href], button, .swap-deck, .steps-deck, .faq-q, input, textarea, .stat-row';
+    var HOT = 'a[href], button, .faq-q, input, textarea, .stat-row';
     document.addEventListener('pointerover', function (e) {
       if (!e.target.closest) return;
       dot.classList.toggle('is-big', !!e.target.closest(HOT));
