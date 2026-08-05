@@ -72,11 +72,50 @@
   </div>
 </section>
 
+<!-- ░░ DEMANDE ░░ -->
+<section class="scene" id="demande" aria-label="Formulaire de demande">
+  <div class="demande-grid">
+    <div class="demande-intro">
+      <h2 class="giant">
+        <span class="rise"><span class="accent" data-en="Request">Demande</span></span>
+      </h2>
+      <p class="lede fade d1" data-en="Tell us what you need. A personal reply within 24h.">Dites-nous ce dont vous avez besoin. Réponse personnelle sous 24 h.</p>
+    </div>
+
+    <form class="contact-form form--quick fade d1" id="demandeForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
+      <input type="hidden" name="subject" value="Nouvelle demande depuis cazacomm.fr — Publicité" />
+      <input type="hidden" name="from_name" value="Site Caza Comm" />
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+      <div class="field-row--auto">
+        <div class="field">
+          <label for="dm-name" data-en="Name">Nom</label>
+          <input type="text" id="dm-name" name="name" autocomplete="name" required placeholder="Nom" data-en-placeholder="Name" />
+        </div>
+        <div class="field">
+          <label for="dm-email" data-en="Email">Email</label>
+          <input type="email" id="dm-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
+        </div>
+        <div class="field">
+          <label for="dm-phone" data-en="Phone">Téléphone</label>
+          <input type="tel" id="dm-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="dm-message" data-en="Your request">Votre demande</label>
+        <textarea id="dm-message" name="message" required placeholder="Votre demande en quelques mots…" data-en-placeholder="Your request in a few words…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit" data-en="Send my request">Envoyer ma demande</button>
+      <p class="form-status" id="demandeStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 <!-- ░░ PROMESSE ░░ -->
 <section class="scene" id="valeur" aria-label="Notre promesse">
   <h2 class="giant">
     <span class="rise"><span data-en="We don't sell">Nous ne vendons pas</span></span>
-    <span class="rise d1"><span class="strike-word" data-en="clicks and impressions.">des clics et des impressions.</span></span>
+    <span class="rise d1"><span class="strike-word"><span class="ink" data-en="clicks and impressions.">des clics et des impressions.</span></span></span>
     <span class="rise d2"><span class="accent" data-en="We sell customers.">Nous vendons des clients.</span></span>
   </h2>
 </section>
@@ -288,8 +327,8 @@
           </div>
         </div>
         <div class="field">
-          <label for="cf-message" data-en="Message">Message</label>
-          <textarea id="cf-message" name="message" required placeholder="Message" data-en-placeholder="Message"></textarea>
+          <label for="cf-message" data-en="Your request">Votre demande</label>
+          <textarea id="cf-message" name="message" required placeholder="Votre demande en quelques mots…" data-en-placeholder="Your request in a few words…"></textarea>
         </div>
         <button type="submit" class="btn-submit" data-en="Send">Envoyer</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
@@ -302,7 +341,6 @@
     <nav>
       <a href="mentions.html" data-en="Legal">Mentions légales</a>
       <a href="confidentialite.html" data-en="Privacy">Confidentialité</a>
-      <a href="conditions.html" data-en="Terms">CGV</a>
     </nav>
   </footer>
 </section>

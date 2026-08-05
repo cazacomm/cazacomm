@@ -82,18 +82,22 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .scene-title + .stats-list { margin-top: clamp(14px, 3vh, 34px); }
 .accent { color: var(--green-light); }
 
-/* Mot barré à l'apparition (procédé « on raye l'ancien ») */
-.strike-word { position: relative; display: inline-block; color: var(--faint); }
-.strike-word::after {
-  content: '';
-  position: absolute; left: -.5%; right: -.5%; top: 52%;
-  height: .07em;
-  background: var(--green-light);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .9s var(--ease) .5s;
+/* Mot barré à l'apparition (procédé « on raye l'ancien »)
+   Le trait est un dégradé posé sur le texte lui-même, avec
+   box-decoration-break: clone → chaque ligne est barrée séparément.
+   Un ::after en position absolue ne barrerait que le milieu du bloc,
+   ce qui donne un simple soulignement dès que la phrase passe sur 2 lignes. */
+.strike-word { display: inline-block; color: var(--faint); }
+.strike-word > .ink {
+  background-image: linear-gradient(var(--green-light), var(--green-light));
+  background-repeat: no-repeat;
+  background-size: 0% .07em;
+  background-position: 0 56%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size .9s var(--ease) .5s;
 }
-.rise.visible .strike-word::after { transform: scaleX(1); }
+.rise.visible .strike-word > .ink { background-size: 100% .07em; }
 
 .lede {
   font-size: clamp(.95rem, 1.5vw, 1.15rem);
@@ -425,31 +429,32 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   scroll-snap-align: center;
   padding-right: clamp(24px, 5vw, 70px);
 }
+/* Bloc (et non inline-flex) : le texte barré reste une inline
+   pouvant se scinder sur plusieurs lignes sans casser le trait */
 .swap-old {
-  display: inline-flex; align-items: baseline; gap: 12px;
+  display: block;
   font-family: var(--display);
   font-weight: 500; text-transform: uppercase;
   font-size: clamp(1rem, 2.4vw, 1.7rem);
+  line-height: 1.2;
   color: var(--faint);
   margin-bottom: 12px;
-  position: relative;
 }
 .swap-old .x {
   color: var(--green-light);
   font-size: 1.15em;
-  line-height: 1;
+  margin-right: 10px;
 }
-.swap-old .strike { position: relative; }
-.swap-old .strike::after {
-  content: '';
-  position: absolute; left: -2px; right: -2px; top: 52%;
-  height: 2px;
-  background: var(--green-light);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .7s var(--ease) .25s;
+.swap-old .strike {
+  background-image: linear-gradient(var(--green-light), var(--green-light));
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  background-position: 0 56%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size .7s var(--ease) .25s;
 }
-.swap-item.visible .swap-old .strike::after { transform: scaleX(1); }
+.swap-item.visible .swap-old .strike { background-size: 100% 2px; }
 .swap-new {
   font-family: var(--display);
   font-weight: 600; text-transform: uppercase;
@@ -662,6 +667,39 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 .faq-a-inner { padding: 0 0 18px; }
 .faq-a-inner p { color: var(--dim); font-size: clamp(.95rem, 1.5vw, 1.15rem); max-width: 56ch; line-height: 1.5; }
 
+/* ════════════ DEMANDE (formulaire en haut de page) ════════════ */
+
+#demande { justify-content: center; }
+.demande-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: clamp(22px, 5vw, 80px);
+  align-items: center;
+  width: 100%;
+}
+#demande .giant { font-size: clamp(2.4rem, 8vw, 6rem); }
+.demande-intro .lede { margin-top: clamp(10px, 2vh, 22px); }
+/* Formulaire court : on ne demande que l'essentiel */
+.form--quick .field-row--auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+}
+.form--quick .field textarea { min-height: 68px; }
+
+@media (max-width: 900px) {
+  .demande-grid { grid-template-columns: 1fr; gap: 18px; align-items: start; }
+}
+@media (max-width: 620px) {
+  #demande .giant { font-size: clamp(2rem, 9.2vw, 3.2rem); }
+  .form--quick .field-row--auto { grid-template-columns: 1fr; }
+}
+/* Écrans courts : la scène doit tenir sans déborder du snap */
+@media (max-height: 760px) {
+  .demande-intro .lede { display: none; }
+  .form--quick .field textarea { min-height: 46px; }
+}
+
 /* ════════════ CONTACT ════════════ */
 
 #contact .contact-grid {
@@ -786,9 +824,15 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   #contact .giant   { font-size: clamp(1.9rem, 8.6vw, 3rem); }
   .swap-new         { font-size: clamp(1.6rem, 7vw, 2.4rem); }
   .step-num         { font-size: clamp(4rem, 22vw, 7rem); }
-  .page-toggle-opt { padding: 6px 8px; font-size: 9.5px; letter-spacing: .08em; }
+  /* La barre doit tenir sur 360 px de large sans rogner l'icône son */
+  .page-toggle-bar { padding: 0 12px; gap: 4px; }
+  .page-toggle { gap: 0; }
+  .page-toggle-opt { padding: 6px 6px; font-size: 8.6px; letter-spacing: .04em; }
   .topbar-logo { display: none; }
-  .topbar-right { gap: 10px; }
+  .topbar-right { gap: 8px; }
+  .lang-toggle { font-size: 9.5px; gap: 4px; }
+  .sound-toggle { width: 20px; height: 20px; }
+  .sound-toggle svg { width: 14px; height: 14px; }
   .lede { font-size: .9rem; }
   .contact-lines .contact-line { font-size: 1.05rem; }
   .field-row { grid-template-columns: 1fr; }
@@ -796,6 +840,13 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   .stat-label { font-size: .8rem; }
   .site-footer { font-size: 8.5px; gap: 8px; }
   .scene-index { font-size: 9px; }
+}
+
+/* Très petits téléphones (iPhone SE, Galaxy S…) */
+@media (max-width: 380px) {
+  .page-toggle-bar { padding: 0 8px; }
+  .page-toggle-opt { padding: 6px 4px; font-size: 8px; letter-spacing: 0; }
+  .lang-toggle { font-size: 9px; }
 }
 
 /* Petits téléphones : la scène contact doit tenir sans défiler */

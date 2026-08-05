@@ -680,9 +680,9 @@
      13. FORMULAIRE DE CONTACT (Web3Forms)
      ───────────────────────────────────────────── */
   function initForm() {
-    var form = document.getElementById('contactForm');
-    var statusEl = document.getElementById('formStatus');
-    if (!form || !statusEl) return;
+    // Une page peut porter plusieurs formulaires (demande en haut, contact en bas)
+    var forms = document.querySelectorAll('form.contact-form');
+    if (!forms.length) return;
 
     var MSG = {
       fr: {
@@ -697,36 +697,41 @@
       }
     };
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var lang = getLang();
-      var btn = form.querySelector('.btn-form-submit');
-      statusEl.className = 'form-status';
-      statusEl.textContent = MSG[lang].sending;
-      if (btn) btn.disabled = true;
+    Array.prototype.forEach.call(forms, function (form) {
+      var statusEl = form.querySelector('.form-status');
+      if (!statusEl) return;
 
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      })
-        .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { ok: res.ok, json: j }; }); })
-        .then(function (r) {
-          if (r.ok && r.json.success) {
-            statusEl.classList.add('success');
-            statusEl.textContent = MSG[lang].ok;
-            form.reset();
-            Sound.success();
-          } else {
-            throw new Error('failed');
-          }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var lang = getLang();
+        var btn = form.querySelector('.btn-submit');
+        statusEl.className = 'form-status';
+        statusEl.textContent = MSG[lang].sending;
+        if (btn) btn.disabled = true;
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
         })
-        .catch(function () {
-          statusEl.classList.add('error');
-          statusEl.textContent = MSG[lang].err;
-          Sound.error();
-        })
-        .then(function () { if (btn) btn.disabled = false; });
+          .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { ok: res.ok, json: j }; }); })
+          .then(function (r) {
+            if (r.ok && r.json.success) {
+              statusEl.classList.add('success');
+              statusEl.textContent = MSG[lang].ok;
+              form.reset();
+              Sound.success();
+            } else {
+              throw new Error('failed');
+            }
+          })
+          .catch(function () {
+            statusEl.classList.add('error');
+            statusEl.textContent = MSG[lang].err;
+            Sound.error();
+          })
+          .then(function () { if (btn) btn.disabled = false; });
+      });
     });
   }
 
