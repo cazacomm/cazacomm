@@ -234,7 +234,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
    plus de plein écran imposé, donc plus de vides énormes. */
 .scene {
   position: relative;
-  padding: clamp(20px, 3.2vh, 38px) var(--pad);
+  padding: clamp(32px, 5.2vh, 60px) var(--pad);
   display: flex;
   flex-direction: column;
   justify-content: center;
