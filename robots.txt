@@ -5,15 +5,12 @@
 
 User-agent: Googlebot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Bingbot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Applebot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 # ─────────────────────────────────────────────
 # Moteurs génératifs et assistants (GEO)
@@ -22,55 +19,42 @@ Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: GPTBot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: OAI-SearchBot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: ChatGPT-User
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: ClaudeBot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Claude-User
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Claude-SearchBot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Perplexity-User
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Google-Extended
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Applebot-Extended
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: MistralAI-User
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Meta-ExternalAgent
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 User-agent: Amazonbot
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 # ─────────────────────────────────────────────
 # Aspirateurs de données sans bénéfice de visibilité
@@ -84,12 +68,9 @@ Disallow: /
 
 # ─────────────────────────────────────────────
 # Tout le reste
-# « partie site web site cazacomm/ » est une ancienne copie du site,
-# servie publiquement par GitHub Pages : contenu dupliqué, à ne pas indexer.
 # ─────────────────────────────────────────────
 
 User-agent: *
 Allow: /
-Disallow: /partie%20site%20web%20site%20cazacomm/
 
 Sitemap: https://www.cazacomm.fr/sitemap.xml
