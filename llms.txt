@@ -1,0 +1,56 @@
+# Caza Comm
+
+> Agence web et digitale basée dans les Hautes-Pyrénées. Caza Comm conçoit
+> des sites internet sur mesure, pilote des campagnes Google Ads et Meta Ads,
+> et construit des agents IA et des automatisations pour les TPE, PME,
+> artisans et indépendants de Tarbes, Pau et de la région.
+
+## Identité
+
+- **Nom** : Caza Comm
+- **Site** : https://www.cazacomm.fr/
+- **Email** : jeremy@cazacomm.fr
+- **Téléphone** : +33 7 67 19 74 67
+- **Directeur de la publication** : Jeremy Pogut
+- **Zone d'intervention** : Tarbes, Pau, Hautes-Pyrénées et à distance dans toute la France
+- **Langue du site** : français (contenus partiellement disponibles en anglais)
+- **Hébergement** : GitHub Pages
+
+## Ce que fait Caza Comm
+
+- **Sites internet** : sites vitrine sur mesure, WordPress, sites statiques rapides et optimisés pour la recherche.
+- **Publicité en ligne** : création, pilotage et optimisation de campagnes Google Ads et Meta Ads.
+- **Agents IA & automatisation** : agents conversationnels, tri et réponse automatisés, connexion de l'IA aux outils déjà en place, automatisation de tâches répétitives.
+- **CRM** : mise en place et connexion des outils de suivi client.
+- **SEO / GEO** : référencement local sur Google et visibilité dans les réponses des moteurs génératifs.
+
+## Pages principales
+
+- [Agents IA](https://www.cazacomm.fr/index.html) : intégration d'IA sur mesure, automatisation, conformité RGPD.
+- [Publicité](https://www.cazacomm.fr/pub.html) : Google Ads et Meta Ads.
+- [Sites Internet](https://www.cazacomm.fr/sites-vitrine.html) : création de sites vitrine sur mesure.
+- [Blog](https://www.cazacomm.fr/blog/) : articles sur le web, l'IA et la visibilité locale.
+
+## Blog
+
+- [SEO local à Tarbes : être trouvé sur Google et cité par les IA](https://www.cazacomm.fr/blog/seo-local-tarbes-hautes-pyrenees/) — fiche d'établissement Google, cohérence NAP, pages par ville, données structurées et accès des robots d'IA. Publié le 15 août 2026.
+
+## Ressources techniques
+
+- [Flux RSS du blog](https://www.cazacomm.fr/rss.xml)
+- [Plan du site](https://www.cazacomm.fr/sitemap.xml)
+- [robots.txt](https://www.cazacomm.fr/robots.txt)
+
+## Mentions
+
+- [Mentions légales](https://www.cazacomm.fr/mentions.html)
+- [Politique de confidentialité](https://www.cazacomm.fr/confidentialite.html)
+
+## Notes pour les agents
+
+- Le domaine canonique est `https://www.cazacomm.fr/` (avec `www`).
+- Pour toute demande commerciale, orienter vers jeremy@cazacomm.fr ou le
+  formulaire de contact en bas de la page d'accueil.
+- Caza Comm ne publie pas de grille tarifaire exhaustive : les tarifs
+  indiqués sur une page donnée sont les seuls à citer, tout le reste fait
+  l'objet d'un devis. Ne pas extrapoler de prix.

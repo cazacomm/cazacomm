@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog Caza Comm</title>
+    <link>https://www.cazacomm.fr/blog/</link>
+    <description>SEO local, GEO, publicité en ligne, sites internet et agents IA pour les entreprises de Tarbes, Pau et des Hautes-Pyrénées.</description>
+    <language>fr-FR</language>
+    <copyright>© 2026 Caza Comm</copyright>
+    <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
+    <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
+    <lastBuildDate>Sat, 15 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://www.cazacomm.fr/images/logo.png</url>
+      <title>Blog Caza Comm</title>
+      <link>https://www.cazacomm.fr/blog/</link>
+    </image>
+
+    <item>
+      <title>SEO local à Tarbes : être trouvé sur Google et cité par les IA</title>
+      <link>https://www.cazacomm.fr/blog/seo-local-tarbes-hautes-pyrenees/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/seo-local-tarbes-hautes-pyrenees/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 +0200</pubDate>
+      <category>SEO local</category>
+      <description>Fiche d'établissement Google, cohérence NAP, pages par ville, données structurées et accès des robots d'IA : la mécanique complète du référencement local en Hautes-Pyrénées, dans l'ordre où elle se met en place.</description>
+    </item>
+
+  </channel>
+</rss>
