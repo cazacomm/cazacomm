@@ -1,19 +1,21 @@
 /* ════════════════════════════════════════════════════════════════
-   CAZA COMM — BLOG
+   CAZA COMM — PAGES DE LECTURE (blog + mentions légales)
    Additif à caza-v2.css. N'écrase aucune règle existante : toutes les
-   déclarations sont préfixées .blog-page ou .blog-* pour rester sans
-   effet sur les pages du site.
+   déclarations sont préfixées .blog-page, .legal-page ou .blog-* pour
+   rester sans effet sur les scènes du site.
    ════════════════════════════════════════════════════════════════ */
 
-/* Les pages blog se lisent : pas de scènes plein écran, pas de JS.
+/* Ces pages se lisent : pas de scènes plein écran, pas de JS.
    La barre du haut reste fixe, on réserve donc sa hauteur. */
-.blog-page {
+.blog-page,
+.legal-page {
   padding-top: var(--bar-h);
 }
 
-/* La barre du haut du blog n'a pas de curseur animé (aucun JS chargé) :
+/* La barre du haut n'a pas de curseur animé ici (aucun JS chargé) :
    l'onglet actif se signale par la couleur d'accent, pas par l'aplat. */
-.blog-page .page-toggle-opt.is-active {
+.blog-page .page-toggle-opt.is-active,
+.legal-page .page-toggle-opt.is-active {
   color: var(--green-light);
 }
 
@@ -256,11 +258,26 @@
 .blog-nap a { transition: color .3s var(--ease); }
 .blog-nap a:hover { color: var(--green-light); }
 
-/* ════════════ PIED DE PAGE DU BLOG ════════════ */
+/* ════════════ PIED DE PAGE ════════════ */
 
 /* Le pied de page partagé (.site-footer) vit dans une .scene sur le site :
    ici il termine simplement le flux. */
-.blog-page .site-footer { margin-top: clamp(30px, 5vh, 60px); }
+.blog-page .site-footer,
+.legal-page .site-footer { margin-top: clamp(30px, 5vh, 60px); }
+
+/* ════════════ PAGES LÉGALES ════════════ */
+
+/* Mentions légales et confidentialité : même typographie que le blog,
+   en un peu plus dense — ce sont des documents de référence, pas des
+   articles. Les H2 y sont nombreux et courts. */
+.legal-page .blog-body { font-size: clamp(.95rem, 1.35vw, 1.02rem); }
+.legal-page .blog-body h2 {
+  font-size: clamp(1.1rem, 2.3vw, 1.5rem);
+  margin-top: clamp(28px, 4.5vh, 46px);
+  padding-top: clamp(14px, 2.2vh, 22px);
+}
+.legal-page .blog-body p,
+.legal-page .blog-body li { color: rgba(255,255,255,0.78); }
 
 @media (max-width: 640px) {
   .blog-body h2 { margin-top: clamp(30px, 5vh, 44px); }
