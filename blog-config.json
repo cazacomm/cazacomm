@@ -1,0 +1,38 @@
+{
+  "site_name": "Caza Comm",
+  "site_slug": "cazacomm",
+  "site_url": "https://www.cazacomm.fr",
+  "sector": "agence web et digitale (création de sites, WordPress, Google Ads et Meta Ads, agents IA et automatisation, CRM, SEO/GEO)",
+  "location": "Tarbes, Hautes-Pyrénées",
+  "coverage_area": [
+    "Hautes-Pyrénées (65)",
+    "Pyrénées-Atlantiques (64)",
+    "Landes (40)",
+    "Haute-Garonne (31)"
+  ],
+  "geo_keywords": [
+    "Tarbes",
+    "Pau",
+    "Bayonne",
+    "Toulouse",
+    "Hossegor",
+    "Lourdes",
+    "Bagnères-de-Bigorre",
+    "Hautes-Pyrénées",
+    "Pyrénées-Atlantiques",
+    "Landes",
+    "Haute-Garonne",
+    "Bigorre",
+    "Béarn",
+    "Pays basque"
+  ],
+  "tone": "expert-conseil, factuel, chaleureux, sans jargon inutile",
+  "author": "Caza Comm",
+  "target_word_count": 1300,
+  "faq_questions_count": 5,
+  "language": "fr",
+  "model": "gpt-4o-mini",
+  "temperature": 0.7,
+  "contact_email": "jeremy@cazacomm.fr",
+  "contact_phone": "+33 7 67 19 74 67"
+}
