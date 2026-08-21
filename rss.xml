@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Sat, 15 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Débutez avec Google Ads en Hautes-Pyrénées</title>
+      <link>https://www.cazacomm.fr/blog/google-ads-artisans-hautes-pyrenees/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/google-ads-artisans-hautes-pyrenees/</guid>
+      <pubDate>Fri, 21 Aug 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Pour les artisans des Hautes-Pyrénées, se lancer dans Google Ads peut sembler complexe. Entre choix des mots-clés et ajustements géographiques, il est essentiel de structurer correctement votre compte pour maximiser l'impact local. Que votre activité soit basée à Tarbes, Pau ou Lourdes, une stratégie bien pensée vous permettra d'attirer une clientèle locale et d'optimiser votre budget publicitaire.</description>
+    </item>
 
     <item>
       <title>SEO local à Tarbes : être trouvé sur Google et cité par les IA</title>

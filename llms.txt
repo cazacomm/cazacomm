@@ -34,6 +34,7 @@
 ## Blog
 
 - [SEO local à Tarbes : être trouvé sur Google et cité par les IA](https://www.cazacomm.fr/blog/seo-local-tarbes-hautes-pyrenees/) — fiche d'établissement Google, cohérence NAP, pages par ville, données structurées et accès des robots d'IA. Publié le 15 août 2026.
+- [Débutez avec Google Ads en Hautes-Pyrénées](https://www.cazacomm.fr/blog/google-ads-artisans-hautes-pyrenees/) : Découvrez comment structurer votre compte Google Ads et cibler efficacement en Hautes-Pyrénées.
 
 ## Ressources techniques
 
