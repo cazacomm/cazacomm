@@ -1,48 +1,49 @@
-name: Blog auto
-
-# Publie un article de blog chaque lundi à 9 h UTC.
-# Le script choisit le prochain sujet non traité de BLOG_WORKFLOW.md ; quand
-# la liste est épuisée il sort en 78 et le job se termine sans rien commiter.
+name: Blog auto — Caza Comm
 
 on:
   schedule:
+    # Tous les lundis à 9h00 UTC (11h en heure d'été française, 10h en hiver).
     - cron: "0 9 * * 1"
   workflow_dispatch:
     inputs:
-      topic:
-        description: "Numéro de sujet à forcer (vide = prochain non traité)"
-        required: false
-        type: string
       dry_run:
-        description: "Générer sans écrire ni commiter"
-        required: false
+        description: "Simulation : génère l'article mais n'écrit et ne pousse rien"
         type: boolean
         default: false
-
-# Deux exécutions simultanées choisiraient le même sujet.
-concurrency:
-  group: blog-auto
-  cancel-in-progress: false
+      rewrite:
+        description: "Slug d'un article existant à régénérer (laisser vide pour publier le sujet suivant)"
+        type: string
+        required: false
+        default: ""
 
 permissions:
   contents: write
 
+concurrency:
+  group: blog-auto
+  cancel-in-progress: false
+
 jobs:
-  publish:
+  generate:
+    name: Génération et publication d'un article
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
-      - name: Récupération du dépôt
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Python 3.11
+      - name: Setup Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Installation des dépendances
-        run: pip install --quiet --upgrade openai
+        run: |
+          python -m pip install --upgrade pip
+          pip install openai
 
       - name: Génération de l'article
         id: generate
@@ -50,61 +51,52 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set +e
-          ARGS=""
-          if [ -n "${{ inputs.topic }}" ]; then ARGS="$ARGS --topic ${{ inputs.topic }}"; fi
-          if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
-          python3 scripts/generate-article.py $ARGS
-          CODE=$?
+          args=""
+          if [ -n "${{ inputs.rewrite }}" ]; then
+            args="--rewrite ${{ inputs.rewrite }}"
+          fi
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python scripts/generate-article.py --dry-run $args
+          else
+            python scripts/generate-article.py $args
+          fi
+          code=$?
           set -e
-          case "$CODE" in
-            0)
-              echo "published=true" >> "$GITHUB_OUTPUT"
-              ;;
-            78)
-              echo "published=false" >> "$GITHUB_OUTPUT"
-              echo "::notice::Aucun sujet nouveau à traiter — ajoutez des lignes au tableau de BLOG_WORKFLOW.md."
-              ;;
-            *)
-              echo "::error::Génération en échec (code $CODE), rien n'a été commité."
-              exit 1
-              ;;
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          case $code in
+            0)  echo "Article généré." ;;
+            78) echo "::notice::Aucun nouveau sujet à traiter — arrêt propre." ;;
+            *)  echo "::error::Échec de la génération (code $code)." ; exit $code ;;
           esac
 
-      - name: Vérification des fichiers produits
-        if: steps.generate.outputs.published == 'true' && inputs.dry_run != true
+      - name: Commit et push
+        if: steps.generate.outputs.exit_code == '0' && inputs.dry_run != true
         run: |
-          python3 - <<'PY'
-          import glob, json, re, sys
-          import xml.dom.minidom as minidom
-          minidom.parse("sitemap.xml"); minidom.parse("rss.xml")
-          for f in glob.glob("blog/**/index.html", recursive=True):
-              src = open(f, encoding="utf-8").read()
-              for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', src, re.S):
-                  json.loads(block)
-              d = re.search(r'<meta name="description" content="([^"]*)"', src)
-              assert d and len(d.group(1)) < 155, f"meta description absente ou trop longue : {f}"
-          print("XML bien formé, JSON-LD valide, descriptions dans la limite.")
-          PY
-
-      - name: Commit et publication
-        if: steps.generate.outputs.published == 'true' && inputs.dry_run != true
-        run: |
-          if git diff --quiet && git diff --staged --quiet; then
-            echo "Aucune modification à commiter."
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "::notice::Aucune modification à committer."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add blog/ sitemap.xml rss.xml
-          git commit -m "chore(blog): article auto du $(date -u +%d/%m/%Y)"
-          git push origin HEAD:${{ github.ref_name }}
+          git add -A
+          if [ -n "${{ inputs.rewrite }}" ]; then
+            msg="chore(blog): reecriture de ${{ inputs.rewrite }}"
+          else
+            msg="chore(blog): article auto du $(date -u +%Y-%m-%d)"
+          fi
+          git commit -m "$msg"
+          git push origin HEAD:${GITHUB_REF_NAME}
+          echo "::notice::Article publié et poussé."
 
-      - name: Résumé
+      - name: Récapitulatif
         if: always()
         run: |
-          if [ "${{ steps.generate.outputs.published }}" = "true" ]; then
-            echo "### Article publié ✅" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "### Rien à publier" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          git log -1 --pretty='%h %s' >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "### Blog auto — Caza Comm"
+            echo ""
+            echo "- Code de sortie du script : \`${{ steps.generate.outputs.exit_code }}\`"
+            echo "- Simulation : \`${{ inputs.dry_run || 'false' }}\`"
+            echo "- Réécriture : \`${{ inputs.rewrite || '(aucune)' }}\`"
+            echo ""
+            echo "Codes : \`0\` succès · \`78\` aucun sujet restant · \`1\` erreur."
+          } >> "$GITHUB_STEP_SUMMARY"
