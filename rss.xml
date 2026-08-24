@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Fri, 21 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>L'essentiel pour votre site internet à Tarbes</title>
+      <link>https://www.cazacomm.fr/blog/site-internet-commerce-tarbes/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/site-internet-commerce-tarbes/</guid>
+      <pubDate>Mon, 24 Aug 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Pour un commerce à Tarbes, avoir un site internet performant est crucial. Que vous soyez situé près de la Place Marcadieu ou à proximité de la Gare, votre présence en ligne doit être à la hauteur des attentes de vos clients. De la vitesse de chargement à l'optimisation mobile, en passant par une page contact efficace, chaque détail compte pour se démarquer dans les Hautes-Pyrénées. Découvrez les éléments essentiels pour un site qui booste votre activité locale.</description>
+    </item>
 
     <item>
       <title>Débutez avec Google Ads en Hautes-Pyrénées</title>
