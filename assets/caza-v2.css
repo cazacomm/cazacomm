@@ -386,6 +386,15 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 .marquee--reverse .marquee__track { animation-direction: reverse; }
 .marquee--fast .marquee__track { animation-duration: 20s; }
 @keyframes marqueeMove { to { transform: translateX(-100%); } }
+
+/* Le script duplique le contenu de chaque piste d'avis. Une translation
+   de -50 % ramène donc le second exemplaire exactement là où commençait
+   le premier : la boucle est continue, là où -100 % vidait la piste et
+   laissait un blanc à chaque tour. La distance parcourue étant la même
+   qu'avant (la piste fait le double de large), la durée ne change pas. */
+@keyframes marqueeHalf  { to { transform: translateX(-50%); } }
+@keyframes marqueeHalfY { to { transform: translateY(-50%); } }
+.marquee__track.is-looped { animation-name: marqueeHalf; }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 .marquee__item {
   font-family: var(--mono);
@@ -877,41 +886,49 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 
 /* ════════════ AVIS SUR MOBILE ════════════ */
 
-/* En bandeau défilant, une seule ligne tient à l'écran : sur un téléphone
-   on ne lit qu'un bout d'un avis à la fois, alors que la section occupe
-   déjà toute la hauteur. On empile donc les six avis, chacun sur
-   plusieurs lignes, à l'intérieur de la même scène — la hauteur de
-   section ne bouge pas, c'est le vide qui est comblé.
+/* Sur un téléphone, un ruban horizontal ne montre qu'un fragment d'avis à
+   la fois. Le script regroupe les six avis dans une seule piste et bascule
+   le ruban à la verticale : ils défilent tout seuls, en continu, sur
+   plusieurs lignes chacun. La hauteur de la section ne bouge pas.
 
-   Effet de bord utile : les deux pistes animées en boucle (52 s, avec
-   will-change: transform) cessent de tourner. Elles maintenaient une
-   composition permanente qui hachait le défilement sur mobile. */
+   Les couleurs viennent des variables de thème : la page d'accueil est en
+   thème clair, du blanc en dur y serait invisible. */
 @media (max-width: 620px) {
-  #avis .marquee--giant { overflow: visible; }
-  #avis .marquee--giant .marquee__track {
-    animation: none;
+  #avis .marquee--giant.is-vertical {
+    display: block;
+    overflow: hidden;
+    height: clamp(216px, 36vh, 320px);
+    border: none;
+    padding: 0;
+    /* Fondu haut et bas : les avis entrent et sortent sans coupure nette */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent);
+  }
+  #avis .marquee--giant.is-vertical .marquee__track {
     flex-direction: column;
     align-items: stretch;
-    gap: 0;
-    will-change: auto;
+    animation-name: marqueeHalfY;
+    animation-duration: 38s;
   }
+  /* Piste vidée par le script : ses avis ont rejoint la première. */
+  #avis .marquee--giant.is-hidden-mobile { display: none; }
+
   #avis .marquee--giant .quote-item {
     display: block;
     white-space: normal;              /* la citation passe à la ligne */
     font-family: var(--body);
     font-weight: 400;
     text-transform: none;
-    font-size: .92rem;
+    font-size: .9rem;
     line-height: 1.35;
     letter-spacing: 0;
-    padding: 11px 0;
+    padding: 10px 0;
     border-top: 1px solid var(--line);
-    color: rgba(255,255,255,.86);
+    color: var(--txt);
   }
-  /* Le nom du client, sur sa propre ligne */
   #avis .marquee--giant .quote-item span {
     display: block;
-    margin-top: 4px;
+    margin-top: 3px;
     font-family: var(--mono);
     font-size: 9.5px;
     letter-spacing: .16em;
@@ -921,19 +938,21 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   #avis .marquee--giant .quote-item::after {
     content: '★★★★★';
     display: block;
-    margin-top: 5px;
+    margin-top: 4px;
     font-size: 9px;
     letter-spacing: .18em;
   }
-  /* Le second bandeau est en contour ajouré : illisible à cette taille. */
+  /* Le contour ajouré est illisible à cette taille. */
   #avis .marquee--outline .quote-item {
-    color: rgba(255,255,255,.86);
+    color: var(--txt);
     -webkit-text-stroke: 0;
   }
-  /* Les deux pistes ne forment plus qu'une seule liste continue. */
-  #avis .marquee--reverse { margin-top: 0 !important; }
-  #avis .marquee--giant + .marquee--giant .quote-item:first-child { border-top: 1px solid var(--line); }
-  #avis .marquee { padding-bottom: 0; }
+}
+
+/* Sans animation, un ruban de hauteur fixe masquerait les derniers avis :
+   on le laisse s'étendre et afficher la liste complète. */
+@media (max-width: 620px) and (prefers-reduced-motion: reduce) {
+  #avis .marquee--giant.is-vertical { height: auto; mask-image: none; -webkit-mask-image: none; }
 }
 
 /* Très petits téléphones (iPhone SE, Galaxy S…) */

@@ -169,6 +169,72 @@
     });
   }
 
+  /* ── 5 bis. AVIS : RUBAN CONTINU ──
+     Chaque avis n'est écrit qu'une fois dans le HTML. Pour boucler sans
+     trou il en faut un second exemplaire : on le fabrique ici plutôt que
+     de dupliquer le texte dans les pages, qui resteraient à maintenir en
+     double.
+
+     Sur téléphone, les six avis sont regroupés dans une seule piste et le
+     ruban passe à la verticale (voir la feuille de style) : un ruban
+     horizontal n'y montrerait qu'un fragment de phrase à la fois. */
+  function initQuoteTicker() {
+    var section = document.getElementById('avis');
+    if (!section) return;
+    var marquees = Array.prototype.slice.call(section.querySelectorAll('.marquee--giant'));
+    if (!marquees.length) return;
+
+    var tracks = marquees.map(function (m) { return m.querySelector('.marquee__track'); });
+    if (tracks.some(function (t) { return !t; })) return;
+
+    // Les avis d'origine, mémorisés avant toute manipulation du DOM.
+    var groups = tracks.map(function (t) {
+      return Array.prototype.slice.call(t.querySelectorAll('.quote-item'));
+    });
+    var all = groups.reduce(function (acc, g) { return acc.concat(g); }, []);
+    if (!all.length) return;
+
+    function fill(track, items) {
+      while (track.firstChild) track.removeChild(track.firstChild);
+      items.forEach(function (node) { track.appendChild(node); });
+      // Le second exemplaire est décoratif : il ne doit pas être relu.
+      items.forEach(function (node) {
+        var copy = node.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        track.appendChild(copy);
+      });
+      track.classList.add('is-looped');
+    }
+
+    var mq = window.matchMedia('(max-width: 620px)');
+    var mode = null;
+
+    function layout() {
+      var vertical = mq.matches;
+      if (mode === vertical) return;   // rien à refaire tant qu'on ne change pas de format
+      mode = vertical;
+
+      if (vertical) {
+        fill(tracks[0], all);
+        marquees[0].classList.add('is-vertical');
+        marquees[0].classList.remove('is-hidden-mobile');
+        for (var i = 1; i < marquees.length; i++) {
+          while (tracks[i].firstChild) tracks[i].removeChild(tracks[i].firstChild);
+          marquees[i].classList.add('is-hidden-mobile');
+        }
+      } else {
+        marquees.forEach(function (m, i) {
+          m.classList.remove('is-vertical', 'is-hidden-mobile');
+          fill(tracks[i], groups[i]);
+        });
+      }
+    }
+
+    layout();
+    if (mq.addEventListener) mq.addEventListener('change', layout);
+    else if (mq.addListener) mq.addListener(layout);
+  }
+
   /* ── 6. CURSEUR PERSONNALISÉ ── */
   function initCursor() {
     if (!FINE || REDUCED) return;
@@ -215,6 +281,7 @@
     initMarquees();
     initSceneIndex();
     initDecks();
+    initQuoteTicker();
     initCursor();
     initV2Sounds();
   }
