@@ -44,9 +44,21 @@ body {
   line-height: 1.5;
   min-height: 100vh; min-height: 100dvh;
   overflow-y: scroll; overflow-x: hidden;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Le défilement doux ne vaut QUE pour la souris.
+   Sur un écran tactile, « scroll-behavior: smooth » sur l'élément de
+   défilement entre en conflit avec l'inertie du doigt : le navigateur
+   termine son animation avant d'écouter le geste suivant, et un swipe
+   vers le haut semble ignoré pendant une seconde. C'est exactement le
+   défaut « je remonte mais ça continue de descendre ».
+   La propriété est donc réservée aux pointeurs fins, où elle sert aux
+   liens d'ancrage sans jamais croiser un geste tactile.
+   « -webkit-overflow-scrolling » a été retiré : sans effet depuis iOS 13,
+   il forçait un contexte de défilement séparé sur les anciennes versions. */
+@media (hover: hover) and (pointer: fine) {
+  html { scroll-behavior: smooth; }
 }
 body::-webkit-scrollbar { width: 0; height: 0; }
 body { scrollbar-width: none; }
@@ -840,9 +852,14 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   .swap-deck        { grid-template-columns: 1fr 1fr; gap: 10px 14px; }
   .steps-deck       { grid-template-columns: 1fr 1fr; }
   .step-num         { font-size: clamp(1.9rem, 9vw, 2.6rem); }
-  /* La barre doit tenir sur 360 px de large sans rogner l'icône son */
-  .page-toggle-bar { padding: 0 12px; gap: 4px; }
-  .page-toggle { gap: 0; }
+  /* La barre doit tenir sur 360 px de large sans rogner l'icône son.
+     Le logo étant masqué ici, la grille passe à deux colonnes : les
+     catégories calées à gauche, la langue et le son à droite. En trois
+     colonnes, la colonne centrale « auto » mangeait toute la largeur et
+     collait le groupe langue/son juste après les catégories. */
+  .page-toggle-bar { grid-template-columns: auto 1fr; padding: 0 12px; gap: 8px; }
+  .page-toggle { justify-self: start; gap: 0; }
+  .topbar-right { justify-self: end; }
   .page-toggle-opt { padding: 6px 6px; font-size: 8.6px; letter-spacing: .04em; }
   .topbar-logo { display: none; }
   .topbar-right { gap: 8px; }
@@ -856,6 +873,67 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   .stat-label { font-size: .8rem; }
   .site-footer { font-size: 8.5px; gap: 8px; }
   .scene-index { font-size: 9px; }
+}
+
+/* ════════════ AVIS SUR MOBILE ════════════ */
+
+/* En bandeau défilant, une seule ligne tient à l'écran : sur un téléphone
+   on ne lit qu'un bout d'un avis à la fois, alors que la section occupe
+   déjà toute la hauteur. On empile donc les six avis, chacun sur
+   plusieurs lignes, à l'intérieur de la même scène — la hauteur de
+   section ne bouge pas, c'est le vide qui est comblé.
+
+   Effet de bord utile : les deux pistes animées en boucle (52 s, avec
+   will-change: transform) cessent de tourner. Elles maintenaient une
+   composition permanente qui hachait le défilement sur mobile. */
+@media (max-width: 620px) {
+  #avis .marquee--giant { overflow: visible; }
+  #avis .marquee--giant .marquee__track {
+    animation: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    will-change: auto;
+  }
+  #avis .marquee--giant .quote-item {
+    display: block;
+    white-space: normal;              /* la citation passe à la ligne */
+    font-family: var(--body);
+    font-weight: 400;
+    text-transform: none;
+    font-size: .92rem;
+    line-height: 1.35;
+    letter-spacing: 0;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+    color: rgba(255,255,255,.86);
+  }
+  /* Le nom du client, sur sa propre ligne */
+  #avis .marquee--giant .quote-item span {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--green-light);
+  }
+  #avis .marquee--giant .quote-item::after {
+    content: '★★★★★';
+    display: block;
+    margin-top: 5px;
+    font-size: 9px;
+    letter-spacing: .18em;
+  }
+  /* Le second bandeau est en contour ajouré : illisible à cette taille. */
+  #avis .marquee--outline .quote-item {
+    color: rgba(255,255,255,.86);
+    -webkit-text-stroke: 0;
+  }
+  /* Les deux pistes ne forment plus qu'une seule liste continue. */
+  #avis .marquee--reverse { margin-top: 0 !important; }
+  #avis .marquee--giant + .marquee--giant .quote-item:first-child { border-top: 1px solid var(--line); }
+  #avis .marquee { padding-bottom: 0; }
 }
 
 /* Très petits téléphones (iPhone SE, Galaxy S…) */
