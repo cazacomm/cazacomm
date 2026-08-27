@@ -192,16 +192,8 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
     background: var(--bg-solid);
   }
 }
-.topbar-logo { justify-self: start; display: inline-flex; align-items: center; }
-/* Pastille ronde, comme une photo de profil. L'image source est déjà
-   recadrée au carré sur le sujet : le disque tombe donc juste. */
-.topbar-logo img {
-  height: 22px; width: 22px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 .page-toggle {
+  grid-column: 2;          /* colonne centrale : le logo ne l'occupe plus */
   justify-self: center;
   position: relative;
   display: inline-flex;
@@ -227,7 +219,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   transition: transform .55s var(--ease), width .55s var(--ease);
 }
 
-.topbar-right { justify-self: end; display: inline-flex; align-items: center; gap: 14px; }
+.topbar-right { grid-column: 3; justify-self: end; display: inline-flex; align-items: center; gap: 14px; }
 .lang-toggle { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; }
 .lang-opt { color: var(--faint); transition: color .3s var(--ease); padding: 4px 0; }
 .lang-opt:hover { color: var(--txt); }
@@ -873,10 +865,9 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
      colonnes, la colonne centrale « auto » mangeait toute la largeur et
      collait le groupe langue/son juste après les catégories. */
   .page-toggle-bar { grid-template-columns: auto 1fr; padding: 0 12px; gap: 8px; }
-  .page-toggle { justify-self: start; gap: 0; }
-  .topbar-right { justify-self: end; }
+  .page-toggle { grid-column: 1; justify-self: start; gap: 0; }
+  .topbar-right { grid-column: 2; justify-self: end; }
   .page-toggle-opt { padding: 6px 6px; font-size: 8.6px; letter-spacing: .04em; }
-  .topbar-logo { display: none; }
   .topbar-right { gap: 8px; }
   .lang-toggle { font-size: 9.5px; gap: 4px; }
   .sound-toggle { width: 20px; height: 20px; }
