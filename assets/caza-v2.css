@@ -193,7 +193,13 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   }
 }
 .topbar-logo { justify-self: start; display: inline-flex; align-items: center; }
-.topbar-logo img { height: 22px; width: auto; }
+/* Pastille ronde, comme une photo de profil. L'image source est déjà
+   recadrée au carré sur le sujet : le disque tombe donc juste. */
+.topbar-logo img {
+  height: 22px; width: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
 .page-toggle {
   justify-self: center;
@@ -1063,7 +1069,6 @@ body.theme-light .why-media::after {
 }
 body.theme-light #pourquoi { background: #08090a; }
 /* Le logo est pensé pour un fond sombre : sur blanc, on le passe en noir plein */
-body.theme-light .topbar-logo img { filter: brightness(0); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
