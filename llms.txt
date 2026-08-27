@@ -26,9 +26,9 @@
 
 ## Pages principales
 
-- [Agents IA](https://www.cazacomm.fr/index.html) : intégration d'IA sur mesure, automatisation, conformité RGPD.
+- [Sites Internet](https://www.cazacomm.fr/) : création de sites vitrine sur mesure, livrés en moins de 48 h. C'est la page d'accueil du site.
+- [Agents IA](https://www.cazacomm.fr/agents-ia.html) : intégration d'IA sur mesure, automatisation, conformité RGPD.
 - [Publicité](https://www.cazacomm.fr/pub.html) : Google Ads et Meta Ads.
-- [Sites Internet](https://www.cazacomm.fr/sites-vitrine.html) : création de sites vitrine sur mesure.
 - [Blog](https://www.cazacomm.fr/blog/) : articles sur le web, l'IA et la visibilité locale.
 
 ## Blog

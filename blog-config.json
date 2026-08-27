@@ -35,9 +35,9 @@
   "logo_path": "/images/logo.png",
   "default_article_section": "Web, IA & visibilité locale",
   "internal_link_targets": [
-    "/sites-vitrine.html",
-    "/pub.html",
-    "/#contact"
+    "/",
+    "/agents-ia.html",
+    "/pub.html"
   ],
   "reference_article_slug": "seo-local-tarbes-hautes-pyrenees",
   "about_id": "/#organization",
@@ -46,7 +46,7 @@
     "Directeur de la publication : Jeremy POGUT. Contact : jeremy@cazacomm.fr, téléphone 07 67 19 74 67.",
     "Zone d'intervention : Tarbes, Pau et les Hautes-Pyrénées, et à distance dans toute la France.",
     "Prestations : création de sites vitrine sur mesure, sites WordPress, campagnes Google Ads et Meta Ads, agents IA et automatisation de tâches, mise en place de CRM, référencement local (SEO) et visibilité dans les moteurs génératifs (GEO).",
-    "Site vitrine : 50 € par mois, plus 400 € à la création, sans engagement. Hébergement et nom de domaine inclus. C'est le seul tarif public de Caza Comm ; toute autre prestation fait l'objet d'un devis.",
+    "Site vitrine livré en moins de 48 heures : 50 € par mois, plus 400 € à la création, sans engagement. Hébergement et nom de domaine inclus. C'est le seul tarif public de Caza Comm ; toute autre prestation fait l'objet d'un devis.",
     "Réponse personnelle garantie sous 24 heures. Premier échange et devis gratuits.",
     "Note de 5,0 sur 5 pour 18 avis vérifiés sur Google.",
     "Solutions basées en France et conformes au RGPD ; selon le besoin, hébergées chez le client.",

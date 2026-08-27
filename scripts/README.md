@@ -107,7 +107,7 @@ mises à jour de fichiers fonctionnent. Combiné à `--dry-run`, rien n'est écr
 7. **Valide le contenu** avant toute écriture : champs présents, longueur du
    `title` (40–70) et de la `meta_description` (< 155), types de blocs connus,
    exactement 5 questions de FAQ, maillage interne (≥ 2 liens vers
-   `/sites-vitrine.html`, `/pub.html` ou `/#contact` et ≥ 1 vers `/blog/`),
+   `/`, `/agents-ia.html` ou `/pub.html` et ≥ 1 vers `/blog/`),
    volume entre 900 et 1900 mots. Le moindre échec ⇒ code 1, **rien n'est écrit**.
 
    Le volume se compte sur le **contenu** (`content_word_count()`), pas sur du
