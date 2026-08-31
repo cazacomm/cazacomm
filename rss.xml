@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 24 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Agents IA : des alliés pour les TPE de Tarbes</title>
+      <link>https://www.cazacomm.fr/blog/agents-ia-tpe-usages-concrets/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/agents-ia-tpe-usages-concrets/</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Dans le quotidien d'une TPE à Tarbes, chaque minute compte. Entre la gestion des mails, l'envoi de devis et les relances clients, les journées sont souvent bien remplies. C'est là que les agents IA entrent en scène, offrant des solutions concrètes pour automatiser ces tâches répétitives. Découvrez comment ces outils peuvent transformer la gestion quotidienne de votre entreprise, vous faisant gagner un temps précieux tout en améliorant votre efficacité.</description>
+    </item>
 
     <item>
       <title>L'essentiel pour votre site internet à Tarbes</title>
