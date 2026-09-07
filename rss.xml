@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 31 Aug 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Maîtrisez les avis Google pour votre réputation</title>
+      <link>https://www.cazacomm.fr/blog/repondre-avis-google-methode/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/repondre-avis-google-methode/</guid>
+      <pubDate>Mon, 07 Sep 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>À Tarbes et dans les Hautes-Pyrénées, les avis Google peuvent avoir un impact significatif sur la réputation de votre entreprise. Que vous soyez une agence web locale ou une petite entreprise à Bagnères-de-Bigorre, bien gérer ces avis est crucial pour maintenir la confiance de votre clientèle. Découvrez comment répondre efficacement aux avis, qu'ils soient positifs ou négatifs, pour protéger et améliorer l'image de votre entreprise.</description>
+    </item>
 
     <item>
       <title>Agents IA : des alliés pour les TPE de Tarbes</title>
