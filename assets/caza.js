@@ -679,6 +679,24 @@
   /* ─────────────────────────────────────────────
      13. FORMULAIRE DE CONTACT (Web3Forms)
      ───────────────────────────────────────────── */
+  /* Conversion OpenAI Ads.
+     Appelée uniquement quand Web3Forms a confirmé l'envoi (success: true),
+     jamais au clic ni en cas d'erreur.
+     Le garde-fou n'est pas décoratif : si le script de configuration n'a pas
+     été chargé — bloqueur de publicité, coupure réseau, CSP —, « oaiq »
+     serait indéfini et l'exception remonterait au .catch() de la requête.
+     L'utilisateur verrait alors un message d'échec alors que son message
+     est bien parti. Le suivi ne doit jamais décider du sort du formulaire. */
+  function trackLead() {
+    try {
+      if (typeof window.oaiq === 'function') {
+        window.oaiq('measure', 'lead_created', { type: 'customer_action' });
+      }
+    } catch (err) {
+      /* silencieux, volontairement */
+    }
+  }
+
   function initForm() {
     // Une page peut porter plusieurs formulaires (demande en haut, contact en bas)
     var forms = document.querySelectorAll('form.contact-form');
@@ -721,6 +739,7 @@
               statusEl.textContent = MSG[lang].ok;
               form.reset();
               Sound.success();
+              trackLead();
             } else {
               throw new Error('failed');
             }
