@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<!-- Pixel OpenAI Ads -->
-<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"HNV6mAW5pk8REeZ6jjY6kC",debug:true});</script>
+<!-- Consentement, puis pixel OpenAI Ads uniquement si accord -->
+<script src="/assets/consent.js?v=1" defer></script>
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/assets/caza-v2.css?v=14" />
+<link rel="stylesheet" href="/assets/caza-v2.css?v=15" />
 <link rel="stylesheet" href="/assets/blog.css?v=2" />
 </head>
 <body class="legal-page">
@@ -59,7 +59,7 @@
   <header class="blog-head">
     <h1 class="blog-title">Politique de <span class="accent">confidentialité</span></h1>
     <div class="blog-meta">
-      <span>Dernière mise à jour : <time datetime="2025-10-11">11/10/25</time></span>
+      <span>Dernière mise à jour : <time datetime="2026-09-16">16/09/26</time></span>
     </div>
   </header>
 
@@ -79,22 +79,36 @@
       <li>Répondre à vos demandes et vous recontacter : exécution de mesures précontractuelles.</li>
       <li>Gestion de la relation clients/fournisseurs : exécution du contrat et obligations légales.</li>
       <li>Amélioration du site et statistiques d’audience : intérêt légitime (audience agrégée/anonymisée).</li>
+      <li>Mesure de l’efficacité de nos publicités : <strong>votre consentement</strong>, recueilli via le bandeau à votre arrivée et révocable à tout moment.</li>
     </ul>
 
     <h2>Durées de conservation</h2>
     <p>Les données de prospects sont conservées jusqu’à 3 ans après le dernier contact. Les données clients : pendant la relation contractuelle puis archivage légal.</p>
 
     <h2>Destinataires</h2>
-    <p>Membres de l’équipe Caza Comm et prestataires techniques strictement nécessaires (hébergeur/stockage, email, analytics). Pas de vente de données.</p>
+    <p>Membres de l’équipe Caza Comm et prestataires techniques strictement nécessaires (hébergeur/stockage, email, analytics). Si vous avez accepté la mesure publicitaire, OpenAI reçoit également les données décrites à la section « Cookies et traceurs ». Pas de vente de données.</p>
 
     <h2>Transferts hors UE</h2>
-    <p>Certains fournisseurs (ex : GitHub, email) sont situés hors UE. Nous veillons à des garanties appropriées (clauses contractuelles types, équivalents).</p>
+    <p>Certains fournisseurs (ex : GitHub, email, et OpenAI si vous avez accepté la mesure publicitaire) sont situés hors UE, principalement aux États-Unis. Nous veillons à des garanties appropriées (clauses contractuelles types, équivalents).</p>
 
     <h2>Vos droits</h2>
     <p>Accès, rectification, effacement, limitation, opposition, portabilité. Pour exercer : <a href="mailto:jeremy@cazacomm.fr">jeremy@cazacomm.fr</a>. Droit de réclamation : CNIL (cnil.fr).</p>
 
-    <h2>Cookies</h2>
-    <p>Notre site fonctionne sans cookies publicitaires. Les mesures d’audience sont limitées, anonymisées et exemptées de consentement lorsque possible. Vous pouvez configurer votre navigateur pour bloquer les cookies.</p>
+    <h2>Cookies et traceurs</h2>
+    <p>Le site n’utilise aucun traceur nécessitant votre accord pour fonctionner. Un seul traceur est soumis à consentement, et il n’est pas déposé tant que vous ne l’avez pas accepté.</p>
+
+    <h3>Traceur publicitaire OpenAI Ads</h3>
+    <p><strong>Finalité :</strong> mesurer les demandes de contact issues de nos campagnes publicitaires, afin de savoir quelles publicités sont utiles.<br />
+    <strong>Fournisseur :</strong> OpenAI, éditeur de la solution de mesure.<br />
+    <strong>Base légale :</strong> votre consentement (article 82 de la loi Informatique et Libertés).<br />
+    <strong>Déclenchement :</strong> la consultation d’une page, et l’envoi réussi d’un formulaire de contact.</p>
+
+    <p>Tant que vous n’avez pas accepté, <strong>aucun script OpenAI n’est chargé</strong> et aucune donnée ne lui est transmise. Le refus n’a aucune conséquence sur le fonctionnement du site : les formulaires de contact restent pleinement opérationnels.</p>
+
+    <h3>Votre choix</h3>
+    <p>Il vous est demandé à votre première visite. Nous le conservons <strong>6 mois</strong> dans le stockage local de votre navigateur (clé <code>caza-consent</code>), puis la question vous est reposée. Ce choix ne transite par aucun serveur.</p>
+    <p>Vous pouvez en changer à tout moment via le lien <strong>« Gérer mes cookies »</strong>, en bas de chaque page. En cas de retrait, les données déposées par le traceur sont effacées de votre navigateur et la page est rechargée sans lui.</p>
+    <p>Vous pouvez également configurer votre navigateur pour bloquer les cookies.</p>
 
     <h2>Contact</h2>
     <p>Pour toute question : <a href="mailto:jeremy@cazacomm.fr">jeremy@cazacomm.fr</a>.</p>

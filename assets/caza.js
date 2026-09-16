@@ -689,6 +689,10 @@
      est bien parti. Le suivi ne doit jamais décider du sort du formulaire. */
   function trackLead() {
     try {
+      // Consentement d'abord : sans accord, aucun événement ne part.
+      // Sans le gestionnaire (fichier bloqué, page sans consent.js), on
+      // s'abstient — le défaut sûr est de ne pas mesurer.
+      if (!window.CazaConsent || !window.CazaConsent.granted()) return;
       if (typeof window.oaiq === 'function') {
         window.oaiq('measure', 'lead_created', { type: 'customer_action' });
       }
