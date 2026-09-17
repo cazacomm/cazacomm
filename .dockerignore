@@ -1,0 +1,35 @@
+# Git
+.git
+.gitattributes
+.github
+
+# Systeme
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Dependances eventuelles
+node_modules
+**/node_modules
+.npm
+package-lock.json
+yarn.lock
+
+# Outils et docs de dev
+scripts
+.backup-design
+*.md
+blog-config.json
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+
+# Editeurs
+.vscode
+.idea
+.claude
+
+# Environnement
+.env
+.env.*
