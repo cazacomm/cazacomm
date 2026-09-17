@@ -7,28 +7,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="Tous les liens Caza Comm : le site, la newsletter et les réseaux." />
-  <title>Caza Comm - Liens</title>
+  <meta name="description" content="Votre inscription à la newsletter Caza Comm est confirmée." />
+  <meta name="robots" content="noindex, follow" />
+  <title>Bienvenue | Caza Comm</title>
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-
-  <link rel="canonical" href="https://www.cazacomm.fr/liens" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="fr_FR" />
-  <meta property="og:site_name" content="Caza Comm" />
-  <meta property="og:url" content="https://www.cazacomm.fr/liens" />
-  <meta property="og:title" content="Caza Comm - Liens" />
-  <meta property="og:description" content="Le site, la newsletter et les réseaux, au même endroit." />
-  <meta property="og:image" content="https://www.cazacomm.fr/images/logo.png" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Caza Comm - Liens" />
-  <meta name="twitter:description" content="Le site, la newsletter et les réseaux, au même endroit." />
-  <meta name="twitter:image" content="https://www.cazacomm.fr/images/logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,19 +24,24 @@
 </head>
 <body class="links-page">
 
-<main class="links-wrap">
+<main class="links-wrap welcome-wrap">
 
   <header class="links-head">
-    <img class="links-avatar" src="/images/logo.png" width="112" height="112"
+    <img class="links-avatar welcome-avatar" src="/images/logo.png" width="160" height="160"
          alt="Caza Comm, Jérémy Pogut" fetchpriority="high" />
-    <h1 class="links-name">Caza Comm</h1>
-    <p class="links-tagline">Sites internet, publicité, agents IA.</p>
+
+    <!-- Deux moments du double opt-in, une seule page. Par défaut la
+         confirmation finale ; avec ?etape=email, l'écran intermédiaire qui
+         invite à ouvrir sa boîte mail. -->
+    <h1 class="links-name welcome-title" id="wTitle">Bienvenue<br />dans le business</h1>
+    <p class="links-tagline welcome-text" id="wText">
+      Votre inscription est confirmée. Vous recevrez une idée concrète à la fois,
+      rien d'autre, et vous partez en un clic quand vous voulez.
+    </p>
   </header>
 
-  <!-- ── DEUX GRANDS LIENS ── -->
-  <nav class="links-main" aria-label="Liens principaux">
-
-    <a class="links-card" href="https://cazacomm.fr">
+  <nav class="links-main" aria-label="Continuer">
+    <a class="links-card" href="/">
       <span class="links-thumb" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>
@@ -60,46 +51,18 @@
       <span class="links-card-text"><b>Site web</b></span>
       <svg class="links-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-
-    <button type="button" class="links-card links-card--toggle" id="newsToggle"
-            aria-expanded="false" aria-controls="newsPanel">
+    <a class="links-card" href="/liens">
       <span class="links-thumb" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/>
+          <path d="M9.5 14.5a3.5 3.5 0 0 0 5 0l3-3a3.5 3.5 0 0 0-5-5l-1 1"/>
+          <path d="M14.5 9.5a3.5 3.5 0 0 0-5 0l-3 3a3.5 3.5 0 0 0 5 5l1-1"/>
         </svg>
       </span>
-      <span class="links-card-text"><b>Newsletter</b></span>
-      <svg class="links-arrow links-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-    </button>
-
-    <!-- ── FORMULAIRE BREVO, RESTYLÉ À LA CHARTE ──
-         L'action, le champ EMAIL, le piège à bots email_address_check et les
-         champs locale / html_type sont ceux de Brevo et ne doivent pas bouger.
-         Le double opt-in est géré côté Brevo : rien à coder de plus ici. -->
-    <div class="links-panel" id="newsPanel" hidden>
-      <form class="news-form"
-            action="https://942abda3.sibforms.com/serve/MUIFAF5SDqtvggVUaQW6iZxSVg4crZG1GWNkJD23fhx6kxbwa8giBndMR9NidRr7Am-Ef0f6y-OSC4ALu3e4cSVA1M6PEd5Tn1yCwFjYU-BKs9T_QVuyQiQQdTfsvSuS6jquYzSaOSKF5b4db8OVAfqEN0gZNfabfVp-JOdizg0xIxKPhEW0uzxwcs8C9jy130UxSWvgyFw3i5CjkQ=="
-            method="POST"
-            target="_blank">
-        <label class="news-label" for="newsEmail">Votre email</label>
-        <div class="news-row">
-          <input class="news-input" type="email" id="newsEmail" name="EMAIL"
-                 placeholder="prenom@email.com" autocomplete="email" required />
-          <button class="news-submit" type="submit">S'inscrire</button>
-        </div>
-
-        <!-- Piège à bots de Brevo : doit rester vide et invisible -->
-        <input type="text" name="email_address_check" value="" class="news-trap" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <input type="hidden" name="locale" value="fr" />
-        <input type="hidden" name="html_type" value="simple" />
-
-        <p class="news-note">Un email de confirmation vous sera envoyé. Désinscription en un clic.</p>
-      </form>
-    </div>
-
+      <span class="links-card-text"><b>Tous les liens</b></span>
+      <svg class="links-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
   </nav>
 
-  <!-- ── RÉSEAUX ── -->
   <nav class="links-social" aria-label="Réseaux sociaux">
     <a href="https://www.instagram.com/jeremy_caza_/" target="_blank" rel="noopener" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -133,6 +96,6 @@
   </nav>
 </footer>
 
-<script src="/assets/liens.js?v=1" defer></script>
+<script src="/assets/bienvenue.js?v=1" defer></script>
 </body>
 </html>

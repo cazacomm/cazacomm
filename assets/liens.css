@@ -304,3 +304,21 @@
   padding-bottom: max(18px, env(safe-area-inset-bottom));
 }
 .links-footer a:hover { color: #000000; }
+
+/* ════════════ PAGE DE BIENVENUE (retour d'inscription Brevo) ════════════ */
+
+/* Le portrait est le sujet de la page, pas une vignette d'en-tête */
+.welcome-avatar {
+  width: clamp(124px, 34vw, 168px);
+  height: clamp(124px, 34vw, 168px);
+  margin-bottom: 22px;
+}
+
+.welcome-title { font-size: clamp(2.1rem, 9.5vw, 3.2rem); }
+
+.welcome-text {
+  margin-top: 14px;
+  max-width: 40ch;
+  margin-left: auto;
+  margin-right: auto;
+}
