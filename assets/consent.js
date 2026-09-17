@@ -69,7 +69,7 @@
       var f = d.getElementsByTagName(s)[0];
       f.parentNode.insertBefore(j, f);
     })(w, d, 'script', SDK_URL);
-    w.oaiq('init', { pixelId: PIXEL_ID, debug: true });
+    w.oaiq('init', { pixelId: PIXEL_ID, debug: false });
   }
 
   /* ── Retrait du consentement ───────────────────────────────────
