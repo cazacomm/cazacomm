@@ -89,10 +89,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/caza-v2.css?v=16" />
+  <link rel="stylesheet" href="assets/caza-v2.css?v=17" />
   <script>document.documentElement.className += ' js';</script>
 </head>
-<body class="theme-light">
+<body class="theme-light home-page">
 
 <div id="preloader" aria-hidden="true">
   <div class="pre-word"><span>Caza</span><span>Comm</span></div>
@@ -142,28 +142,7 @@
       <span data-en="Request a free quote">Demander un devis gratuit</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <a href="#prestations" class="link-action" data-en="See our services">Voir nos prestations</a>
-  </div>
-</section>
-
-<!-- ░░ PRESTATIONS ░░ -->
-<section class="scene" id="prestations" aria-label="Nos prestations">
-  <h2 class="scene-title fade" data-en="What we do">Nos prestations</h2>
-  <ul class="serv-grid" role="list">
-    <li class="serv-item fade"><h3 data-en="Custom design">Design sur mesure</h3></li>
-    <li class="serv-item fade"><h3 data-en="Hosting and domain included">Hébergement et nom de domaine inclus</h3></li>
-    <li class="serv-item fade d1"><h3 data-en="Compliant legal pages">Pages légales conformes</h3></li>
-    <li class="serv-item fade d1"><h3 data-en="Daily edits included">Modifications journalières incluses</h3></li>
-    <li class="serv-item fade d2"><h3 data-en="Delivered in under 48 hours">Livraison en moins de 48 heures</h3></li>
-    <li class="serv-item fade d2"><h3 data-en="No commitment">Sans engagement</h3></li>
-    <li class="serv-item fade d3"><h3 data-en="Tailored support and evolution">Accompagnement et évolution personnalisés</h3></li>
-    <li class="serv-item fade d3"><h3 data-en="SEO and AI search optimisation">SEO et optimisation pour la recherche via intelligences artificielles</h3></li>
-  </ul>
-  <div class="serv-cta fade d3">
-    <a href="/devis.html" class="link-action link-action--solid">
-      <span data-en="Request a free quote">Demander un devis gratuit</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    <a href="#faq" class="link-action" data-en="See our services">Voir nos prestations</a>
   </div>
 </section>
 
@@ -324,9 +303,9 @@
         <p class="form-note" data-en="Fields marked with a star are required.">Les champs marqués d’une étoile sont obligatoires.</p>
         <div class="field">
           <label for="cf-subject" data-en="Subject*">Sujet*</label>
-          <select id="cf-subject" name="sujet" required>
+          <select id="cf-subject" name="sujet" required data-placeholder>
+            <option value="" disabled selected>Sélectionner un sujet *</option>
             <option value="Devis">Devis</option>
-            <option value="QCM">QCM</option>
             <option value="Question">Question</option>
             <option value="Autre">Autre</option>
           </select>
@@ -334,7 +313,7 @@
         <div class="field-row">
           <div class="field">
             <label for="cf-name" data-en="First and last name*">Nom et prénom*</label>
-            <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Nom et prénom" data-en-placeholder="First and last name" />
+            <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Nom et prénom *" data-en-placeholder="First and last name *" />
           </div>
           <div class="field">
             <label for="cf-company" data-en="Company name">Nom de l’entreprise</label>
@@ -348,12 +327,12 @@
           </div>
           <div class="field">
             <label for="cf-email" data-en="Email*">Email*</label>
-            <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
+            <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="Email *" data-en-placeholder="Email *" />
           </div>
         </div>
         <div class="field">
           <label for="cf-message" data-en="Your message or request in a few words*">Votre message ou demande en quelques mots*</label>
-          <textarea id="cf-message" name="message" required placeholder="Votre message ou demande en quelques mots…" data-en-placeholder="Your message or request in a few words…"></textarea>
+          <textarea id="cf-message" name="message" required placeholder="Votre message ou demande en quelques mots *" data-en-placeholder="Your message or request in a few words *"></textarea>
         </div>
         <button type="submit" class="btn-submit" data-en="Send the message">Envoyer le message</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>

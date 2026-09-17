@@ -241,43 +241,12 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 /* ════════════ SOUS-TITRE DU HÉROS ════════════ */
 
 .hero-sub {
-  margin-top: clamp(12px, 2vh, 20px);
+  margin: clamp(19px, 2.5vh, 40px) 0;
   font-size: clamp(.95rem, 1.9vw, 1.2rem);
   line-height: 1.4;
   font-weight: 500;
   color: var(--green-light);        /* même vert que « sur mesure, livré » */
   max-width: 44ch;
-}
-
-/* ════════════ PRESTATIONS ════════════ */
-
-.serv-grid {
-  list-style: none;
-  margin-top: clamp(16px, 3vh, 30px);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(10px, 1.6vw, 16px);
-}
-.serv-item {
-  border-top: 1px solid var(--line);
-  padding-top: clamp(10px, 1.6vh, 15px);
-}
-.serv-item h3 {
-  font-family: var(--display);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-stretch: 108%;
-  letter-spacing: .005em;
-  line-height: 1.12;
-  font-size: clamp(.92rem, 1.9vw, 1.28rem);
-  color: var(--txt);
-}
-.serv-cta { margin-top: clamp(20px, 3.4vh, 36px); }
-
-@media (max-width: 620px) {
-  .serv-grid { grid-template-columns: 1fr; gap: 0; }
-  .serv-item { padding: 9px 0; }
-  .serv-item h3 { font-size: .95rem; }
 }
 
 /* ════════════ MENU DÉROULANT DU FORMULAIRE ════════════ */
@@ -288,17 +257,25 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   font-size: .95rem;
   color: var(--txt);
   background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  padding: 10px 0;
+  /* Encadré complet et chevron : on doit comprendre au premier coup d'œil
+     qu'il y a un choix à faire, ce qu'un simple soulignement ne disait pas. */
+  border: 1px solid var(--stroke);
+  padding: 13px 40px 13px 14px;
   width: 100%;
   border-radius: 0;
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  transition: border-color .25s var(--ease);
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23148f52' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  background-size: 15px 15px;
+  transition: border-color .25s var(--ease), background-color .25s var(--ease);
 }
-.contact-form select:focus { outline: none; border-bottom-color: var(--green-light); }
+.contact-form select:hover { border-color: var(--green-light); }
+.contact-form select:focus { outline: none; border-color: var(--green-light); }
+/* Tant que rien n'est choisi, le texte reste en teinte de repère */
+.contact-form select:has(option[value=""]:checked) { color: var(--faint); }
 .contact-form select option { color: #08090a; background: #ffffff; }
 
 .form-note {
@@ -483,6 +460,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 /* Le hero est un seul bloc centré : titre géant + actions */
 #hero { justify-content: center; }
 .hero-title { margin-bottom: clamp(26px, 5vh, 60px); }
+.home-page .hero-title { margin-bottom: 0; }   /* la marge passe autour du sous-titre */
 .hero-actions { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); flex-wrap: wrap; }
 
 /* Liens-actions soulignés, sans boutons */
@@ -1050,7 +1028,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   #avis .marquee--giant.is-vertical {
     display: block;
     overflow: hidden;
-    height: clamp(270px, 44vh, 380px);
+    height: clamp(216px, 36vh, 320px);
     border: none;
     padding: 0;
     /* Fondu haut et bas : les avis entrent et sortent sans coupure nette */
@@ -1072,18 +1050,18 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
     font-family: var(--body);
     font-weight: 400;
     text-transform: none;
-    font-size: 1.04rem;              /* surface de lecture agrandie sur mobile */
-    line-height: 1.42;
+    font-size: .9rem;
+    line-height: 1.35;
     letter-spacing: 0;
-    padding: 15px 0;
+    padding: 10px 0;
     border-top: 1px solid var(--line);
     color: var(--txt);
   }
   #avis .marquee--giant .quote-item span {
     display: block;
-    margin-top: 5px;
+    margin-top: 3px;
     font-family: var(--mono);
-    font-size: 10.5px;
+    font-size: 9.5px;
     letter-spacing: .16em;
     text-transform: uppercase;
     color: var(--green-light);
@@ -1100,6 +1078,20 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
     color: var(--txt);
     -webkit-text-stroke: 0;
   }
+}
+
+/* Sur la page d'accueil seulement, les avis sont agrandis pour en afficher
+   quatre d'un coup : c'est la page qui reçoit les campagnes. Agents IA et
+   Publicité conservent la taille d'origine. */
+@media (max-width: 620px) {
+  .home-page #avis .marquee--giant.is-vertical { height: clamp(352px, 56vh, 470px); }
+  .home-page #avis .marquee--giant .quote-item {
+    font-size: 1.06rem;
+    line-height: 1.42;
+    padding: 13px 0;
+  }
+  .home-page #avis .marquee--giant .quote-item span { margin-top: 5px; font-size: 10.5px; }
+  .home-page #avis .marquee--giant .quote-item::after { margin-top: 5px; font-size: 10px; }
 }
 
 /* Sans animation, un ruban de hauteur fixe masquerait les derniers avis :
