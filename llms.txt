@@ -26,7 +26,9 @@
 
 ## Pages principales
 
-- [Demande de devis](https://www.cazacomm.fr/devis.html) : formulaire en trois étapes, réponse sous 24 heures.
+- [Demande de devis site internet](https://www.cazacomm.fr/devis.html) : formulaire en trois étapes, réponse sous 24 heures.
+- [Demande de devis agents IA](https://www.cazacomm.fr/devis-ia.html) : formulaire en trois étapes, réponse sous 24 heures.
+- [Demande de devis publicité](https://www.cazacomm.fr/devis-pub.html) : formulaire en deux étapes, réponse sous 24 heures.
 - [Sites Internet](https://www.cazacomm.fr/) : création de sites vitrine sur mesure, livrés en moins de 48 h. C'est la page d'accueil du site.
 - [Agents IA](https://www.cazacomm.fr/agents-ia.html) : intégration d'IA sur mesure, automatisation, conformité RGPD.
 - [Publicité](https://www.cazacomm.fr/pub.html) : Google Ads et Meta Ads.

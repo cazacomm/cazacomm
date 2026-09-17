@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Consentement, puis pixel OpenAI Ads uniquement si accord -->
+  <script src="/assets/consent.js?v=2" defer></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#050b1c" />
+  <meta name="description" content="Décrivez votre projet publicitaire en une minute : canal souhaité et coordonnées. Google Ads, ChatGPT Ads, réseaux sociaux. Réponse sous 24 heures." />
+  <title>Demande de devis publicité | Caza Comm</title>
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="canonical" href="https://www.cazacomm.fr/devis-pub.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Caza Comm" />
+  <meta property="og:url" content="https://www.cazacomm.fr/devis-pub.html" />
+  <meta property="og:title" content="Demande de devis publicité" />
+  <meta property="og:description" content="Deux étapes, une minute, réponse sous 24 heures." />
+  <meta property="og:image" content="https://www.cazacomm.fr/images/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Demande de devis publicité" />
+  <meta name="twitter:description" content="Deux étapes, une minute, réponse sous 24 heures." />
+  <meta name="twitter:image" content="https://www.cazacomm.fr/images/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/caza-v2.css?v=18" />
+  <link rel="stylesheet" href="/assets/devis.css?v=1" />
+</head>
+<body class="theme-blue devis-page">
+
+<div class="page-toggle-bar" role="navigation" aria-label="Navigation">
+  <div class="page-toggle">
+    <a href="/" class="page-toggle-opt">Sites Internet</a>
+    <a href="/agents-ia.html" class="page-toggle-opt">Agents IA</a>
+    <a href="/pub.html" class="page-toggle-opt">Publicité</a>
+  </div>
+  <div class="topbar-right"></div>
+</div>
+
+<main class="devis-wrap">
+
+  <h1 class="devis-title">Une minute pour votre projet pub, réponse sous 24 heures.</h1>
+
+  <div class="devis-progress" role="group" aria-label="Progression">
+    <div class="devis-bar"><span id="devisBar" style="width:50%"></span></div>
+    <p class="devis-count"><span id="devisStep">1</span> / 2</p>
+  </div>
+
+  <form id="devisForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+    <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
+    <input type="hidden" name="subject" value="Demande de devis (publicité)" />
+    <input type="hidden" name="from_name" value="Site Caza Comm" />
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+    <input type="hidden" name="canal" id="dvType" value="" />
+
+    <!-- ── ÉTAPE 1 ── -->
+    <fieldset class="devis-step is-current" data-step="1">
+      <legend class="devis-legend">Quel canal ?</legend>
+      <div class="devis-cards" role="radiogroup" aria-label="Canal publicitaire">
+
+        <button type="button" class="devis-card" data-value="Google Ads" role="radio" aria-checked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+          <b>Google Ads</b>
+          <span>Être visible quand on cherche votre activité.</span>
+        </button>
+
+        <button type="button" class="devis-card" data-value="Publicité ChatGPT" role="radio" aria-checked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/><path d="m10 11 1.4-3 1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4z"/></svg>
+          <b>Publicité ChatGPT</b>
+          <span>Apparaître dans les réponses de ChatGPT.</span>
+        </button>
+
+        <button type="button" class="devis-card" data-value="Réseaux sociaux (Meta Ads)" role="radio" aria-checked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.8"/><path d="M17 7h.01"/></svg>
+          <b>Réseaux sociaux (Meta Ads)</b>
+          <span>Toucher vos clients sur Instagram et Facebook.</span>
+        </button>
+
+        <button type="button" class="devis-card" data-value="Plusieurs canaux ou pas encore défini" role="radio" aria-checked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="17" r="3"/><path d="M9.6 8.6 11 14.4M14.4 8.6 13 14.4M10 7h4"/></svg>
+          <b>Plusieurs canaux, je ne sais pas encore</b>
+          <span>On vous conseille le bon mélange.</span>
+        </button>
+
+      </div>
+      <p class="devis-error" data-for="1" hidden>Choisissez un canal pour continuer.</p>
+      <div class="devis-nav">
+        <button type="button" class="devis-next link-action link-action--solid" data-go="2">
+          <span>Continuer</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </fieldset>
+
+    <!-- ── ÉTAPE 2 ── -->
+    <fieldset class="devis-step" data-step="2" hidden>
+      <legend class="devis-legend">Vos coordonnées</legend>
+      <p class="devis-note">Les champs marqués d’une étoile sont obligatoires.</p>
+
+      <div class="devis-row">
+        <div class="devis-field">
+          <label for="dv-nom">Nom *</label>
+          <input type="text" id="dv-nom" name="nom" autocomplete="family-name" required />
+        </div>
+        <div class="devis-field">
+          <label for="dv-prenom">Prénom *</label>
+          <input type="text" id="dv-prenom" name="prenom" autocomplete="given-name" required />
+        </div>
+      </div>
+
+      <div class="devis-field">
+        <label for="dv-entreprise">Nom de l’entreprise <i>(facultatif)</i></label>
+        <input type="text" id="dv-entreprise" name="entreprise" autocomplete="organization" />
+      </div>
+
+      <div class="devis-row">
+        <div class="devis-field">
+          <label for="dv-tel">Téléphone *</label>
+          <input type="tel" id="dv-tel" name="telephone" autocomplete="tel" required />
+        </div>
+        <div class="devis-field">
+          <label for="dv-email">Email *</label>
+          <input type="email" id="dv-email" name="email" autocomplete="email" required />
+        </div>
+      </div>
+
+      <div class="devis-field">
+        <label for="dv-projet">Votre projet en quelques mots <i>(facultatif)</i></label>
+        <textarea id="dv-projet" name="projet" rows="3" placeholder="Votre activité, votre zone, ce que vous cherchez à obtenir…"></textarea>
+      </div>
+
+      <p class="devis-error" data-for="2" hidden>Merci de compléter les champs obligatoires.</p>
+
+      <div class="devis-nav">
+        <button type="button" class="devis-back" data-go="1">Retour</button>
+        <button type="submit" class="btn-submit devis-submit">Envoyer ma demande</button>
+      </div>
+      <p class="form-status" id="devisStatus" role="status" aria-live="polite"></p>
+    </fieldset>
+  </form>
+
+  <div class="devis-done" id="devisDone" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>
+    <p>Merci, votre demande est bien envoyée. Réponse sous 24 heures.</p>
+    <a href="/pub.html" class="link-action">Retour à la publicité</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Caza Comm</span>
+  <nav>
+    <a href="/blog/">Blog</a>
+    <a href="/mentions.html">Mentions légales</a>
+    <a href="/confidentialite.html">Confidentialité</a>
+  </nav>
+</footer>
+
+<script src="/assets/devis.js?v=2" defer></script>
+</body>
+</html>

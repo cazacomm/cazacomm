@@ -6,27 +6,27 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#f4f4f1" />
-  <meta name="description" content="Demandez votre devis en une minute : type de site, votre projet, vos coordonnées. Réponse sous 24 heures par Caza Comm." />
-  <title>Demande de devis en une minute | Caza Comm</title>
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Décrivez votre projet d'agent IA en une minute : type d'IA, votre besoin, vos coordonnées. Réponse sous 24 heures par Caza Comm." />
+  <title>Demande de devis agents IA | Caza Comm</title>
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <link rel="canonical" href="https://www.cazacomm.fr/devis.html" />
+  <link rel="canonical" href="https://www.cazacomm.fr/devis-ia.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="Caza Comm" />
-  <meta property="og:url" content="https://www.cazacomm.fr/devis.html" />
-  <meta property="og:title" content="Demande de devis en une minute" />
+  <meta property="og:url" content="https://www.cazacomm.fr/devis-ia.html" />
+  <meta property="og:title" content="Demande de devis agents IA" />
   <meta property="og:description" content="Trois étapes, une minute, réponse sous 24 heures." />
   <meta property="og:image" content="https://www.cazacomm.fr/images/logo.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Demande de devis en une minute" />
+  <meta name="twitter:title" content="Demande de devis agents IA" />
   <meta name="twitter:description" content="Trois étapes, une minute, réponse sous 24 heures." />
   <meta name="twitter:image" content="https://www.cazacomm.fr/images/logo.png" />
 
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="/assets/caza-v2.css?v=18" />
   <link rel="stylesheet" href="/assets/devis.css?v=1" />
 </head>
-<body class="theme-light devis-page">
+<body class="devis-page">
 
 <div class="page-toggle-bar" role="navigation" aria-label="Navigation">
   <div class="page-toggle">
@@ -49,7 +49,7 @@
 
 <main class="devis-wrap">
 
-  <h1 class="devis-title">Une minute pour demander un devis, réponse sous 24 heures.</h1>
+  <h1 class="devis-title">Une minute pour votre projet IA, réponse sous 24 heures.</h1>
 
   <div class="devis-progress" role="group" aria-label="Progression">
     <div class="devis-bar"><span id="devisBar" style="width:33.33%"></span></div>
@@ -58,43 +58,42 @@
 
   <form id="devisForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
     <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
-    <input type="hidden" name="subject" value="Demande de devis (site web)" />
+    <input type="hidden" name="subject" value="Demande de devis (agents IA)" />
     <input type="hidden" name="from_name" value="Site Caza Comm" />
     <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-    <input type="hidden" name="type_de_site" id="dvType" value="" />
-    <input type="hidden" name="delai_souhaite" id="dvDelai" value="" />
+    <input type="hidden" name="type_d_ia" id="dvType" value="" />
 
     <!-- ── ÉTAPE 1 ── -->
     <fieldset class="devis-step is-current" data-step="1">
-      <legend class="devis-legend">Quel type de site ?</legend>
-      <div class="devis-cards" role="radiogroup" aria-label="Type de site">
+      <legend class="devis-legend">Quel type d’IA ?</legend>
+      <div class="devis-cards" role="radiogroup" aria-label="Type d’IA">
 
-        <button type="button" class="devis-card" data-value="Vitrine" role="radio" aria-checked="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M7 13h7"/></svg>
-          <b>Vitrine</b>
-          <span>Présenter votre activité et transformer vos visiteurs en contacts.</span>
+        <button type="button" class="devis-card" data-value="Agent service client" role="radio" aria-checked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+          <b>Agent service client</b>
+          <span>Répondre à vos clients automatiquement, 24h/24.</span>
         </button>
 
-        <button type="button" class="devis-card" data-value="E-commerce" role="radio" aria-checked="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7h16l-1.4 10.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
-          <b>E-commerce</b>
-          <span>Vendre vos produits en ligne.</span>
+        <button type="button" class="devis-card" data-value="Automatisation de tâches" role="radio" aria-checked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
+          <b>Automatisation de tâches</b>
+          <span>Supprimer les tâches répétitives.</span>
         </button>
 
-        <button type="button" class="devis-card" data-value="Réservation / Commande" role="radio" aria-checked="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg>
-          <b>Réservation ou commande</b>
-          <span>Prise de rendez-vous ou commande directe.</span>
+        <button type="button" class="devis-card" data-value="Assistant interne" role="radio" aria-checked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v6h6M8 14h8M8 17h5"/></svg>
+          <b>Assistant interne</b>
+          <span>Un assistant sur vos documents, process, données.</span>
         </button>
 
-        <button type="button" class="devis-card" data-value="Landing / Conversion" role="radio" aria-checked="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v13"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
-          <b>Landing ou conversion</b>
-          <span>Une page unique orientée vers une seule action.</span>
+        <button type="button" class="devis-card" data-value="Autre ou pas encore défini" role="radio" aria-checked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 0 1 4.8.8c0 1.7-2.4 2.1-2.4 3.6"/><path d="M12 17.2h.01"/></svg>
+          <b>Autre, je ne sais pas encore</b>
+          <span>On en discute et on vous oriente.</span>
         </button>
 
       </div>
-      <p class="devis-error" data-for="1" hidden>Choisissez un type de site pour continuer.</p>
+      <p class="devis-error" data-for="1" hidden>Choisissez un type d’IA pour continuer.</p>
       <div class="devis-nav">
         <button type="button" class="devis-next link-action link-action--solid" data-go="2">
           <span>Continuer</span>
@@ -105,20 +104,11 @@
 
     <!-- ── ÉTAPE 2 ── -->
     <fieldset class="devis-step" data-step="2" hidden>
-      <legend class="devis-legend">Votre projet</legend>
-
+      <legend class="devis-legend">Votre besoin</legend>
       <div class="devis-field">
-        <label for="dv-projet">Décrivez votre besoin en quelques mots.</label>
-        <textarea id="dv-projet" name="projet" rows="4" placeholder="Votre activité, ce que le site doit permettre…"></textarea>
+        <label for="dv-besoin">Décrivez ce que vous aimeriez faire avec l’IA.</label>
+        <textarea id="dv-besoin" name="besoin" rows="5" placeholder="Votre activité, la tâche à soulager, les outils que vous utilisez…"></textarea>
       </div>
-
-      <p class="devis-sublabel">Délai souhaité</p>
-      <div class="devis-chips" role="radiogroup" aria-label="Délai souhaité">
-        <button type="button" class="devis-chip" data-value="Urgent (moins de 48 h)" role="radio" aria-checked="false">Urgent, moins de 48 heures</button>
-        <button type="button" class="devis-chip" data-value="Sous 2 semaines" role="radio" aria-checked="false">Sous deux semaines</button>
-        <button type="button" class="devis-chip" data-value="Pas pressé" role="radio" aria-checked="false">Pas pressé</button>
-      </div>
-
       <div class="devis-nav">
         <button type="button" class="devis-back" data-go="1">Retour</button>
         <button type="button" class="devis-next link-action link-action--solid" data-go="3">
@@ -135,11 +125,11 @@
 
       <div class="devis-row">
         <div class="devis-field">
-          <label for="dv-nom">Nom*</label>
+          <label for="dv-nom">Nom *</label>
           <input type="text" id="dv-nom" name="nom" autocomplete="family-name" required />
         </div>
         <div class="devis-field">
-          <label for="dv-prenom">Prénom*</label>
+          <label for="dv-prenom">Prénom *</label>
           <input type="text" id="dv-prenom" name="prenom" autocomplete="given-name" required />
         </div>
       </div>
@@ -151,11 +141,11 @@
 
       <div class="devis-row">
         <div class="devis-field">
-          <label for="dv-tel">Téléphone*</label>
+          <label for="dv-tel">Téléphone *</label>
           <input type="tel" id="dv-tel" name="telephone" autocomplete="tel" required />
         </div>
         <div class="devis-field">
-          <label for="dv-email">Email*</label>
+          <label for="dv-email">Email *</label>
           <input type="email" id="dv-email" name="email" autocomplete="email" required />
         </div>
       </div>
@@ -173,7 +163,7 @@
   <div class="devis-done" id="devisDone" hidden>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>
     <p>Merci, votre demande est bien envoyée. Réponse sous 24 heures.</p>
-    <a href="/" class="link-action">Retour à l’accueil</a>
+    <a href="/agents-ia.html" class="link-action">Retour aux agents IA</a>
   </div>
 
 </main>

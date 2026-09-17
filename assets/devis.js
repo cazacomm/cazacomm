@@ -14,8 +14,9 @@
   var status = d.getElementById('devisStatus');
   var done   = d.getElementById('devisDone');
   var fType  = d.getElementById('dvType');
-  var fDelai = d.getElementById('dvDelai');
+  var fDelai = d.getElementById('dvDelai');   // absent sur certains formulaires
   var current = 1;
+  var lastStep = steps.length;                // 2 ou 3 selon le métier
 
   function go(n) {
     current = n;
@@ -59,7 +60,7 @@
     var next = e.target.closest ? e.target.closest('.devis-next') : null;
     var back = e.target.closest ? e.target.closest('.devis-back') : null;
     if (next) {
-      if (current === 1 && !fType.value) { showError(1, true); return; }
+      if (current === 1 && fType && !fType.value) { showError(1, true); return; }
       go(Number(next.dataset.go));
     } else if (back) {
       go(Number(back.dataset.go));
@@ -79,16 +80,16 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    var required = form.querySelectorAll('.devis-step[data-step="3"] [required]');
+    var required = form.querySelectorAll('.devis-step[data-step="' + lastStep + '"] [required]');
     var missing = Array.prototype.filter.call(required, function (i) {
       return !i.value.trim() || (i.type === 'email' && i.validity && i.validity.typeMismatch);
     });
     if (missing.length) {
-      showError(3, true);
+      showError(lastStep, true);
       missing[0].focus();
       return;
     }
-    showError(3, false);
+    showError(lastStep, false);
 
     var btn = form.querySelector('.devis-submit');
     if (btn) btn.disabled = true;
