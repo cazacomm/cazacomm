@@ -1,9 +1,9 @@
 # Caza Comm
 
-> Agence web et digitale basée dans les Hautes-Pyrénées. Caza Comm conçoit
-> des sites internet sur mesure, pilote des campagnes Google Ads et Meta Ads,
-> et construit des agents IA et des automatisations pour les TPE, PME,
-> artisans et indépendants de Tarbes, Pau et de la région.
+> Agence web et digitale française, qui travaille à distance dans toute la
+> France et la francophonie. Caza Comm conçoit des sites internet sur mesure,
+> pilote des campagnes Google Ads et Meta Ads, et construit des agents IA et
+> des automatisations pour les TPE, PME, artisans, indépendants et start-up.
 
 ## Identité
 
@@ -12,9 +12,9 @@
 - **Email** : jeremy@cazacomm.fr
 - **Téléphone** : +33 7 67 19 74 67
 - **Directeur de la publication** : Jeremy Pogut
-- **Zone d'intervention** : Tarbes, Pau, Hautes-Pyrénées et à distance dans toute la France
+- **Zone d'intervention** : toute la France et la francophonie (Belgique, Suisse, Québec, Luxembourg, Monaco, outre-mer), à distance
 - **Langue du site** : français (contenus partiellement disponibles en anglais)
-- **Hébergement** : GitHub Pages
+- **Hébergement** : serveur dédié en Europe
 
 ## Ce que fait Caza Comm
 
@@ -36,12 +36,12 @@
 
 ## Blog
 
-- [SEO local à Tarbes : être trouvé sur Google et cité par les IA](https://www.cazacomm.fr/blog/seo-local-tarbes-hautes-pyrenees/) — fiche d'établissement Google, cohérence NAP, pages par ville, données structurées et accès des robots d'IA. Publié le 15 août 2026.
+- [SEO local : être trouvé sur Google et cité par les IA](https://www.cazacomm.fr/blog/seo-local-tarbes-hautes-pyrenees/) — fiche d'établissement Google, cohérence NAP, pages par ville, données structurées et accès des robots d'IA. Publié le 15 août 2026.
 - [Débutez avec Google Ads en Hautes-Pyrénées](https://www.cazacomm.fr/blog/google-ads-artisans-hautes-pyrenees/) : Découvrez comment structurer votre compte Google Ads et cibler efficacement en Hautes-Pyrénées.
-- [L'essentiel pour votre site internet à Tarbes](https://www.cazacomm.fr/blog/site-internet-commerce-tarbes/) : Découvrez comment optimiser votre site web à Tarbes pour les mobiles, la vitesse et la visibilité locale.
-- [Agents IA : des alliés pour les TPE de Tarbes](https://www.cazacomm.fr/blog/agents-ia-tpe-usages-concrets/) : Découvrez comment les agents IA aident les TPE à Tarbes à optimiser leur gestion de mails, devis et relances.
-- [Maîtrisez les avis Google pour votre réputation](https://www.cazacomm.fr/blog/repondre-avis-google-methode/) : Découvrez comment gérer les avis Google pour protéger la réputation de votre entreprise à Tarbes et dans les Hautes-Pyrénées.
-- [Choisir entre WordPress et un site sur mesure pour votre TPE](https://www.cazacomm.fr/blog/wordpress-ou-site-sur-mesure/) : Guide pour TPE à Tarbes : choisir entre WordPress et un site sur mesure. Coût, autonomie, performance.
+- [L'essentiel pour votre site internet de commerce](https://www.cazacomm.fr/blog/site-internet-commerce-tarbes/) : Découvrez comment optimiser votre site web pour les mobiles, la vitesse et la visibilité locale.
+- [Agents IA : des alliés pour les TPE](https://www.cazacomm.fr/blog/agents-ia-tpe-usages-concrets/) : Découvrez comment les agents IA aident les TPE à optimiser leur gestion de mails, devis et relances.
+- [Maîtrisez les avis Google pour votre réputation](https://www.cazacomm.fr/blog/repondre-avis-google-methode/) : Découvrez comment gérer les avis Google pour protéger la réputation de votre entreprise.
+- [Choisir entre WordPress et un site sur mesure pour votre TPE](https://www.cazacomm.fr/blog/wordpress-ou-site-sur-mesure/) : Guide pour TPE : choisir entre WordPress et un site sur mesure. Coût, autonomie, performance.
 
 ## Ressources techniques
 

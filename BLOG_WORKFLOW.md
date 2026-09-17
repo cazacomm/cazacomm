@@ -19,7 +19,7 @@ Site statique, GitHub Pages, aucune dépendance, aucun build.
   Caza Comm
   jeremy@cazacomm.fr
   +33 7 67 19 74 67
-  Tarbes, Pau et Hautes-Pyrénées
+  France et francophonie
   https://www.cazacomm.fr/
   ```
 
@@ -65,8 +65,8 @@ et remplacer le contenu. La structure est déjà complète.
 - **1200 à 1500 mots.**
 - **H2** pour les grandes sections (4 à 6), **H3** pour les sous-parties.
 - Une section « Questions fréquentes » en H2, avec **5 questions en H3**.
-- Ancrage local explicite : Tarbes, Pau, Hautes-Pyrénées, Lourdes, Bigorre —
-  dans le titre, le premier paragraphe, au moins deux H2 et la FAQ.
+- Portée nationale et francophone : aucun nom de ville ni de département dans
+  le titre, le texte ou la FAQ. On parle métiers et situations, pas territoires.
 - Un encart `.blog-callout` « À retenir » avant la FAQ.
 - Le bloc `.blog-cta` et le bloc `.blog-nap` restent tels quels.
 - Ton : concret, direct, sans jargon, sans superlatif. Pas de promesse chiffrée.
@@ -159,9 +159,9 @@ Tous ancrés local + métier, aucun ne nécessite de donnée inventée.
 
 | # | Sujet | Slug proposé | Angle |
 |---|---|---|---|
-| 1 | ✅ *Publié* — SEO local à Tarbes : être trouvé sur Google et cité par les IA | `seo-local-tarbes-hautes-pyrenees` | Fiche Google, NAP, GEO |
+| 1 | ✅ *Publié* — SEO local : être trouvé sur Google et cité par les IA | `seo-local-tarbes-hautes-pyrenees` | Fiche Google, NAP, GEO |
 | 2 | Google Ads pour les artisans des Hautes-Pyrénées : par où commencer | `google-ads-artisans-hautes-pyrenees` | Structure de compte, zone géographique, mots-clés locaux |
-| 3 | Créer un site internet pour un commerce de Tarbes : ce qui compte vraiment | `site-internet-commerce-tarbes` | Vitesse, mobile, page contact, horaires |
+| 3 | Créer un site internet pour un commerce : ce qui compte vraiment | `site-internet-commerce-tarbes` | Vitesse, mobile, page contact, horaires |
 | 4 | Agents IA pour les TPE : trois usages concrets qui font gagner des heures | `agents-ia-tpe-usages-concrets` | Tri des mails, devis, relances |
 | 5 | Répondre aux avis Google : la méthode qui protège votre réputation | `repondre-avis-google-methode` | Ton, délai, avis négatifs |
 | 6 | WordPress ou site sur mesure : comment choisir quand on est une TPE | `wordpress-ou-site-sur-mesure` | Coût de maintenance, autonomie, performance |

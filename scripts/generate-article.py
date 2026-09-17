@@ -487,15 +487,14 @@ def generate_content(cfg: dict, system: str, user: str,
 def mock_content(cfg: dict, topic: dict) -> dict:
     """Contenu de démonstration pour --mock : même forme que la sortie du modèle,
     calibré pour dépasser la cible de volume."""
-    filler = ("Sur le bassin tarbais comme du côté de Pau, la question se pose "
-              "différemment selon la taille de l'entreprise et le temps qu'elle peut "
-              "y consacrer. Entre Tarbes, Lourdes et Bagnères-de-Bigorre, les "
-              "situations se ressemblent sans être identiques, ce qui change beaucoup "
-              "de choses dans la manière d'organiser le travail. Les habitudes des uns "
-              "et des autres varient, et c'est précisément pour cela qu'il vaut la "
-              "peine de détailler chaque cas de figure plutôt que de donner une "
-              "réponse unique qui ne conviendrait qu'à une minorité des situations "
-              "rencontrées sur le terrain.")
+    filler = ("D'une entreprise à l'autre, la question se pose différemment selon "
+              "la taille de la structure et le temps qu'elle peut y consacrer. D'un "
+              "secteur à l'autre, les situations se ressemblent sans être identiques, "
+              "ce qui change beaucoup de choses dans la manière d'organiser le travail. "
+              "Les habitudes des uns et des autres varient, et c'est précisément pour "
+              "cela qu'il vaut la peine de détailler chaque cas de figure plutôt que de "
+              "donner une réponse unique qui ne conviendrait qu'à une minorité des "
+              "situations rencontrées sur le terrain.")
     targets = cfg["internal_link_targets"]
     sections = []
     for i in range(7):          # 7 sections : le mock dépasse la cible de 1200
