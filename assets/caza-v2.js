@@ -235,6 +235,38 @@
     else if (mq.addListener) mq.addListener(layout);
   }
 
+  /* ── 5 ter. MENU MOBILE ──
+     Regroupe devis, langue et son derrière un burger sous 620 px. Le
+     panneau reste dans le flux du DOM : les commandes de langue et de son
+     sont les mêmes qu'en version large, elles ne sont pas dupliquées. */
+  function initBurger() {
+    var btn = document.getElementById('burgerBtn');
+    var panel = document.getElementById('topbarMenu');
+    if (!btn || !panel) return;
+
+    function close() {
+      btn.setAttribute('aria-expanded', 'false');
+      panel.classList.remove('is-open');
+    }
+    function toggle() {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      panel.classList.toggle('is-open', !open);
+      S.tap();
+    }
+
+    btn.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });
+    document.addEventListener('click', function (e) {
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      close();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    // Le lien devis referme le panneau avant de naviguer
+    panel.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('a[href]')) close();
+    });
+  }
+
   /* ── 6. CURSEUR PERSONNALISÉ ── */
   function initCursor() {
     if (!FINE || REDUCED) return;
@@ -282,6 +314,7 @@
     initSceneIndex();
     initDecks();
     initQuoteTicker();
+    initBurger();
     initCursor();
     initV2Sounds();
   }

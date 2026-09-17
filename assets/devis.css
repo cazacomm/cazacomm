@@ -1,0 +1,207 @@
+/* ════════════════════════════════════════════════════════════════
+   CAZA COMM — PAGE DEMANDE DE DEVIS
+   Additif à caza-v2.css : toutes les règles sont préfixées .devis-*,
+   elles n'affectent aucune autre page. Palette reprise des variables
+   du site (vert, noir, crème), aucune couleur nouvelle.
+   ════════════════════════════════════════════════════════════════ */
+
+.devis-page { padding-top: var(--bar-h); }
+.devis-page .site-footer { margin-top: clamp(30px, 6vh, 64px); }
+
+.devis-wrap {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: clamp(28px, 6vh, 64px) var(--pad) clamp(24px, 5vh, 48px);
+}
+
+.devis-title {
+  font-family: var(--display);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: .96;
+  letter-spacing: -.02em;
+  font-stretch: 112%;
+  font-size: clamp(1.7rem, 5vw, 3rem);
+  color: var(--txt);
+}
+
+/* ════════ PROGRESSION ════════ */
+
+.devis-progress {
+  display: flex; align-items: center; gap: 14px;
+  margin: clamp(22px, 4vh, 38px) 0 clamp(20px, 3.4vh, 32px);
+}
+.devis-bar {
+  flex: 1 1 auto; height: 3px;
+  background: var(--line);
+  overflow: hidden;
+}
+.devis-bar span {
+  display: block; height: 100%; width: 33.33%;
+  background: var(--green-light);
+  transition: width .45s var(--ease);
+}
+.devis-count {
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: .18em;
+  color: var(--faint);
+  flex: 0 0 auto;
+}
+
+/* ════════ ÉTAPES ════════ */
+
+.devis-step { border: 0; padding: 0; margin: 0; min-width: 0; }
+.devis-step.is-current { animation: devisIn .4s var(--ease) both; }
+@keyframes devisIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.devis-legend {
+  font-family: var(--display);
+  font-weight: 600; text-transform: uppercase;
+  font-stretch: 108%;
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  letter-spacing: -.01em;
+  color: var(--txt);
+  padding: 0;
+  margin-bottom: clamp(14px, 2.4vh, 22px);
+}
+.devis-note, .devis-sublabel {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 10px;
+}
+.devis-sublabel { margin-top: clamp(20px, 3vh, 28px); }
+
+/* ════════ CARTES (étape 1) ════════ */
+
+.devis-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.devis-card {
+  display: block;
+  text-align: left;
+  padding: clamp(14px, 2.6vw, 20px);
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--txt);
+  cursor: pointer;
+  transition: border-color .25s var(--ease), background .25s var(--ease), transform .2s var(--ease);
+}
+.devis-card:hover { border-color: var(--green-light); }
+.devis-card:active { transform: scale(.99); }
+.devis-card.is-on {
+  border-color: var(--green-light);
+  box-shadow: inset 0 0 0 1px var(--green-light);
+}
+.devis-card svg { width: 26px; height: 26px; color: var(--green-light); margin-bottom: 10px; }
+.devis-card b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 600; text-transform: uppercase;
+  font-size: .95rem; letter-spacing: .01em;
+  margin-bottom: 5px;
+}
+.devis-card span {
+  display: block;
+  font-size: .82rem; line-height: 1.4;
+  color: var(--dim);
+}
+
+/* ════════ PASTILLES DE DÉLAI (étape 2) ════════ */
+
+.devis-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.devis-chip {
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  padding: 11px 16px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--txt);
+  cursor: pointer;
+  transition: border-color .25s var(--ease), color .25s var(--ease);
+}
+.devis-chip:hover { border-color: var(--green-light); }
+.devis-chip.is-on { border-color: var(--green-light); color: var(--green-light); }
+
+/* ════════ CHAMPS (étape 3) ════════ */
+
+.devis-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.devis-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; min-width: 0; }
+.devis-field label {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--faint);
+}
+.devis-field label i { font-style: normal; text-transform: none; letter-spacing: .06em; }
+.devis-field input,
+.devis-field textarea {
+  font-family: var(--body);
+  font-size: .95rem;
+  color: var(--txt);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
+  width: 100%;
+  border-radius: 0;
+  transition: border-color .25s var(--ease);
+}
+.devis-field textarea { resize: vertical; min-height: 92px; }
+.devis-field input:focus,
+.devis-field textarea:focus { outline: none; border-bottom-color: var(--green-light); }
+
+/* ════════ NAVIGATION ════════ */
+
+.devis-nav {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin-top: clamp(22px, 3.6vh, 34px);
+}
+.devis-back {
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--dim);
+  background: none; border: 0; padding: 10px 0;
+  cursor: pointer;
+  transition: color .25s var(--ease);
+}
+.devis-back:hover { color: var(--txt); }
+.devis-next { cursor: pointer; border: 0; }
+
+.devis-error {
+  margin-top: 12px;
+  font-size: .82rem;
+  color: #b3261e;
+}
+
+/* ════════ CONFIRMATION ════════ */
+
+.devis-done { text-align: center; padding: clamp(40px, 10vh, 90px) 0; }
+.devis-done svg { width: 54px; height: 54px; color: var(--green-light); }
+.devis-done p {
+  margin: 20px auto 24px;
+  max-width: 34ch;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.45;
+  color: var(--txt);
+}
+
+/* ════════ MOBILE ════════ */
+
+@media (max-width: 560px) {
+  .devis-cards { grid-template-columns: 1fr; }
+  .devis-row { grid-template-columns: 1fr; }
+  .devis-chips { display: grid; grid-template-columns: 1fr; }
+  .devis-chip { text-align: center; }
+  .devis-nav { gap: 10px; }
+  .devis-nav .devis-next,
+  .devis-nav .devis-submit { width: 100%; justify-content: center; }
+  .devis-back { order: 2; width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .devis-step.is-current { animation: none; }
+  .devis-bar span { transition: none; }
+}

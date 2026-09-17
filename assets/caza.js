@@ -34,7 +34,7 @@
       try {
         ctx = new AC();
         master = ctx.createGain();
-        master.gain.value = 0.5;
+        master.gain.value = 0.68;   // son de changement de section, un cran au-dessus
         // Compresseur : garde les sons doux et homogènes, jamais agressifs
         var comp = ctx.createDynamicsCompressor();
         comp.threshold.value = -18;

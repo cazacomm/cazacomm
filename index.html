@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
   <!-- Consentement, puis pixel OpenAI Ads uniquement si accord -->
-  <script src="/assets/consent.js?v=1" defer></script>
+  <script src="/assets/consent.js?v=2" defer></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#f4f4f1" />
-  <meta name="description" content="Caza Comm : création de site vitrine sur mesure, élégant, rapide et optimisé pour Google. À partir de 50 €/mois, sans engagement." />
+  <meta name="description" content="Caza Comm : création de site internet sur mesure, élégant, rapide et optimisé pour Google et pour la recherche via les intelligences artificielles. Livré en moins de 48 heures, sans engagement." />
   <title>Caza Comm : création de site internet sur mesure, livré en moins de 48 h</title>
 
   <link rel="icon" href="favicon.ico" sizes="any" />
@@ -23,12 +23,12 @@
   <meta property="og:site_name" content="Caza Comm" />
   <meta property="og:url" content="https://www.cazacomm.fr/" />
   <meta property="og:title" content="Caza Comm : sites internet sur mesure" />
-  <meta property="og:description" content="Un site vitrine élégant, rapide et optimisé pour Google. À partir de 50 €/mois, sans engagement." />
+  <meta property="og:description" content="Un site élégant, rapide et optimisé pour Google. Livré en moins de 48 heures, sans engagement." />
   <meta property="og:image" content="https://www.cazacomm.fr/images/logo.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Caza Comm : sites internet sur mesure" />
-  <meta name="twitter:description" content="Un site vitrine élégant, rapide et optimisé pour Google. À partir de 50 €/mois, sans engagement." />
+  <meta name="twitter:description" content="Un site élégant, rapide et optimisé pour Google. Livré en moins de 48 heures, sans engagement." />
   <meta name="twitter:image" content="https://www.cazacomm.fr/images/logo.png" />
 
 
@@ -89,7 +89,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/caza-v2.css?v=15" />
+  <link rel="stylesheet" href="assets/caza-v2.css?v=16" />
   <script>document.documentElement.className += ' js';</script>
 </head>
 <body class="theme-light">
@@ -100,7 +100,8 @@
   <div class="pre-bar"></div>
 </div>
 
-<div class="page-toggle-bar" role="navigation" aria-label="Sélecteur de page">
+<div class="page-toggle-bar has-menu" role="navigation" aria-label="Sélecteur de page">
+  <a href="/devis.html" class="topbar-cta" data-en="Free quote">Devis gratuit</a>
   <div class="page-toggle">
     <a href="/" class="page-toggle-opt is-active" aria-current="page">Sites Internet</a>
     <a href="/agents-ia.html" class="page-toggle-opt">Agents IA</a>
@@ -108,15 +109,21 @@
     <span class="page-toggle-slider" aria-hidden="true"></span>
   </div>
   <div class="topbar-right">
-    <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
-      <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
-      <span class="lang-sep" aria-hidden="true">/</span>
-      <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
-    </div>
-    <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="true" aria-label="Activer ou couper les sons" title="Sons">
-      <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-      <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+    <button type="button" class="burger" id="burgerBtn" aria-expanded="false" aria-controls="topbarMenu" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
     </button>
+    <div class="topbar-tools" id="topbarMenu">
+      <a href="/devis.html" class="topbar-cta topbar-cta--menu" data-en="Free quote">Devis gratuit</a>
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
+        <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="true" aria-label="Activer ou couper les sons" title="Sons">
+        <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+        <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -129,66 +136,34 @@
     <span class="rise d1"><span class="accent" data-en="crafted and delivered">sur mesure, livré</span></span>
     <span class="rise d2"><span data-en="in record time.">en un temps record.</span></span>
   </h1>
+  <p class="hero-sub fade d2" data-en="Real return on investment, without an agency price tag.">Un vrai retour sur investissement, sans le prix d’une agence.</p>
   <div class="hero-actions fade d3">
-    <a href="#contact" class="link-action link-action--solid">
-      <span data-en="Let's talk">Parlons-en</span>
+    <a href="/devis.html" class="link-action link-action--solid">
+      <span data-en="Request a free quote">Demander un devis gratuit</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <a href="#prix" class="link-action" data-en="See the price">Voir le prix</a>
+    <a href="#prestations" class="link-action" data-en="See our services">Voir nos prestations</a>
   </div>
 </section>
 
-<!-- ░░ DEMANDE ░░ -->
-<section class="band" id="demande" aria-label="Formulaire de demande">
-  <div class="demande-head">
-    <h2 class="demande-title" data-en="Request">Demande</h2>
-    <p class="demande-note" data-en="Tell us what you need — a personal reply within 24h.">Dites-nous ce dont vous avez besoin. Réponse personnelle sous 24 h.</p>
-  </div>
-  <form class="contact-form form--quick" id="demandeForm" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
-    <input type="hidden" name="subject" value="Nouvelle demande depuis cazacomm.fr : Sites Internet" />
-    <input type="hidden" name="from_name" value="Site Caza Comm" />
-    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-    <div class="field">
-      <label for="dm-name" data-en="Name">Nom</label>
-      <input type="text" id="dm-name" name="name" autocomplete="name" required placeholder="Nom" data-en-placeholder="Name" />
-    </div>
-    <div class="field">
-      <label for="dm-email" data-en="Email">Email</label>
-      <input type="email" id="dm-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
-    </div>
-    <div class="field">
-      <label for="dm-phone" data-en="Phone">Téléphone</label>
-      <input type="tel" id="dm-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
-    </div>
-    <div class="field field--wide">
-      <label for="dm-message" data-en="Your request">Votre demande</label>
-      <textarea id="dm-message" name="message" required placeholder="Votre demande en quelques mots…" data-en-placeholder="Your request in a few words…"></textarea>
-    </div>
-    <button type="submit" class="btn-submit" data-en="Send">Envoyer</button>
-    <p class="form-status" id="demandeStatus" role="status" aria-live="polite"></p>
-  </form>
-</section>
-
-<!-- ░░ PRIX ░░ -->
-<section class="scene" id="prix" aria-label="Tarification">
-  <h2 class="giant">
-    <span class="rise"><span data-en="One price,">Un prix unique,</span></span>
-    <span class="rise d1"><span class="accent" data-en="like your website.">comme votre site.</span></span>
-  </h2>
-  <div class="price-block">
-    <div class="price-figures fade d1">
-      <span class="price-main">50 €<i data-en="/mo">/mois</i></span>
-      <span class="price-sub" data-en="+ €400 at creation">+ 400 € à la création</span>
-    </div>
-    <ul class="price-list fade d2">
-      <li data-en="Custom design">Design sur mesure</li>
-      <li data-en="Hosting + domain included">Hébergement + nom de domaine inclus</li>
-      <li data-en="Compliant legal pages">Pages légales conformes</li>
-      <li data-en="Weekly edits">Modifications hebdomadaires</li>
-      <li data-en="Delivery in under 48h">Livraison en moins de 48 h</li>
-      <li data-en="No commitment">Sans engagement</li>
-    </ul>
+<!-- ░░ PRESTATIONS ░░ -->
+<section class="scene" id="prestations" aria-label="Nos prestations">
+  <h2 class="scene-title fade" data-en="What we do">Nos prestations</h2>
+  <ul class="serv-grid" role="list">
+    <li class="serv-item fade"><h3 data-en="Custom design">Design sur mesure</h3></li>
+    <li class="serv-item fade"><h3 data-en="Hosting and domain included">Hébergement et nom de domaine inclus</h3></li>
+    <li class="serv-item fade d1"><h3 data-en="Compliant legal pages">Pages légales conformes</h3></li>
+    <li class="serv-item fade d1"><h3 data-en="Daily edits included">Modifications journalières incluses</h3></li>
+    <li class="serv-item fade d2"><h3 data-en="Delivered in under 48 hours">Livraison en moins de 48 heures</h3></li>
+    <li class="serv-item fade d2"><h3 data-en="No commitment">Sans engagement</h3></li>
+    <li class="serv-item fade d3"><h3 data-en="Tailored support and evolution">Accompagnement et évolution personnalisés</h3></li>
+    <li class="serv-item fade d3"><h3 data-en="SEO and AI search optimisation">SEO et optimisation pour la recherche via intelligences artificielles</h3></li>
+  </ul>
+  <div class="serv-cta fade d3">
+    <a href="/devis.html" class="link-action link-action--solid">
+      <span data-en="Request a free quote">Demander un devis gratuit</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
   </div>
 </section>
 
@@ -273,7 +248,7 @@
     </div>
     <div class="stat-row fade d3">
       <span class="stat-value" data-en="You">Vous</span>
-      <span class="stat-label" data-en="Craftspeople, shops, freelancers">Artisans, commerçants, indépendants</span>
+      <span class="stat-label" data-en="Craftspeople, shops, freelancers, entrepreneurs, startups">Artisans, commerçants, indépendants, entrepreneurs, startups</span>
     </div>
   </div>
 </section>
@@ -283,45 +258,45 @@
   <div class="faq-list" style="margin-top:clamp(14px,2.6vh,28px);">
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="How long to build my website?">Combien de temps pour créer mon site ?</span>
+        <span data-en="How long does it take to build my website?">Combien de temps pour créer mon site ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Very fast: most sites are delivered in under 48 hours, often sooner.">Très rapidement : la plupart des sites sont livrés en moins de 48 heures, souvent avant.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Most websites are delivered in under 24 hours. Adding the 24 hours for the quote, plan on 48 hours in total, often less if you are responsive.">La plupart des sites sont livrés en moins de 24 heures. En ajoutant les 24 heures du devis, comptez 48 heures au total, souvent moins si vous êtes réactif.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="What does the price include?">Que comprend le prix ?</span>
+        <span data-en="What does the offer include?">Que comprend l’offre ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="€50/month + €400 setup: custom design, hosting, domain name, legal pages and edits included.">50 €/mois + 400 € à la création : design sur mesure, hébergement, nom de domaine, pages légales et modifications incluses.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Custom design, hosting and domain name included, compliant legal pages, daily edits, delivery in under 48 hours, no commitment, tailored support and evolution.">Design sur mesure, hébergement et nom de domaine inclus, pages légales conformes, modifications journalières, livraison en moins de 48 heures, sans engagement, accompagnement et évolution personnalisés.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Am I tied to a contract?">Suis-je engagé sur la durée ?</span>
+        <span data-en="Am I tied into a contract?">Suis-je engagé sur la durée ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="No, the offer has no commitment: you stay free.">Non, l'offre est sans engagement : vous restez libre.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="No, the offer comes with no commitment. You stay free and can cancel at any time.">Non, l’offre est sans engagement. Vous restez libre et pouvez résilier à tout moment.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Can I edit my site after launch?">Puis-je modifier mon site après la mise en ligne ?</span>
+        <span data-en="Can I edit my website after it goes live?">Puis-je modifier mon site après la mise en ligne ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes, weekly edits are included. You ask, we handle it.">Oui, les modifications hebdomadaires sont incluses. Vous demandez, on s'en occupe.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes, weekly and daily edits are included. You ask, we take care of it.">Oui, les modifications hebdomadaires et journalières sont incluses. Vous demandez, nous nous en occupons.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Will my site show up on Google?">Mon site sera-t-il visible sur Google ?</span>
+        <span data-en="Will my website be visible on Google and on AI assistants?">Mon site sera-t-il visible sur Google et sur les intelligences artificielles ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes, every site is SEO-optimized from the start.">Oui, chaque site est optimisé pour le référencement (SEO) dès le départ.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes. Every website is optimised for search (SEO) from the start, and for search through artificial intelligence, a market that keeps growing.">Oui. Chaque site est optimisé pour le référencement (SEO) dès le départ, ainsi que pour la recherche via les intelligences artificielles, un marché qui prend de plus en plus d’ampleur.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Will it work on mobile?">Sera-t-il adapté au mobile ?</span>
+        <span data-en="Will it work on mobile?">Sera-t-il adapté au téléphone ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Absolutely. All our sites are fully responsive, mobile-first.">Absolument. Tous nos sites sont 100% responsives, pensés pour le mobile d'abord.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes, absolutely all our websites are 100% adapted to any interface: desktop, tablet and phone.">Oui, absolument tous nos sites sont 100 % adaptés à n’importe quelle interface : ordinateur, tablette et téléphone.</p></div></div>
     </div>
   </div>
 </section>
@@ -331,13 +306,14 @@
     <div class="contact-grid" style="width:100%;">
       <div>
         <h2 class="giant">
-          <span class="rise"><span data-en="Let's talk">Parlons de</span></span>
+          <span class="rise"><span data-en="Let’s talk about">Parlons de</span></span>
           <span class="rise d1"><span class="accent" data-en="your project.">votre projet.</span></span>
         </h2>
         <div class="contact-lines">
           <a href="mailto:jeremy@cazacomm.fr" class="contact-line fade d2">jeremy@cazacomm.fr</a>
           <a href="tel:+33767197467" class="contact-line fade d3">+33 7 67 19 74 67</a>
         </div>
+        <p class="contact-hours fade d3" data-en="Monday to Sunday, 8:00 to 20:00.">Du lundi au dimanche, de 8h00 à 20h00.</p>
       </div>
 
       <form class="contact-form fade d2" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
@@ -345,31 +321,41 @@
         <input type="hidden" name="subject" value="Nouveau message depuis cazacomm.fr : Sites Internet" />
         <input type="hidden" name="from_name" value="Site Caza Comm" />
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-        <div class="field-row">
-          <div class="field">
-            <label for="cf-name" data-en="Name">Nom</label>
-            <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Nom" data-en-placeholder="Name" />
-          </div>
-          <div class="field">
-            <label for="cf-company" data-en="Company">Entreprise</label>
-            <input type="text" id="cf-company" name="company" autocomplete="organization" placeholder="Entreprise" data-en-placeholder="Company" />
-          </div>
+        <p class="form-note" data-en="Fields marked with a star are required.">Les champs marqués d’une étoile sont obligatoires.</p>
+        <div class="field">
+          <label for="cf-subject" data-en="Subject*">Sujet*</label>
+          <select id="cf-subject" name="sujet" required>
+            <option value="Devis">Devis</option>
+            <option value="QCM">QCM</option>
+            <option value="Question">Question</option>
+            <option value="Autre">Autre</option>
+          </select>
         </div>
         <div class="field-row">
           <div class="field">
-            <label for="cf-email" data-en="Email">Email</label>
-            <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
+            <label for="cf-name" data-en="First and last name*">Nom et prénom*</label>
+            <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Nom et prénom" data-en-placeholder="First and last name" />
           </div>
+          <div class="field">
+            <label for="cf-company" data-en="Company name">Nom de l’entreprise</label>
+            <input type="text" id="cf-company" name="entreprise" autocomplete="organization" placeholder="Nom de l’entreprise" data-en-placeholder="Company name" />
+          </div>
+        </div>
+        <div class="field-row">
           <div class="field">
             <label for="cf-phone" data-en="Phone">Téléphone</label>
             <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
           </div>
+          <div class="field">
+            <label for="cf-email" data-en="Email*">Email*</label>
+            <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
+          </div>
         </div>
         <div class="field">
-          <label for="cf-message" data-en="Your request">Votre demande</label>
-          <textarea id="cf-message" name="message" required placeholder="Votre demande en quelques mots…" data-en-placeholder="Your request in a few words…"></textarea>
+          <label for="cf-message" data-en="Your message or request in a few words*">Votre message ou demande en quelques mots*</label>
+          <textarea id="cf-message" name="message" required placeholder="Votre message ou demande en quelques mots…" data-en-placeholder="Your message or request in a few words…"></textarea>
         </div>
-        <button type="submit" class="btn-submit" data-en="Send">Envoyer</button>
+        <button type="submit" class="btn-submit" data-en="Send the message">Envoyer le message</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -385,7 +371,7 @@
   </footer>
 </section>
 
-<script src="assets/caza.js?v=15" defer></script>
-<script src="assets/caza-v2.js?v=15" defer></script>
+<script src="assets/caza.js?v=16" defer></script>
+<script src="assets/caza-v2.js?v=16" defer></script>
 </body>
 </html>

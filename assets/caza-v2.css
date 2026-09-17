@@ -42,7 +42,7 @@ body {
   background: var(--bg);
   color: var(--txt);
   line-height: 1.5;
-  min-height: 100vh; min-height: 100dvh;
+  min-height: 100vh; min-height: 100svh;
   overflow-y: scroll; overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -238,13 +238,169 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .sound-toggle.is-muted .ico-on { display: none; }
 .sound-toggle.is-muted .ico-off { display: block; }
 
+/* ════════════ SOUS-TITRE DU HÉROS ════════════ */
+
+.hero-sub {
+  margin-top: clamp(12px, 2vh, 20px);
+  font-size: clamp(.95rem, 1.9vw, 1.2rem);
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--green-light);        /* même vert que « sur mesure, livré » */
+  max-width: 44ch;
+}
+
+/* ════════════ PRESTATIONS ════════════ */
+
+.serv-grid {
+  list-style: none;
+  margin-top: clamp(16px, 3vh, 30px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.6vw, 16px);
+}
+.serv-item {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(10px, 1.6vh, 15px);
+}
+.serv-item h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-stretch: 108%;
+  letter-spacing: .005em;
+  line-height: 1.12;
+  font-size: clamp(.92rem, 1.9vw, 1.28rem);
+  color: var(--txt);
+}
+.serv-cta { margin-top: clamp(20px, 3.4vh, 36px); }
+
+@media (max-width: 620px) {
+  .serv-grid { grid-template-columns: 1fr; gap: 0; }
+  .serv-item { padding: 9px 0; }
+  .serv-item h3 { font-size: .95rem; }
+}
+
+/* ════════════ MENU DÉROULANT DU FORMULAIRE ════════════ */
+
+/* Le sélecteur « Sujet » adopte l'apparence des autres champs. */
+.contact-form select {
+  font-family: var(--body);
+  font-size: .95rem;
+  color: var(--txt);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
+  width: 100%;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color .25s var(--ease);
+}
+.contact-form select:focus { outline: none; border-bottom-color: var(--green-light); }
+.contact-form select option { color: #08090a; background: #ffffff; }
+
+.form-note {
+  font-family: var(--mono);
+  font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 4px;
+}
+.contact-hours {
+  margin-top: clamp(14px, 2.2vh, 20px);
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ════════════ BOUTON DEVIS + MENU MOBILE ════════════ */
+
+/* Tout est cantonné à « .has-menu », posé uniquement sur la page d'accueil :
+   les pages Agents IA et Publicité gardent leur barre telle quelle. */
+
+.topbar-cta {
+  grid-column: 1;
+  justify-self: start;
+  font-family: var(--mono);
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 8px 16px;
+  background: var(--green-light);
+  color: #ffffff;
+  white-space: nowrap;
+  transition: background .3s var(--ease), transform .2s var(--ease);
+}
+.topbar-cta:hover { background: var(--green); }
+.topbar-cta:active { transform: scale(.97); }
+
+/* Sur ordinateur, le bouton du menu déroulant et le bouton burger n'existent pas */
+.topbar-cta--menu,
+.burger { display: none; }
+
+.burger {
+  width: 40px; height: 40px;
+  place-items: center;
+  background: none; border: 0;
+  color: var(--txt);
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  width: 20px; height: 1.5px;
+  background: currentColor;
+  transition: transform .3s var(--ease), opacity .2s var(--ease);
+}
+.burger span + span { margin-top: 5px; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.topbar-tools { display: inline-flex; align-items: center; gap: 14px; }
+
+@media (max-width: 620px) {
+  .page-toggle-bar.has-menu .topbar-cta { display: none; }        /* remplacé par le menu */
+  .page-toggle-bar.has-menu .burger { display: grid; }
+
+  /* Le panneau s'ouvre sous la barre et regroupe devis, langue et son. */
+  .page-toggle-bar.has-menu .topbar-tools {
+    position: absolute;
+    top: 100%; right: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    min-width: 176px;
+    padding: 16px;
+    background: var(--bg-solid);
+    border: 1px solid var(--line);
+    border-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
+  }
+  .page-toggle-bar.has-menu .topbar-tools.is-open {
+    opacity: 1; visibility: visible; transform: none;
+  }
+  .page-toggle-bar.has-menu .topbar-cta--menu {
+    display: block;
+    text-align: center;
+    padding: 11px 14px;
+    font-size: 10.5px;
+  }
+  .page-toggle-bar.has-menu .topbar-tools .lang-toggle,
+  .page-toggle-bar.has-menu .topbar-tools .sound-toggle { justify-content: center; }
+  .page-toggle-bar.has-menu .topbar-tools .lang-toggle { font-size: 11px; gap: 8px; }
+  .page-toggle-bar.has-menu .topbar-tools .sound-toggle { width: 100%; height: 26px; }
+}
+
 /* ════════════ SCÈNES ════════════ */
 
 /* Chaque section occupe la hauteur de l'écran : c'est le grand écart
    d'origine. Le défilement reste libre (aucun scroll-snap). */
 .scene {
   position: relative;
-  min-height: 100vh; min-height: 100dvh;
+  min-height: 100vh; min-height: 100svh;
   padding: calc(var(--bar-h) + clamp(20px, 4vh, 46px)) var(--pad) clamp(52px, 8vh, 80px);
   display: flex;
   flex-direction: column;
@@ -634,7 +790,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   position: relative; z-index: 1;
   padding: calc(var(--bar-h) + 24px) var(--pad) clamp(56px, 9vh, 90px);
   display: flex; flex-direction: column; justify-content: flex-end;
-  min-height: 100vh; min-height: 100dvh;
+  min-height: 100vh; min-height: 100svh;
 }
 .why-list { display: flex; flex-wrap: wrap; gap: clamp(12px, 2.4vw, 34px); margin-top: clamp(12px, 2vh, 22px); }
 .why-item { flex: 1 1 220px; max-width: 320px; border-top: 1px solid var(--green-light); padding-top: 12px; }
@@ -827,14 +983,14 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
     position: fixed; top: 0; left: 0;
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: var(--green-light);
+    background: var(--green);
     pointer-events: none;
     z-index: 5000;
     transform: translate(-50%, -50%);
     mix-blend-mode: difference;
     transition: width .3s var(--ease), height .3s var(--ease), background .3s var(--ease);
   }
-  .cursor-dot.is-big { width: 46px; height: 46px; background: rgba(111,207,151,.35); }
+  .cursor-dot.is-big { width: 46px; height: 46px; background: rgba(42,138,80,.55); }
 }
 
 /* ════════════ RESPONSIVE ════════════ */
@@ -894,7 +1050,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   #avis .marquee--giant.is-vertical {
     display: block;
     overflow: hidden;
-    height: clamp(216px, 36vh, 320px);
+    height: clamp(270px, 44vh, 380px);
     border: none;
     padding: 0;
     /* Fondu haut et bas : les avis entrent et sortent sans coupure nette */
@@ -916,18 +1072,18 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
     font-family: var(--body);
     font-weight: 400;
     text-transform: none;
-    font-size: .9rem;
-    line-height: 1.35;
+    font-size: 1.04rem;              /* surface de lecture agrandie sur mobile */
+    line-height: 1.42;
     letter-spacing: 0;
-    padding: 10px 0;
+    padding: 15px 0;
     border-top: 1px solid var(--line);
     color: var(--txt);
   }
   #avis .marquee--giant .quote-item span {
     display: block;
-    margin-top: 3px;
+    margin-top: 5px;
     font-family: var(--mono);
-    font-size: 9.5px;
+    font-size: 10.5px;
     letter-spacing: .16em;
     text-transform: uppercase;
     color: var(--green-light);
@@ -1047,7 +1203,7 @@ body.theme-light ::selection { background: #08090a; color: #fff; }
 body.theme-light #preloader { background: #f4f4f1; }
 body.theme-light .pre-bar { background: linear-gradient(90deg, #08090a, var(--green-light)); }
 body.theme-light .cursor-dot { background: #08090a; }
-body.theme-light .cursor-dot.is-big { background: rgba(8,9,10,.25); }
+body.theme-light .cursor-dot.is-big { background: rgba(8,9,10,.45); }
 /* La scène photo reste sombre : c'est la respiration noire de la page */
 body.theme-light .why-inner { color: #fff; }
 body.theme-light .why-inner .why-item { border-top-color: var(--green-light); }

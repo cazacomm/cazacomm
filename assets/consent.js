@@ -122,38 +122,49 @@
      bordure, même fond, même typographie. Un « Accepter » mis en avant
      par rapport au « Refuser » serait précisément le procédé que la
      CNIL considère comme un choix non libre. */
+  /* Barre fine en bas d'écran, sur mobile comme sur ordinateur : elle
+     informe sans recouvrir la page. « Accepter » est un aplat noir, donc
+     franchement détaché du fond crème de la page d'accueil ; « Refuser »
+     reste discret mais garde une zone de frappe de même hauteur. */
   var STYLE = [
     '.cc-banner{position:fixed;left:0;right:0;bottom:0;z-index:2000;',
     'background:var(--bg-solid,#000);color:var(--txt,#fff);',
     'border-top:1px solid var(--line,rgba(255,255,255,.14));',
     'font-family:var(--body,"Inter",system-ui,sans-serif);',
-    'padding:14px clamp(16px,4vw,48px);',
-    'transform:translateY(100%);transition:transform .45s cubic-bezier(.22,1,.36,1);}',
+    'padding:10px clamp(14px,4vw,48px);',
+    'padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));',
+    'transform:translateY(110%);transition:transform .4s cubic-bezier(.22,1,.36,1);}',
     '.cc-banner.is-open{transform:none;}',
-    '.cc-inner{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;',
-    'align-items:center;justify-content:space-between;gap:14px 26px;}',
-    '.cc-text{flex:1 1 420px;min-width:0;}',
-    '.cc-title{font-family:var(--mono,ui-monospace,monospace);font-size:10px;',
-    'letter-spacing:.2em;text-transform:uppercase;color:var(--green-light,#6fcf97);',
-    'margin:0 0 5px;}',
-    '.cc-desc{margin:0;font-size:.85rem;line-height:1.5;color:var(--dim,rgba(255,255,255,.62));}',
-    '.cc-desc a{color:inherit;text-decoration:underline;text-underline-offset:3px;}',
+    '.cc-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;',
+    'justify-content:space-between;gap:10px 22px;}',
+    '.cc-text{flex:1 1 auto;min-width:0;}',
+    '.cc-desc{margin:0;font-size:.78rem;line-height:1.4;',
+    'color:var(--dim,rgba(255,255,255,.62));}',
+    '.cc-desc a{color:inherit;text-decoration:underline;text-underline-offset:2px;}',
     '.cc-desc a:hover{color:var(--green-light,#6fcf97);}',
-    '.cc-actions{display:flex;gap:10px;flex:0 0 auto;}',
+    '.cc-actions{display:flex;align-items:center;gap:6px;flex:0 0 auto;}',
     '.cc-btn{font-family:var(--mono,ui-monospace,monospace);font-size:10.5px;',
-    'letter-spacing:.14em;text-transform:uppercase;padding:11px 20px;min-width:118px;',
-    'border:1px solid var(--stroke,rgba(255,255,255,.28));border-radius:0;',
-    'background:transparent;color:inherit;cursor:pointer;line-height:1;',
+    'letter-spacing:.12em;text-transform:uppercase;padding:11px 22px;',
+    'border:1px solid #08090a;background:#08090a;color:#fff;border-radius:0;',
+    'cursor:pointer;line-height:1;white-space:nowrap;',
     'transition:background .25s,color .25s,border-color .25s;}',
     '.cc-btn:hover,.cc-btn:focus-visible{background:var(--green-light,#6fcf97);',
-    'color:var(--on-accent,#000);border-color:var(--green-light,#6fcf97);}',
+    'border-color:var(--green-light,#6fcf97);color:#08090a;}',
+    '.cc-btn--ghost{background:transparent;border-color:transparent;color:inherit;',
+    'opacity:.62;padding:11px 12px;text-decoration:underline;text-underline-offset:3px;}',
+    '.cc-btn--ghost:hover,.cc-btn--ghost:focus-visible{background:transparent;',
+    'border-color:transparent;color:inherit;opacity:1;}',
     '.cc-manage{font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;',
     'background:none;border:0;padding:0;cursor:pointer;}',
     '.cc-manage:hover{color:var(--green-light,#6fcf97);}',
     '@media (max-width:640px){',
-    '.cc-inner{flex-direction:column;align-items:stretch;gap:12px;}',
-    '.cc-actions{display:grid;grid-template-columns:1fr 1fr;}',
-    '.cc-btn{min-width:0;width:100%;}}',
+    '.cc-banner{padding:8px 14px;padding-bottom:calc(8px + env(safe-area-inset-bottom,0px));}',
+    '.cc-inner{gap:8px 12px;}',
+    '.cc-desc{font-size:.7rem;line-height:1.35;',
+    'display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}',
+    '.cc-btn{padding:10px 16px;font-size:10px;letter-spacing:.08em;}',
+    '.cc-btn--ghost{padding:10px 6px;}}',
+    '@media (max-width:380px){.cc-desc{-webkit-line-clamp:3;}.cc-btn{padding:10px 12px;}}',
     '@media (prefers-reduced-motion:reduce){.cc-banner{transition:none;}}'
   ].join('');
 
@@ -174,14 +185,12 @@
     banner.innerHTML =
       '<div class="cc-inner">' +
         '<div class="cc-text">' +
-          '<p class="cc-title">Cookies</p>' +
-          '<p class="cc-desc">Nous utilisons un traceur publicitaire OpenAI Ads, qui sert ' +
-          'uniquement à mesurer les demandes issues de nos publicités. Il n’est déposé ' +
-          'qu’avec votre accord, et le site fonctionne normalement si vous refusez. ' +
+          '<p class="cc-desc">Un traceur publicitaire OpenAI Ads mesure les demandes '  +
+          'issues de nos publicités. Il n’est déposé qu’avec votre accord. ' +
           '<a href="' + PRIVACY + '">En savoir plus</a></p>' +
         '</div>' +
         '<div class="cc-actions">' +
-          '<button type="button" class="cc-btn" data-cc="decline">Refuser</button>' +
+          '<button type="button" class="cc-btn cc-btn--ghost" data-cc="decline">Refuser</button>' +
           '<button type="button" class="cc-btn" data-cc="accept">Accepter</button>' +
         '</div>' +
       '</div>';
