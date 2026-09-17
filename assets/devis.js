@@ -77,9 +77,26 @@
     } catch (err) { /* le suivi ne doit jamais casser l'envoi */ }
   }
 
+  /* Remonte la cause réelle d'un échec. Sans cela, une exception levée avant
+     l'appel réseau laissait le bouton muet : rien ne partait et rien ne
+     s'affichait, ce qui est le pire des cas pour diagnostiquer à distance. */
+  function fail(reason, detail) {
+    if (w.console && console.error) console.error('[devis] échec :', reason, detail || '');
+    var btn = form.querySelector('.devis-submit');
+    if (btn) btn.disabled = false;
+    if (status) {
+      status.className = 'form-status error';
+      status.textContent = "Oups, l'envoi a échoué (" + reason + "). "
+        + "Réessayez ou écrivez-nous à jeremy@cazacomm.fr.";
+    }
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    try { submitForm(); } catch (err) { fail('erreur interne', err && err.message); }
+  });
 
+  function submitForm() {
     var required = form.querySelectorAll('.devis-step[data-step="' + lastStep + '"] [required]');
     var missing = Array.prototype.filter.call(required, function (i) {
       return !i.value.trim() || (i.type === 'email' && i.validity && i.validity.typeMismatch);
@@ -105,7 +122,10 @@
           .then(function (j) { return { ok: res.ok, json: j }; });
       })
       .then(function (r) {
-        if (!(r.ok && r.json.success)) throw new Error('failed');
+        if (!(r.ok && r.json.success)) {
+          // Web3Forms explique lui-même le refus : on le remonte au lieu de le perdre.
+          throw new Error(r.json && r.json.message ? r.json.message : 'réponse ' + r.ok);
+        }
         trackLead();
         form.hidden = true;
         var prog = d.querySelector('.devis-progress');
@@ -113,14 +133,11 @@
         if (done) done.hidden = false;
         w.scrollTo({ top: 0, behavior: 'auto' });
       })
-      .catch(function () {
-        if (status) {
-          status.classList.add('error');
-          status.textContent = "Oups, l'envoi a échoué. Réessayez ou écrivez-nous à jeremy@cazacomm.fr.";
-        }
+      .catch(function (err) {
+        fail('envoi refusé', err && err.message);
       })
       .then(function () { if (btn) btn.disabled = false; });
-  });
+  }
 
   go(1);
 })(window, document);
