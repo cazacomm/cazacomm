@@ -18,6 +18,15 @@
   var current = 1;
   var lastStep = steps.length;                // 2 ou 3 selon le métier
 
+  /* Preuve qu'un humain manipule le formulaire. isTrusted n'est pas falsifiable
+     par un script : un robot qui remplit les champs par programme ne produit
+     aucun événement de confiance et laisse donc le piège à bots intact. */
+  var human = false;
+  function markHuman(e) { if (e && e.isTrusted) human = true; }
+  ['pointerdown', 'click', 'keydown', 'touchstart', 'input'].forEach(function (ev) {
+    form.addEventListener(ev, markHuman, true);
+  });
+
   function go(n) {
     current = n;
     steps.forEach(function (s) {
@@ -84,11 +93,23 @@
     if (w.console && console.error) console.error('[devis] échec :', reason, detail || '');
     var btn = form.querySelector('.devis-submit');
     if (btn) btn.disabled = false;
-    if (status) {
-      status.className = 'form-status error';
-      status.textContent = "Oups, l'envoi a échoué (" + reason + "). "
-        + "Réessayez ou écrivez-nous à jeremy@cazacomm.fr.";
-    }
+    if (!status) return;
+    status.className = 'form-status error';
+    status.textContent = '';
+    // La cause exacte est affichée, pas seulement journalisée : sans elle,
+    // impossible de diagnostiquer ce que le visiteur a vu.
+    var cause = detail ? reason + ' : ' + detail : reason;
+    status.appendChild(d.createTextNode("Oups, l'envoi a échoué (" + cause + "). Réessayez, ou écrivez-nous directement à "));
+    var mail = d.createElement('a');
+    mail.href = 'mailto:jeremy@cazacomm.fr?subject=' + encodeURIComponent(subjectValue());
+    mail.textContent = 'jeremy@cazacomm.fr';
+    status.appendChild(mail);
+    status.appendChild(d.createTextNode('.'));
+  }
+
+  function subjectValue() {
+    var f = form.querySelector('input[name="subject"]');
+    return f && f.value ? f.value : 'Demande de devis';
   }
 
   form.addEventListener('submit', function (e) {
@@ -108,14 +129,41 @@
     }
     showError(lastStep, false);
 
+    /* Piège à bots. Coché, Web3Forms répond « success » mais jette la demande :
+       aucune trace dans le tableau de bord, pas même en indésirables, pendant que
+       le visiteur voit « merci ». C'est le seul échec réellement silencieux du
+       parcours, et un remplissage automatique de navigateur ou une extension
+       suffit à cocher la case à l'insu du visiteur.
+       Deux cas, aucun silencieux : si un humain a réellement manipulé le
+       formulaire, c'est un faux positif et on décoche ; sinon on n'envoie rien,
+       puisque la demande serait jetée, et on le dit au lieu de mentir. */
+    var trap = form.querySelector('input[name="botcheck"]');
+    if (trap && trap.checked) {
+      if (human) {
+        trap.checked = false;
+        if (w.console && console.warn) console.warn('[devis] piège à bots coché à tort, neutralisé');
+      } else {
+        fail('formulaire marqué comme automatique', 'la demande ne serait pas remise');
+        return;
+      }
+    }
+
     var btn = form.querySelector('.devis-submit');
     if (btn) btn.disabled = true;
     if (status) { status.className = 'form-status'; status.textContent = 'Envoi en cours…'; }
 
+    // Sans délai maximum, une requête qui ne revient jamais laisse le visiteur
+    // sur « Envoi en cours… » pour toujours : un échec silencieux de plus.
+    var ctrl = typeof w.AbortController === 'function' ? new w.AbortController() : null;
+    var timer = w.setTimeout(function () {
+      if (ctrl) ctrl.abort();
+    }, 15000);
+
     fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
-      headers: { Accept: 'application/json' }
+      headers: { Accept: 'application/json' },
+      signal: ctrl ? ctrl.signal : undefined
     })
       .then(function (res) {
         return res.json().catch(function () { return {}; })
@@ -127,6 +175,7 @@
           throw new Error(r.json && r.json.message ? r.json.message : 'réponse ' + r.ok);
         }
         trackLead();
+        if (status) { status.className = 'form-status'; status.textContent = ''; }
         form.hidden = true;
         var prog = d.querySelector('.devis-progress');
         if (prog) prog.hidden = true;
@@ -134,9 +183,13 @@
         w.scrollTo({ top: 0, behavior: 'auto' });
       })
       .catch(function (err) {
-        fail('envoi refusé', err && err.message);
+        if (err && err.name === 'AbortError') fail('délai dépassé', 'aucune réponse en 15 secondes');
+        else fail('envoi refusé', err && err.message);
       })
-      .then(function () { if (btn) btn.disabled = false; });
+      .then(function () {
+        w.clearTimeout(timer);
+        if (btn) btn.disabled = false;
+      });
   }
 
   go(1);
