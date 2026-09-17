@@ -1028,7 +1028,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   #avis .marquee--giant.is-vertical {
     display: block;
     overflow: hidden;
-    height: clamp(216px, 36vh, 320px);
+    height: clamp(352px, 56vh, 470px);
     border: none;
     padding: 0;
     /* Fondu haut et bas : les avis entrent et sortent sans coupure nette */
@@ -1050,18 +1050,18 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
     font-family: var(--body);
     font-weight: 400;
     text-transform: none;
-    font-size: .9rem;
-    line-height: 1.35;
+    font-size: 1.06rem;
+    line-height: 1.42;
     letter-spacing: 0;
-    padding: 10px 0;
+    padding: 13px 0;
     border-top: 1px solid var(--line);
     color: var(--txt);
   }
   #avis .marquee--giant .quote-item span {
     display: block;
-    margin-top: 3px;
+    margin-top: 5px;
     font-family: var(--mono);
-    font-size: 9.5px;
+    font-size: 10.5px;
     letter-spacing: .16em;
     text-transform: uppercase;
     color: var(--green-light);
@@ -1069,8 +1069,8 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
   #avis .marquee--giant .quote-item::after {
     content: '★★★★★';
     display: block;
-    margin-top: 4px;
-    font-size: 9px;
+    margin-top: 5px;
+    font-size: 10px;
     letter-spacing: .18em;
   }
   /* Le contour ajouré est illisible à cette taille. */
@@ -1078,20 +1078,6 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
     color: var(--txt);
     -webkit-text-stroke: 0;
   }
-}
-
-/* Sur la page d'accueil seulement, les avis sont agrandis pour en afficher
-   quatre d'un coup : c'est la page qui reçoit les campagnes. Agents IA et
-   Publicité conservent la taille d'origine. */
-@media (max-width: 620px) {
-  .home-page #avis .marquee--giant.is-vertical { height: clamp(352px, 56vh, 470px); }
-  .home-page #avis .marquee--giant .quote-item {
-    font-size: 1.06rem;
-    line-height: 1.42;
-    padding: 13px 0;
-  }
-  .home-page #avis .marquee--giant .quote-item span { margin-top: 5px; font-size: 10.5px; }
-  .home-page #avis .marquee--giant .quote-item::after { margin-top: 5px; font-size: 10px; }
 }
 
 /* Sans animation, un ruban de hauteur fixe masquerait les derniers avis :

@@ -7,8 +7,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#050b1c" />
-  <meta name="description" content="Caza Comm : création, pilotage et optimisation de vos campagnes Google Ads et Meta Ads. Des publicités qui ramènent des clients, pas juste des clics." />
-  <title>Caza Comm : publicité Google Ads & Meta Ads pour les entreprises françaises</title>
+  <meta name="description" content="Caza Comm : création, pilotage et optimisation de vos campagnes Google Ads, ChatGPT Ads et réseaux sociaux (Meta Ads). Des publicités qui ramènent des clients, pas juste des clics." />
+  <title>Caza Comm : publicité Google Ads, ChatGPT Ads et réseaux sociaux</title>
 
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -22,19 +22,19 @@
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="Caza Comm" />
   <meta property="og:url" content="https://www.cazacomm.fr/pub.html" />
-  <meta property="og:title" content="Caza Comm : Google Ads et Meta Ads" />
+  <meta property="og:title" content="Caza Comm : Google Ads, ChatGPT Ads et réseaux sociaux" />
   <meta property="og:description" content="Vos publicités qui ramènent des clients, pas juste des clics." />
   <meta property="og:image" content="https://www.cazacomm.fr/images/logo.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Caza Comm : Google Ads et Meta Ads" />
+  <meta name="twitter:title" content="Caza Comm : Google Ads, ChatGPT Ads et réseaux sociaux" />
   <meta name="twitter:description" content="Vos publicités qui ramènent des clients, pas juste des clics." />
   <meta name="twitter:image" content="https://www.cazacomm.fr/images/logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/caza-v2.css?v=17" />
+  <link rel="stylesheet" href="assets/caza-v2.css?v=18" />
   <script>document.documentElement.className += ' js';</script>
 </head>
 <body class="theme-blue">
@@ -45,7 +45,8 @@
   <div class="pre-bar"></div>
 </div>
 
-<div class="page-toggle-bar" role="navigation" aria-label="Sélecteur de page">
+<div class="page-toggle-bar has-menu" role="navigation" aria-label="Sélecteur de page">
+  <a href="/devis.html" class="topbar-cta" data-en="Free quote">Devis gratuit</a>
   <div class="page-toggle">
     <a href="/" class="page-toggle-opt">Sites Internet</a>
     <a href="/agents-ia.html" class="page-toggle-opt">Agents IA</a>
@@ -53,15 +54,21 @@
     <span class="page-toggle-slider" aria-hidden="true"></span>
   </div>
   <div class="topbar-right">
-    <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
-      <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
-      <span class="lang-sep" aria-hidden="true">/</span>
-      <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
-    </div>
-    <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="true" aria-label="Activer ou couper les sons" title="Sons">
-      <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-      <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+    <button type="button" class="burger" id="burgerBtn" aria-expanded="false" aria-controls="topbarMenu" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
     </button>
+    <div class="topbar-tools" id="topbarMenu">
+      <a href="/devis.html" class="topbar-cta topbar-cta--menu" data-en="Free quote">Devis gratuit</a>
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
+        <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="true" aria-label="Activer ou couper les sons" title="Sons">
+        <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+        <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -75,51 +82,19 @@
     <span class="rise d2"><span data-en="not just clicks.">pas juste des clics.</span></span>
   </h1>
   <div class="hero-actions fade d3">
-    <a href="#contact" class="link-action link-action--solid">
-      <span data-en="Let's talk">Parlons-en</span>
+    <a href="/devis.html" class="link-action link-action--solid">
+      <span data-en="Request a free quote">Demander un devis gratuit</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <a href="#solutions" class="link-action" data-en="Our services">Nos prestations</a>
+    <a href="#valeur" class="link-action" data-en="See our services">Voir nos prestations</a>
   </div>
-</section>
-
-<!-- ░░ DEMANDE ░░ -->
-<section class="band" id="demande" aria-label="Formulaire de demande">
-  <div class="demande-head">
-    <h2 class="demande-title" data-en="Request">Demande</h2>
-    <p class="demande-note" data-en="Tell us what you need — a personal reply within 24h.">Dites-nous ce dont vous avez besoin. Réponse personnelle sous 24 h.</p>
-  </div>
-  <form class="contact-form form--quick" id="demandeForm" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
-    <input type="hidden" name="subject" value="Nouvelle demande depuis cazacomm.fr : Publicité" />
-    <input type="hidden" name="from_name" value="Site Caza Comm" />
-    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-    <div class="field">
-      <label for="dm-name" data-en="Name">Nom</label>
-      <input type="text" id="dm-name" name="name" autocomplete="name" required placeholder="Nom" data-en-placeholder="Name" />
-    </div>
-    <div class="field">
-      <label for="dm-email" data-en="Email">Email</label>
-      <input type="email" id="dm-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
-    </div>
-    <div class="field">
-      <label for="dm-phone" data-en="Phone">Téléphone</label>
-      <input type="tel" id="dm-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
-    </div>
-    <div class="field field--wide">
-      <label for="dm-message" data-en="Your request">Votre demande</label>
-      <textarea id="dm-message" name="message" required placeholder="Votre demande en quelques mots…" data-en-placeholder="Your request in a few words…"></textarea>
-    </div>
-    <button type="submit" class="btn-submit" data-en="Send">Envoyer</button>
-    <p class="form-status" id="demandeStatus" role="status" aria-live="polite"></p>
-  </form>
 </section>
 
 <!-- ░░ PROMESSE ░░ -->
 <section class="scene" id="valeur" aria-label="Notre promesse">
   <h2 class="giant">
     <span class="rise"><span data-en="We don't sell">Nous ne vendons pas</span></span>
-    <span class="rise d1"><span class="strike-word"><span class="ink" data-en="clicks and impressions.">des clics et des impressions.</span></span></span>
+    <span class="rise d1"><span class="strike-word"><span class="ink" data-en="clicks or impressions.">de clics ni d’impressions.</span></span></span>
     <span class="rise d2"><span class="accent" data-en="We sell customers.">Nous vendons des clients.</span></span>
   </h2>
 </section>
@@ -134,7 +109,11 @@
     </article>
     <article class="swap-item" role="listitem">
       <p class="swap-old"><span class="x" aria-hidden="true">×</span><span class="strike" data-en="A random audience">Une audience au hasard</span></p>
-      <h3 class="swap-new" data-en="Meta Ads">Meta Ads</h3>
+      <h3 class="swap-new" data-en="Social media (Meta Ads)">Réseaux sociaux (Meta Ads)</h3>
+    </article>
+    <article class="swap-item" role="listitem">
+      <p class="swap-old"><span class="x" aria-hidden="true">×</span><span class="strike" data-en="Absent where people now search">Être absent là où l’on cherche désormais</span></p>
+      <h3 class="swap-new" data-en="ChatGPT Ads">ChatGPT Ads</h3>
     </article>
     <article class="swap-item" role="listitem">
       <p class="swap-old"><span class="x" aria-hidden="true">×</span><span class="strike" data-en="Flying blind">Piloter à l'aveugle</span></p>
@@ -218,8 +197,8 @@
   <h2 class="scene-title fade" data-en="What defines us">Ce qui nous définit</h2>
   <div class="stats-list">
     <div class="stat-row fade">
-      <span class="stat-value" data-en="Google + Meta">Google + Meta</span>
-      <span class="stat-label" data-en="The two platforms that matter">Les deux plateformes qui comptent</span>
+      <span class="stat-value" data-en="Google · ChatGPT · Meta">Google · ChatGPT · Meta</span>
+      <span class="stat-label" data-en="Wherever your customers are">Là où sont vos clients</span>
     </div>
     <div class="stat-row fade d1">
       <span class="stat-value">&lt;24h</span>
@@ -241,52 +220,59 @@
   <div class="faq-list" style="margin-top:clamp(14px,2.6vh,28px);">
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="What budget do I need to start?">Quel budget faut-il pour commencer ?</span>
+        <span data-en="Which platforms do you work on?">Sur quelles plateformes intervenez-vous ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="It depends on your market, but we can start small, measure what works, and scale only what pays off.">Ça dépend de votre marché, mais on peut démarrer petit, mesurer ce qui marche, et n'augmenter que ce qui rapporte.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Google Ads, ChatGPT Ads and social media (Meta Ads). We are among the first agencies in France to offer advertising on ChatGPT, where a growing share of searches now happens.">Google Ads, ChatGPT Ads et les réseaux sociaux (Meta Ads). Nous faisons partie des premières agences en France à proposer la publicité sur ChatGPT, là où une part croissante des recherches se fait désormais.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Google or Meta — which one is right for me?">Google ou Meta, lequel est fait pour moi ?</span>
+        <span data-en="What does advertising on ChatGPT actually mean?">La publicité sur ChatGPT, concrètement ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Google captures people already searching for you; Meta creates the demand. We advise the right mix for your activity.">Google capte ceux qui vous cherchent déjà ; Meta crée la demande. On vous conseille le bon mix selon votre activité.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Your ads appear to people asking a question related to your business. We build the campaign, run it, and report back to you regularly.">Vos annonces apparaissent auprès de personnes qui posent une question en lien avec votre activité. Nous créons la campagne, nous la pilotons, et nous vous faisons des retours réguliers.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="What budget do I need to start?">Quel budget faut-il pour commencer ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="It depends on your business and your area. We discuss it during the first conversation, which is free, and the quote is clear before any commitment.">Cela dépend de votre activité et de votre zone. Nous en discutons lors du premier échange, qui est gratuit, et le devis est clair avant tout engagement.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="Which platform is right for me?">Quelle plateforme est faite pour moi ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Google captures those already looking for you, social media creates demand, ChatGPT places you inside the answers. We advise the right mix for your business, without forcing all three on you.">Google capte ceux qui vous cherchent déjà, les réseaux sociaux créent la demande, ChatGPT vous place dans les réponses. Nous vous conseillons le bon mélange selon votre activité, sans vous imposer les trois.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
         <span data-en="Who owns the accounts and the data?">À qui appartiennent les comptes et les données ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="You do, always. We work on your own advertising accounts — you keep full access and ownership.">À vous, toujours. Nous travaillons sur vos propres comptes publicitaires : vous en gardez l'accès et la propriété.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="You do, entirely. Accounts are created in your name and you keep access to them, including if we stop working together.">À vous, entièrement. Les comptes sont créés à votre nom et vous en gardez l’accès, y compris si nous cessons de travailler ensemble.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Do you also handle the visuals and the ads?">Vous gérez aussi les visuels et les annonces ?</span>
+        <span data-en="Do you handle creatives and ad copy too?">Gérez-vous aussi les visuels et les annonces ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes. We write the ads, design the creatives and can optimize your landing page so clicks turn into customers.">Oui. On rédige les annonces, on crée les visuels et on peut optimiser votre page de destination pour que les clics deviennent des clients.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes. Creatives, ad copy and landing pages are included. A campaign is only worth what it shows.">Oui. Visuels, textes d’annonces et pages de destination sont compris. Une campagne ne vaut que par ce qu’elle montre.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="How long until I see results?">Combien de temps avant des résultats ?</span>
+        <span data-en="How long before I see results?">Combien de temps avant des résultats ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="First data within days; a campaign really finds its rhythm over the first few weeks as we optimize it.">Des premières données en quelques jours ; une campagne trouve vraiment son rythme sur les premières semaines, à mesure qu'on l'optimise.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="The first data comes in within days. A few weeks of adjustments then follow to stabilise performance.">Les premières données arrivent en quelques jours. Il faut ensuite quelques semaines d’ajustements pour stabiliser les performances.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Am I tied into a long contract?">Suis-je engagé sur une longue durée ?</span>
+        <span data-en="Am I tied in for a long time?">Suis-je engagé sur une longue durée ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We keep it flexible: we'd rather earn your trust with results than lock you into a contract.">Non. On reste souple : on préfère gagner votre confiance avec des résultats plutôt que vous enfermer dans un contrat.</p></div></div>
-    </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="I've never advertised before, is that a problem?">Je n'ai jamais fait de pub, c'est grave ?</span>
-        <span class="faq-sign" aria-hidden="true">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Quite the opposite: we handle everything and explain each step simply, at your pace.">Au contraire : on s'occupe de tout et on vous explique chaque étape simplement, à votre rythme.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="No, there is no commitment. You are free to stop whenever you wish.">Non, sans engagement. Vous restez libre d’arrêter quand vous le souhaitez.</p></div></div>
     </div>
   </div>
 </section>
@@ -350,7 +336,8 @@
   </footer>
 </section>
 
-<script src="assets/caza.js?v=16" defer></script>
-<script src="assets/caza-v2.js?v=16" defer></script>
+<script src="/assets/promo.js?v=1" defer></script>
+<script src="assets/caza.js?v=18" defer></script>
+<script src="assets/caza-v2.js?v=18" defer></script>
 </body>
 </html>

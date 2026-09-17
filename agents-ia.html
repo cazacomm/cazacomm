@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/caza-v2.css?v=17" />
+  <link rel="stylesheet" href="assets/caza-v2.css?v=18" />
   <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
@@ -45,7 +45,8 @@
   <div class="pre-bar"></div>
 </div>
 
-<div class="page-toggle-bar" role="navigation" aria-label="Sélecteur de page">
+<div class="page-toggle-bar has-menu" role="navigation" aria-label="Sélecteur de page">
+  <a href="/devis.html" class="topbar-cta" data-en="Free quote">Devis gratuit</a>
   <div class="page-toggle">
     <a href="/" class="page-toggle-opt">Sites Internet</a>
     <a href="/agents-ia.html" class="page-toggle-opt is-active" aria-current="page">Agents IA</a>
@@ -53,15 +54,21 @@
     <span class="page-toggle-slider" aria-hidden="true"></span>
   </div>
   <div class="topbar-right">
-    <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
-      <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
-      <span class="lang-sep" aria-hidden="true">/</span>
-      <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
-    </div>
-    <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="true" aria-label="Activer ou couper les sons" title="Sons">
-      <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-      <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+    <button type="button" class="burger" id="burgerBtn" aria-expanded="false" aria-controls="topbarMenu" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
     </button>
+    <div class="topbar-tools" id="topbarMenu">
+      <a href="/devis.html" class="topbar-cta topbar-cta--menu" data-en="Free quote">Devis gratuit</a>
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Langue / Language">
+        <button type="button" class="lang-opt is-active" data-lang="fr" aria-pressed="true">FR</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="true" aria-label="Activer ou couper les sons" title="Sons">
+        <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+        <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -76,44 +83,12 @@
     <span class="rise d3"><span data-en="without the overhead.">sans les charges.</span></span>
   </h1>
   <div class="hero-actions fade d3">
-    <a href="#contact" class="link-action link-action--solid">
-      <span data-en="Let's talk">Parlons-en</span>
+    <a href="/devis.html" class="link-action link-action--solid">
+      <span data-en="Request a free quote">Demander un devis gratuit</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <a href="#solutions" class="link-action" data-en="Our solutions">Nos solutions</a>
+    <a href="#valeur" class="link-action" data-en="See our services">Voir nos prestations</a>
   </div>
-</section>
-
-<!-- ░░ DEMANDE ░░ -->
-<section class="band" id="demande" aria-label="Formulaire de demande">
-  <div class="demande-head">
-    <h2 class="demande-title" data-en="Request">Demande</h2>
-    <p class="demande-note" data-en="Tell us what you need — a personal reply within 24h.">Dites-nous ce dont vous avez besoin. Réponse personnelle sous 24 h.</p>
-  </div>
-  <form class="contact-form form--quick" id="demandeForm" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="5e04e260-7d28-480a-9385-bd8df38ab623" />
-    <input type="hidden" name="subject" value="Nouvelle demande depuis cazacomm.fr : Agents IA" />
-    <input type="hidden" name="from_name" value="Site Caza Comm" />
-    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-    <div class="field">
-      <label for="dm-name" data-en="Name">Nom</label>
-      <input type="text" id="dm-name" name="name" autocomplete="name" required placeholder="Nom" data-en-placeholder="Name" />
-    </div>
-    <div class="field">
-      <label for="dm-email" data-en="Email">Email</label>
-      <input type="email" id="dm-email" name="email" autocomplete="email" required placeholder="Email" data-en-placeholder="Email" />
-    </div>
-    <div class="field">
-      <label for="dm-phone" data-en="Phone">Téléphone</label>
-      <input type="tel" id="dm-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
-    </div>
-    <div class="field field--wide">
-      <label for="dm-message" data-en="Your request">Votre demande</label>
-      <textarea id="dm-message" name="message" required placeholder="Votre demande en quelques mots…" data-en-placeholder="Your request in a few words…"></textarea>
-    </div>
-    <button type="submit" class="btn-submit" data-en="Send">Envoyer</button>
-    <p class="form-status" id="demandeStatus" role="status" aria-live="polite"></p>
-  </form>
 </section>
 
 <!-- ░░ PROMESSE ░░ -->
@@ -245,52 +220,59 @@
   <div class="faq-list" style="margin-top:clamp(14px,2.6vh,28px);">
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="What does AI actually mean for my business?">C'est quoi concrètement, l'IA pour mon entreprise ?</span>
+        <span data-en="What does AI actually mean for my business?">C’est quoi concrètement, l’IA pour mon entreprise ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="A system that takes on specific tasks (replying, following up, sorting, generating a document) to save you time.">Un système qui prend en charge des tâches précises (répondre, relancer, trier, générer un document) pour vous faire gagner du temps.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="A system that takes on specific tasks: replying, following up, sorting, drafting a document. The goal is to give you hours back, not to add one more tool.">Un système qui prend en charge des tâches précises : répondre, relancer, trier, générer un document. L’objectif est de vous rendre des heures, pas d’ajouter un outil de plus.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Do I need to be tech-savvy?">Faut-il s'y connaître en informatique ?</span>
+        <span data-en="Do I need to be tech-savvy?">Faut-il s’y connaître en informatique ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We handle all the technical side; you use the tool like a teammate.">Non. Nous gérons toute la partie technique ; vous utilisez l'outil comme un collaborateur.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We handle all the technical side; you use the tool like a teammate.">Non. Nous gérons toute la partie technique ; vous utilisez l’outil comme un collaborateur.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="Will it turn my way of working upside down?">Est-ce que ça va bouleverser ma façon de travailler ?</span>
+        <span data-en="Will it turn my way of working upside down?">Est-ce que cela va bouleverser ma façon de travailler ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We move step by step; AI adds to your tools, it doesn't replace your habits.">Non. Nous avançons par étapes ; l'IA s'ajoute à vos outils, elle ne remplace pas vos habitudes.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="No. We move step by step; AI adds to your tools, it does not replace your habits.">Non. Nous avançons par étapes ; l’IA s’ajoute à vos outils, elle ne remplace pas vos habitudes.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
         <span data-en="Is my data protected?">Mes données sont-elles protégées ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes. Solutions based in France, GDPR-compliant; hosted on your side if needed.">Oui. Solutions basées en France, conformes RGPD ; selon le besoin, hébergées chez vous.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Yes. Solutions based in France, GDPR-compliant; hosted on your side if needed.">Oui. Solutions basées en France, conformes au RGPD ; selon le besoin, hébergées chez vous.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="How long until I see results?">Combien de temps avant des résultats ?</span>
+        <span data-en="How long before I see results?">Combien de temps avant des résultats ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="First gains in a few days to a few weeks, not six months.">Des premiers gains en quelques jours à quelques semaines, pas en six mois.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="First gains within days to weeks, not six months.">Des premiers gains en quelques jours à quelques semaines, pas en six mois.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="How much does it cost?">Combien ça coûte ?</span>
+        <span data-en="How does the quote work?">Comment se passe le devis ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="It all starts with a free first chat and a clear quote, tailored to your needs.">Tout part d'un premier échange gratuit et d'un devis clair, adapté à votre besoin.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="You describe your need in a minute on the quote request page, and we reply within 24 hours with a clear proposal. The first conversation and the quote are free.">Vous décrivez votre besoin en une minute sur la page de demande de devis, et nous répondons sous 24 heures avec une proposition claire. Le premier échange et le devis sont gratuits.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
-        <span data-en="I don't know where to start, is that a problem?">Je ne sais pas par où commencer, c'est grave ?</span>
+        <span data-en="Am I tied in for a long time?">Suis-je engagé sur la durée ?</span>
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner"><p data-en="Quite the opposite: that's exactly where we step in, starting by understanding and guiding you.">Au contraire : c'est exactement là que nous intervenons, en commençant par comprendre et vous orienter.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="No, the support comes with no commitment. You stay free to stop at any time.">Non, l’accompagnement est sans engagement. Vous restez libre d’arrêter à tout moment.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="I don't know where to start, is that a problem?">Je ne sais pas par où commencer, c’est grave ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="Quite the opposite: that is exactly where we step in, starting by understanding and guiding you.">Au contraire : c’est exactement là que nous intervenons, en commençant par comprendre et vous orienter.</p></div></div>
     </div>
   </div>
 </section>
@@ -355,7 +337,7 @@
   </footer>
 </section>
 
-<script src="assets/caza.js?v=16" defer></script>
-<script src="assets/caza-v2.js?v=16" defer></script>
+<script src="assets/caza.js?v=18" defer></script>
+<script src="assets/caza-v2.js?v=18" defer></script>
 </body>
 </html>
