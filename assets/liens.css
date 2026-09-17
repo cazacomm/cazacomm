@@ -292,19 +292,6 @@
 .links-social a:active { transform: scale(.94); }
 .links-social svg { width: 23px; height: 23px; }
 
-/* ════════════ PIED ════════════ */
-
-.links-footer {
-  justify-content: center;
-  text-align: center;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  border-top: 1px solid var(--line);
-  color: var(--faint);
-  padding-bottom: max(18px, env(safe-area-inset-bottom));
-}
-.links-footer a:hover { color: #000000; }
-
 /* ════════════ PAGE DE BIENVENUE (retour d'inscription Brevo) ════════════ */
 
 /* Le portrait est le sujet de la page, pas une vignette d'en-tête */

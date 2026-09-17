@@ -17,10 +17,7 @@
   var title = d.getElementById('wTitle');
   var text  = d.getElementById('wText');
   if (title) title.innerHTML = 'Plus<br />qu’un clic';
-  if (text) {
-    text.textContent = 'On vient de vous envoyer un email de confirmation. '
-      + 'Ouvrez-le et cliquez sur le lien : votre inscription sera validée. '
-      + "Pensez aux indésirables s'il tarde à arriver.";
-  }
+  // Court, mais l'instruction reste : sans ce clic, l'inscription n'existe pas.
+  if (text) text.textContent = 'Cliquez sur le lien qu\u2019on vient de vous envoyer par email.';
   d.title = 'Confirmez votre inscription | Caza Comm';
 })(window, document);
