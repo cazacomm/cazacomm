@@ -153,9 +153,12 @@ puis six mois de silence. La régularité est le signal, pas le volume.
 
 ---
 
-## 5. Douze sujets prêts à écrire
+## 5. Sujets prêts à écrire
 
-Tous ancrés local + métier, aucun ne nécessite de donnée inventée.
+La liste se complète toute seule : sous huit sujets non traités, le script
+en génère quarante de plus et les ajoute à la fin de ce tableau, en gardant
+la numérotation continue. Un sujet est « non traité » tant qu'aucun article
+ne porte son numéro et qu'aucun dossier ne porte son slug.
 
 | # | Sujet | Slug proposé | Angle |
 |---|---|---|---|

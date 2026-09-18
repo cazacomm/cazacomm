@@ -31,7 +31,12 @@ export OPENAI_API_KEY="sk-..."
 python3 scripts/generate-article.py --dry-run   # simulation, aucun fichier touché
 python3 scripts/generate-article.py             # génère et écrit (à committer soi-même)
 python3 scripts/generate-article.py --mock      # teste la tuyauterie sans appeler l'API
+python3 scripts/generate-article.py --topics-only  # complète la réserve de sujets, sans article
 ```
+
+`--topics-only` ne fait **que** le réapprovisionnement : il génère les sujets
+manquants, les ajoute à `BLOG_WORKFLOW.md` et les committe, puis s'arrête sans
+rédiger d'article. Incompatible avec `--rewrite`, qui suppose l'inverse.
 
 `--mock` ne produit **aucun contenu éditorial réel** : il remplit le gabarit d'un texte
 de démonstration pour vérifier que le choix du sujet, l'assemblage, la validation et les
@@ -201,12 +206,32 @@ ne tenait pas les 1200 mots. Le poste de coût réel reste la relecture humaine.
 Pour vérifier la consommation réelle : les logs du workflow affichent le décompte
 exact des tokens de chaque exécution (`[blog] Tokens : … entrée + … sortie = …`).
 
-## 7. Ajouter des sujets
+## 7. La réserve de sujets
 
-La réserve de sujets est la section **« Douze sujets prêts à écrire »** de
-[`BLOG_WORKFLOW.md`](../BLOG_WORKFLOW.md). Quand elle est épuisée, le workflow sort
-en code 78 chaque lundi sans rien casser. Il suffit d'ajouter des lignes au même
-format de tableau pour relancer la machine :
+La réserve est la section **« Sujets prêts à écrire »** de
+[`BLOG_WORKFLOW.md`](../BLOG_WORKFLOW.md). Elle **se complète toute seule** : dès
+qu'il reste moins de `TOPIC_RESERVE_MIN` (8) sujets non traités, le script en
+demande `TOPIC_BATCH` (40) de plus à `gpt-4o`, les ajoute à la fin du tableau en
+numérotation continue, et les committe à part. Avant, la liste s'épuisait et le
+workflow sortait en code 78 chaque lundi : le blog s'arrêtait en silence.
+
+Un sujet est **non traité** tant qu'aucun article ne porte son numéro et
+qu'aucun dossier ne porte son slug. Cette définition est écrite une seule fois,
+dans `topic_is_pending()`, et sert à la fois à compter la réserve et à choisir le
+sujet du jour : deux définitions qui divergeraient feraient croire la réserve
+pleine alors que plus rien n'est publiable.
+
+Les doublons sont écartés sur le **slug**, jamais sur le titre : c'est le slug
+qui nomme le dossier, donc lui seul dit si deux sujets produiraient le même
+fichier.
+
+Dans le workflow, le réapprovisionnement tourne **avant** la rédaction et son
+commit est poussé dans la foulée : si l'article échoue ensuite, les sujets déjà
+générés restent acquis. À l'inverse, une panne du réapprovisionnement ne bloque
+jamais la publication — elle passe en `::warning::` et la rédaction continue avec
+la réserve existante.
+
+Rien n'empêche d'ajouter des sujets à la main, au même format :
 
 ```markdown
 | 13 | Titre du sujet | `slug-de-l-article` | angle, intention de recherche visée |
