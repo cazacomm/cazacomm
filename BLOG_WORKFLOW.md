@@ -174,6 +174,46 @@ ne porte son numéro et qu'aucun dossier ne porte son slug.
 | 10 | Le tourisme dans les Hautes-Pyrénées : préparer sa visibilité avant la saison | `visibilite-tourisme-hautes-pyrenees` | Saisonnalité, multilingue, réservation |
 | 11 | Pourquoi votre site ne convertit pas (et ce qui se corrige en une journée) | `pourquoi-votre-site-ne-convertit-pas` | Appel à l'action, formulaire, preuve sociale |
 | 12 | RGPD et IA : ce qu'une petite entreprise doit vraiment mettre en place | `rgpd-et-ia-petite-entreprise` | Données personnelles, hébergement, transparence |
+| 13 | Optimiser WordPress pour le référencement naturel | `optimiser-wordpress-referencement-naturel` | Techniques SEO pratiques pour améliorer votre site WordPress |
+| 14 | Automatiser vos campagnes email grâce à un CRM | `automatiser-campagnes-email-grace-crm` | Utiliser un CRM pour planifier et envoyer des emails efficacement |
+| 15 | Créer une page Google My Business performante | `creer-page-google-my-business-performante` | Étapes pour améliorer votre présence locale en ligne |
+| 16 | Choisir le bon thème WordPress pour votre activité | `choisir-bon-theme-wordpress-activite` | Critères de sélection selon votre secteur et vos besoins |
+| 17 | Comment améliorer la vitesse de chargement de votre site | `comment-ameliorer-vitesse-chargement-site` | Astuces pour rendre votre site plus rapide et performant |
+| 18 | Intégrer l'IA dans votre stratégie marketing | `integrer-ia-strategie-marketing` | Utiliser l'IA pour personnaliser et améliorer vos campagnes |
+| 19 | Rédiger des textes efficaces pour le SEO local | `rediger-textes-efficaces-seo-local` | Techniques de rédaction pour améliorer votre visibilité locale |
+| 20 | Analyser vos campagnes Google Ads avec Google Analytics | `analyser-campagnes-google-ads-google-analytics` | Suivre et optimiser vos campagnes grâce à des indicateurs clés |
+| 21 | Concevoir une landing page qui convertit | `concevoir-landing-page-convertit` | Éléments essentiels pour transformer les visiteurs en clients |
+| 22 | Gérer les réseaux sociaux de votre entreprise efficacement | `gerer-reseaux-sociaux-entreprise-efficacement` | Stratégies pour maximiser l'impact de vos publications |
+| 23 | Optimiser votre site pour les recherches vocales | `optimiser-site-recherches-vocales` | Adapter votre contenu pour répondre aux requêtes vocales |
+| 24 | Utiliser les chatbots pour améliorer le service client | `utiliser-chatbots-ameliorer-service-client` | Mise en place de chatbots pour répondre aux besoins clients |
+| 25 | Créer un blog qui attire et engage vos clients | `creer-blog-attire-engage-clients` | Stratégies de contenu pour fidéliser et attirer vos lecteurs |
+| 26 | Utiliser les données pour personnaliser votre marketing | `utiliser-donnees-personnaliser-marketing` | Exploiter les données client pour adapter vos offres marketing |
+| 27 | Comment sécuriser votre site WordPress | `comment-securiser-site-wordpress` | Mesures à mettre en place pour protéger votre site et vos données |
+| 28 | Stratégies pour booster votre présence sur LinkedIn | `strategies-booster-presence-linkedin` | Conseils pour améliorer votre visibilité professionnelle |
+| 29 | Les meilleures pratiques pour le SEO on-page | `meilleures-pratiques-seo-page` | Optimisations concrètes à appliquer sur vos pages web |
+| 30 | Créer un plan de contenu pour le SEO | `creer-plan-contenu-seo` | Étapes pour élaborer un calendrier éditorial efficace |
+| 31 | Augmenter la portée de vos Meta Ads | `augmenter-portee-meta-ads` | Techniques pour gagner en visibilité avec Meta Ads |
+| 32 | Utiliser les stories pour promouvoir votre entreprise | `utiliser-stories-promouvoir-entreprise` | Comment utiliser les stories sur les réseaux sociaux pour engager |
+| 33 | La personnalisation des emails pour améliorer l'engagement | `personnalisation-emails-ameliorer-engagement` | Techniques pour personnaliser et rendre vos emails plus pertinents |
+| 34 | Améliorer l'expérience utilisateur sur votre site web | `ameliorer-experience-utilisateur-site-web` | Astuces pour rendre la navigation agréable et intuitive |
+| 35 | Utiliser les webinaires pour attirer de nouveaux clients | `utiliser-webinaires-attirer-nouveaux-clients` | Organisation et promotion de webinaires pour développer votre audience |
+| 36 | Comment utiliser les avis clients pour booster vos ventes | `comment-utiliser-avis-clients-booster-ventes` | Stratégies pour collecter, gérer et tirer parti des avis clients |
+| 37 | Adapter votre stratégie SEO aux changements d'algorithme | `adapter-strategie-seo-changements-algorithme` | Réagir efficacement aux mises à jour des moteurs de recherche |
+| 38 | Mettre en place une stratégie de backlinks efficace | `mettre-place-strategie-backlinks-efficace` | Comment obtenir des liens de qualité pour améliorer votre SEO |
+| 39 | Utiliser le marketing vidéo pour renforcer votre marque | `utiliser-marketing-video-renforcer-marque` | Créer et diffuser des vidéos pour améliorer votre notoriété |
+| 40 | Réussir sa transition vers le commerce en ligne | `reussir-transition-vers-commerce-ligne` | Étapes clés pour les PME et TPE passant au e-commerce |
+| 41 | Construire une identité visuelle forte pour votre site | `construire-identite-visuelle-forte-site` | Éléments graphiques essentiels pour un site attrayant |
+| 42 | Comment choisir les bons mots-clés pour votre SEO | `comment-choisir-bons-mots-cles-seo` | Méthodes pour identifier les mots-clés pertinents et efficaces |
+| 43 | Le rôle des réseaux sociaux dans le SEO | `role-reseaux-sociaux-seo` | Influence des réseaux sociaux sur votre positionnement en ligne |
+| 44 | Organiser une veille concurrentielle pour rester compétitif | `organiser-veille-concurrentielle-rester-competitif` | Techniques pour surveiller et analyser la concurrence |
+| 45 | Créer des publicités Google Ads qui captent l'attention | `creer-publicites-google-ads-captent-attention` | Concevoir des annonces efficaces pour maximiser les clics |
+| 46 | Optimiser l'utilisation des hashtags sur Instagram | `optimiser-utilisation-hashtags-instagram` | Stratégie pour choisir et utiliser les hashtags efficacement |
+| 47 | Utiliser les données de votre CRM pour mieux cibler | `utiliser-donnees-crm-mieux-cibler` | Exploiter les informations client pour affiner votre marketing |
+| 48 | Optimiser votre site pour les mobiles | `optimiser-site-mobiles` | Conseils pour rendre votre site user-friendly sur smartphones |
+| 49 | Comment relancer une campagne publicitaire inefficace | `comment-relancer-campagne-publicitaire-inefficace` | Stratégies pour analyser et redresser une campagne qui ne performe pas |
+| 50 | Créer des formulaires de contact qui convertissent | `creer-formulaires-contact-convertissent` | Concevoir des formulaires attrayants et efficaces pour générer des leads |
+| 51 | Utiliser les infographies pour renforcer votre stratégie de contenu | `utiliser-infographies-renforcer-strategie-contenu` | Créer des visuels informatifs pour capter l'attention et informer |
+| 52 | Mettre à jour votre site pour améliorer la sécurité | `mettre-jour-site-ameliorer-securite` | Pratiques essentielles pour maintenir la sécurité de votre site web |
 
 > Sur les sujets 5, 9 et 12, rester **descriptif** : décrire les principes et
 > les démarches, jamais citer d'article de loi, de sanction chiffrée ou de
