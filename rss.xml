@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 14 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Cibler efficacement avec Meta Ads</title>
+      <link>https://www.cazacomm.fr/blog/meta-ads-commerce-local/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/meta-ads-commerce-local/</guid>
+      <pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Pour un commerce local, les campagnes Meta Ads peuvent être un levier puissant pour accroître la visibilité. Cependant, bien cibler est crucial pour éviter de dilapider votre budget. Grâce à des stratégies adaptées comme le choix judicieux du rayon géographique, des créatives percutantes et une attention à la saisonnalité, vous pourrez maximiser le retour sur investissement. Que vous soyez en France, Belgique ou ailleurs dans la francophonie, ces conseils vous aideront à naviguer efficacement dans l'univers des publicités en ligne.</description>
+    </item>
 
     <item>
       <title>Choisir entre WordPress et un site sur mesure pour votre TPE</title>

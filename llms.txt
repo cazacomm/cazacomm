@@ -42,6 +42,7 @@
 - [Agents IA : des alliés pour les TPE](https://www.cazacomm.fr/blog/agents-ia-tpe-usages-concrets/) : Découvrez comment les agents IA aident les TPE à optimiser leur gestion de mails, devis et relances.
 - [Maîtrisez les avis Google pour votre réputation](https://www.cazacomm.fr/blog/repondre-avis-google-methode/) : Découvrez comment gérer les avis Google pour protéger la réputation de votre entreprise.
 - [Choisir entre WordPress et un site sur mesure pour votre TPE](https://www.cazacomm.fr/blog/wordpress-ou-site-sur-mesure/) : Guide pour TPE : choisir entre WordPress et un site sur mesure. Coût, autonomie, performance.
+- [Cibler efficacement avec Meta Ads](https://www.cazacomm.fr/blog/meta-ads-commerce-local/) : Découvrez comment optimiser vos campagnes Meta Ads pour toucher votre public local sans gaspiller votre budget.
 
 ## Ressources techniques
 
