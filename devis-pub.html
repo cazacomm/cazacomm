@@ -33,8 +33,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/caza-v2.css?v=18" />
-  <link rel="stylesheet" href="/assets/devis.css?v=1" />
+  <link rel="stylesheet" href="/assets/caza-v2.css?v=19" />
+  <link rel="stylesheet" href="/assets/devis.css?v=2" />
 </head>
 <body class="theme-blue devis-page">
 
@@ -123,15 +123,60 @@
         <input type="text" id="dv-entreprise" name="entreprise" autocomplete="organization" />
       </div>
 
-      <div class="devis-row">
+      <div class="devis-row devis-row--tel">
+        <div class="devis-field">
+          <label for="dv-indicatif">Indicatif *</label>
+          <select id="dv-indicatif" name="indicatif" required>
+            <option value="" selected disabled>Choisir…</option>
+            <option value="+33">France +33</option>
+            <option value="+32">Belgique +32</option>
+            <option value="+41">Suisse +41</option>
+            <option value="+352">Luxembourg +352</option>
+            <option value="+377">Monaco +377</option>
+            <option value="+1">Canada / États-Unis +1</option>
+            <option value="+590">Guadeloupe / Saint-Martin +590</option>
+            <option value="+596">Martinique +596</option>
+            <option value="+594">Guyane +594</option>
+            <option value="+262">Réunion / Mayotte +262</option>
+            <option value="+687">Nouvelle-Calédonie +687</option>
+            <option value="+689">Polynésie française +689</option>
+            <option value="+212">Maroc +212</option>
+            <option value="+213">Algérie +213</option>
+            <option value="+216">Tunisie +216</option>
+            <option value="+221">Sénégal +221</option>
+            <option value="+225">Côte d’Ivoire +225</option>
+            <option value="+237">Cameroun +237</option>
+            <option value="+241">Gabon +241</option>
+            <option value="+242">Congo-Brazzaville +242</option>
+            <option value="+243">Rép. dém. du Congo +243</option>
+            <option value="+223">Mali +223</option>
+            <option value="+226">Burkina Faso +226</option>
+            <option value="+224">Guinée +224</option>
+            <option value="+228">Togo +228</option>
+            <option value="+229">Bénin +229</option>
+            <option value="+227">Niger +227</option>
+            <option value="+235">Tchad +235</option>
+            <option value="+261">Madagascar +261</option>
+            <option value="+230">Maurice +230</option>
+            <option value="+509">Haïti +509</option>
+            <option value="+44">Royaume-Uni +44</option>
+            <option value="+49">Allemagne +49</option>
+            <option value="+34">Espagne +34</option>
+            <option value="+39">Italie +39</option>
+            <option value="+351">Portugal +351</option>
+            <option value="+31">Pays-Bas +31</option>
+            <option value="autre">Autre pays</option>
+          </select>
+        </div>
         <div class="devis-field">
           <label for="dv-tel">Téléphone *</label>
           <input type="tel" id="dv-tel" name="telephone" autocomplete="tel" required />
         </div>
-        <div class="devis-field">
-          <label for="dv-email">Email *</label>
-          <input type="email" id="dv-email" name="email" autocomplete="email" required />
-        </div>
+      </div>
+
+      <div class="devis-field">
+        <label for="dv-email">Email *</label>
+        <input type="email" id="dv-email" name="email" autocomplete="email" required />
       </div>
 
       <div class="devis-field">
@@ -143,7 +188,7 @@
 
       <div class="devis-nav">
         <button type="button" class="devis-back" data-go="1">Retour</button>
-        <button type="submit" class="btn-submit devis-submit">Envoyer ma demande</button>
+        <button type="submit" class="btn-submit devis-submit cta-blink">Envoyer ma demande</button>
       </div>
       <p class="form-status" id="devisStatus" role="status" aria-live="polite"></p>
     </fieldset>

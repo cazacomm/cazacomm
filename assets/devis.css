@@ -137,6 +137,7 @@
 }
 .devis-field label i { font-style: normal; text-transform: none; letter-spacing: .06em; }
 .devis-field input,
+.devis-field select,
 .devis-field textarea {
   font-family: var(--body);
   font-size: .95rem;
@@ -151,7 +152,30 @@
 }
 .devis-field textarea { resize: vertical; min-height: 92px; }
 .devis-field input:focus,
+.devis-field select:focus,
 .devis-field textarea:focus { outline: none; border-bottom-color: var(--green-light); }
+
+/* L'indicatif est obligatoire : il dit d'où vient la demande. Liste déroulante
+   native (le menu du téléphone reste le plus simple à manipuler au doigt),
+   avec le chevron redessiné car « appearance: none » retire celui du système. */
+.devis-field select {
+  -webkit-appearance: none; appearance: none;
+  cursor: pointer;
+  padding-right: 22px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--faint) 50%),
+                    linear-gradient(135deg, var(--faint) 50%, transparent 50%);
+  background-position: calc(100% - 11px) 55%, calc(100% - 6px) 55%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+/* Le menu déroulant s'ouvre avec les couleurs du système : sur fond sombre,
+   sans ces deux lignes, les options s'affichaient blanc sur blanc. */
+.devis-field select option { background: #0b0d0e; color: #ffffff; }
+body.theme-light .devis-field select option { background: #ffffff; color: #08090a; }
+.devis-field select:invalid { color: var(--dim); }
+
+/* L'indicatif est plus étroit que le numéro */
+.devis-row--tel { grid-template-columns: minmax(120px, .55fr) 1fr; }
 
 /* ════════ NAVIGATION ════════ */
 
@@ -193,6 +217,9 @@
 @media (max-width: 560px) {
   .devis-cards { grid-template-columns: 1fr; }
   .devis-row { grid-template-columns: 1fr; }
+  /* Au doigt, l'indicatif et le numéro restent côte à côte : ils forment un
+     seul renseignement, et les séparer allonge le formulaire pour rien. */
+  .devis-row--tel { grid-template-columns: minmax(104px, .5fr) 1fr; }
   .devis-chips { display: grid; grid-template-columns: 1fr; }
   .devis-chip { text-align: center; }
   .devis-nav { gap: 10px; }

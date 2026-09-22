@@ -1206,3 +1206,54 @@ body.theme-light #pourquoi { background: #08090a; }
   .marquee__track { animation: none; }
   .cursor-dot { display: none; }
 }
+
+/* ════════════ APPELS À L'ACTION QUI BATTENT ════════════
+   « Demander un devis gratuit », le bouton de la barre qui suit la page et
+   l'envoi des formulaires doivent se voir immédiatement, sur toutes les pages.
+   Trois effets superposés : un halo qui s'écarte, un très léger battement
+   d'échelle, et un reflet qui balaie le bouton. Le halo est porté par un
+   pseudo-élément distinct du reflet, donc box-shadow et dégradé ne se gênent
+   pas, et ::after reste libre pour le soulignement des liens-actions. */
+@keyframes cta-halo {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(111,207,151,.60), 0 0 16px rgba(111,207,151,.30); }
+  50%      { box-shadow: 0 0 0 9px rgba(111,207,151,0),  0 0 30px rgba(67,240,200,.70); }
+}
+@keyframes cta-battement {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.035); }
+}
+@keyframes cta-reflet {
+  0%        { transform: translateX(-160%) skewX(-18deg); }
+  55%, 100% { transform: translateX(320%)  skewX(-18deg); }
+}
+
+.cta-blink {
+  position: relative;
+  overflow: hidden;
+  animation: cta-halo 1.7s var(--ease) infinite, cta-battement 1.7s var(--ease) infinite;
+}
+.cta-blink::before {
+  content: '';
+  position: absolute; top: 0; bottom: 0; left: 0;
+  width: 38%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+  animation: cta-reflet 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+/* Pendant l'envoi le bouton est désactivé : il n'y a plus rien à réclamer. */
+.cta-blink:disabled { animation: none; box-shadow: none; }
+.cta-blink:disabled::before { display: none; }
+
+/* Sur fond clair, l'aplat passe au noir : le halo vert reste l'accent. */
+body.theme-light .cta-blink::before {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+}
+
+/* Mouvement réduit : plus de battement, mais l'accent reste bien présent. */
+@media (prefers-reduced-motion: reduce) {
+  .cta-blink {
+    animation: none;
+    box-shadow: 0 0 0 3px rgba(111,207,151,.45), 0 0 26px rgba(67,240,200,.50);
+  }
+  .cta-blink::before { display: none; }
+}
