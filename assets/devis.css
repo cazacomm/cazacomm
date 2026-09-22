@@ -67,8 +67,9 @@
 }
 .devis-note, .devis-sublabel {
   font-family: var(--mono);
-  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--faint);
+  font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+  font-weight: 600;
+  color: var(--txt);
   margin-bottom: 10px;
 }
 .devis-sublabel { margin-top: clamp(20px, 3vh, 28px); }
@@ -132,10 +133,14 @@
 .devis-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; min-width: 0; }
 .devis-field label {
   font-family: var(--mono);
-  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--faint);
+  /* Ces libellés disent quoi écrire : en gris pâle sur la page claire, ils
+     étaient presque invisibles. Ils prennent la couleur du texte, et seule la
+     mention « facultatif » reste en retrait puisqu'elle, on peut l'ignorer. */
+  font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+  font-weight: 600;
+  color: var(--txt);
 }
-.devis-field label i { font-style: normal; text-transform: none; letter-spacing: .06em; }
+.devis-field label i { font-style: normal; text-transform: none; letter-spacing: .06em; color: var(--dim); font-weight: 400; }
 .devis-field input,
 .devis-field select,
 .devis-field textarea {
@@ -144,7 +149,9 @@
   color: var(--txt);
   background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--line);
+  /* Sans trait visible, rien n'indique où écrire tant qu'on n'a pas cliqué :
+     deux pixels et la couleur des contours, pas le filet presque effacé. */
+  border-bottom: 2px solid var(--stroke);
   padding: 10px 0;
   width: 100%;
   border-radius: 0;
@@ -154,6 +161,9 @@
 .devis-field input:focus,
 .devis-field select:focus,
 .devis-field textarea:focus { outline: none; border-bottom-color: var(--green-light); }
+/* Le texte d'exemple reste plus clair que la saisie, sans disparaître. */
+.devis-field input::placeholder,
+.devis-field textarea::placeholder { color: var(--dim); opacity: 1; }
 
 /* L'indicatif est obligatoire : il dit d'où vient la demande. Liste déroulante
    native (le menu du téléphone reste le plus simple à manipuler au doigt),

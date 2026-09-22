@@ -27,7 +27,23 @@
     form.addEventListener(ev, markHuman, true);
   });
 
+  /* Passage automatique à l'étape suivante. Choisir une carte ou un délai est
+     une réponse complète : réclamer « Continuer » en plus fait croire que le
+     choix n'a pas été pris en compte, et c'est là qu'on abandonne. Le court
+     délai laisse voir la pastille s'allumer avant que l'écran change, et les
+     boutons « Continuer » et « Retour » restent en place pour qui les cherche. */
+  var pendingGo = null;
+  function autoGo(step) {
+    var next = step && step.querySelector('.devis-next');
+    if (!next) return;                       // dernière étape : rien après
+    w.clearTimeout(pendingGo);
+    pendingGo = w.setTimeout(function () { go(Number(next.dataset.go)); }, 320);
+  }
+
   function go(n) {
+    // Un passage demandé à la main annule celui qui était en attente, sinon un
+    // « Retour » immédiat après un choix serait aussitôt repoussé en avant.
+    w.clearTimeout(pendingGo);
     current = n;
     steps.forEach(function (s) {
       var on = Number(s.dataset.step) === n;
@@ -59,6 +75,7 @@
         btn.setAttribute('aria-checked', 'true');
         if (target) target.value = btn.dataset.value;
         showError(1, false);
+        autoGo(btn.closest ? btn.closest('.devis-step') : null);
       });
     });
   }
