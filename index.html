@@ -92,7 +92,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/caza-v2.css?v=20" />
+  <link rel="stylesheet" href="assets/caza-v2.css?v=21" />
   <script>document.documentElement.className += ' js';</script>
 </head>
 <body class="theme-light home-page">
@@ -139,7 +139,6 @@
     <span class="rise d1"><span class="accent" data-en="crafted and delivered">sur mesure, livré</span></span>
     <span class="rise d2"><span data-en="in record time.">en un temps record.</span></span>
   </h1>
-  <p class="hero-sub fade d2" data-en="Real return on investment, without an agency price tag.">Un vrai retour sur investissement, sans le prix d’une agence.</p>
   <p class="hero-price fade d2" data-en="From <b>400</b> excl. tax · free quote, no commitment">À partir de <b>400 HT</b> · devis gratuit, sans engagement</p>
   <div class="hero-actions fade d3">
     <a href="/devis.html" class="link-action link-action--solid cta-blink">
@@ -260,15 +259,6 @@
 </section>
 
 <!-- ░░ CHIFFRES ░░ -->
-<!-- ░░ RELANCE ░░ -->
-<section class="cta-band" aria-label="Demander un devis">
-  <p class="cta-band-txt" data-en="Tell us what you need, answer within 24 hours.">Dites-nous ce dont vous avez besoin, réponse sous 24 heures.</p>
-  <a href="/devis.html" class="link-action link-action--solid cta-blink">
-    <span data-en="Request a free quote">Demander un devis gratuit</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </a>
-</section>
-
 <section class="scene" id="metrics" aria-label="Ce qui nous définit">
   <h2 class="scene-title fade" data-en="What defines us">Ce qui nous définit</h2>
   <div class="stats-list">
@@ -358,7 +348,6 @@
           <a href="mailto:jeremy@cazacomm.fr" class="contact-line fade d2">jeremy@cazacomm.fr</a>
           <a href="tel:+33767197467" class="contact-line fade d3">+33 7 67 19 74 67</a>
         </div>
-        <p class="contact-hours fade d3" data-en="Monday to Sunday, 8:00 to 20:00.">Du lundi au dimanche, de 8h00 à 20h00.</p>
       </div>
 
       <form class="contact-form fade d2" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
@@ -366,16 +355,19 @@
         <input type="hidden" name="subject" value="Nouveau message depuis cazacomm.fr : Sites Internet" />
         <input type="hidden" name="from_name" value="Site Caza Comm" />
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-        <p class="form-note" data-en="Name and email are enough. The rest is optional.">Le nom et l’email suffisent. Le reste est facultatif.</p>
         <div class="field-row">
           <div class="field">
-            <label for="cf-name" data-en="First and last name*">Nom et prénom*</label>
-            <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Nom et prénom *" data-en-placeholder="First and last name *" />
+            <label for="cf-name" data-en="Last name*">Nom*</label>
+            <input type="text" id="cf-name" name="nom" autocomplete="family-name" required placeholder="Nom *" data-en-placeholder="Last name *" />
           </div>
           <div class="field">
-            <label for="cf-email" data-en="Email*">Email*</label>
-            <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="Email *" data-en-placeholder="Email *" />
+            <label for="cf-firstname" data-en="First name*">Prénom*</label>
+            <input type="text" id="cf-firstname" name="prenom" autocomplete="given-name" required placeholder="Prénom *" data-en-placeholder="First name *" />
           </div>
+        </div>
+        <div class="field">
+          <label for="cf-email" data-en="Email*">Email*</label>
+          <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="Email *" data-en-placeholder="Email *" />
         </div>
         <div class="field">
           <label for="cf-phone" data-en="Phone (to answer you faster)">Téléphone (pour vous répondre plus vite)</label>

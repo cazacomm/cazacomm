@@ -248,7 +248,9 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .hero-price {
   display: inline-flex; align-items: baseline; flex-wrap: wrap;
   gap: .4em;
-  margin: 0 0 clamp(18px, 2.4vh, 34px);
+  /* L'encadré respire des deux côtés : il porte désormais seul l'écart entre le
+     titre et les boutons, et collé à l'un ou à l'autre le héros paraît tassé. */
+  margin: clamp(26px, 4.4vh, 52px) 0;
   padding: 9px 16px;
   border: 1px solid var(--stroke);
   font-family: var(--mono);
@@ -484,7 +486,7 @@ body.at-end .scene-index, body.at-end .swipe-hint { opacity: 0; }
 /* Le hero est un seul bloc centré : titre géant + actions */
 #hero { justify-content: center; }
 .hero-title { margin-bottom: clamp(26px, 5vh, 60px); }
-.home-page .hero-title { margin-bottom: 0; }   /* la marge passe autour du sous-titre */
+.home-page .hero-title { margin-bottom: 0; }   /* la marge passe autour de l'encadré du prix */
 .hero-actions { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); flex-wrap: wrap; }
 
 /* Liens-actions soulignés, sans boutons */
