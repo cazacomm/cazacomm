@@ -240,6 +240,30 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 
 /* ════════════ SOUS-TITRE DU HÉROS ════════════ */
 
+/* Le prix, dit tout de suite. La promesse « sans le prix d'une agence » sans
+   chiffre en face fait cliquer puis partir : le visiteur est venu chercher
+   l'ordre de grandeur et ne le trouve nulle part. Pas de symbole de monnaie,
+   volontairement : le même site s'adresse à la France et au Canada, et un
+   « € » suffit à faire penser à un Québécois que l'offre n'est pas pour lui. */
+.hero-price {
+  display: inline-flex; align-items: baseline; flex-wrap: wrap;
+  gap: .4em;
+  margin: 0 0 clamp(18px, 2.4vh, 34px);
+  padding: 9px 16px;
+  border: 1px solid var(--stroke);
+  font-family: var(--mono);
+  font-size: clamp(.78rem, 1.5vw, .95rem);
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--dim);
+  align-self: flex-start;
+}
+.hero-price b {
+  font-family: var(--display);
+  font-size: 1.5em; font-weight: 600;
+  letter-spacing: -.02em;
+  color: var(--green-light);
+}
+
 .hero-sub {
   margin: clamp(19px, 2.5vh, 40px) 0;
   font-size: clamp(.95rem, 1.9vw, 1.2rem);
@@ -1256,4 +1280,36 @@ body.theme-light .cta-blink::before {
     box-shadow: 0 0 0 3px rgba(111,207,151,.45), 0 0 26px rgba(67,240,200,.50);
   }
   .cta-blink::before { display: none; }
+}
+
+/* ════════════ RELANCE ENTRE DEUX SCÈNES ════════════
+   Le formulaire est tout en bas et chaque scène fait un écran entier : qui ne
+   déroule pas jusqu'au bout n'a jamais l'occasion de demander un devis. Ces
+   bandes rendent la demande possible en chemin. Courtes à dessein, elles
+   relancent sans rallonger la page qu'elles servent à raccourcir. */
+.cta-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 36px);
+  padding: clamp(26px, 5vh, 48px) var(--pad);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.cta-band-txt {
+  font-family: var(--display);
+  font-weight: 600; text-transform: uppercase;
+  font-size: clamp(1.05rem, 2.7vw, 1.75rem);
+  letter-spacing: -.01em; line-height: 1.1;
+  font-stretch: 108%;
+  max-width: 24ch;
+  color: var(--txt);
+}
+.cta-band-txt b { color: var(--green-light); font-weight: 600; }
+
+/* Au doigt, les deux blocs se suivent : côte à côte, le bouton finissait
+   écrasé contre le bord droit. */
+@media (max-width: 720px) {
+  .cta-band { flex-direction: column; align-items: flex-start; }
 }

@@ -92,7 +92,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/caza-v2.css?v=19" />
+  <link rel="stylesheet" href="assets/caza-v2.css?v=20" />
   <script>document.documentElement.className += ' js';</script>
 </head>
 <body class="theme-light home-page">
@@ -140,6 +140,7 @@
     <span class="rise d2"><span data-en="in record time.">en un temps record.</span></span>
   </h1>
   <p class="hero-sub fade d2" data-en="Real return on investment, without an agency price tag.">Un vrai retour sur investissement, sans le prix d’une agence.</p>
+  <p class="hero-price fade d2" data-en="From <b>400</b> excl. tax · free quote, no commitment">À partir de <b>400 HT</b> · devis gratuit, sans engagement</p>
   <div class="hero-actions fade d3">
     <a href="/devis.html" class="link-action link-action--solid cta-blink">
       <span data-en="Request a free quote">Demander un devis gratuit</span>
@@ -226,6 +227,16 @@
     </div>
   </div>
 </section>
+
+<!-- ░░ RELANCE ░░ -->
+<section class="cta-band" aria-label="Demander un devis">
+  <p class="cta-band-txt" data-en="Your project priced within 24 hours. From <b>400</b> excl. tax.">Votre projet chiffré sous 24 heures. À partir de <b>400 HT</b>.</p>
+  <a href="/devis.html" class="link-action link-action--solid cta-blink">
+    <span data-en="Request a free quote">Demander un devis gratuit</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
 <!-- ░░ AVIS ░░ -->
 <section class="scene" id="avis" aria-label="Avis clients">
   <h2 class="scene-title fade">
@@ -249,6 +260,15 @@
 </section>
 
 <!-- ░░ CHIFFRES ░░ -->
+<!-- ░░ RELANCE ░░ -->
+<section class="cta-band" aria-label="Demander un devis">
+  <p class="cta-band-txt" data-en="Tell us what you need, answer within 24 hours.">Dites-nous ce dont vous avez besoin, réponse sous 24 heures.</p>
+  <a href="/devis.html" class="link-action link-action--solid cta-blink">
+    <span data-en="Request a free quote">Demander un devis gratuit</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
 <section class="scene" id="metrics" aria-label="Ce qui nous définit">
   <h2 class="scene-title fade" data-en="What defines us">Ce qui nous définit</h2>
   <div class="stats-list">
@@ -280,6 +300,13 @@
         <span class="faq-sign" aria-hidden="true">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner"><p data-en="Most websites are delivered in under 24 hours. Adding the 24 hours for the quote, plan on 48 hours in total, often less if you are responsive.">La plupart des sites sont livrés en moins de 24 heures. En ajoutant les 24 heures du devis, comptez 48 heures au total, souvent moins si vous êtes réactif.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">
+        <span data-en="How much does a website cost?">Combien coûte un site ?</span>
+        <span class="faq-sign" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p data-en="From 400 excluding tax, hosting and domain name included. The exact price depends on what the website has to do; it is set out in the quote, free and with no commitment, and nothing is added afterwards.">À partir de 400 HT, hébergement et nom de domaine inclus. Le prix exact dépend de ce que le site doit faire : il est annoncé dans le devis, gratuit et sans engagement, et rien ne s’ajoute ensuite.</p></div></div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">
@@ -339,30 +366,11 @@
         <input type="hidden" name="subject" value="Nouveau message depuis cazacomm.fr : Sites Internet" />
         <input type="hidden" name="from_name" value="Site Caza Comm" />
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-        <p class="form-note" data-en="Fields marked with a star are required.">Les champs marqués d’une étoile sont obligatoires.</p>
-        <div class="field">
-          <label for="cf-subject" data-en="Subject*">Sujet*</label>
-          <select id="cf-subject" name="sujet" required data-placeholder>
-            <option value="" disabled selected>Sélectionner un sujet *</option>
-            <option value="Devis">Devis</option>
-            <option value="Question">Question</option>
-            <option value="Autre">Autre</option>
-          </select>
-        </div>
+        <p class="form-note" data-en="Name and email are enough. The rest is optional.">Le nom et l’email suffisent. Le reste est facultatif.</p>
         <div class="field-row">
           <div class="field">
             <label for="cf-name" data-en="First and last name*">Nom et prénom*</label>
             <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="Nom et prénom *" data-en-placeholder="First and last name *" />
-          </div>
-          <div class="field">
-            <label for="cf-company" data-en="Company name">Nom de l’entreprise</label>
-            <input type="text" id="cf-company" name="entreprise" autocomplete="organization" placeholder="Nom de l’entreprise" data-en-placeholder="Company name" />
-          </div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="cf-phone" data-en="Phone">Téléphone</label>
-            <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
           </div>
           <div class="field">
             <label for="cf-email" data-en="Email*">Email*</label>
@@ -370,8 +378,12 @@
           </div>
         </div>
         <div class="field">
-          <label for="cf-message" data-en="Your message or request in a few words*">Votre message ou demande en quelques mots*</label>
-          <textarea id="cf-message" name="message" required placeholder="Votre message ou demande en quelques mots *" data-en-placeholder="Your message or request in a few words *"></textarea>
+          <label for="cf-phone" data-en="Phone (to answer you faster)">Téléphone (pour vous répondre plus vite)</label>
+          <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="Téléphone" data-en-placeholder="Phone" />
+        </div>
+        <div class="field">
+          <label for="cf-message" data-en="In one line, what you need (optional)">En une ligne, ce dont vous avez besoin (facultatif)</label>
+          <textarea id="cf-message" name="message" rows="2" placeholder="Un site vitrine pour mon garage, par exemple" data-en-placeholder="A website for my garage, for instance"></textarea>
         </div>
         <button type="submit" class="btn-submit cta-blink" data-en="Send the message">Envoyer le message</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
