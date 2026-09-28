@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Comment être cité par ChatGPT et Perplexity</title>
+      <link>https://www.cazacomm.fr/blog/geo-etre-cite-par-les-ia/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/geo-etre-cite-par-les-ia/</guid>
+      <pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Pour les PME, être mentionné par des outils comme ChatGPT et Perplexity peut considérablement augmenter la visibilité en ligne. Ces plateformes utilisent des contenus bien structurés et optimisés pour offrir des réponses pertinentes aux utilisateurs. Découvrons comment créer un contenu qui attire ces intelligences artificielles et met votre entreprise en avant sur le web, dans toute la francophonie.</description>
+    </item>
 
     <item>
       <title>Cibler efficacement avec Meta Ads</title>
