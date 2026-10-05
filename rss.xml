@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Optimisez votre suivi de devis avec un CRM simple</title>
+      <link>https://www.cazacomm.fr/blog/automatiser-suivi-devis-crm/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/automatiser-suivi-devis-crm/</guid>
+      <pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Gérer efficacement les devis est un défi pour de nombreuses TPE, PME et indépendants. Entre les relances à effectuer et les statuts à vérifier, le temps investi peut rapidement s'accumuler. Heureusement, l'automatisation du suivi des devis à l'aide d'un CRM simple peut transformer cette tâche chronophage en un processus fluide et efficace. Découvrez comment optimiser votre gestion de devis et libérer du temps pour d'autres priorités grâce à des outils adaptés.</description>
+    </item>
 
     <item>
       <title>Comment être cité par ChatGPT et Perplexity</title>
