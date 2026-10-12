@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Optimisez votre visibilité touristique</title>
+      <link>https://www.cazacomm.fr/blog/visibilite-tourisme-hautes-pyrenees/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/visibilite-tourisme-hautes-pyrenees/</guid>
+      <pubDate>Mon, 12 Oct 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Alors que la saison touristique approche dans les Hautes-Pyrénées, il est essentiel pour les professionnels du secteur de se préparer à capter l'attention des visiteurs potentiels. Avec une clientèle variée venant de la France et de la francophonie, une stratégie multilingue et une excellente gestion des réservations en ligne sont des atouts clés. Découvrez comment optimiser votre présence en ligne grâce à des outils efficaces et des conseils pratiques pour attirer et fidéliser vos clients.</description>
+    </item>
 
     <item>
       <title>Optimisez votre suivi de devis avec un CRM simple</title>
