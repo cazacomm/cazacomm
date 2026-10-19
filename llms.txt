@@ -46,6 +46,7 @@
 - [Comment être cité par ChatGPT et Perplexity](https://www.cazacomm.fr/blog/geo-etre-cite-par-les-ia/) : Découvrez comment votre PME peut être citée par ChatGPT et Perplexity grâce à des contenus citables et une optimisation technique.
 - [Optimisez votre suivi de devis avec un CRM simple](https://www.cazacomm.fr/blog/automatiser-suivi-devis-crm/) : Gagnez du temps et améliorez vos relances clients avec un CRM simple pour automatiser le suivi de vos devis.
 - [Optimisez votre visibilité touristique](https://www.cazacomm.fr/blog/visibilite-tourisme-hautes-pyrenees/) : Conseils pour améliorer la visibilité en ligne des acteurs du tourisme avant la saison dans les Hautes-Pyrénées.
+- [Pourquoi votre site ne convertit pas ? Solutions rapides](https://www.cazacomm.fr/blog/pourquoi-votre-site-ne-convertit-pas/) : Améliorez la conversion de votre site avec des appels à l'action, des formulaires optimisés et des preuves sociales.
 
 ## Ressources techniques
 

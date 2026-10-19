@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 12 Oct 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Pourquoi votre site ne convertit pas ? Solutions rapides</title>
+      <link>https://www.cazacomm.fr/blog/pourquoi-votre-site-ne-convertit-pas/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/pourquoi-votre-site-ne-convertit-pas/</guid>
+      <pubDate>Mon, 19 Oct 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Votre site web attire des visiteurs, mais les conversions ne suivent pas ? Ce problème courant peut souvent être résolu en un rien de temps avec des ajustements ciblés. Que vous soyez une TPE, une PME, un artisan ou une start-up, des éléments comme des appels à l'action clairs, des formulaires simplifiés et l'ajout de preuves sociales peuvent transformer votre taux de conversion. Découvrez comment Caza Comm, votre partenaire digital en ligne, peut vous aider à optimiser votre site rapidement.</description>
+    </item>
 
     <item>
       <title>Optimisez votre visibilité touristique</title>
