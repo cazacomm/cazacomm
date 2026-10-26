@@ -47,6 +47,7 @@
 - [Optimisez votre suivi de devis avec un CRM simple](https://www.cazacomm.fr/blog/automatiser-suivi-devis-crm/) : Gagnez du temps et améliorez vos relances clients avec un CRM simple pour automatiser le suivi de vos devis.
 - [Optimisez votre visibilité touristique](https://www.cazacomm.fr/blog/visibilite-tourisme-hautes-pyrenees/) : Conseils pour améliorer la visibilité en ligne des acteurs du tourisme avant la saison dans les Hautes-Pyrénées.
 - [Pourquoi votre site ne convertit pas ? Solutions rapides](https://www.cazacomm.fr/blog/pourquoi-votre-site-ne-convertit-pas/) : Améliorez la conversion de votre site avec des appels à l'action, des formulaires optimisés et des preuves sociales.
+- [RGPD et IA : Ce que votre entreprise doit savoir](https://www.cazacomm.fr/blog/rgpd-et-ia-petite-entreprise/) : Découvrez les mesures essentielles pour que votre petite entreprise respecte le RGPD en utilisant l'IA.
 
 ## Ressources techniques
 

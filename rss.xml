@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 19 Oct 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>RGPD et IA : Ce que votre entreprise doit savoir</title>
+      <link>https://www.cazacomm.fr/blog/rgpd-et-ia-petite-entreprise/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/rgpd-et-ia-petite-entreprise/</guid>
+      <pubDate>Mon, 26 Oct 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Pour les petites entreprises utilisant l'IA, comprendre et appliquer le RGPD est crucial. Que vous soyez une TPE, PME ou une start-up opérant en France, Belgique ou tout autre territoire francophone, la protection des données personnelles doit être une priorité. Cet article vous guide à travers les étapes essentielles pour garantir la conformité tout en maintenant une transparence envers vos clients.</description>
+    </item>
 
     <item>
       <title>Pourquoi votre site ne convertit pas ? Solutions rapides</title>
