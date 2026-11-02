@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 26 Oct 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Optimisez votre WordPress pour un meilleur SEO</title>
+      <link>https://www.cazacomm.fr/blog/optimiser-wordpress-referencement-naturel/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/optimiser-wordpress-referencement-naturel/</guid>
+      <pubDate>Mon, 02 Nov 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Dans le monde numérique d'aujourd'hui, avoir un site WordPress optimisé pour le référencement naturel est essentiel pour toute entreprise, qu'il s'agisse de TPE, PME, indépendants, artisans ou start-ups. Les techniques SEO spécifiques peuvent faire la différence et améliorer votre visibilité en ligne, non seulement en France, mais aussi dans toute la francophonie comme la Belgique, le Québec ou l'Afrique francophone. Découvrez comment optimiser votre WordPress pour attirer plus de visiteurs.</description>
+    </item>
 
     <item>
       <title>RGPD et IA : Ce que votre entreprise doit savoir</title>
