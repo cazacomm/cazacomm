@@ -1,222 +1,160 @@
 /* ════════════════════════════════════════════════════════════════
    CAZA COMM — CARTE DE VISITE (/cartevisite)
-   Même charte que l'accueil : noir absolu, capitales Archivo, vert clair
-   en accent. Colonne unique pensée pour le téléphone qu'on tend à
-   quelqu'un : tout tient sans zoom, cibles d'au moins 48 px, 440 px max.
+   Charte de l'accueil (noir, Archivo en capitales, vert clair), en sobre.
+   La carte tient dans un seul écran, téléphone comme ordinateur : les
+   tailles suivent la hauteur de l'écran autant que sa largeur, pour ne
+   jamais avoir à faire défiler.
    Tout est préfixé .card-* : aucune autre page n'est touchée.
    ════════════════════════════════════════════════════════════════ */
 
 .card-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  min-height: 100svh;
-  /* Halo vert très léger derrière la photo, rappel des scènes de l'accueil */
-  background:
-    radial-gradient(120% 60% at 50% -10%, rgba(111,207,151,0.16), transparent 60%),
-    var(--bg);
+  height: 100vh;
+  height: 100svh;
 }
 
-.card-wrap {
+.card {
+  height: 100%;
+  /* Filet de sécurité : sur un écran très bas (téléphone à l'horizontale),
+     la page défile plutôt que de rogner */
+  min-height: 540px;
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
   margin: 0 auto;
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: clamp(22px, 5.5vw, 30px);
-  padding: clamp(36px, 9vw, 64px) 20px 24px;
-  padding-left: max(20px, env(safe-area-inset-left));
-  padding-right: max(20px, env(safe-area-inset-right));
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3.2vh, 32px);
+  padding: clamp(20px, 4vh, 48px) 24px;
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
+  padding-bottom: max(clamp(20px, 4vh, 48px), env(safe-area-inset-bottom));
+  text-align: center;
 }
-
-/* Centrage vertical ; « safe » repasse en haut si le contenu déborde,
-   pour ne jamais rogner la photo sur un petit écran */
-.card-wrap { justify-content: safe center; }
-
-/* ════════════ EN-TÊTE ════════════ */
-
-.card-head { text-align: center; }
 
 .card-photo {
-  width: clamp(128px, 38vw, 168px);
-  height: clamp(128px, 38vw, 168px);
-  margin: 0 auto 22px;
+  width: clamp(96px, 20vh, 180px);
+  height: clamp(96px, 20vh, 180px);
+  flex: 0 0 auto;
   border-radius: 50%;
   object-fit: cover;
-  object-position: 50% 30%;
   background: #111;
-  /* Anneau vert détaché de la photo par un liseré noir */
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--green-light);
 }
 
-.card-kicker {
-  font-family: var(--display);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-stretch: 110%;
-  font-size: .78rem;
-  color: var(--dim);
+.card-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card-name {
-  margin-top: 10px;
   font-family: var(--display);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   font-stretch: 112%;
-  line-height: 0.88;
-  font-size: clamp(2.7rem, 14vw, 3.9rem);
+  line-height: 0.95;
+  font-size: clamp(1.9rem, min(9vw, 5.2vh), 2.8rem);
 }
-.card-name span { display: block; }
-.card-name span + span { color: var(--green-light); }
+
+.card-role {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
 
 .card-tagline {
-  margin: 16px auto 0;
-  max-width: 32ch;
+  margin-top: 4px;
   color: var(--dim);
-  font-size: .95rem;
-  line-height: 1.5;
-  text-wrap: balance;
+  font-size: .92rem;
 }
-
-/* ════════════ ENREGISTRER LE CONTACT ════════════ */
-
-.card-save {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 56px;
-  padding: 14px 20px;
-  border-radius: 999px;
-  background: var(--green-light);
-  color: var(--on-accent);
-  font-family: var(--display);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  font-stretch: 110%;
-  font-size: clamp(.92rem, 4.6vw, 1.05rem);
-  white-space: nowrap;
-  transition: transform .25s var(--ease), background .25s var(--ease);
-}
-.card-save svg { width: 22px; height: 22px; flex: 0 0 auto; }
-.card-save:hover { background: #ffffff; }
-.card-save:active { transform: scale(.98); }
 
 /* ════════════ COORDONNÉES ════════════ */
 
 .card-list {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  margin-top: clamp(18px, 3.6vh, 32px);
   border-top: 1px solid var(--line);
+  text-align: left;
 }
 
 .card-row {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  min-height: 64px;
-  padding: 12px 4px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  padding: clamp(12px, 1.8vh, 16px) 0;
   border-bottom: 1px solid var(--line);
-  transition: color .25s var(--ease), padding .25s var(--ease);
 }
-.card-row:hover { color: var(--green-light); padding-left: 10px; }
-
-.card-ico {
+.card-row small {
   flex: 0 0 auto;
-  width: 22px;
-  height: 22px;
-  color: var(--green-light);
+  font-size: .82rem;
+  color: var(--dim);
 }
-.card-ico svg { width: 100%; height: 100%; }
-
-.card-row-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.card-row-text small {
-  font-size: .72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--faint);
-}
-.card-row-text b {
+.card-row b {
+  min-width: 0;
   font-weight: 500;
-  font-size: 1.02rem;
+  font-size: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.card-row:hover b { color: var(--green-light); }
 
-.card-arrow {
-  flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
-  color: var(--faint);
-  transition: transform .25s var(--ease), color .25s var(--ease);
+/* ════════════ ENREGISTRER ════════════ */
+
+.card-save {
+  width: 100%;
+  margin-top: clamp(18px, 3.6vh, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border-radius: 999px;
+  background: var(--green-light);
+  color: var(--on-accent);
+  font-weight: 500;
+  font-size: 1rem;
 }
-.card-row:hover .card-arrow { transform: translateX(4px); color: var(--green-light); }
+.card-save:hover { background: #ffffff; }
 
 /* ════════════ RÉSEAUX ════════════ */
 
 .card-social {
+  margin-top: clamp(12px, 2.4vh, 24px);
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
 }
 .card-social a {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--stroke);
-  border-radius: 50%;
-  transition: color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+  color: var(--dim);
 }
-.card-social a:hover { color: var(--green-light); border-color: var(--green-light); transform: translateY(-2px); }
+.card-social a:hover { color: var(--green-light); }
 .card-social svg { width: 22px; height: 22px; }
 
-/* ════════════ PARTAGE ════════════ */
+/* ════════════ ORDINATEUR ════════════
+   Écran large et assez haut : photo à gauche, coordonnées à droite,
+   l'ensemble centré dans la fenêtre. */
 
-.card-share {
-  align-self: center;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 48px;
-  padding: 0 18px;
-  color: var(--dim);
-  font-size: .9rem;
-  transition: color .25s var(--ease);
-}
-.card-share[hidden] { display: none; }
-.card-share svg { width: 18px; height: 18px; }
-.card-share:hover { color: var(--green-light); }
-
-/* ════════════ PIED ════════════ */
-
-.card-foot {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
-  font-size: .78rem;
-  color: var(--faint);
-}
-.card-foot a:hover { color: var(--txt); }
-
-/* ════════════ ENTRÉE ════════════ */
-
-@media (prefers-reduced-motion: no-preference) {
-  .card-wrap > * { animation: card-in .7s var(--ease) both; }
-  .card-wrap > :nth-child(2) { animation-delay: .08s; }
-  .card-wrap > :nth-child(3) { animation-delay: .16s; }
-  .card-wrap > :nth-child(4) { animation-delay: .24s; }
-  .card-wrap > :nth-child(5) { animation-delay: .32s; }
-}
-@keyframes card-in {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: none; }
+@media (min-width: 860px) and (min-height: 560px) {
+  .card {
+    max-width: 920px;
+    flex-direction: row;
+    gap: clamp(48px, 7vw, 96px);
+    text-align: left;
+  }
+  .card-photo {
+    width: clamp(220px, 46vh, 400px);
+    height: clamp(220px, 46vh, 400px);
+  }
+  .card-info { align-items: flex-start; max-width: 420px; }
+  .card-name { font-size: clamp(2.4rem, 6vh, 3.4rem); }
+  .card-save { width: auto; padding: 0 32px; }
+  .card-social { margin-left: -14px; }
 }
