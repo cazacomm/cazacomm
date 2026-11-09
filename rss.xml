@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Gagnez en efficacité avec un CRM pour vos emails</title>
+      <link>https://www.cazacomm.fr/blog/automatiser-campagnes-email-grace-crm/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/automatiser-campagnes-email-grace-crm/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Dans un monde où la communication digitale est essentielle, automatiser vos campagnes email devient crucial. Que vous soyez une TPE, PME ou une start-up, un CRM peut vous aider à planifier et envoyer vos emails de manière efficace. Découvrez comment maximiser votre visibilité en ligne grâce à cet outil puissant, adapté à la France et à l'ensemble de la francophonie.</description>
+    </item>
 
     <item>
       <title>Optimisez votre WordPress pour un meilleur SEO</title>
