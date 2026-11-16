@@ -8,13 +8,22 @@
     <copyright>© 2026 Caza Comm</copyright>
     <managingEditor>jeremy@cazacomm.fr (Caza Comm)</managingEditor>
     <webMaster>jeremy@cazacomm.fr (Caza Comm)</webMaster>
-    <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://www.cazacomm.fr/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://www.cazacomm.fr/images/logo.png</url>
       <title>Blog Caza Comm</title>
       <link>https://www.cazacomm.fr/blog/</link>
     </image>
+
+    <item>
+      <title>Comment optimiser votre Google My Business</title>
+      <link>https://www.cazacomm.fr/blog/creer-page-google-my-business-performante/</link>
+      <guid isPermaLink="true">https://www.cazacomm.fr/blog/creer-page-google-my-business-performante/</guid>
+      <pubDate>Mon, 16 Nov 2026 09:00:00 +0200</pubDate>
+      <category>Web, IA &amp; visibilité locale</category>
+      <description>Dans le monde numérique actuel, disposer d'une page Google My Business bien conçue est crucial pour les TPE, PME et indépendants. Que vous soyez un artisan en Belgique ou une start-up au Québec, une présence locale optimisée peut significativement améliorer votre visibilité en ligne. Suivez nos conseils pour créer une page performante et accroître votre notoriété auprès de votre clientèle cible.</description>
+    </item>
 
     <item>
       <title>Gagnez en efficacité avec un CRM pour vos emails</title>

@@ -50,6 +50,7 @@
 - [RGPD et IA : Ce que votre entreprise doit savoir](https://www.cazacomm.fr/blog/rgpd-et-ia-petite-entreprise/) : Découvrez les mesures essentielles pour que votre petite entreprise respecte le RGPD en utilisant l'IA.
 - [Optimisez votre WordPress pour un meilleur SEO](https://www.cazacomm.fr/blog/optimiser-wordpress-referencement-naturel/) : Découvrez des techniques pratiques pour améliorer le SEO de votre site WordPress et augmenter votre visibilité en ligne.
 - [Gagnez en efficacité avec un CRM pour vos emails](https://www.cazacomm.fr/blog/automatiser-campagnes-email-grace-crm/) : Découvrez comment un CRM peut optimiser vos campagnes email efficacement.
+- [Comment optimiser votre Google My Business](https://www.cazacomm.fr/blog/creer-page-google-my-business-performante/) : Augmentez votre présence locale avec une page Google My Business optimisée en suivant nos étapes essentielles.
 
 ## Ressources techniques
 
